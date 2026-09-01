@@ -14,9 +14,10 @@ import { CitaCountOutputTypeArgsObjectSchema as CitaCountOutputTypeArgsObjectSch
 
 export const CitaFindFirstSelectSchema: z.ZodType<Prisma.CitaSelect> = z.object({
     id: z.boolean().optional(),
-    id_paciente: z.boolean().optional(),
+    idPaciente: z.boolean().optional(),
     fecha: z.boolean().optional(),
     estado: z.boolean().optional(),
+    pagoInicial: z.boolean().optional(),
     paciente: z.union([z.boolean(), z.lazy(() => PacienteArgsObjectSchema)]).optional(),
     consultas: z.union([z.boolean(), z.lazy(() => ConsultaFindManySchema)]).optional(),
     _count: z.union([z.boolean(), z.lazy(() => CitaCountOutputTypeArgsObjectSchema)]).optional()
@@ -24,9 +25,10 @@ export const CitaFindFirstSelectSchema: z.ZodType<Prisma.CitaSelect> = z.object(
 
 export const CitaFindFirstSelectZodSchema = z.object({
     id: z.boolean().optional(),
-    id_paciente: z.boolean().optional(),
+    idPaciente: z.boolean().optional(),
     fecha: z.boolean().optional(),
     estado: z.boolean().optional(),
+    pagoInicial: z.boolean().optional(),
     paciente: z.union([z.boolean(), z.lazy(() => PacienteArgsObjectSchema)]).optional(),
     consultas: z.union([z.boolean(), z.lazy(() => ConsultaFindManySchema)]).optional(),
     _count: z.union([z.boolean(), z.lazy(() => CitaCountOutputTypeArgsObjectSchema)]).optional()

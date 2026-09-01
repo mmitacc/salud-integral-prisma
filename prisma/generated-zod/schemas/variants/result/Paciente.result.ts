@@ -8,8 +8,9 @@ export const PacienteResultSchema = z.object({
     email: z.string(),
     masculino: z.boolean(),
     fecha_nac: z.date(),
-    tipo_sangre: z.string(),
+    tipoSangre: z.string(),
     alergias: z.string(),
+    creado: z.date(),
     historiales: z.array(z.unknown()),
     citas: z.array(z.unknown())
 }).strict();

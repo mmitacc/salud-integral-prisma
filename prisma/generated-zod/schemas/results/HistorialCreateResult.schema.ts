@@ -1,7 +1,7 @@
 import * as z from 'zod';
 export const HistorialCreateResultSchema = z.object({
   id: z.number().int(),
-  id_paciente: z.number().int(),
+  idPaciente: z.number().int(),
   fecha: z.date(),
   motivo: z.string(),
   antecedentes: z.string().nullable().optional(),

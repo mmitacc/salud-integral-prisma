@@ -20,8 +20,9 @@ export const PacienteFindFirstSelectSchema: z.ZodType<Prisma.PacienteSelect> = z
     email: z.boolean().optional(),
     masculino: z.boolean().optional(),
     fecha_nac: z.boolean().optional(),
-    tipo_sangre: z.boolean().optional(),
+    tipoSangre: z.boolean().optional(),
     alergias: z.boolean().optional(),
+    creado: z.boolean().optional(),
     historiales: z.union([z.boolean(), z.lazy(() => HistorialFindManySchema)]).optional(),
     citas: z.union([z.boolean(), z.lazy(() => CitaFindManySchema)]).optional(),
     _count: z.union([z.boolean(), z.lazy(() => PacienteCountOutputTypeArgsObjectSchema)]).optional()
@@ -35,8 +36,9 @@ export const PacienteFindFirstSelectZodSchema = z.object({
     email: z.boolean().optional(),
     masculino: z.boolean().optional(),
     fecha_nac: z.boolean().optional(),
-    tipo_sangre: z.boolean().optional(),
+    tipoSangre: z.boolean().optional(),
     alergias: z.boolean().optional(),
+    creado: z.boolean().optional(),
     historiales: z.union([z.boolean(), z.lazy(() => HistorialFindManySchema)]).optional(),
     citas: z.union([z.boolean(), z.lazy(() => CitaFindManySchema)]).optional(),
     _count: z.union([z.boolean(), z.lazy(() => PacienteCountOutputTypeArgsObjectSchema)]).optional()

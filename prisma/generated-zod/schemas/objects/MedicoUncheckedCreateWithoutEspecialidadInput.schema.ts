@@ -9,7 +9,8 @@ const makeSchema = () => z.object({
   telefono: z.string(),
   email: z.string(),
   masculino: z.boolean().optional(),
-  fecha_nac: z.coerce.date(),
+  fechaNac: z.coerce.date(),
+  creado: z.coerce.date().optional(),
   consultas: z.lazy(() => ConsultaUncheckedCreateNestedManyWithoutMedicoInputObjectSchema).optional()
 }).strict();
 export const MedicoUncheckedCreateWithoutEspecialidadInputObjectSchema: z.ZodType<Prisma.MedicoUncheckedCreateWithoutEspecialidadInput> = makeSchema() as unknown as z.ZodType<Prisma.MedicoUncheckedCreateWithoutEspecialidadInput>;

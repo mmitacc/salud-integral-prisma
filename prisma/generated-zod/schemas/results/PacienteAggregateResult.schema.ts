@@ -7,8 +7,9 @@ export const PacienteAggregateResultSchema = z.object({  _count: z.union([z.numb
     email: z.number().optional(),
     masculino: z.number().optional(),
     fecha_nac: z.number().optional(),
-    tipo_sangre: z.number().optional(),
+    tipoSangre: z.number().optional(),
     alergias: z.number().optional(),
+    creado: z.number().optional(),
     _all: z.number().optional()
   })]).optional(),
   _sum: z.object({
@@ -25,8 +26,9 @@ export const PacienteAggregateResultSchema = z.object({  _count: z.union([z.numb
     email: z.string().nullable().optional(),
     masculino: z.boolean().nullable().optional(),
     fecha_nac: z.date().nullable().optional(),
-    tipo_sangre: z.string().nullable().optional(),
-    alergias: z.string().nullable().optional()
+    tipoSangre: z.string().nullable().optional(),
+    alergias: z.string().nullable().optional(),
+    creado: z.date().nullable().optional()
   }).nullable().optional(),
   _max: z.object({
     id: z.number().int().nullable().optional(),
@@ -36,6 +38,7 @@ export const PacienteAggregateResultSchema = z.object({  _count: z.union([z.numb
     email: z.string().nullable().optional(),
     masculino: z.boolean().nullable().optional(),
     fecha_nac: z.date().nullable().optional(),
-    tipo_sangre: z.string().nullable().optional(),
-    alergias: z.string().nullable().optional()
+    tipoSangre: z.string().nullable().optional(),
+    alergias: z.string().nullable().optional(),
+    creado: z.date().nullable().optional()
   }).nullable().optional()});

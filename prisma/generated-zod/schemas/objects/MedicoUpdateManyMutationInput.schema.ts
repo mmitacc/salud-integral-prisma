@@ -10,7 +10,8 @@ const makeSchema = () => z.object({
   telefono: z.union([z.string().max(20), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
   email: z.union([z.string().max(150), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
   masculino: z.union([z.boolean(), z.lazy(() => BoolFieldUpdateOperationsInputObjectSchema)]).optional(),
-  fecha_nac: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional()
+  fechaNac: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
+  creado: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional()
 }).strict();
 export const MedicoUpdateManyMutationInputObjectSchema: z.ZodType<Prisma.MedicoUpdateManyMutationInput> = makeSchema() as unknown as z.ZodType<Prisma.MedicoUpdateManyMutationInput>;
 export const MedicoUpdateManyMutationInputObjectZodSchema = makeSchema();

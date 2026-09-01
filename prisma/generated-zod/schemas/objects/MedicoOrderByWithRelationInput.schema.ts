@@ -6,13 +6,14 @@ import { ConsultaOrderByRelationAggregateInputObjectSchema as ConsultaOrderByRel
 
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
-  id_especialidad: SortOrderSchema.optional(),
+  idEspecialidad: SortOrderSchema.optional(),
   nombres: SortOrderSchema.optional(),
   apellidos: SortOrderSchema.optional(),
   telefono: SortOrderSchema.optional(),
   email: SortOrderSchema.optional(),
   masculino: SortOrderSchema.optional(),
-  fecha_nac: SortOrderSchema.optional(),
+  fechaNac: SortOrderSchema.optional(),
+  creado: SortOrderSchema.optional(),
   especialidad: z.lazy(() => EspecialidadOrderByWithRelationInputObjectSchema).optional(),
   consultas: z.lazy(() => ConsultaOrderByRelationAggregateInputObjectSchema).optional()
 }).strict();

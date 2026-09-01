@@ -9,9 +9,10 @@ import { CitaSumOrderByAggregateInputObjectSchema as CitaSumOrderByAggregateInpu
 
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
-  id_paciente: SortOrderSchema.optional(),
+  idPaciente: SortOrderSchema.optional(),
   fecha: SortOrderSchema.optional(),
   estado: SortOrderSchema.optional(),
+  pagoInicial: SortOrderSchema.optional(),
   _count: z.lazy(() => CitaCountOrderByAggregateInputObjectSchema).optional(),
   _avg: z.lazy(() => CitaAvgOrderByAggregateInputObjectSchema).optional(),
   _max: z.lazy(() => CitaMaxOrderByAggregateInputObjectSchema).optional(),

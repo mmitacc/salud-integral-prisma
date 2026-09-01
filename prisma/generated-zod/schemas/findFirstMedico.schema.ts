@@ -14,13 +14,14 @@ import { MedicoCountOutputTypeArgsObjectSchema as MedicoCountOutputTypeArgsObjec
 
 export const MedicoFindFirstSelectSchema: z.ZodType<Prisma.MedicoSelect> = z.object({
     id: z.boolean().optional(),
-    id_especialidad: z.boolean().optional(),
+    idEspecialidad: z.boolean().optional(),
     nombres: z.boolean().optional(),
     apellidos: z.boolean().optional(),
     telefono: z.boolean().optional(),
     email: z.boolean().optional(),
     masculino: z.boolean().optional(),
-    fecha_nac: z.boolean().optional(),
+    fechaNac: z.boolean().optional(),
+    creado: z.boolean().optional(),
     especialidad: z.union([z.boolean(), z.lazy(() => EspecialidadArgsObjectSchema)]).optional(),
     consultas: z.union([z.boolean(), z.lazy(() => ConsultaFindManySchema)]).optional(),
     _count: z.union([z.boolean(), z.lazy(() => MedicoCountOutputTypeArgsObjectSchema)]).optional()
@@ -28,13 +29,14 @@ export const MedicoFindFirstSelectSchema: z.ZodType<Prisma.MedicoSelect> = z.obj
 
 export const MedicoFindFirstSelectZodSchema = z.object({
     id: z.boolean().optional(),
-    id_especialidad: z.boolean().optional(),
+    idEspecialidad: z.boolean().optional(),
     nombres: z.boolean().optional(),
     apellidos: z.boolean().optional(),
     telefono: z.boolean().optional(),
     email: z.boolean().optional(),
     masculino: z.boolean().optional(),
-    fecha_nac: z.boolean().optional(),
+    fechaNac: z.boolean().optional(),
+    creado: z.boolean().optional(),
     especialidad: z.union([z.boolean(), z.lazy(() => EspecialidadArgsObjectSchema)]).optional(),
     consultas: z.union([z.boolean(), z.lazy(() => ConsultaFindManySchema)]).optional(),
     _count: z.union([z.boolean(), z.lazy(() => MedicoCountOutputTypeArgsObjectSchema)]).optional()

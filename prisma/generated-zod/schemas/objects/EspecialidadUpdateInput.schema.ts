@@ -1,10 +1,12 @@
 import * as z from 'zod';
 import type { Prisma } from '../../../generated-client/browser';
 import { StringFieldUpdateOperationsInputObjectSchema as StringFieldUpdateOperationsInputObjectSchema } from './StringFieldUpdateOperationsInput.schema';
+import { DateTimeFieldUpdateOperationsInputObjectSchema as DateTimeFieldUpdateOperationsInputObjectSchema } from './DateTimeFieldUpdateOperationsInput.schema';
 import { MedicoUpdateManyWithoutEspecialidadNestedInputObjectSchema as MedicoUpdateManyWithoutEspecialidadNestedInputObjectSchema } from './MedicoUpdateManyWithoutEspecialidadNestedInput.schema'
 
 const makeSchema = () => z.object({
   tipo: z.union([z.string().max(100), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
+  creado: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
   medicos: z.lazy(() => MedicoUpdateManyWithoutEspecialidadNestedInputObjectSchema).optional()
 }).strict();
 export const EspecialidadUpdateInputObjectSchema: z.ZodType<Prisma.EspecialidadUpdateInput> = makeSchema() as unknown as z.ZodType<Prisma.EspecialidadUpdateInput>;

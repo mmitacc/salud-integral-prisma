@@ -5,10 +5,12 @@ import { MedicoArgsObjectSchema as MedicoArgsObjectSchema } from './MedicoArgs.s
 
 const makeSchema = () => z.object({
   id: z.boolean().optional(),
-  id_cita: z.boolean().optional(),
-  id_medico: z.boolean().optional(),
+  idCita: z.boolean().optional(),
+  idMedico: z.boolean().optional(),
   fecha: z.boolean().optional(),
   horario: z.boolean().optional(),
+  costo: z.boolean().optional(),
+  creado: z.boolean().optional(),
   cita: z.union([z.boolean(), z.lazy(() => CitaArgsObjectSchema)]).optional(),
   medico: z.union([z.boolean(), z.lazy(() => MedicoArgsObjectSchema)]).optional()
 }).strict();

@@ -3,7 +3,7 @@ import {
   getAllPaciente,
   postPaciente,
 } from "../controllers/paciente.controller";
-import { PacienteFindManySchema } from "../../prisma/generated-zod/schemas";
+import { PacienteFindManySchema, PacienteCreateInputObjectSchema } from "../../prisma/generated-zod/schemas";
 import {
   validateBodySchema,
   validateParamsSchema,
@@ -11,7 +11,7 @@ import {
 
 const router = Router();
 
-router.get("/", getAllPaciente);
-router.post("/", postPaciente, validateBodySchema(PacienteFindManySchema));
+router.get("/", getAllPaciente, validateParamsSchema(PacienteFindManySchema));
+router.post("/", validateBodySchema(PacienteCreateInputObjectSchema), postPaciente);
 
 export default router;

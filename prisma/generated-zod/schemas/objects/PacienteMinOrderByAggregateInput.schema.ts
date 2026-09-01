@@ -10,8 +10,9 @@ const makeSchema = () => z.object({
   email: SortOrderSchema.optional(),
   masculino: SortOrderSchema.optional(),
   fecha_nac: SortOrderSchema.optional(),
-  tipo_sangre: SortOrderSchema.optional(),
-  alergias: SortOrderSchema.optional()
+  tipoSangre: SortOrderSchema.optional(),
+  alergias: SortOrderSchema.optional(),
+  creado: SortOrderSchema.optional()
 }).strict();
 export const PacienteMinOrderByAggregateInputObjectSchema: z.ZodType<Prisma.PacienteMinOrderByAggregateInput> = makeSchema() as unknown as z.ZodType<Prisma.PacienteMinOrderByAggregateInput>;
 export const PacienteMinOrderByAggregateInputObjectZodSchema = makeSchema();

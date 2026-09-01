@@ -10,8 +10,9 @@ const makeSchema = () => z.object({
   email: z.literal(true).optional(),
   masculino: z.literal(true).optional(),
   fecha_nac: z.literal(true).optional(),
-  tipo_sangre: z.literal(true).optional(),
+  tipoSangre: z.literal(true).optional(),
   alergias: z.literal(true).optional(),
+  creado: z.literal(true).optional(),
   _all: z.literal(true).optional()
 }).strict();
 export const PacienteCountAggregateInputObjectSchema: z.ZodType<Prisma.PacienteCountAggregateInputType> = makeSchema() as unknown as z.ZodType<Prisma.PacienteCountAggregateInputType>;

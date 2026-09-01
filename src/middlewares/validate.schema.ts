@@ -13,11 +13,7 @@ export const validateBodySchema = (schema: z.ZodType) => {
       if (!result.success) {
         res.status(400).json({
           status: "error",
-          error: "Parámetros inválidos en la URL",
-          detalles: result.error.issues.map((err) => ({
-            parametro: err.path.join("."),
-            mensaje: err.message,
-          })),
+          error: z.treeifyError(result.error),
         });
         return;
       }
@@ -37,15 +33,11 @@ export const validateParamsSchema = (schema: z.ZodType) => {
     next: NextFunction,
   ): Promise<void> => {
     try {
-      const result = await schema.safeParse(req.params);
+      const result = await schema.safeParseAsync(req.params);
       if (!result.success) {
         res.status(400).json({
           status: "error",
-          error: "Parámetros inválidos en la URL",
-          detalles: result.error.issues.map((err) => ({
-            parametro: err.path.join("."),
-            mensaje: err.message,
-          })),
+          error: z.treeifyError(result.error),
         });
         return;
       }

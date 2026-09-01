@@ -9,10 +9,12 @@ import { ConsultaSumOrderByAggregateInputObjectSchema as ConsultaSumOrderByAggre
 
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
-  id_cita: SortOrderSchema.optional(),
-  id_medico: SortOrderSchema.optional(),
+  idCita: SortOrderSchema.optional(),
+  idMedico: SortOrderSchema.optional(),
   fecha: SortOrderSchema.optional(),
   horario: SortOrderSchema.optional(),
+  costo: SortOrderSchema.optional(),
+  creado: SortOrderSchema.optional(),
   _count: z.lazy(() => ConsultaCountOrderByAggregateInputObjectSchema).optional(),
   _avg: z.lazy(() => ConsultaAvgOrderByAggregateInputObjectSchema).optional(),
   _max: z.lazy(() => ConsultaMaxOrderByAggregateInputObjectSchema).optional(),

@@ -16,8 +16,9 @@ const pacientescalarwherewithaggregatesinputSchema = z.object({
   email: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string().max(150)]).optional(),
   masculino: z.union([z.lazy(() => BoolWithAggregatesFilterObjectSchema), z.boolean()]).optional(),
   fecha_nac: z.union([z.lazy(() => DateTimeWithAggregatesFilterObjectSchema), z.coerce.date()]).optional(),
-  tipo_sangre: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string().max(5)]).optional(),
-  alergias: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string()]).optional()
+  tipoSangre: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string().max(5)]).optional(),
+  alergias: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string()]).optional(),
+  creado: z.union([z.lazy(() => DateTimeWithAggregatesFilterObjectSchema), z.coerce.date()]).optional()
 }).strict();
 export const PacienteScalarWhereWithAggregatesInputObjectSchema: z.ZodType<Prisma.PacienteScalarWhereWithAggregatesInput> = pacientescalarwherewithaggregatesinputSchema as unknown as z.ZodType<Prisma.PacienteScalarWhereWithAggregatesInput>;
 export const PacienteScalarWhereWithAggregatesInputObjectZodSchema = pacientescalarwherewithaggregatesinputSchema;

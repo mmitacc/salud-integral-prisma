@@ -31,7 +31,16 @@ export const procesarErrorPrisma = (error: unknown): ErrorResponse => {
           payload: {
             status: "error",
             error: "Registro duplicado",
-            detalles: `El valor asignado al campo [${(error.meta?.target as string[])?.join(", ")}] ya existe.`,
+            detalles: `El valor asignado al campo [ ${(
+              (error.meta?.driverAdapterError as any)?.cause?.constraint
+                ?.index || ""
+            )
+              .replace(
+                `${(error.meta?.driverAdapterError as any)?.cause?.table}_`,
+                "",
+              )
+              .replace("_key", "")
+              .trim()} ] ya existe.`,
           },
         };
       case "P2003": // Fallo en Llave Foránea (ej. id_paciente no existe)

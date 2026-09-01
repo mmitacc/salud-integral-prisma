@@ -10,7 +10,7 @@ const historialscalarwherewithaggregatesinputSchema = z.object({
   OR: z.lazy(() => HistorialScalarWhereWithAggregatesInputObjectSchema).array().optional(),
   NOT: z.union([z.lazy(() => HistorialScalarWhereWithAggregatesInputObjectSchema), z.lazy(() => HistorialScalarWhereWithAggregatesInputObjectSchema).array()]).optional(),
   id: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional(),
-  id_paciente: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional(),
+  idPaciente: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional(),
   fecha: z.union([z.lazy(() => DateTimeWithAggregatesFilterObjectSchema), z.coerce.date()]).optional(),
   motivo: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string()]).optional(),
   antecedentes: z.union([z.lazy(() => StringNullableWithAggregatesFilterObjectSchema), z.string()]).optional().nullable(),

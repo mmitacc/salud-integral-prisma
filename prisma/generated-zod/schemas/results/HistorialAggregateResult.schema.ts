@@ -1,7 +1,7 @@
 import * as z from 'zod';
 export const HistorialAggregateResultSchema = z.object({  _count: z.union([z.number(), z.object({
     id: z.number().optional(),
-    id_paciente: z.number().optional(),
+    idPaciente: z.number().optional(),
     fecha: z.number().optional(),
     motivo: z.number().optional(),
     antecedentes: z.number().optional(),
@@ -13,15 +13,15 @@ export const HistorialAggregateResultSchema = z.object({  _count: z.union([z.num
   })]).optional(),
   _sum: z.object({
     id: z.number().nullable().optional(),
-    id_paciente: z.number().nullable().optional()
+    idPaciente: z.number().nullable().optional()
   }).nullable().optional(),
   _avg: z.object({
     id: z.number().nullable().optional(),
-    id_paciente: z.number().nullable().optional()
+    idPaciente: z.number().nullable().optional()
   }).nullable().optional(),
   _min: z.object({
     id: z.number().int().nullable().optional(),
-    id_paciente: z.number().int().nullable().optional(),
+    idPaciente: z.number().int().nullable().optional(),
     fecha: z.date().nullable().optional(),
     motivo: z.string().nullable().optional(),
     antecedentes: z.string().nullable().optional(),
@@ -32,7 +32,7 @@ export const HistorialAggregateResultSchema = z.object({  _count: z.union([z.num
   }).nullable().optional(),
   _max: z.object({
     id: z.number().int().nullable().optional(),
-    id_paciente: z.number().int().nullable().optional(),
+    idPaciente: z.number().int().nullable().optional(),
     fecha: z.date().nullable().optional(),
     motivo: z.string().nullable().optional(),
     antecedentes: z.string().nullable().optional(),

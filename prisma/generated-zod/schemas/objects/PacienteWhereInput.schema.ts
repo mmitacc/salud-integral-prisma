@@ -18,8 +18,9 @@ const pacientewhereinputSchema = z.object({
   email: z.union([z.lazy(() => StringFilterObjectSchema), z.string().max(150)]).optional(),
   masculino: z.union([z.lazy(() => BoolFilterObjectSchema), z.boolean()]).optional(),
   fecha_nac: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
-  tipo_sangre: z.union([z.lazy(() => StringFilterObjectSchema), z.string().max(5)]).optional(),
+  tipoSangre: z.union([z.lazy(() => StringFilterObjectSchema), z.string().max(5)]).optional(),
   alergias: z.union([z.lazy(() => StringFilterObjectSchema), z.string()]).optional(),
+  creado: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
   historiales: z.lazy(() => HistorialListRelationFilterObjectSchema).optional(),
   citas: z.lazy(() => CitaListRelationFilterObjectSchema).optional()
 }).strict();

@@ -28,76 +28,92 @@ export type AggregateConsulta = {
 
 export type ConsultaAvgAggregateOutputType = {
   id: number | null
-  id_cita: number | null
-  id_medico: number | null
+  idCita: number | null
+  idMedico: number | null
+  costo: runtime.Decimal | null
 }
 
 export type ConsultaSumAggregateOutputType = {
   id: number | null
-  id_cita: number | null
-  id_medico: number | null
+  idCita: number | null
+  idMedico: number | null
+  costo: runtime.Decimal | null
 }
 
 export type ConsultaMinAggregateOutputType = {
   id: number | null
-  id_cita: number | null
-  id_medico: number | null
+  idCita: number | null
+  idMedico: number | null
   fecha: Date | null
   horario: Date | null
+  costo: runtime.Decimal | null
+  creado: Date | null
 }
 
 export type ConsultaMaxAggregateOutputType = {
   id: number | null
-  id_cita: number | null
-  id_medico: number | null
+  idCita: number | null
+  idMedico: number | null
   fecha: Date | null
   horario: Date | null
+  costo: runtime.Decimal | null
+  creado: Date | null
 }
 
 export type ConsultaCountAggregateOutputType = {
   id: number
-  id_cita: number
-  id_medico: number
+  idCita: number
+  idMedico: number
   fecha: number
   horario: number
+  costo: number
+  creado: number
   _all: number
 }
 
 
 export type ConsultaAvgAggregateInputType = {
   id?: true
-  id_cita?: true
-  id_medico?: true
+  idCita?: true
+  idMedico?: true
+  costo?: true
 }
 
 export type ConsultaSumAggregateInputType = {
   id?: true
-  id_cita?: true
-  id_medico?: true
+  idCita?: true
+  idMedico?: true
+  costo?: true
 }
 
 export type ConsultaMinAggregateInputType = {
   id?: true
-  id_cita?: true
-  id_medico?: true
+  idCita?: true
+  idMedico?: true
   fecha?: true
   horario?: true
+  costo?: true
+  creado?: true
 }
 
 export type ConsultaMaxAggregateInputType = {
   id?: true
-  id_cita?: true
-  id_medico?: true
+  idCita?: true
+  idMedico?: true
   fecha?: true
   horario?: true
+  costo?: true
+  creado?: true
 }
 
 export type ConsultaCountAggregateInputType = {
   id?: true
-  id_cita?: true
-  id_medico?: true
+  idCita?: true
+  idMedico?: true
   fecha?: true
   horario?: true
+  costo?: true
+  creado?: true
   _all?: true
 }
 
@@ -189,10 +205,12 @@ export type ConsultaGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 
 export type ConsultaGroupByOutputType = {
   id: number
-  id_cita: number
-  id_medico: number
+  idCita: number
+  idMedico: number
   fecha: Date
   horario: Date
+  costo: runtime.Decimal
+  creado: Date
   _count: ConsultaCountAggregateOutputType | null
   _avg: ConsultaAvgAggregateOutputType | null
   _sum: ConsultaSumAggregateOutputType | null
@@ -220,20 +238,24 @@ export type ConsultaWhereInput = {
   OR?: Prisma.ConsultaWhereInput[]
   NOT?: Prisma.ConsultaWhereInput | Prisma.ConsultaWhereInput[]
   id?: Prisma.IntFilter<"Consulta"> | number
-  id_cita?: Prisma.IntFilter<"Consulta"> | number
-  id_medico?: Prisma.IntFilter<"Consulta"> | number
+  idCita?: Prisma.IntFilter<"Consulta"> | number
+  idMedico?: Prisma.IntFilter<"Consulta"> | number
   fecha?: Prisma.DateTimeFilter<"Consulta"> | Date | string
   horario?: Prisma.DateTimeFilter<"Consulta"> | Date | string
+  costo?: Prisma.DecimalFilter<"Consulta"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Prisma.DateTimeFilter<"Consulta"> | Date | string
   cita?: Prisma.XOR<Prisma.CitaScalarRelationFilter, Prisma.CitaWhereInput>
   medico?: Prisma.XOR<Prisma.MedicoScalarRelationFilter, Prisma.MedicoWhereInput>
 }
 
 export type ConsultaOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  id_cita?: Prisma.SortOrder
-  id_medico?: Prisma.SortOrder
+  idCita?: Prisma.SortOrder
+  idMedico?: Prisma.SortOrder
   fecha?: Prisma.SortOrder
   horario?: Prisma.SortOrder
+  costo?: Prisma.SortOrder
+  creado?: Prisma.SortOrder
   cita?: Prisma.CitaOrderByWithRelationInput
   medico?: Prisma.MedicoOrderByWithRelationInput
 }
@@ -243,20 +265,24 @@ export type ConsultaWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.ConsultaWhereInput | Prisma.ConsultaWhereInput[]
   OR?: Prisma.ConsultaWhereInput[]
   NOT?: Prisma.ConsultaWhereInput | Prisma.ConsultaWhereInput[]
-  id_cita?: Prisma.IntFilter<"Consulta"> | number
-  id_medico?: Prisma.IntFilter<"Consulta"> | number
+  idCita?: Prisma.IntFilter<"Consulta"> | number
+  idMedico?: Prisma.IntFilter<"Consulta"> | number
   fecha?: Prisma.DateTimeFilter<"Consulta"> | Date | string
   horario?: Prisma.DateTimeFilter<"Consulta"> | Date | string
+  costo?: Prisma.DecimalFilter<"Consulta"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Prisma.DateTimeFilter<"Consulta"> | Date | string
   cita?: Prisma.XOR<Prisma.CitaScalarRelationFilter, Prisma.CitaWhereInput>
   medico?: Prisma.XOR<Prisma.MedicoScalarRelationFilter, Prisma.MedicoWhereInput>
 }, "id">
 
 export type ConsultaOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  id_cita?: Prisma.SortOrder
-  id_medico?: Prisma.SortOrder
+  idCita?: Prisma.SortOrder
+  idMedico?: Prisma.SortOrder
   fecha?: Prisma.SortOrder
   horario?: Prisma.SortOrder
+  costo?: Prisma.SortOrder
+  creado?: Prisma.SortOrder
   _count?: Prisma.ConsultaCountOrderByAggregateInput
   _avg?: Prisma.ConsultaAvgOrderByAggregateInput
   _max?: Prisma.ConsultaMaxOrderByAggregateInput
@@ -269,61 +295,77 @@ export type ConsultaScalarWhereWithAggregatesInput = {
   OR?: Prisma.ConsultaScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ConsultaScalarWhereWithAggregatesInput | Prisma.ConsultaScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Consulta"> | number
-  id_cita?: Prisma.IntWithAggregatesFilter<"Consulta"> | number
-  id_medico?: Prisma.IntWithAggregatesFilter<"Consulta"> | number
+  idCita?: Prisma.IntWithAggregatesFilter<"Consulta"> | number
+  idMedico?: Prisma.IntWithAggregatesFilter<"Consulta"> | number
   fecha?: Prisma.DateTimeWithAggregatesFilter<"Consulta"> | Date | string
   horario?: Prisma.DateTimeWithAggregatesFilter<"Consulta"> | Date | string
+  costo?: Prisma.DecimalWithAggregatesFilter<"Consulta"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Prisma.DateTimeWithAggregatesFilter<"Consulta"> | Date | string
 }
 
 export type ConsultaCreateInput = {
   fecha: Date | string
   horario: Date | string
+  costo?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Date | string
   cita: Prisma.CitaCreateNestedOneWithoutConsultasInput
   medico: Prisma.MedicoCreateNestedOneWithoutConsultasInput
 }
 
 export type ConsultaUncheckedCreateInput = {
   id?: number
-  id_cita: number
-  id_medico: number
+  idCita: number
+  idMedico: number
   fecha: Date | string
   horario: Date | string
+  costo?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Date | string
 }
 
 export type ConsultaUpdateInput = {
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   horario?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  costo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   cita?: Prisma.CitaUpdateOneRequiredWithoutConsultasNestedInput
   medico?: Prisma.MedicoUpdateOneRequiredWithoutConsultasNestedInput
 }
 
 export type ConsultaUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  id_cita?: Prisma.IntFieldUpdateOperationsInput | number
-  id_medico?: Prisma.IntFieldUpdateOperationsInput | number
+  idCita?: Prisma.IntFieldUpdateOperationsInput | number
+  idMedico?: Prisma.IntFieldUpdateOperationsInput | number
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   horario?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  costo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ConsultaCreateManyInput = {
   id?: number
-  id_cita: number
-  id_medico: number
+  idCita: number
+  idMedico: number
   fecha: Date | string
   horario: Date | string
+  costo?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Date | string
 }
 
 export type ConsultaUpdateManyMutationInput = {
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   horario?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  costo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ConsultaUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  id_cita?: Prisma.IntFieldUpdateOperationsInput | number
-  id_medico?: Prisma.IntFieldUpdateOperationsInput | number
+  idCita?: Prisma.IntFieldUpdateOperationsInput | number
+  idMedico?: Prisma.IntFieldUpdateOperationsInput | number
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   horario?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  costo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ConsultaListRelationFilter = {
@@ -338,38 +380,46 @@ export type ConsultaOrderByRelationAggregateInput = {
 
 export type ConsultaCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  id_cita?: Prisma.SortOrder
-  id_medico?: Prisma.SortOrder
+  idCita?: Prisma.SortOrder
+  idMedico?: Prisma.SortOrder
   fecha?: Prisma.SortOrder
   horario?: Prisma.SortOrder
+  costo?: Prisma.SortOrder
+  creado?: Prisma.SortOrder
 }
 
 export type ConsultaAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  id_cita?: Prisma.SortOrder
-  id_medico?: Prisma.SortOrder
+  idCita?: Prisma.SortOrder
+  idMedico?: Prisma.SortOrder
+  costo?: Prisma.SortOrder
 }
 
 export type ConsultaMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  id_cita?: Prisma.SortOrder
-  id_medico?: Prisma.SortOrder
+  idCita?: Prisma.SortOrder
+  idMedico?: Prisma.SortOrder
   fecha?: Prisma.SortOrder
   horario?: Prisma.SortOrder
+  costo?: Prisma.SortOrder
+  creado?: Prisma.SortOrder
 }
 
 export type ConsultaMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  id_cita?: Prisma.SortOrder
-  id_medico?: Prisma.SortOrder
+  idCita?: Prisma.SortOrder
+  idMedico?: Prisma.SortOrder
   fecha?: Prisma.SortOrder
   horario?: Prisma.SortOrder
+  costo?: Prisma.SortOrder
+  creado?: Prisma.SortOrder
 }
 
 export type ConsultaSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  id_cita?: Prisma.SortOrder
-  id_medico?: Prisma.SortOrder
+  idCita?: Prisma.SortOrder
+  idMedico?: Prisma.SortOrder
+  costo?: Prisma.SortOrder
 }
 
 export type ConsultaCreateNestedManyWithoutCitaInput = {
@@ -459,14 +509,18 @@ export type ConsultaUncheckedUpdateManyWithoutMedicoNestedInput = {
 export type ConsultaCreateWithoutCitaInput = {
   fecha: Date | string
   horario: Date | string
+  costo?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Date | string
   medico: Prisma.MedicoCreateNestedOneWithoutConsultasInput
 }
 
 export type ConsultaUncheckedCreateWithoutCitaInput = {
   id?: number
-  id_medico: number
+  idMedico: number
   fecha: Date | string
   horario: Date | string
+  costo?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Date | string
 }
 
 export type ConsultaCreateOrConnectWithoutCitaInput = {
@@ -500,23 +554,29 @@ export type ConsultaScalarWhereInput = {
   OR?: Prisma.ConsultaScalarWhereInput[]
   NOT?: Prisma.ConsultaScalarWhereInput | Prisma.ConsultaScalarWhereInput[]
   id?: Prisma.IntFilter<"Consulta"> | number
-  id_cita?: Prisma.IntFilter<"Consulta"> | number
-  id_medico?: Prisma.IntFilter<"Consulta"> | number
+  idCita?: Prisma.IntFilter<"Consulta"> | number
+  idMedico?: Prisma.IntFilter<"Consulta"> | number
   fecha?: Prisma.DateTimeFilter<"Consulta"> | Date | string
   horario?: Prisma.DateTimeFilter<"Consulta"> | Date | string
+  costo?: Prisma.DecimalFilter<"Consulta"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Prisma.DateTimeFilter<"Consulta"> | Date | string
 }
 
 export type ConsultaCreateWithoutMedicoInput = {
   fecha: Date | string
   horario: Date | string
+  costo?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Date | string
   cita: Prisma.CitaCreateNestedOneWithoutConsultasInput
 }
 
 export type ConsultaUncheckedCreateWithoutMedicoInput = {
   id?: number
-  id_cita: number
+  idCita: number
   fecha: Date | string
   horario: Date | string
+  costo?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Date | string
 }
 
 export type ConsultaCreateOrConnectWithoutMedicoInput = {
@@ -547,99 +607,123 @@ export type ConsultaUpdateManyWithWhereWithoutMedicoInput = {
 
 export type ConsultaCreateManyCitaInput = {
   id?: number
-  id_medico: number
+  idMedico: number
   fecha: Date | string
   horario: Date | string
+  costo?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Date | string
 }
 
 export type ConsultaUpdateWithoutCitaInput = {
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   horario?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  costo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   medico?: Prisma.MedicoUpdateOneRequiredWithoutConsultasNestedInput
 }
 
 export type ConsultaUncheckedUpdateWithoutCitaInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  id_medico?: Prisma.IntFieldUpdateOperationsInput | number
+  idMedico?: Prisma.IntFieldUpdateOperationsInput | number
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   horario?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  costo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ConsultaUncheckedUpdateManyWithoutCitaInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  id_medico?: Prisma.IntFieldUpdateOperationsInput | number
+  idMedico?: Prisma.IntFieldUpdateOperationsInput | number
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   horario?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  costo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ConsultaCreateManyMedicoInput = {
   id?: number
-  id_cita: number
+  idCita: number
   fecha: Date | string
   horario: Date | string
+  costo?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Date | string
 }
 
 export type ConsultaUpdateWithoutMedicoInput = {
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   horario?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  costo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   cita?: Prisma.CitaUpdateOneRequiredWithoutConsultasNestedInput
 }
 
 export type ConsultaUncheckedUpdateWithoutMedicoInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  id_cita?: Prisma.IntFieldUpdateOperationsInput | number
+  idCita?: Prisma.IntFieldUpdateOperationsInput | number
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   horario?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  costo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ConsultaUncheckedUpdateManyWithoutMedicoInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  id_cita?: Prisma.IntFieldUpdateOperationsInput | number
+  idCita?: Prisma.IntFieldUpdateOperationsInput | number
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   horario?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  costo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
 
 export type ConsultaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  id_cita?: boolean
-  id_medico?: boolean
+  idCita?: boolean
+  idMedico?: boolean
   fecha?: boolean
   horario?: boolean
+  costo?: boolean
+  creado?: boolean
   cita?: boolean | Prisma.CitaDefaultArgs<ExtArgs>
   medico?: boolean | Prisma.MedicoDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["consulta"]>
 
 export type ConsultaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  id_cita?: boolean
-  id_medico?: boolean
+  idCita?: boolean
+  idMedico?: boolean
   fecha?: boolean
   horario?: boolean
+  costo?: boolean
+  creado?: boolean
   cita?: boolean | Prisma.CitaDefaultArgs<ExtArgs>
   medico?: boolean | Prisma.MedicoDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["consulta"]>
 
 export type ConsultaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  id_cita?: boolean
-  id_medico?: boolean
+  idCita?: boolean
+  idMedico?: boolean
   fecha?: boolean
   horario?: boolean
+  costo?: boolean
+  creado?: boolean
   cita?: boolean | Prisma.CitaDefaultArgs<ExtArgs>
   medico?: boolean | Prisma.MedicoDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["consulta"]>
 
 export type ConsultaSelectScalar = {
   id?: boolean
-  id_cita?: boolean
-  id_medico?: boolean
+  idCita?: boolean
+  idMedico?: boolean
   fecha?: boolean
   horario?: boolean
+  costo?: boolean
+  creado?: boolean
 }
 
-export type ConsultaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "id_cita" | "id_medico" | "fecha" | "horario", ExtArgs["result"]["consulta"]>
+export type ConsultaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "idCita" | "idMedico" | "fecha" | "horario" | "costo" | "creado", ExtArgs["result"]["consulta"]>
 export type ConsultaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   cita?: boolean | Prisma.CitaDefaultArgs<ExtArgs>
   medico?: boolean | Prisma.MedicoDefaultArgs<ExtArgs>
@@ -661,10 +745,12 @@ export type $ConsultaPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    id_cita: number
-    id_medico: number
+    idCita: number
+    idMedico: number
     fecha: Date
     horario: Date
+    costo: runtime.Decimal
+    creado: Date
   }, ExtArgs["result"]["consulta"]>
   composites: {}
 }
@@ -1091,10 +1177,12 @@ export interface Prisma__ConsultaClient<T, Null = never, ExtArgs extends runtime
  */
 export interface ConsultaFieldRefs {
   readonly id: Prisma.FieldRef<"Consulta", 'Int'>
-  readonly id_cita: Prisma.FieldRef<"Consulta", 'Int'>
-  readonly id_medico: Prisma.FieldRef<"Consulta", 'Int'>
+  readonly idCita: Prisma.FieldRef<"Consulta", 'Int'>
+  readonly idMedico: Prisma.FieldRef<"Consulta", 'Int'>
   readonly fecha: Prisma.FieldRef<"Consulta", 'DateTime'>
   readonly horario: Prisma.FieldRef<"Consulta", 'DateTime'>
+  readonly costo: Prisma.FieldRef<"Consulta", 'Decimal'>
+  readonly creado: Prisma.FieldRef<"Consulta", 'DateTime'>
 }
     
 

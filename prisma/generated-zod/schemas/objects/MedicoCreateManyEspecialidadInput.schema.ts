@@ -9,7 +9,8 @@ const makeSchema = () => z.object({
   telefono: z.string().max(20),
   email: z.string().max(150),
   masculino: z.boolean().optional(),
-  fecha_nac: z.coerce.date()
+  fechaNac: z.coerce.date(),
+  creado: z.coerce.date().optional()
 }).strict();
 export const MedicoCreateManyEspecialidadInputObjectSchema: z.ZodType<Prisma.MedicoCreateManyEspecialidadInput> = makeSchema() as unknown as z.ZodType<Prisma.MedicoCreateManyEspecialidadInput>;
 export const MedicoCreateManyEspecialidadInputObjectZodSchema = makeSchema();

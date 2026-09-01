@@ -11,8 +11,9 @@ const makeSchema = () => z.object({
   email: z.string().max(150),
   masculino: z.boolean().optional(),
   fecha_nac: z.coerce.date(),
-  tipo_sangre: z.string().max(5).optional(),
+  tipoSangre: z.string().max(5).optional(),
   alergias: z.string().optional(),
+  creado: z.coerce.date().optional(),
   historiales: z.lazy(() => HistorialUncheckedCreateNestedManyWithoutPacienteInputObjectSchema).optional(),
   citas: z.lazy(() => CitaUncheckedCreateNestedManyWithoutPacienteInputObjectSchema).optional()
 }).strict();

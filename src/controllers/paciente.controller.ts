@@ -1,12 +1,14 @@
 import type { Request, Response } from "express";
 import { pacienteModel } from "../models/paciente.model";
+import procesarErrorPrisma from "../utils/errorHandlerUtil";
 
 export const getAllPaciente = async (req: Request, res: Response) => {
   try {
     const pacientes = await pacienteModel.findAll();
     res.status(200).json({ total: pacientes.length, data: pacientes });
   } catch (error) {
-    res.status(500).json({ message: error });
+    const { statusCode, payload } = procesarErrorPrisma(error);
+    res.status(statusCode).json(payload);
   }
 };
 
@@ -48,6 +50,7 @@ export const postPaciente = async (req: Request, res: Response) => {
       .status(201)
       .json({ message: "Paciente creado con éxito", data: newCliente });
   } catch (error) {
-    res.status(500).json({ message: error });
+    const { statusCode, payload } = procesarErrorPrisma(error);
+    res.status(statusCode).json(payload);
   }
 };

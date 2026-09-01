@@ -12,8 +12,9 @@ const makeSchema = () => z.object({
   email: z.union([z.string().max(150), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
   masculino: z.union([z.boolean(), z.lazy(() => BoolFieldUpdateOperationsInputObjectSchema)]).optional(),
   fecha_nac: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
-  tipo_sangre: z.union([z.string().max(5), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
+  tipoSangre: z.union([z.string().max(5), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
   alergias: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
+  creado: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
   citas: z.lazy(() => CitaUpdateManyWithoutPacienteNestedInputObjectSchema).optional()
 }).strict();
 export const PacienteUpdateWithoutHistorialesInputObjectSchema: z.ZodType<Prisma.PacienteUpdateWithoutHistorialesInput> = makeSchema() as unknown as z.ZodType<Prisma.PacienteUpdateWithoutHistorialesInput>;

@@ -10,8 +10,9 @@ const makeSchema = () => z.object({
   email: z.string(),
   masculino: z.boolean().optional(),
   fecha_nac: z.coerce.date(),
-  tipo_sangre: z.string().optional(),
+  tipoSangre: z.string().optional(),
   alergias: z.string().optional(),
+  creado: z.coerce.date().optional(),
   citas: z.lazy(() => CitaUncheckedCreateNestedManyWithoutPacienteInputObjectSchema).optional()
 }).strict();
 export const PacienteUncheckedCreateWithoutHistorialesInputObjectSchema: z.ZodType<Prisma.PacienteUncheckedCreateWithoutHistorialesInput> = makeSchema() as unknown as z.ZodType<Prisma.PacienteUncheckedCreateWithoutHistorialesInput>;

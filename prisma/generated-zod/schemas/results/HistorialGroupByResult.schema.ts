@@ -1,7 +1,7 @@
 import * as z from 'zod';
 export const HistorialGroupByResultSchema = z.array(z.object({
   id: z.number().int().optional(),
-  id_paciente: z.number().int().optional(),
+  idPaciente: z.number().int().optional(),
   fecha: z.date().optional(),
   motivo: z.string().optional(),
   antecedentes: z.string().nullable().optional(),
@@ -11,7 +11,7 @@ export const HistorialGroupByResultSchema = z.array(z.object({
   receta: z.string().nullable().optional(),
   _count: z.union([z.number(), z.object({
     id: z.number().optional(),
-    id_paciente: z.number().optional(),
+    idPaciente: z.number().optional(),
     fecha: z.number().optional(),
     motivo: z.number().optional(),
     antecedentes: z.number().optional(),
@@ -23,15 +23,15 @@ export const HistorialGroupByResultSchema = z.array(z.object({
   })]).optional(),
   _sum: z.object({
     id: z.number().nullable().optional(),
-    id_paciente: z.number().nullable().optional()
+    idPaciente: z.number().nullable().optional()
   }).nullable().optional(),
   _avg: z.object({
     id: z.number().nullable().optional(),
-    id_paciente: z.number().nullable().optional()
+    idPaciente: z.number().nullable().optional()
   }).nullable().optional(),
   _min: z.object({
     id: z.number().int().nullable().optional(),
-    id_paciente: z.number().int().nullable().optional(),
+    idPaciente: z.number().int().nullable().optional(),
     fecha: z.date().nullable().optional(),
     motivo: z.string().nullable().optional(),
     antecedentes: z.string().nullable().optional(),
@@ -42,7 +42,7 @@ export const HistorialGroupByResultSchema = z.array(z.object({
   }).nullable().optional(),
   _max: z.object({
     id: z.number().int().nullable().optional(),
-    id_paciente: z.number().int().nullable().optional(),
+    idPaciente: z.number().int().nullable().optional(),
     fecha: z.date().nullable().optional(),
     motivo: z.string().nullable().optional(),
     antecedentes: z.string().nullable().optional(),

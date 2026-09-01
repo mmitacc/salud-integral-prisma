@@ -6,10 +6,12 @@ import { MedicoOrderByWithRelationInputObjectSchema as MedicoOrderByWithRelation
 
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
-  id_cita: SortOrderSchema.optional(),
-  id_medico: SortOrderSchema.optional(),
+  idCita: SortOrderSchema.optional(),
+  idMedico: SortOrderSchema.optional(),
   fecha: SortOrderSchema.optional(),
   horario: SortOrderSchema.optional(),
+  costo: SortOrderSchema.optional(),
+  creado: SortOrderSchema.optional(),
   cita: z.lazy(() => CitaOrderByWithRelationInputObjectSchema).optional(),
   medico: z.lazy(() => MedicoOrderByWithRelationInputObjectSchema).optional()
 }).strict();

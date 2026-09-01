@@ -84,8 +84,9 @@ export const PacienteScalarFieldEnum = {
   email: 'email',
   masculino: 'masculino',
   fecha_nac: 'fecha_nac',
-  tipo_sangre: 'tipo_sangre',
-  alergias: 'alergias'
+  tipoSangre: 'tipoSangre',
+  alergias: 'alergias',
+  creado: 'creado'
 } as const
 
 export type PacienteScalarFieldEnum = (typeof PacienteScalarFieldEnum)[keyof typeof PacienteScalarFieldEnum]
@@ -93,7 +94,7 @@ export type PacienteScalarFieldEnum = (typeof PacienteScalarFieldEnum)[keyof typ
 
 export const HistorialScalarFieldEnum = {
   id: 'id',
-  id_paciente: 'id_paciente',
+  idPaciente: 'idPaciente',
   fecha: 'fecha',
   motivo: 'motivo',
   antecedentes: 'antecedentes',
@@ -108,9 +109,10 @@ export type HistorialScalarFieldEnum = (typeof HistorialScalarFieldEnum)[keyof t
 
 export const CitaScalarFieldEnum = {
   id: 'id',
-  id_paciente: 'id_paciente',
+  idPaciente: 'idPaciente',
   fecha: 'fecha',
-  estado: 'estado'
+  estado: 'estado',
+  pagoInicial: 'pagoInicial'
 } as const
 
 export type CitaScalarFieldEnum = (typeof CitaScalarFieldEnum)[keyof typeof CitaScalarFieldEnum]
@@ -118,10 +120,12 @@ export type CitaScalarFieldEnum = (typeof CitaScalarFieldEnum)[keyof typeof Cita
 
 export const ConsultaScalarFieldEnum = {
   id: 'id',
-  id_cita: 'id_cita',
-  id_medico: 'id_medico',
+  idCita: 'idCita',
+  idMedico: 'idMedico',
   fecha: 'fecha',
-  horario: 'horario'
+  horario: 'horario',
+  costo: 'costo',
+  creado: 'creado'
 } as const
 
 export type ConsultaScalarFieldEnum = (typeof ConsultaScalarFieldEnum)[keyof typeof ConsultaScalarFieldEnum]
@@ -129,13 +133,14 @@ export type ConsultaScalarFieldEnum = (typeof ConsultaScalarFieldEnum)[keyof typ
 
 export const MedicoScalarFieldEnum = {
   id: 'id',
-  id_especialidad: 'id_especialidad',
+  idEspecialidad: 'idEspecialidad',
   nombres: 'nombres',
   apellidos: 'apellidos',
   telefono: 'telefono',
   email: 'email',
   masculino: 'masculino',
-  fecha_nac: 'fecha_nac'
+  fechaNac: 'fechaNac',
+  creado: 'creado'
 } as const
 
 export type MedicoScalarFieldEnum = (typeof MedicoScalarFieldEnum)[keyof typeof MedicoScalarFieldEnum]
@@ -143,7 +148,8 @@ export type MedicoScalarFieldEnum = (typeof MedicoScalarFieldEnum)[keyof typeof 
 
 export const EspecialidadScalarFieldEnum = {
   id: 'id',
-  tipo: 'tipo'
+  tipo: 'tipo',
+  creado: 'creado'
 } as const
 
 export type EspecialidadScalarFieldEnum = (typeof EspecialidadScalarFieldEnum)[keyof typeof EspecialidadScalarFieldEnum]

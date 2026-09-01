@@ -51,6 +51,7 @@ Identificando las Principales Entidades:
 | fecha_nac        | Date           |> Date(now())|
 | tipo_sangre      | Texto          |             |
 | alergias         | Texto          |             |
+| creado           | Date           | Date(now()) |
 
 
 ## Entity: cita
@@ -61,6 +62,7 @@ Identificando las Principales Entidades:
 | id_paciente   | Número Entero  | [FK]        |
 | fecha         | Date           | Obligatorio |
 | estado        | Texto          | Obligatorio |
+| pago_inicial  | Decimal        | Default(0.0)|
 
 
 ## Entity: consulta
@@ -72,6 +74,8 @@ Identificando las Principales Entidades:
 | id_medico     | Número Entero  | [FK]        |
 | fecha         | Date           | Obligatorio |
 | horario       | Time           | Obligatorio |
+| costo         | Decimal        | Default(50) |
+| creado        | Date           | Date(now()) |
 
 
 ## Entity: medico
@@ -86,6 +90,7 @@ Identificando las Principales Entidades:
 | email            | Texto          | Unico       |
 | masculino        | Boolean        |             |
 | fecha_nac        | Date           |> Date(now())|
+| creado           | Date           | Date(now()) |
 
 
 ## Entity: especialidad
@@ -94,6 +99,7 @@ Identificando las Principales Entidades:
 |----------------|----------------|-------------|
 | id             | Número Entero  | [PK]        |
 | tipo           | Texto          | Obligatorio |
+| creado         | Date           | Date(now()) |
 
 
 Describiendo las relaciones:

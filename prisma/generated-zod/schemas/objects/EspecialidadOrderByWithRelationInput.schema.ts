@@ -6,6 +6,7 @@ import { MedicoOrderByRelationAggregateInputObjectSchema as MedicoOrderByRelatio
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
   tipo: SortOrderSchema.optional(),
+  creado: SortOrderSchema.optional(),
   medicos: z.lazy(() => MedicoOrderByRelationAggregateInputObjectSchema).optional()
 }).strict();
 export const EspecialidadOrderByWithRelationInputObjectSchema: z.ZodType<Prisma.EspecialidadOrderByWithRelationInput> = makeSchema() as unknown as z.ZodType<Prisma.EspecialidadOrderByWithRelationInput>;

@@ -10,7 +10,7 @@ import { HistorialSumOrderByAggregateInputObjectSchema as HistorialSumOrderByAgg
 
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
-  id_paciente: SortOrderSchema.optional(),
+  idPaciente: SortOrderSchema.optional(),
   fecha: SortOrderSchema.optional(),
   motivo: SortOrderSchema.optional(),
   antecedentes: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),

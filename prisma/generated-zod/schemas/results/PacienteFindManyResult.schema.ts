@@ -8,8 +8,9 @@ export const PacienteFindManyResultSchema = z.object({
   email: z.string(),
   masculino: z.boolean(),
   fecha_nac: z.date(),
-  tipo_sangre: z.string(),
+  tipoSangre: z.string(),
   alergias: z.string(),
+  creado: z.date(),
   historiales: z.array(z.unknown()).optional(),
   citas: z.array(z.unknown()).optional()
 })),
