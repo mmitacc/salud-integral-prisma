@@ -1,0 +1,10 @@
+import * as z from 'zod';
+import type { Prisma } from '../../../generated-client/browser';
+
+
+const makeSchema = () => z.object({
+  id: z.literal(true).optional(),
+  id_paciente: z.literal(true).optional()
+}).strict();
+export const HistorialAvgAggregateInputObjectSchema: z.ZodType<Prisma.HistorialAvgAggregateInputType> = makeSchema() as unknown as z.ZodType<Prisma.HistorialAvgAggregateInputType>;
+export const HistorialAvgAggregateInputObjectZodSchema = makeSchema();

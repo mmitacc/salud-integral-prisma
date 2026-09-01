@@ -1,0 +1,14 @@
+import type { Prisma } from '../../generated-client/browser';
+import * as z from 'zod';
+import { HistorialOrderByWithRelationInputObjectSchema as HistorialOrderByWithRelationInputObjectSchema } from './objects/HistorialOrderByWithRelationInput.schema';
+import { HistorialWhereInputObjectSchema as HistorialWhereInputObjectSchema } from './objects/HistorialWhereInput.schema';
+import { HistorialWhereUniqueInputObjectSchema as HistorialWhereUniqueInputObjectSchema } from './objects/HistorialWhereUniqueInput.schema';
+import { HistorialCountAggregateInputObjectSchema as HistorialCountAggregateInputObjectSchema } from './objects/HistorialCountAggregateInput.schema';
+import { HistorialMinAggregateInputObjectSchema as HistorialMinAggregateInputObjectSchema } from './objects/HistorialMinAggregateInput.schema';
+import { HistorialMaxAggregateInputObjectSchema as HistorialMaxAggregateInputObjectSchema } from './objects/HistorialMaxAggregateInput.schema';
+import { HistorialAvgAggregateInputObjectSchema as HistorialAvgAggregateInputObjectSchema } from './objects/HistorialAvgAggregateInput.schema';
+import { HistorialSumAggregateInputObjectSchema as HistorialSumAggregateInputObjectSchema } from './objects/HistorialSumAggregateInput.schema';
+
+export const HistorialAggregateSchema: z.ZodType<Prisma.HistorialAggregateArgs> = z.object({ orderBy: z.union([HistorialOrderByWithRelationInputObjectSchema, HistorialOrderByWithRelationInputObjectSchema.array()]).optional(), where: HistorialWhereInputObjectSchema.optional(), cursor: HistorialWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), HistorialCountAggregateInputObjectSchema ]).optional(), _min: HistorialMinAggregateInputObjectSchema.optional(), _max: HistorialMaxAggregateInputObjectSchema.optional(), _avg: HistorialAvgAggregateInputObjectSchema.optional(), _sum: HistorialSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.HistorialAggregateArgs>;
+
+export const HistorialAggregateZodSchema = z.object({ orderBy: z.union([HistorialOrderByWithRelationInputObjectSchema, HistorialOrderByWithRelationInputObjectSchema.array()]).optional(), where: HistorialWhereInputObjectSchema.optional(), cursor: HistorialWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), HistorialCountAggregateInputObjectSchema ]).optional(), _min: HistorialMinAggregateInputObjectSchema.optional(), _max: HistorialMaxAggregateInputObjectSchema.optional(), _avg: HistorialAvgAggregateInputObjectSchema.optional(), _sum: HistorialSumAggregateInputObjectSchema.optional() }).strict();

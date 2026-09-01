@@ -1,0 +1,40 @@
+import * as z from 'zod';
+export const ConsultaGroupByResultSchema = z.array(z.object({
+  id: z.number().int().optional(),
+  id_cita: z.number().int().optional(),
+  id_medico: z.number().int().optional(),
+  fecha: z.date().optional(),
+  horario: z.date().optional(),
+  _count: z.union([z.number(), z.object({
+    id: z.number().optional(),
+    id_cita: z.number().optional(),
+    id_medico: z.number().optional(),
+    fecha: z.number().optional(),
+    horario: z.number().optional(),
+    _all: z.number().optional()
+  })]).optional(),
+  _sum: z.object({
+    id: z.number().nullable().optional(),
+    id_cita: z.number().nullable().optional(),
+    id_medico: z.number().nullable().optional()
+  }).nullable().optional(),
+  _avg: z.object({
+    id: z.number().nullable().optional(),
+    id_cita: z.number().nullable().optional(),
+    id_medico: z.number().nullable().optional()
+  }).nullable().optional(),
+  _min: z.object({
+    id: z.number().int().nullable().optional(),
+    id_cita: z.number().int().nullable().optional(),
+    id_medico: z.number().int().nullable().optional(),
+    fecha: z.date().nullable().optional(),
+    horario: z.date().nullable().optional()
+  }).nullable().optional(),
+  _max: z.object({
+    id: z.number().int().nullable().optional(),
+    id_cita: z.number().int().nullable().optional(),
+    id_medico: z.number().int().nullable().optional(),
+    fecha: z.date().nullable().optional(),
+    horario: z.date().nullable().optional()
+  }).nullable().optional()
+}));

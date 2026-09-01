@@ -1,0 +1,15 @@
+import type { Prisma } from '../../generated-client/browser';
+import * as z from 'zod';
+import { HistorialWhereInputObjectSchema as HistorialWhereInputObjectSchema } from './objects/HistorialWhereInput.schema';
+import { HistorialOrderByWithAggregationInputObjectSchema as HistorialOrderByWithAggregationInputObjectSchema } from './objects/HistorialOrderByWithAggregationInput.schema';
+import { HistorialScalarWhereWithAggregatesInputObjectSchema as HistorialScalarWhereWithAggregatesInputObjectSchema } from './objects/HistorialScalarWhereWithAggregatesInput.schema';
+import { HistorialScalarFieldEnumSchema } from './enums/HistorialScalarFieldEnum.schema';
+import { HistorialCountAggregateInputObjectSchema as HistorialCountAggregateInputObjectSchema } from './objects/HistorialCountAggregateInput.schema';
+import { HistorialMinAggregateInputObjectSchema as HistorialMinAggregateInputObjectSchema } from './objects/HistorialMinAggregateInput.schema';
+import { HistorialMaxAggregateInputObjectSchema as HistorialMaxAggregateInputObjectSchema } from './objects/HistorialMaxAggregateInput.schema';
+import { HistorialAvgAggregateInputObjectSchema as HistorialAvgAggregateInputObjectSchema } from './objects/HistorialAvgAggregateInput.schema';
+import { HistorialSumAggregateInputObjectSchema as HistorialSumAggregateInputObjectSchema } from './objects/HistorialSumAggregateInput.schema';
+
+export const HistorialGroupBySchema: z.ZodType<Prisma.HistorialGroupByArgs> = z.object({ where: HistorialWhereInputObjectSchema.optional(), orderBy: z.union([HistorialOrderByWithAggregationInputObjectSchema, HistorialOrderByWithAggregationInputObjectSchema.array()]).optional(), having: HistorialScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(HistorialScalarFieldEnumSchema), _count: z.union([ z.literal(true), HistorialCountAggregateInputObjectSchema ]).optional(), _min: HistorialMinAggregateInputObjectSchema.optional(), _max: HistorialMaxAggregateInputObjectSchema.optional(), _avg: HistorialAvgAggregateInputObjectSchema.optional(), _sum: HistorialSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.HistorialGroupByArgs>;
+
+export const HistorialGroupByZodSchema = z.object({ where: HistorialWhereInputObjectSchema.optional(), orderBy: z.union([HistorialOrderByWithAggregationInputObjectSchema, HistorialOrderByWithAggregationInputObjectSchema.array()]).optional(), having: HistorialScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(HistorialScalarFieldEnumSchema), _count: z.union([ z.literal(true), HistorialCountAggregateInputObjectSchema ]).optional(), _min: HistorialMinAggregateInputObjectSchema.optional(), _max: HistorialMaxAggregateInputObjectSchema.optional(), _avg: HistorialAvgAggregateInputObjectSchema.optional(), _sum: HistorialSumAggregateInputObjectSchema.optional() }).strict();

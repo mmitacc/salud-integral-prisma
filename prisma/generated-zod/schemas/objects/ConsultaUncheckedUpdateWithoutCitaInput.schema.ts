@@ -1,0 +1,13 @@
+import * as z from 'zod';
+import type { Prisma } from '../../../generated-client/browser';
+import { IntFieldUpdateOperationsInputObjectSchema as IntFieldUpdateOperationsInputObjectSchema } from './IntFieldUpdateOperationsInput.schema';
+import { DateTimeFieldUpdateOperationsInputObjectSchema as DateTimeFieldUpdateOperationsInputObjectSchema } from './DateTimeFieldUpdateOperationsInput.schema'
+
+const makeSchema = () => z.object({
+  id: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputObjectSchema)]).optional(),
+  id_medico: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputObjectSchema)]).optional(),
+  fecha: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
+  horario: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional()
+}).strict();
+export const ConsultaUncheckedUpdateWithoutCitaInputObjectSchema: z.ZodType<Prisma.ConsultaUncheckedUpdateWithoutCitaInput> = makeSchema() as unknown as z.ZodType<Prisma.ConsultaUncheckedUpdateWithoutCitaInput>;
+export const ConsultaUncheckedUpdateWithoutCitaInputObjectZodSchema = makeSchema();

@@ -1,0 +1,15 @@
+import type { Prisma } from '../../generated-client/browser';
+import * as z from 'zod';
+import { EspecialidadWhereInputObjectSchema as EspecialidadWhereInputObjectSchema } from './objects/EspecialidadWhereInput.schema';
+import { EspecialidadOrderByWithAggregationInputObjectSchema as EspecialidadOrderByWithAggregationInputObjectSchema } from './objects/EspecialidadOrderByWithAggregationInput.schema';
+import { EspecialidadScalarWhereWithAggregatesInputObjectSchema as EspecialidadScalarWhereWithAggregatesInputObjectSchema } from './objects/EspecialidadScalarWhereWithAggregatesInput.schema';
+import { EspecialidadScalarFieldEnumSchema } from './enums/EspecialidadScalarFieldEnum.schema';
+import { EspecialidadCountAggregateInputObjectSchema as EspecialidadCountAggregateInputObjectSchema } from './objects/EspecialidadCountAggregateInput.schema';
+import { EspecialidadMinAggregateInputObjectSchema as EspecialidadMinAggregateInputObjectSchema } from './objects/EspecialidadMinAggregateInput.schema';
+import { EspecialidadMaxAggregateInputObjectSchema as EspecialidadMaxAggregateInputObjectSchema } from './objects/EspecialidadMaxAggregateInput.schema';
+import { EspecialidadAvgAggregateInputObjectSchema as EspecialidadAvgAggregateInputObjectSchema } from './objects/EspecialidadAvgAggregateInput.schema';
+import { EspecialidadSumAggregateInputObjectSchema as EspecialidadSumAggregateInputObjectSchema } from './objects/EspecialidadSumAggregateInput.schema';
+
+export const EspecialidadGroupBySchema: z.ZodType<Prisma.EspecialidadGroupByArgs> = z.object({ where: EspecialidadWhereInputObjectSchema.optional(), orderBy: z.union([EspecialidadOrderByWithAggregationInputObjectSchema, EspecialidadOrderByWithAggregationInputObjectSchema.array()]).optional(), having: EspecialidadScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(EspecialidadScalarFieldEnumSchema), _count: z.union([ z.literal(true), EspecialidadCountAggregateInputObjectSchema ]).optional(), _min: EspecialidadMinAggregateInputObjectSchema.optional(), _max: EspecialidadMaxAggregateInputObjectSchema.optional(), _avg: EspecialidadAvgAggregateInputObjectSchema.optional(), _sum: EspecialidadSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.EspecialidadGroupByArgs>;
+
+export const EspecialidadGroupByZodSchema = z.object({ where: EspecialidadWhereInputObjectSchema.optional(), orderBy: z.union([EspecialidadOrderByWithAggregationInputObjectSchema, EspecialidadOrderByWithAggregationInputObjectSchema.array()]).optional(), having: EspecialidadScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(EspecialidadScalarFieldEnumSchema), _count: z.union([ z.literal(true), EspecialidadCountAggregateInputObjectSchema ]).optional(), _min: EspecialidadMinAggregateInputObjectSchema.optional(), _max: EspecialidadMaxAggregateInputObjectSchema.optional(), _avg: EspecialidadAvgAggregateInputObjectSchema.optional(), _sum: EspecialidadSumAggregateInputObjectSchema.optional() }).strict();

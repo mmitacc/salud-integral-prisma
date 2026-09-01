@@ -1,0 +1,14 @@
+import type { Prisma } from '../../generated-client/browser';
+import * as z from 'zod';
+import { ConsultaOrderByWithRelationInputObjectSchema as ConsultaOrderByWithRelationInputObjectSchema } from './objects/ConsultaOrderByWithRelationInput.schema';
+import { ConsultaWhereInputObjectSchema as ConsultaWhereInputObjectSchema } from './objects/ConsultaWhereInput.schema';
+import { ConsultaWhereUniqueInputObjectSchema as ConsultaWhereUniqueInputObjectSchema } from './objects/ConsultaWhereUniqueInput.schema';
+import { ConsultaCountAggregateInputObjectSchema as ConsultaCountAggregateInputObjectSchema } from './objects/ConsultaCountAggregateInput.schema';
+import { ConsultaMinAggregateInputObjectSchema as ConsultaMinAggregateInputObjectSchema } from './objects/ConsultaMinAggregateInput.schema';
+import { ConsultaMaxAggregateInputObjectSchema as ConsultaMaxAggregateInputObjectSchema } from './objects/ConsultaMaxAggregateInput.schema';
+import { ConsultaAvgAggregateInputObjectSchema as ConsultaAvgAggregateInputObjectSchema } from './objects/ConsultaAvgAggregateInput.schema';
+import { ConsultaSumAggregateInputObjectSchema as ConsultaSumAggregateInputObjectSchema } from './objects/ConsultaSumAggregateInput.schema';
+
+export const ConsultaAggregateSchema: z.ZodType<Prisma.ConsultaAggregateArgs> = z.object({ orderBy: z.union([ConsultaOrderByWithRelationInputObjectSchema, ConsultaOrderByWithRelationInputObjectSchema.array()]).optional(), where: ConsultaWhereInputObjectSchema.optional(), cursor: ConsultaWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), ConsultaCountAggregateInputObjectSchema ]).optional(), _min: ConsultaMinAggregateInputObjectSchema.optional(), _max: ConsultaMaxAggregateInputObjectSchema.optional(), _avg: ConsultaAvgAggregateInputObjectSchema.optional(), _sum: ConsultaSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.ConsultaAggregateArgs>;
+
+export const ConsultaAggregateZodSchema = z.object({ orderBy: z.union([ConsultaOrderByWithRelationInputObjectSchema, ConsultaOrderByWithRelationInputObjectSchema.array()]).optional(), where: ConsultaWhereInputObjectSchema.optional(), cursor: ConsultaWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), ConsultaCountAggregateInputObjectSchema ]).optional(), _min: ConsultaMinAggregateInputObjectSchema.optional(), _max: ConsultaMaxAggregateInputObjectSchema.optional(), _avg: ConsultaAvgAggregateInputObjectSchema.optional(), _sum: ConsultaSumAggregateInputObjectSchema.optional() }).strict();

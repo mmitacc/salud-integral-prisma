@@ -1,0 +1,141 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "./generated-client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Esquemas para la Base de datos
+// ------------------- paciente ------------------ //
+model Paciente {
+  id          Int      @id @default(autoincrement())
+  nombres     String   @db.VarChar(100)
+  apellidos   String   @db.VarChar(100)
+  telefono    String   @db.VarChar(20)
+  email       String   @unique @db.VarChar(150)
+  masculino   Boolean  @default(true)
+  fecha_nac   DateTime @db.Date
+  tipo_sangre String   @default("RHO+") @db.VarChar(5)
+  alergias    String   @default("Ninguna") @db.Text
+
+  // Relaciones inversas
+  historiales Historial[]
+  citas       Cita[]
+
+  @@map("paciente")
+}
+
+// ------------------- historial ------------------ //
+model Historial {
+  id           Int      @id @default(autoincrement())
+  id_paciente  Int
+  fecha        DateTime @default(now())
+  motivo       String   @db.Text
+  antecedentes String?  @db.Text
+  triaje       String   @db.Text
+  diagnostico  String?  @db.Text
+  tratamiento  String?  @db.Text
+  receta       String?  @db.Text
+
+  // Relación: Un historial pertenece a un paciente
+  paciente Paciente @relation(fields: [id_paciente], references: [id], onDelete: Restrict)
+
+  @@map("historial")
+}
+
+// Definicion de los 3 estados de: estado en 'cita'
+enum EstadoCita {
+  PROGRAMADA
+  COMPLETADA
+  CANCELADA
+}
+
+// ------------------- cita ------------------ //
+model Cita {
+  id          Int        @id @default(autoincrement())
+  id_paciente Int
+  fecha       DateTime   @default(now())
+  estado      EstadoCita @default(PROGRAMADA)
+
+  // Relación: Una cita pertenece a un paciente
+  paciente Paciente @relation(fields: [id_paciente], references: [id], onDelete: Restrict)
+
+  // Relaciones inversas
+  consultas Consulta[]
+
+  @@map("cita")
+}
+
+model Consulta {
+  id        Int      @id @default(autoincrement())
+  id_cita   Int
+  id_medico Int
+  fecha     DateTime @db.Date()
+  horario   DateTime @db.Time()
+
+  // Relaciones
+  cita   Cita   @relation(fields: [id_cita], references: [id], onDelete: Restrict)
+  medico Medico @relation(fields: [id_medico], references: [id], onDelete: Restrict)
+
+  @@map("consulta")
+}
+
+model Medico {
+  id              Int      @id @default(autoincrement())
+  id_especialidad Int
+  nombres         String   @db.VarChar(100)
+  apellidos       String   @db.VarChar(100)
+  telefono        String   @db.VarChar(20)
+  email           String   @unique @db.VarChar(150)
+  masculino       Boolean  @default(true)
+  fecha_nac       DateTime @db.Date
+
+  // Relaciones
+  especialidad Especialidad @relation(fields: [id_especialidad], references: [id], onDelete: Restrict)
+  consultas    Consulta[]
+
+  @@map("medico")
+}
+
+model Especialidad {
+  id   Int    @id @default(autoincrement())
+  tipo String @db.VarChar(100)
+
+  // Relaciones inversas
+  medicos Medico[]
+
+  @@map("especialidad")
+}
+
+// AUTENTICACIONES PARA ACCESO A LOS ENDPOINTS
+
+enum Role {
+  RECEPCIONISTA
+  MEDICO
+  GERENCIA
+}
+
+model User {
+  id        Int     @id @default(autoincrement())
+  email     String  @unique
+  password  String  @db.VarChar(100)
+  role      Role
+  nombres   String  @db.VarChar(100)
+  apellidos String  @db.VarChar(100)
+  activo    Boolean @default(true)
+
+  @@map("users")
+}
+
+// Generador automatio de Schemas con Prisma y Zod
+generator zod {
+  provider = "prisma-zod-generator"
+  output   = "./generated-zod"
+}

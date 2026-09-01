@@ -1,0 +1,15 @@
+import type { Prisma } from '../../generated-client/browser';
+import * as z from 'zod';
+import { PacienteWhereInputObjectSchema as PacienteWhereInputObjectSchema } from './objects/PacienteWhereInput.schema';
+import { PacienteOrderByWithAggregationInputObjectSchema as PacienteOrderByWithAggregationInputObjectSchema } from './objects/PacienteOrderByWithAggregationInput.schema';
+import { PacienteScalarWhereWithAggregatesInputObjectSchema as PacienteScalarWhereWithAggregatesInputObjectSchema } from './objects/PacienteScalarWhereWithAggregatesInput.schema';
+import { PacienteScalarFieldEnumSchema } from './enums/PacienteScalarFieldEnum.schema';
+import { PacienteCountAggregateInputObjectSchema as PacienteCountAggregateInputObjectSchema } from './objects/PacienteCountAggregateInput.schema';
+import { PacienteMinAggregateInputObjectSchema as PacienteMinAggregateInputObjectSchema } from './objects/PacienteMinAggregateInput.schema';
+import { PacienteMaxAggregateInputObjectSchema as PacienteMaxAggregateInputObjectSchema } from './objects/PacienteMaxAggregateInput.schema';
+import { PacienteAvgAggregateInputObjectSchema as PacienteAvgAggregateInputObjectSchema } from './objects/PacienteAvgAggregateInput.schema';
+import { PacienteSumAggregateInputObjectSchema as PacienteSumAggregateInputObjectSchema } from './objects/PacienteSumAggregateInput.schema';
+
+export const PacienteGroupBySchema: z.ZodType<Prisma.PacienteGroupByArgs> = z.object({ where: PacienteWhereInputObjectSchema.optional(), orderBy: z.union([PacienteOrderByWithAggregationInputObjectSchema, PacienteOrderByWithAggregationInputObjectSchema.array()]).optional(), having: PacienteScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(PacienteScalarFieldEnumSchema), _count: z.union([ z.literal(true), PacienteCountAggregateInputObjectSchema ]).optional(), _min: PacienteMinAggregateInputObjectSchema.optional(), _max: PacienteMaxAggregateInputObjectSchema.optional(), _avg: PacienteAvgAggregateInputObjectSchema.optional(), _sum: PacienteSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.PacienteGroupByArgs>;
+
+export const PacienteGroupByZodSchema = z.object({ where: PacienteWhereInputObjectSchema.optional(), orderBy: z.union([PacienteOrderByWithAggregationInputObjectSchema, PacienteOrderByWithAggregationInputObjectSchema.array()]).optional(), having: PacienteScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(PacienteScalarFieldEnumSchema), _count: z.union([ z.literal(true), PacienteCountAggregateInputObjectSchema ]).optional(), _min: PacienteMinAggregateInputObjectSchema.optional(), _max: PacienteMaxAggregateInputObjectSchema.optional(), _avg: PacienteAvgAggregateInputObjectSchema.optional(), _sum: PacienteSumAggregateInputObjectSchema.optional() }).strict();

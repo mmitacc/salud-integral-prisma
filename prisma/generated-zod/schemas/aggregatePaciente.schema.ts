@@ -1,0 +1,14 @@
+import type { Prisma } from '../../generated-client/browser';
+import * as z from 'zod';
+import { PacienteOrderByWithRelationInputObjectSchema as PacienteOrderByWithRelationInputObjectSchema } from './objects/PacienteOrderByWithRelationInput.schema';
+import { PacienteWhereInputObjectSchema as PacienteWhereInputObjectSchema } from './objects/PacienteWhereInput.schema';
+import { PacienteWhereUniqueInputObjectSchema as PacienteWhereUniqueInputObjectSchema } from './objects/PacienteWhereUniqueInput.schema';
+import { PacienteCountAggregateInputObjectSchema as PacienteCountAggregateInputObjectSchema } from './objects/PacienteCountAggregateInput.schema';
+import { PacienteMinAggregateInputObjectSchema as PacienteMinAggregateInputObjectSchema } from './objects/PacienteMinAggregateInput.schema';
+import { PacienteMaxAggregateInputObjectSchema as PacienteMaxAggregateInputObjectSchema } from './objects/PacienteMaxAggregateInput.schema';
+import { PacienteAvgAggregateInputObjectSchema as PacienteAvgAggregateInputObjectSchema } from './objects/PacienteAvgAggregateInput.schema';
+import { PacienteSumAggregateInputObjectSchema as PacienteSumAggregateInputObjectSchema } from './objects/PacienteSumAggregateInput.schema';
+
+export const PacienteAggregateSchema: z.ZodType<Prisma.PacienteAggregateArgs> = z.object({ orderBy: z.union([PacienteOrderByWithRelationInputObjectSchema, PacienteOrderByWithRelationInputObjectSchema.array()]).optional(), where: PacienteWhereInputObjectSchema.optional(), cursor: PacienteWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), PacienteCountAggregateInputObjectSchema ]).optional(), _min: PacienteMinAggregateInputObjectSchema.optional(), _max: PacienteMaxAggregateInputObjectSchema.optional(), _avg: PacienteAvgAggregateInputObjectSchema.optional(), _sum: PacienteSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.PacienteAggregateArgs>;
+
+export const PacienteAggregateZodSchema = z.object({ orderBy: z.union([PacienteOrderByWithRelationInputObjectSchema, PacienteOrderByWithRelationInputObjectSchema.array()]).optional(), where: PacienteWhereInputObjectSchema.optional(), cursor: PacienteWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), PacienteCountAggregateInputObjectSchema ]).optional(), _min: PacienteMinAggregateInputObjectSchema.optional(), _max: PacienteMaxAggregateInputObjectSchema.optional(), _avg: PacienteAvgAggregateInputObjectSchema.optional(), _sum: PacienteSumAggregateInputObjectSchema.optional() }).strict();
