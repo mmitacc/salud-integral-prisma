@@ -7,7 +7,7 @@ import { DateTimeFieldUpdateOperationsInputObjectSchema as DateTimeFieldUpdateOp
 const makeSchema = () => z.object({
   id: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputObjectSchema)]).optional(),
   tipo: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
-  creado: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional()
+  registerdate: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional()
 }).strict();
 export const EspecialidadUncheckedUpdateWithoutMedicosInputObjectSchema: z.ZodType<Prisma.EspecialidadUncheckedUpdateWithoutMedicosInput> = makeSchema() as unknown as z.ZodType<Prisma.EspecialidadUncheckedUpdateWithoutMedicosInput>;
 export const EspecialidadUncheckedUpdateWithoutMedicosInputObjectZodSchema = makeSchema();

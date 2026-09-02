@@ -2,8 +2,8 @@ import * as z from 'zod';
 export const HistorialFindManyResultSchema = z.object({
   data: z.array(z.object({
   id: z.number().int(),
-  idPaciente: z.number().int(),
-  fecha: z.date(),
+  id_paciente: z.number().int(),
+  registerdate: z.date(),
   motivo: z.string(),
   antecedentes: z.string().nullable().optional(),
   triaje: z.string(),

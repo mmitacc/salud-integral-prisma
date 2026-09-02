@@ -2,8 +2,8 @@ import * as z from 'zod';
 // prettier-ignore
 export const HistorialInputSchema = z.object({
     id: z.number().int(),
-    idPaciente: z.number().int(),
-    fecha: z.coerce.date(),
+    id_paciente: z.number().int(),
+    registerdate: z.coerce.date(),
     motivo: z.string(),
     antecedentes: z.string().optional().nullable(),
     triaje: z.string(),

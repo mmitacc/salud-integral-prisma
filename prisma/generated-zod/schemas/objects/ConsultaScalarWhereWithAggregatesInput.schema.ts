@@ -10,8 +10,8 @@ const consultascalarwherewithaggregatesinputSchema = z.object({
   OR: z.lazy(() => ConsultaScalarWhereWithAggregatesInputObjectSchema).array().optional(),
   NOT: z.union([z.lazy(() => ConsultaScalarWhereWithAggregatesInputObjectSchema), z.lazy(() => ConsultaScalarWhereWithAggregatesInputObjectSchema).array()]).optional(),
   id: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional(),
-  idCita: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional(),
-  idMedico: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional(),
+  id_cita: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional(),
+  id_medico: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional(),
   fecha: z.union([z.lazy(() => DateTimeWithAggregatesFilterObjectSchema), z.coerce.date()]).optional(),
   horario: z.union([z.lazy(() => DateTimeWithAggregatesFilterObjectSchema), z.coerce.date()]).optional(),
   costo: z.union([z.lazy(() => DecimalWithAggregatesFilterObjectSchema), z.union([
@@ -22,7 +22,7 @@ const consultascalarwherewithaggregatesinputSchema = z.object({
 ]).refine((v) => isValidDecimalInput(v), {
   message: "Field 'costo' must be a Decimal",
 })]).optional(),
-  creado: z.union([z.lazy(() => DateTimeWithAggregatesFilterObjectSchema), z.coerce.date()]).optional()
+  registerdate: z.union([z.lazy(() => DateTimeWithAggregatesFilterObjectSchema), z.coerce.date()]).optional()
 }).strict();
 export const ConsultaScalarWhereWithAggregatesInputObjectSchema: z.ZodType<Prisma.ConsultaScalarWhereWithAggregatesInput> = consultascalarwherewithaggregatesinputSchema as unknown as z.ZodType<Prisma.ConsultaScalarWhereWithAggregatesInput>;
 export const ConsultaScalarWhereWithAggregatesInputObjectZodSchema = consultascalarwherewithaggregatesinputSchema;

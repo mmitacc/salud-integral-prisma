@@ -5,12 +5,12 @@ export const PacienteInputSchema = z.object({
     nombres: z.string(),
     apellidos: z.string(),
     telefono: z.string(),
-    email: z.string(),
+    email: z.email({ message: "El formato del correo electrónico no es válido" }),
     masculino: z.boolean(),
-    fecha_nac: z.coerce.date(),
-    tipoSangre: z.string(),
+    fechanacimiento: z.coerce.date(),
+    tiposangre: z.string(),
     alergias: z.string(),
-    creado: z.coerce.date(),
+    registerdate: z.coerce.date(),
     historiales: z.array(z.unknown()),
     citas: z.array(z.unknown())
 }).strict();

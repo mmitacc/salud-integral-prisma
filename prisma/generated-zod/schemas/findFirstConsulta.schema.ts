@@ -13,24 +13,24 @@ import { MedicoArgsObjectSchema as MedicoArgsObjectSchema } from './objects/Medi
 
 export const ConsultaFindFirstSelectSchema: z.ZodType<Prisma.ConsultaSelect> = z.object({
     id: z.boolean().optional(),
-    idCita: z.boolean().optional(),
-    idMedico: z.boolean().optional(),
+    id_cita: z.boolean().optional(),
+    id_medico: z.boolean().optional(),
     fecha: z.boolean().optional(),
     horario: z.boolean().optional(),
     costo: z.boolean().optional(),
-    creado: z.boolean().optional(),
+    registerdate: z.boolean().optional(),
     cita: z.union([z.boolean(), z.lazy(() => CitaArgsObjectSchema)]).optional(),
     medico: z.union([z.boolean(), z.lazy(() => MedicoArgsObjectSchema)]).optional()
   }).strict() as unknown as z.ZodType<Prisma.ConsultaSelect>;
 
 export const ConsultaFindFirstSelectZodSchema = z.object({
     id: z.boolean().optional(),
-    idCita: z.boolean().optional(),
-    idMedico: z.boolean().optional(),
+    id_cita: z.boolean().optional(),
+    id_medico: z.boolean().optional(),
     fecha: z.boolean().optional(),
     horario: z.boolean().optional(),
     costo: z.boolean().optional(),
-    creado: z.boolean().optional(),
+    registerdate: z.boolean().optional(),
     cita: z.union([z.boolean(), z.lazy(() => CitaArgsObjectSchema)]).optional(),
     medico: z.union([z.boolean(), z.lazy(() => MedicoArgsObjectSchema)]).optional()
   }).strict();

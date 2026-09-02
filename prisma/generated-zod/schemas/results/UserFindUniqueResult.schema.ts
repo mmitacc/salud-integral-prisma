@@ -6,5 +6,6 @@ export const UserFindUniqueResultSchema = z.nullable(z.object({
   role: z.unknown(),
   nombres: z.string(),
   apellidos: z.string(),
-  activo: z.boolean()
+  activo: z.boolean(),
+  registerdate: z.date()
 }));

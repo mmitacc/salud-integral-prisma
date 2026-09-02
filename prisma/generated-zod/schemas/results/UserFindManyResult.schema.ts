@@ -7,7 +7,8 @@ export const UserFindManyResultSchema = z.object({
   role: z.unknown(),
   nombres: z.string(),
   apellidos: z.string(),
-  activo: z.boolean()
+  activo: z.boolean(),
+  registerdate: z.date()
 })),
   pagination: z.object({
   page: z.number().int().min(1),

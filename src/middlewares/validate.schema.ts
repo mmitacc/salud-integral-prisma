@@ -33,7 +33,11 @@ export const validateParamsSchema = (schema: z.ZodType) => {
     next: NextFunction,
   ): Promise<void> => {
     try {
-      const result = await schema.safeParseAsync(req.params);
+      const paramsNumericos: Record<string, number> = {};
+      for (const key in req.params) {
+        paramsNumericos[key] = Number(req.params[key]);
+      }
+      const result = await schema.safeParseAsync(paramsNumericos);
       if (!result.success) {
         res.status(400).json({
           status: "error",

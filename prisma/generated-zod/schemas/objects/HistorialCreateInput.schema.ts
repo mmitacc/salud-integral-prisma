@@ -3,7 +3,7 @@ import type { Prisma } from '../../../generated-client/browser';
 import { PacienteCreateNestedOneWithoutHistorialesInputObjectSchema as PacienteCreateNestedOneWithoutHistorialesInputObjectSchema } from './PacienteCreateNestedOneWithoutHistorialesInput.schema'
 
 const makeSchema = () => z.object({
-  fecha: z.coerce.date().optional(),
+  registerdate: z.coerce.date().optional(),
   motivo: z.string(),
   antecedentes: z.string().optional().nullable(),
   triaje: z.string(),

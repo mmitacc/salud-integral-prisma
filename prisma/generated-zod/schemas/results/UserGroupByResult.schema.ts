@@ -7,6 +7,7 @@ export const UserGroupByResultSchema = z.array(z.object({
   nombres: z.string().optional(),
   apellidos: z.string().optional(),
   activo: z.boolean().optional(),
+  registerdate: z.date().optional(),
   _count: z.union([z.number(), z.object({
     id: z.number().optional(),
     email: z.number().optional(),
@@ -15,6 +16,7 @@ export const UserGroupByResultSchema = z.array(z.object({
     nombres: z.number().optional(),
     apellidos: z.number().optional(),
     activo: z.number().optional(),
+    registerdate: z.number().optional(),
     _all: z.number().optional()
   })]).optional(),
   _sum: z.object({
@@ -30,7 +32,8 @@ export const UserGroupByResultSchema = z.array(z.object({
     role: z.unknown().nullable().optional(),
     nombres: z.string().nullable().optional(),
     apellidos: z.string().nullable().optional(),
-    activo: z.boolean().nullable().optional()
+    activo: z.boolean().nullable().optional(),
+    registerdate: z.date().nullable().optional()
   }).nullable().optional(),
   _max: z.object({
     id: z.number().int().nullable().optional(),
@@ -39,6 +42,7 @@ export const UserGroupByResultSchema = z.array(z.object({
     role: z.unknown().nullable().optional(),
     nombres: z.string().nullable().optional(),
     apellidos: z.string().nullable().optional(),
-    activo: z.boolean().nullable().optional()
+    activo: z.boolean().nullable().optional(),
+    registerdate: z.date().nullable().optional()
   }).nullable().optional()
 }));

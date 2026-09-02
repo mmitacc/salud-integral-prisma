@@ -6,7 +6,7 @@ import { NullableStringFieldUpdateOperationsInputObjectSchema as NullableStringF
 import { PacienteUpdateOneRequiredWithoutHistorialesNestedInputObjectSchema as PacienteUpdateOneRequiredWithoutHistorialesNestedInputObjectSchema } from './PacienteUpdateOneRequiredWithoutHistorialesNestedInput.schema'
 
 const makeSchema = () => z.object({
-  fecha: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
+  registerdate: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
   motivo: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
   antecedentes: z.union([z.string(), z.lazy(() => NullableStringFieldUpdateOperationsInputObjectSchema)]).optional().nullable(),
   triaje: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),

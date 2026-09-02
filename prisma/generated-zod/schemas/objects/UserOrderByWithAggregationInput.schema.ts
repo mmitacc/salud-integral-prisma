@@ -15,6 +15,7 @@ const makeSchema = () => z.object({
   nombres: SortOrderSchema.optional(),
   apellidos: SortOrderSchema.optional(),
   activo: SortOrderSchema.optional(),
+  registerdate: SortOrderSchema.optional(),
   _count: z.lazy(() => UserCountOrderByAggregateInputObjectSchema).optional(),
   _avg: z.lazy(() => UserAvgOrderByAggregateInputObjectSchema).optional(),
   _max: z.lazy(() => UserMaxOrderByAggregateInputObjectSchema).optional(),

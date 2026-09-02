@@ -42,6 +42,7 @@ export type UserMinAggregateOutputType = {
   nombres: string | null
   apellidos: string | null
   activo: boolean | null
+  registerdate: Date | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -52,6 +53,7 @@ export type UserMaxAggregateOutputType = {
   nombres: string | null
   apellidos: string | null
   activo: boolean | null
+  registerdate: Date | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -62,6 +64,7 @@ export type UserCountAggregateOutputType = {
   nombres: number
   apellidos: number
   activo: number
+  registerdate: number
   _all: number
 }
 
@@ -82,6 +85,7 @@ export type UserMinAggregateInputType = {
   nombres?: true
   apellidos?: true
   activo?: true
+  registerdate?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -92,6 +96,7 @@ export type UserMaxAggregateInputType = {
   nombres?: true
   apellidos?: true
   activo?: true
+  registerdate?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -102,6 +107,7 @@ export type UserCountAggregateInputType = {
   nombres?: true
   apellidos?: true
   activo?: true
+  registerdate?: true
   _all?: true
 }
 
@@ -199,6 +205,7 @@ export type UserGroupByOutputType = {
   nombres: string
   apellidos: string
   activo: boolean
+  registerdate: Date
   _count: UserCountAggregateOutputType | null
   _avg: UserAvgAggregateOutputType | null
   _sum: UserSumAggregateOutputType | null
@@ -232,6 +239,7 @@ export type UserWhereInput = {
   nombres?: Prisma.StringFilter<"User"> | string
   apellidos?: Prisma.StringFilter<"User"> | string
   activo?: Prisma.BoolFilter<"User"> | boolean
+  registerdate?: Prisma.DateTimeFilter<"User"> | Date | string
 }
 
 export type UserOrderByWithRelationInput = {
@@ -242,6 +250,7 @@ export type UserOrderByWithRelationInput = {
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
   activo?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -255,6 +264,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   nombres?: Prisma.StringFilter<"User"> | string
   apellidos?: Prisma.StringFilter<"User"> | string
   activo?: Prisma.BoolFilter<"User"> | boolean
+  registerdate?: Prisma.DateTimeFilter<"User"> | Date | string
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -265,6 +275,7 @@ export type UserOrderByWithAggregationInput = {
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
   activo?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _avg?: Prisma.UserAvgOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
@@ -283,6 +294,7 @@ export type UserScalarWhereWithAggregatesInput = {
   nombres?: Prisma.StringWithAggregatesFilter<"User"> | string
   apellidos?: Prisma.StringWithAggregatesFilter<"User"> | string
   activo?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  registerdate?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
 
 export type UserCreateInput = {
@@ -292,6 +304,7 @@ export type UserCreateInput = {
   nombres: string
   apellidos: string
   activo?: boolean
+  registerdate?: Date | string
 }
 
 export type UserUncheckedCreateInput = {
@@ -302,6 +315,7 @@ export type UserUncheckedCreateInput = {
   nombres: string
   apellidos: string
   activo?: boolean
+  registerdate?: Date | string
 }
 
 export type UserUpdateInput = {
@@ -311,6 +325,7 @@ export type UserUpdateInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserUncheckedUpdateInput = {
@@ -321,6 +336,7 @@ export type UserUncheckedUpdateInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserCreateManyInput = {
@@ -331,6 +347,7 @@ export type UserCreateManyInput = {
   nombres: string
   apellidos: string
   activo?: boolean
+  registerdate?: Date | string
 }
 
 export type UserUpdateManyMutationInput = {
@@ -340,6 +357,7 @@ export type UserUpdateManyMutationInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -350,6 +368,7 @@ export type UserUncheckedUpdateManyInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -360,6 +379,7 @@ export type UserCountOrderByAggregateInput = {
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
   activo?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
 }
 
 export type UserAvgOrderByAggregateInput = {
@@ -374,6 +394,7 @@ export type UserMaxOrderByAggregateInput = {
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
   activo?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -384,6 +405,7 @@ export type UserMinOrderByAggregateInput = {
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
   activo?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
 }
 
 export type UserSumOrderByAggregateInput = {
@@ -404,6 +426,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   nombres?: boolean
   apellidos?: boolean
   activo?: boolean
+  registerdate?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -414,6 +437,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   nombres?: boolean
   apellidos?: boolean
   activo?: boolean
+  registerdate?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -424,6 +448,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   nombres?: boolean
   apellidos?: boolean
   activo?: boolean
+  registerdate?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -434,21 +459,26 @@ export type UserSelectScalar = {
   nombres?: boolean
   apellidos?: boolean
   activo?: boolean
+  registerdate?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "role" | "nombres" | "apellidos" | "activo", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "role" | "nombres" | "apellidos" | "activo" | "registerdate", ExtArgs["result"]["user"]>
 
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
+    /**
+     * @zod.string({ required_error: "El email es obligatorio" }).email({ message: "El formato del correo electrónico no es válido" })
+     */
     email: string
     password: string
     role: $Enums.Role
     nombres: string
     apellidos: string
     activo: boolean
+    registerdate: Date
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -879,6 +909,7 @@ export interface UserFieldRefs {
   readonly nombres: Prisma.FieldRef<"User", 'String'>
   readonly apellidos: Prisma.FieldRef<"User", 'String'>
   readonly activo: Prisma.FieldRef<"User", 'Boolean'>
+  readonly registerdate: Prisma.FieldRef<"User", 'DateTime'>
 }
     
 

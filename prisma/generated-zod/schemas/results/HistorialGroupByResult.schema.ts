@@ -1,8 +1,8 @@
 import * as z from 'zod';
 export const HistorialGroupByResultSchema = z.array(z.object({
   id: z.number().int().optional(),
-  idPaciente: z.number().int().optional(),
-  fecha: z.date().optional(),
+  id_paciente: z.number().int().optional(),
+  registerdate: z.date().optional(),
   motivo: z.string().optional(),
   antecedentes: z.string().nullable().optional(),
   triaje: z.string().optional(),
@@ -11,8 +11,8 @@ export const HistorialGroupByResultSchema = z.array(z.object({
   receta: z.string().nullable().optional(),
   _count: z.union([z.number(), z.object({
     id: z.number().optional(),
-    idPaciente: z.number().optional(),
-    fecha: z.number().optional(),
+    id_paciente: z.number().optional(),
+    registerdate: z.number().optional(),
     motivo: z.number().optional(),
     antecedentes: z.number().optional(),
     triaje: z.number().optional(),
@@ -23,16 +23,16 @@ export const HistorialGroupByResultSchema = z.array(z.object({
   })]).optional(),
   _sum: z.object({
     id: z.number().nullable().optional(),
-    idPaciente: z.number().nullable().optional()
+    id_paciente: z.number().nullable().optional()
   }).nullable().optional(),
   _avg: z.object({
     id: z.number().nullable().optional(),
-    idPaciente: z.number().nullable().optional()
+    id_paciente: z.number().nullable().optional()
   }).nullable().optional(),
   _min: z.object({
     id: z.number().int().nullable().optional(),
-    idPaciente: z.number().int().nullable().optional(),
-    fecha: z.date().nullable().optional(),
+    id_paciente: z.number().int().nullable().optional(),
+    registerdate: z.date().nullable().optional(),
     motivo: z.string().nullable().optional(),
     antecedentes: z.string().nullable().optional(),
     triaje: z.string().nullable().optional(),
@@ -42,8 +42,8 @@ export const HistorialGroupByResultSchema = z.array(z.object({
   }).nullable().optional(),
   _max: z.object({
     id: z.number().int().nullable().optional(),
-    idPaciente: z.number().int().nullable().optional(),
-    fecha: z.date().nullable().optional(),
+    id_paciente: z.number().int().nullable().optional(),
+    registerdate: z.date().nullable().optional(),
     motivo: z.string().nullable().optional(),
     antecedentes: z.string().nullable().optional(),
     triaje: z.string().nullable().optional(),

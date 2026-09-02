@@ -6,10 +6,10 @@ export const PacienteFindFirstResultSchema = z.nullable(z.object({
   telefono: z.string(),
   email: z.string(),
   masculino: z.boolean(),
-  fecha_nac: z.date(),
-  tipoSangre: z.string(),
+  fechanacimiento: z.date(),
+  tiposangre: z.string(),
   alergias: z.string(),
-  creado: z.date(),
+  registerdate: z.date(),
   historiales: z.array(z.unknown()).optional(),
   citas: z.array(z.unknown()).optional()
 }));

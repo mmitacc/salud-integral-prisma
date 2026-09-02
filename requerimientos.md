@@ -29,13 +29,13 @@ Identificando las Principales Entidades:
 |---------------|----------------|-------------|
 | id            | Número Entero  | [PK]        |
 | id_paciente   | Número Entero  | [FK]        |
-| fecha         | Date           | Obligatorio |
 | motivo        | Texto          | Obligatorio |
 | antecedentes  | Texto          |             |
 | triaje        | Texto          | Obligatorio |
 | diagnostico   | Texto          |             |
 | tratamiento   | Texto          |             |
 | receta        | Texto          |             |
+| registerdate  | Date           | Date(now()) |
 
 
 ## Entity: paciente
@@ -48,10 +48,10 @@ Identificando las Principales Entidades:
 | telefono         | Texto          | Obligatorio |
 | email            | Texto          | Unico       |
 | masculino        | Boolean        |             |
-| fecha_nac        | Date           |> Date(now())|
+| fecha_nac        | Date           |>Date(now()) |
 | tipo_sangre      | Texto          |             |
 | alergias         | Texto          |             |
-| creado           | Date           | Date(now()) |
+| registerdate     | Date           | Date(now()) |
 
 
 ## Entity: cita
@@ -60,9 +60,9 @@ Identificando las Principales Entidades:
 |---------------|----------------|-------------|
 | id            | Número Entero  | [PK]        |
 | id_paciente   | Número Entero  | [FK]        |
-| fecha         | Date           | Obligatorio |
 | estado        | Texto          | Obligatorio |
 | pago_inicial  | Decimal        | Default(0.0)|
+| registerdate  | Date           | Date(now()) |
 
 
 ## Entity: consulta
@@ -75,7 +75,7 @@ Identificando las Principales Entidades:
 | fecha         | Date           | Obligatorio |
 | horario       | Time           | Obligatorio |
 | costo         | Decimal        | Default(50) |
-| creado        | Date           | Date(now()) |
+| registerdate  | Date           | Date(now()) |
 
 
 ## Entity: medico
@@ -90,7 +90,7 @@ Identificando las Principales Entidades:
 | email            | Texto          | Unico       |
 | masculino        | Boolean        |             |
 | fecha_nac        | Date           |> Date(now())|
-| creado           | Date           | Date(now()) |
+| registerdate  | Date           | Date(now()) |
 
 
 ## Entity: especialidad
@@ -99,7 +99,7 @@ Identificando las Principales Entidades:
 |----------------|----------------|-------------|
 | id             | Número Entero  | [PK]        |
 | tipo           | Texto          | Obligatorio |
-| creado         | Date           | Date(now()) |
+| registerdate   | Date           | Date(now()) |
 
 
 Describiendo las relaciones:

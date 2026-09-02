@@ -8,7 +8,7 @@ import { MedicoUncheckedUpdateManyWithoutEspecialidadNestedInputObjectSchema as 
 const makeSchema = () => z.object({
   id: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputObjectSchema)]).optional(),
   tipo: z.union([z.string().max(100), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
-  creado: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
+  registerdate: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
   medicos: z.lazy(() => MedicoUncheckedUpdateManyWithoutEspecialidadNestedInputObjectSchema).optional()
 }).strict();
 export const EspecialidadUncheckedUpdateInputObjectSchema: z.ZodType<Prisma.EspecialidadUncheckedUpdateInput> = makeSchema() as unknown as z.ZodType<Prisma.EspecialidadUncheckedUpdateInput>;

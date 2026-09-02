@@ -6,7 +6,7 @@ import { MedicoUpdateManyWithoutEspecialidadNestedInputObjectSchema as MedicoUpd
 
 const makeSchema = () => z.object({
   tipo: z.union([z.string().max(100), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
-  creado: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
+  registerdate: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
   medicos: z.lazy(() => MedicoUpdateManyWithoutEspecialidadNestedInputObjectSchema).optional()
 }).strict();
 export const EspecialidadUpdateInputObjectSchema: z.ZodType<Prisma.EspecialidadUpdateInput> = makeSchema() as unknown as z.ZodType<Prisma.EspecialidadUpdateInput>;

@@ -14,7 +14,7 @@ import { EspecialidadCountOutputTypeArgsObjectSchema as EspecialidadCountOutputT
 export const EspecialidadFindManySelectSchema: z.ZodType<Prisma.EspecialidadSelect> = z.object({
     id: z.boolean().optional(),
     tipo: z.boolean().optional(),
-    creado: z.boolean().optional(),
+    registerdate: z.boolean().optional(),
     medicos: z.union([z.boolean(), z.lazy(() => MedicoFindManySchema)]).optional(),
     _count: z.union([z.boolean(), z.lazy(() => EspecialidadCountOutputTypeArgsObjectSchema)]).optional()
   }).strict() as unknown as z.ZodType<Prisma.EspecialidadSelect>;
@@ -22,7 +22,7 @@ export const EspecialidadFindManySelectSchema: z.ZodType<Prisma.EspecialidadSele
 export const EspecialidadFindManySelectZodSchema = z.object({
     id: z.boolean().optional(),
     tipo: z.boolean().optional(),
-    creado: z.boolean().optional(),
+    registerdate: z.boolean().optional(),
     medicos: z.union([z.boolean(), z.lazy(() => MedicoFindManySchema)]).optional(),
     _count: z.union([z.boolean(), z.lazy(() => EspecialidadCountOutputTypeArgsObjectSchema)]).optional()
   }).strict();

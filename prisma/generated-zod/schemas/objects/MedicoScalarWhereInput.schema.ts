@@ -10,14 +10,14 @@ const medicoscalarwhereinputSchema = z.object({
   OR: z.lazy(() => MedicoScalarWhereInputObjectSchema).array().optional(),
   NOT: z.union([z.lazy(() => MedicoScalarWhereInputObjectSchema), z.lazy(() => MedicoScalarWhereInputObjectSchema).array()]).optional(),
   id: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
-  idEspecialidad: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
+  id_especialidad: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   nombres: z.union([z.lazy(() => StringFilterObjectSchema), z.string()]).optional(),
   apellidos: z.union([z.lazy(() => StringFilterObjectSchema), z.string()]).optional(),
   telefono: z.union([z.lazy(() => StringFilterObjectSchema), z.string()]).optional(),
   email: z.union([z.lazy(() => StringFilterObjectSchema), z.string()]).optional(),
   masculino: z.union([z.lazy(() => BoolFilterObjectSchema), z.boolean()]).optional(),
-  fechaNac: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
-  creado: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional()
+  fechanacimiento: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
+  registerdate: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional()
 }).strict();
 export const MedicoScalarWhereInputObjectSchema: z.ZodType<Prisma.MedicoScalarWhereInput> = medicoscalarwhereinputSchema as unknown as z.ZodType<Prisma.MedicoScalarWhereInput>;
 export const MedicoScalarWhereInputObjectZodSchema = medicoscalarwhereinputSchema;

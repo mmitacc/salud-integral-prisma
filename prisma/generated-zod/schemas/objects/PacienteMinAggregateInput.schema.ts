@@ -9,10 +9,10 @@ const makeSchema = () => z.object({
   telefono: z.literal(true).optional(),
   email: z.literal(true).optional(),
   masculino: z.literal(true).optional(),
-  fecha_nac: z.literal(true).optional(),
-  tipoSangre: z.literal(true).optional(),
+  fechanacimiento: z.literal(true).optional(),
+  tiposangre: z.literal(true).optional(),
   alergias: z.literal(true).optional(),
-  creado: z.literal(true).optional()
+  registerdate: z.literal(true).optional()
 }).strict();
 export const PacienteMinAggregateInputObjectSchema: z.ZodType<Prisma.PacienteMinAggregateInputType> = makeSchema() as unknown as z.ZodType<Prisma.PacienteMinAggregateInputType>;
 export const PacienteMinAggregateInputObjectZodSchema = makeSchema();

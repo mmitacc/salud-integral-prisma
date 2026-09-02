@@ -10,7 +10,7 @@ const especialidadscalarwherewithaggregatesinputSchema = z.object({
   NOT: z.union([z.lazy(() => EspecialidadScalarWhereWithAggregatesInputObjectSchema), z.lazy(() => EspecialidadScalarWhereWithAggregatesInputObjectSchema).array()]).optional(),
   id: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional(),
   tipo: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string().max(100)]).optional(),
-  creado: z.union([z.lazy(() => DateTimeWithAggregatesFilterObjectSchema), z.coerce.date()]).optional()
+  registerdate: z.union([z.lazy(() => DateTimeWithAggregatesFilterObjectSchema), z.coerce.date()]).optional()
 }).strict();
 export const EspecialidadScalarWhereWithAggregatesInputObjectSchema: z.ZodType<Prisma.EspecialidadScalarWhereWithAggregatesInput> = especialidadscalarwherewithaggregatesinputSchema as unknown as z.ZodType<Prisma.EspecialidadScalarWhereWithAggregatesInput>;
 export const EspecialidadScalarWhereWithAggregatesInputObjectZodSchema = especialidadscalarwherewithaggregatesinputSchema;

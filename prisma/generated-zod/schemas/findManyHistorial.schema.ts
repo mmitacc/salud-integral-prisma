@@ -12,8 +12,8 @@ import { PacienteArgsObjectSchema as PacienteArgsObjectSchema } from './objects/
 
 export const HistorialFindManySelectSchema: z.ZodType<Prisma.HistorialSelect> = z.object({
     id: z.boolean().optional(),
-    idPaciente: z.boolean().optional(),
-    fecha: z.boolean().optional(),
+    id_paciente: z.boolean().optional(),
+    registerdate: z.boolean().optional(),
     motivo: z.boolean().optional(),
     antecedentes: z.boolean().optional(),
     triaje: z.boolean().optional(),
@@ -25,8 +25,8 @@ export const HistorialFindManySelectSchema: z.ZodType<Prisma.HistorialSelect> = 
 
 export const HistorialFindManySelectZodSchema = z.object({
     id: z.boolean().optional(),
-    idPaciente: z.boolean().optional(),
-    fecha: z.boolean().optional(),
+    id_paciente: z.boolean().optional(),
+    registerdate: z.boolean().optional(),
     motivo: z.boolean().optional(),
     antecedentes: z.boolean().optional(),
     triaje: z.boolean().optional(),

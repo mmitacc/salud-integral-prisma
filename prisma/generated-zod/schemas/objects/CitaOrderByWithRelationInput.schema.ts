@@ -6,10 +6,10 @@ import { ConsultaOrderByRelationAggregateInputObjectSchema as ConsultaOrderByRel
 
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
-  idPaciente: SortOrderSchema.optional(),
-  fecha: SortOrderSchema.optional(),
+  id_paciente: SortOrderSchema.optional(),
   estado: SortOrderSchema.optional(),
-  pagoInicial: SortOrderSchema.optional(),
+  pagoinicial: SortOrderSchema.optional(),
+  registerdate: SortOrderSchema.optional(),
   paciente: z.lazy(() => PacienteOrderByWithRelationInputObjectSchema).optional(),
   consultas: z.lazy(() => ConsultaOrderByRelationAggregateInputObjectSchema).optional()
 }).strict();

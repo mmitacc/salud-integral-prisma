@@ -16,7 +16,7 @@ const makeSchema = () => z.object({
 ]).refine((v) => isValidDecimalInput(v), {
   message: "Field 'costo' must be a Decimal",
 }), z.lazy(() => DecimalFieldUpdateOperationsInputObjectSchema)]).optional(),
-  creado: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
+  registerdate: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
   cita: z.lazy(() => CitaUpdateOneRequiredWithoutConsultasNestedInputObjectSchema).optional()
 }).strict();
 export const ConsultaUpdateWithoutMedicoInputObjectSchema: z.ZodType<Prisma.ConsultaUpdateWithoutMedicoInput> = makeSchema() as unknown as z.ZodType<Prisma.ConsultaUpdateWithoutMedicoInput>;

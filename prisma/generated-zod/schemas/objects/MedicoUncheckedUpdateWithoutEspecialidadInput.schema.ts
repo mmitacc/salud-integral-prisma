@@ -13,8 +13,8 @@ const makeSchema = () => z.object({
   telefono: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
   email: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
   masculino: z.union([z.boolean(), z.lazy(() => BoolFieldUpdateOperationsInputObjectSchema)]).optional(),
-  fechaNac: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
-  creado: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
+  fechanacimiento: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
+  registerdate: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
   consultas: z.lazy(() => ConsultaUncheckedUpdateManyWithoutMedicoNestedInputObjectSchema).optional()
 }).strict();
 export const MedicoUncheckedUpdateWithoutEspecialidadInputObjectSchema: z.ZodType<Prisma.MedicoUncheckedUpdateWithoutEspecialidadInput> = makeSchema() as unknown as z.ZodType<Prisma.MedicoUncheckedUpdateWithoutEspecialidadInput>;

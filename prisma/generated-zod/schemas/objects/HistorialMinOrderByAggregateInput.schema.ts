@@ -4,8 +4,8 @@ import { SortOrderSchema } from '../enums/SortOrder.schema'
 
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
-  idPaciente: SortOrderSchema.optional(),
-  fecha: SortOrderSchema.optional(),
+  id_paciente: SortOrderSchema.optional(),
+  registerdate: SortOrderSchema.optional(),
   motivo: SortOrderSchema.optional(),
   antecedentes: SortOrderSchema.optional(),
   triaje: SortOrderSchema.optional(),

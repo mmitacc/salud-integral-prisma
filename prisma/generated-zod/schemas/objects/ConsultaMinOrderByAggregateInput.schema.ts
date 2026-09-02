@@ -4,12 +4,12 @@ import { SortOrderSchema } from '../enums/SortOrder.schema'
 
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
-  idCita: SortOrderSchema.optional(),
-  idMedico: SortOrderSchema.optional(),
+  id_cita: SortOrderSchema.optional(),
+  id_medico: SortOrderSchema.optional(),
   fecha: SortOrderSchema.optional(),
   horario: SortOrderSchema.optional(),
   costo: SortOrderSchema.optional(),
-  creado: SortOrderSchema.optional()
+  registerdate: SortOrderSchema.optional()
 }).strict();
 export const ConsultaMinOrderByAggregateInputObjectSchema: z.ZodType<Prisma.ConsultaMinOrderByAggregateInput> = makeSchema() as unknown as z.ZodType<Prisma.ConsultaMinOrderByAggregateInput>;
 export const ConsultaMinOrderByAggregateInputObjectZodSchema = makeSchema();

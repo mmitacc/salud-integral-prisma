@@ -4,8 +4,8 @@ import { PacienteArgsObjectSchema as PacienteArgsObjectSchema } from './Paciente
 
 const makeSchema = () => z.object({
   id: z.boolean().optional(),
-  idPaciente: z.boolean().optional(),
-  fecha: z.boolean().optional(),
+  id_paciente: z.boolean().optional(),
+  registerdate: z.boolean().optional(),
   motivo: z.boolean().optional(),
   antecedentes: z.boolean().optional(),
   triaje: z.boolean().optional(),
