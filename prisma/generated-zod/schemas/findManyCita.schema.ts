@@ -14,10 +14,11 @@ import { CitaCountOutputTypeArgsObjectSchema as CitaCountOutputTypeArgsObjectSch
 
 export const CitaFindManySelectSchema: z.ZodType<Prisma.CitaSelect> = z.object({
     id: z.boolean().optional(),
-    idPaciente: z.boolean().optional(),
-    fecha: z.boolean().optional(),
+    id_paciente: z.boolean().optional(),
     estado: z.boolean().optional(),
-    pagoInicial: z.boolean().optional(),
+    pagoinicial: z.boolean().optional(),
+    registerdate: z.boolean().optional(),
+    deleted: z.boolean().optional(),
     paciente: z.union([z.boolean(), z.lazy(() => PacienteArgsObjectSchema)]).optional(),
     consultas: z.union([z.boolean(), z.lazy(() => ConsultaFindManySchema)]).optional(),
     _count: z.union([z.boolean(), z.lazy(() => CitaCountOutputTypeArgsObjectSchema)]).optional()
@@ -25,10 +26,11 @@ export const CitaFindManySelectSchema: z.ZodType<Prisma.CitaSelect> = z.object({
 
 export const CitaFindManySelectZodSchema = z.object({
     id: z.boolean().optional(),
-    idPaciente: z.boolean().optional(),
-    fecha: z.boolean().optional(),
+    id_paciente: z.boolean().optional(),
     estado: z.boolean().optional(),
-    pagoInicial: z.boolean().optional(),
+    pagoinicial: z.boolean().optional(),
+    registerdate: z.boolean().optional(),
+    deleted: z.boolean().optional(),
     paciente: z.union([z.boolean(), z.lazy(() => PacienteArgsObjectSchema)]).optional(),
     consultas: z.union([z.boolean(), z.lazy(() => ConsultaFindManySchema)]).optional(),
     _count: z.union([z.boolean(), z.lazy(() => CitaCountOutputTypeArgsObjectSchema)]).optional()

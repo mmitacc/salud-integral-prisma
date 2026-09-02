@@ -41,7 +41,10 @@ export type UserMinAggregateOutputType = {
   role: $Enums.Role | null
   nombres: string | null
   apellidos: string | null
+  telefono: string | null
   activo: boolean | null
+  registerdate: Date | null
+  deleted: boolean | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -51,7 +54,10 @@ export type UserMaxAggregateOutputType = {
   role: $Enums.Role | null
   nombres: string | null
   apellidos: string | null
+  telefono: string | null
   activo: boolean | null
+  registerdate: Date | null
+  deleted: boolean | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -61,7 +67,10 @@ export type UserCountAggregateOutputType = {
   role: number
   nombres: number
   apellidos: number
+  telefono: number
   activo: number
+  registerdate: number
+  deleted: number
   _all: number
 }
 
@@ -81,7 +90,10 @@ export type UserMinAggregateInputType = {
   role?: true
   nombres?: true
   apellidos?: true
+  telefono?: true
   activo?: true
+  registerdate?: true
+  deleted?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -91,7 +103,10 @@ export type UserMaxAggregateInputType = {
   role?: true
   nombres?: true
   apellidos?: true
+  telefono?: true
   activo?: true
+  registerdate?: true
+  deleted?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -101,7 +116,10 @@ export type UserCountAggregateInputType = {
   role?: true
   nombres?: true
   apellidos?: true
+  telefono?: true
   activo?: true
+  registerdate?: true
+  deleted?: true
   _all?: true
 }
 
@@ -198,7 +216,10 @@ export type UserGroupByOutputType = {
   role: $Enums.Role
   nombres: string
   apellidos: string
+  telefono: string
   activo: boolean
+  registerdate: Date
+  deleted: boolean
   _count: UserCountAggregateOutputType | null
   _avg: UserAvgAggregateOutputType | null
   _sum: UserSumAggregateOutputType | null
@@ -231,7 +252,10 @@ export type UserWhereInput = {
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
   nombres?: Prisma.StringFilter<"User"> | string
   apellidos?: Prisma.StringFilter<"User"> | string
+  telefono?: Prisma.StringFilter<"User"> | string
   activo?: Prisma.BoolFilter<"User"> | boolean
+  registerdate?: Prisma.DateTimeFilter<"User"> | Date | string
+  deleted?: Prisma.BoolFilter<"User"> | boolean
 }
 
 export type UserOrderByWithRelationInput = {
@@ -241,7 +265,10 @@ export type UserOrderByWithRelationInput = {
   role?: Prisma.SortOrder
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
+  telefono?: Prisma.SortOrder
   activo?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
+  deleted?: Prisma.SortOrder
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -254,7 +281,10 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
   nombres?: Prisma.StringFilter<"User"> | string
   apellidos?: Prisma.StringFilter<"User"> | string
+  telefono?: Prisma.StringFilter<"User"> | string
   activo?: Prisma.BoolFilter<"User"> | boolean
+  registerdate?: Prisma.DateTimeFilter<"User"> | Date | string
+  deleted?: Prisma.BoolFilter<"User"> | boolean
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -264,7 +294,10 @@ export type UserOrderByWithAggregationInput = {
   role?: Prisma.SortOrder
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
+  telefono?: Prisma.SortOrder
   activo?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
+  deleted?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _avg?: Prisma.UserAvgOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
@@ -282,7 +315,10 @@ export type UserScalarWhereWithAggregatesInput = {
   role?: Prisma.EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
   nombres?: Prisma.StringWithAggregatesFilter<"User"> | string
   apellidos?: Prisma.StringWithAggregatesFilter<"User"> | string
+  telefono?: Prisma.StringWithAggregatesFilter<"User"> | string
   activo?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  registerdate?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
+  deleted?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
 }
 
 export type UserCreateInput = {
@@ -291,7 +327,10 @@ export type UserCreateInput = {
   role: $Enums.Role
   nombres: string
   apellidos: string
+  telefono: string
   activo?: boolean
+  registerdate?: Date | string
+  deleted?: boolean
 }
 
 export type UserUncheckedCreateInput = {
@@ -301,7 +340,10 @@ export type UserUncheckedCreateInput = {
   role: $Enums.Role
   nombres: string
   apellidos: string
+  telefono: string
   activo?: boolean
+  registerdate?: Date | string
+  deleted?: boolean
 }
 
 export type UserUpdateInput = {
@@ -310,7 +352,10 @@ export type UserUpdateInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.StringFieldUpdateOperationsInput | string
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UserUncheckedUpdateInput = {
@@ -320,7 +365,10 @@ export type UserUncheckedUpdateInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.StringFieldUpdateOperationsInput | string
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UserCreateManyInput = {
@@ -330,7 +378,10 @@ export type UserCreateManyInput = {
   role: $Enums.Role
   nombres: string
   apellidos: string
+  telefono: string
   activo?: boolean
+  registerdate?: Date | string
+  deleted?: boolean
 }
 
 export type UserUpdateManyMutationInput = {
@@ -339,7 +390,10 @@ export type UserUpdateManyMutationInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.StringFieldUpdateOperationsInput | string
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -349,7 +403,10 @@ export type UserUncheckedUpdateManyInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.StringFieldUpdateOperationsInput | string
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -359,7 +416,10 @@ export type UserCountOrderByAggregateInput = {
   role?: Prisma.SortOrder
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
+  telefono?: Prisma.SortOrder
   activo?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
+  deleted?: Prisma.SortOrder
 }
 
 export type UserAvgOrderByAggregateInput = {
@@ -373,7 +433,10 @@ export type UserMaxOrderByAggregateInput = {
   role?: Prisma.SortOrder
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
+  telefono?: Prisma.SortOrder
   activo?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
+  deleted?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -383,7 +446,10 @@ export type UserMinOrderByAggregateInput = {
   role?: Prisma.SortOrder
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
+  telefono?: Prisma.SortOrder
   activo?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
+  deleted?: Prisma.SortOrder
 }
 
 export type UserSumOrderByAggregateInput = {
@@ -403,7 +469,10 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   role?: boolean
   nombres?: boolean
   apellidos?: boolean
+  telefono?: boolean
   activo?: boolean
+  registerdate?: boolean
+  deleted?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -413,7 +482,10 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   role?: boolean
   nombres?: boolean
   apellidos?: boolean
+  telefono?: boolean
   activo?: boolean
+  registerdate?: boolean
+  deleted?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -423,7 +495,10 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   role?: boolean
   nombres?: boolean
   apellidos?: boolean
+  telefono?: boolean
   activo?: boolean
+  registerdate?: boolean
+  deleted?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -433,22 +508,31 @@ export type UserSelectScalar = {
   role?: boolean
   nombres?: boolean
   apellidos?: boolean
+  telefono?: boolean
   activo?: boolean
+  registerdate?: boolean
+  deleted?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "role" | "nombres" | "apellidos" | "activo", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "role" | "nombres" | "apellidos" | "telefono" | "activo" | "registerdate" | "deleted", ExtArgs["result"]["user"]>
 
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
+    /**
+     * @zod.string({ required_error: "El email es obligatorio" }).email({ message: "El formato del correo electrónico no es válido" })
+     */
     email: string
     password: string
     role: $Enums.Role
     nombres: string
     apellidos: string
+    telefono: string
     activo: boolean
+    registerdate: Date
+    deleted: boolean
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -878,7 +962,10 @@ export interface UserFieldRefs {
   readonly role: Prisma.FieldRef<"User", 'Role'>
   readonly nombres: Prisma.FieldRef<"User", 'String'>
   readonly apellidos: Prisma.FieldRef<"User", 'String'>
+  readonly telefono: Prisma.FieldRef<"User", 'String'>
   readonly activo: Prisma.FieldRef<"User", 'Boolean'>
+  readonly registerdate: Prisma.FieldRef<"User", 'DateTime'>
+  readonly deleted: Prisma.FieldRef<"User", 'Boolean'>
 }
     
 

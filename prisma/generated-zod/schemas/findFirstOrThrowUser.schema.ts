@@ -15,7 +15,10 @@ export const UserFindFirstOrThrowSelectSchema: z.ZodType<Prisma.UserSelect> = z.
     role: z.boolean().optional(),
     nombres: z.boolean().optional(),
     apellidos: z.boolean().optional(),
-    activo: z.boolean().optional()
+    telefono: z.boolean().optional(),
+    activo: z.boolean().optional(),
+    registerdate: z.boolean().optional(),
+    deleted: z.boolean().optional()
   }).strict() as unknown as z.ZodType<Prisma.UserSelect>;
 
 export const UserFindFirstOrThrowSelectZodSchema = z.object({
@@ -25,7 +28,10 @@ export const UserFindFirstOrThrowSelectZodSchema = z.object({
     role: z.boolean().optional(),
     nombres: z.boolean().optional(),
     apellidos: z.boolean().optional(),
-    activo: z.boolean().optional()
+    telefono: z.boolean().optional(),
+    activo: z.boolean().optional(),
+    registerdate: z.boolean().optional(),
+    deleted: z.boolean().optional()
   }).strict();
 
 export const UserFindFirstOrThrowSchema: z.ZodType<Prisma.UserFindFirstOrThrowArgs> = z.object({ select: UserFindFirstOrThrowSelectSchema.optional(),  orderBy: z.union([UserOrderByWithRelationInputObjectSchema, UserOrderByWithRelationInputObjectSchema.array()]).optional(), where: UserWhereInputObjectSchema.optional(), cursor: UserWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([UserScalarFieldEnumSchema, UserScalarFieldEnumSchema.array()]).optional() }).strict() as unknown as z.ZodType<Prisma.UserFindFirstOrThrowArgs>;

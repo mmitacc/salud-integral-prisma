@@ -11,10 +11,11 @@ const makeSchema = () => z.object({
   telefono: SortOrderSchema.optional(),
   email: SortOrderSchema.optional(),
   masculino: SortOrderSchema.optional(),
-  fecha_nac: SortOrderSchema.optional(),
-  tipoSangre: SortOrderSchema.optional(),
+  fechanacimiento: SortOrderSchema.optional(),
+  tiposangre: SortOrderSchema.optional(),
   alergias: SortOrderSchema.optional(),
-  creado: SortOrderSchema.optional(),
+  registerdate: SortOrderSchema.optional(),
+  deleted: SortOrderSchema.optional(),
   historiales: z.lazy(() => HistorialOrderByRelationAggregateInputObjectSchema).optional(),
   citas: z.lazy(() => CitaOrderByRelationAggregateInputObjectSchema).optional()
 }).strict();

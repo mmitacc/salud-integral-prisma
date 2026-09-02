@@ -1,18 +1,18 @@
 {
   "name": "salud-integral-prisma",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Backend de la aplicación Salud Integral utilizando Prisma, Express, Zod y Swagger.",
+  "main": "src/index.ts",
   "scripts": {
     "test": "",
     "swagger":"tsx src/swagger.ts",
-    "dev": "tsx watch src/index.ts",
+    "dev": "tsx src/swagger.ts && tsx watch --env-file=.env src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Manuel Mitacc",
+  "license": "",
   "type": "module",
   "devDependencies": {
     "@types/cors": "^2.8.19",

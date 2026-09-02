@@ -5,16 +5,17 @@ import { EstadoCitaSchema } from '../enums/EstadoCita.schema'
 import { DecimalJSLikeSchema, isValidDecimalInput } from '../../helpers/decimal-helpers';
 const makeSchema = () => z.object({
   id: z.number().int().optional(),
-  fecha: z.coerce.date().optional(),
   estado: EstadoCitaSchema.optional(),
-  pagoInicial: z.union([
+  pagoinicial: z.union([
   z.number(),
   z.string(),
   z.custom<InstanceType<typeof Prisma.Decimal>>((v) => Prisma.Decimal.isDecimal(v)),
   DecimalJSLikeSchema,
 ]).refine((v) => isValidDecimalInput(v), {
-  message: "Field 'pagoInicial' must be a Decimal",
-}).optional()
+  message: "Field 'pagoinicial' must be a Decimal",
+}).optional(),
+  registerdate: z.coerce.date().optional(),
+  deleted: z.boolean().optional()
 }).strict();
 export const CitaCreateManyPacienteInputObjectSchema: z.ZodType<Prisma.CitaCreateManyPacienteInput> = makeSchema() as unknown as z.ZodType<Prisma.CitaCreateManyPacienteInput>;
 export const CitaCreateManyPacienteInputObjectZodSchema = makeSchema();

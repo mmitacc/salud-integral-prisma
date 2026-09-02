@@ -10,7 +10,8 @@ import { EspecialidadSumOrderByAggregateInputObjectSchema as EspecialidadSumOrde
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
   tipo: SortOrderSchema.optional(),
-  creado: SortOrderSchema.optional(),
+  registerdate: SortOrderSchema.optional(),
+  deleted: SortOrderSchema.optional(),
   _count: z.lazy(() => EspecialidadCountOrderByAggregateInputObjectSchema).optional(),
   _avg: z.lazy(() => EspecialidadAvgOrderByAggregateInputObjectSchema).optional(),
   _max: z.lazy(() => EspecialidadMaxOrderByAggregateInputObjectSchema).optional(),

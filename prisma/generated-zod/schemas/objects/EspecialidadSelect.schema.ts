@@ -6,7 +6,8 @@ import { EspecialidadCountOutputTypeArgsObjectSchema as EspecialidadCountOutputT
 const makeSchema = () => z.object({
   id: z.boolean().optional(),
   tipo: z.boolean().optional(),
-  creado: z.boolean().optional(),
+  registerdate: z.boolean().optional(),
+  deleted: z.boolean().optional(),
   medicos: z.union([z.boolean(), z.lazy(() => MedicoFindManySchema)]).optional(),
   _count: z.union([z.boolean(), z.lazy(() => EspecialidadCountOutputTypeArgsObjectSchema)]).optional()
 }).strict();

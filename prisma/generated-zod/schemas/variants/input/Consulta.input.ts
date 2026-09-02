@@ -2,12 +2,13 @@ import * as z from 'zod';
 // prettier-ignore
 export const ConsultaInputSchema = z.object({
     id: z.number().int(),
-    idCita: z.number().int(),
-    idMedico: z.number().int(),
+    id_cita: z.number().int(),
+    id_medico: z.number().int(),
     fecha: z.coerce.date(),
     horario: z.coerce.date(),
     costo: z.number(),
-    creado: z.coerce.date(),
+    registerdate: z.coerce.date(),
+    deleted: z.boolean(),
     cita: z.unknown(),
     medico: z.unknown()
 }).strict();

@@ -28,76 +28,82 @@ export type AggregateCita = {
 
 export type CitaAvgAggregateOutputType = {
   id: number | null
-  idPaciente: number | null
-  pagoInicial: runtime.Decimal | null
+  id_paciente: number | null
+  pagoinicial: runtime.Decimal | null
 }
 
 export type CitaSumAggregateOutputType = {
   id: number | null
-  idPaciente: number | null
-  pagoInicial: runtime.Decimal | null
+  id_paciente: number | null
+  pagoinicial: runtime.Decimal | null
 }
 
 export type CitaMinAggregateOutputType = {
   id: number | null
-  idPaciente: number | null
-  fecha: Date | null
+  id_paciente: number | null
   estado: $Enums.EstadoCita | null
-  pagoInicial: runtime.Decimal | null
+  pagoinicial: runtime.Decimal | null
+  registerdate: Date | null
+  deleted: boolean | null
 }
 
 export type CitaMaxAggregateOutputType = {
   id: number | null
-  idPaciente: number | null
-  fecha: Date | null
+  id_paciente: number | null
   estado: $Enums.EstadoCita | null
-  pagoInicial: runtime.Decimal | null
+  pagoinicial: runtime.Decimal | null
+  registerdate: Date | null
+  deleted: boolean | null
 }
 
 export type CitaCountAggregateOutputType = {
   id: number
-  idPaciente: number
-  fecha: number
+  id_paciente: number
   estado: number
-  pagoInicial: number
+  pagoinicial: number
+  registerdate: number
+  deleted: number
   _all: number
 }
 
 
 export type CitaAvgAggregateInputType = {
   id?: true
-  idPaciente?: true
-  pagoInicial?: true
+  id_paciente?: true
+  pagoinicial?: true
 }
 
 export type CitaSumAggregateInputType = {
   id?: true
-  idPaciente?: true
-  pagoInicial?: true
+  id_paciente?: true
+  pagoinicial?: true
 }
 
 export type CitaMinAggregateInputType = {
   id?: true
-  idPaciente?: true
-  fecha?: true
+  id_paciente?: true
   estado?: true
-  pagoInicial?: true
+  pagoinicial?: true
+  registerdate?: true
+  deleted?: true
 }
 
 export type CitaMaxAggregateInputType = {
   id?: true
-  idPaciente?: true
-  fecha?: true
+  id_paciente?: true
   estado?: true
-  pagoInicial?: true
+  pagoinicial?: true
+  registerdate?: true
+  deleted?: true
 }
 
 export type CitaCountAggregateInputType = {
   id?: true
-  idPaciente?: true
-  fecha?: true
+  id_paciente?: true
   estado?: true
-  pagoInicial?: true
+  pagoinicial?: true
+  registerdate?: true
+  deleted?: true
   _all?: true
 }
 
@@ -189,10 +195,11 @@ export type CitaGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type CitaGroupByOutputType = {
   id: number
-  idPaciente: number
-  fecha: Date
+  id_paciente: number
   estado: $Enums.EstadoCita
-  pagoInicial: runtime.Decimal
+  pagoinicial: runtime.Decimal
+  registerdate: Date
+  deleted: boolean
   _count: CitaCountAggregateOutputType | null
   _avg: CitaAvgAggregateOutputType | null
   _sum: CitaSumAggregateOutputType | null
@@ -220,20 +227,22 @@ export type CitaWhereInput = {
   OR?: Prisma.CitaWhereInput[]
   NOT?: Prisma.CitaWhereInput | Prisma.CitaWhereInput[]
   id?: Prisma.IntFilter<"Cita"> | number
-  idPaciente?: Prisma.IntFilter<"Cita"> | number
-  fecha?: Prisma.DateTimeFilter<"Cita"> | Date | string
+  id_paciente?: Prisma.IntFilter<"Cita"> | number
   estado?: Prisma.EnumEstadoCitaFilter<"Cita"> | $Enums.EstadoCita
-  pagoInicial?: Prisma.DecimalFilter<"Cita"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  pagoinicial?: Prisma.DecimalFilter<"Cita"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  registerdate?: Prisma.DateTimeFilter<"Cita"> | Date | string
+  deleted?: Prisma.BoolFilter<"Cita"> | boolean
   paciente?: Prisma.XOR<Prisma.PacienteScalarRelationFilter, Prisma.PacienteWhereInput>
   consultas?: Prisma.ConsultaListRelationFilter
 }
 
 export type CitaOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  idPaciente?: Prisma.SortOrder
-  fecha?: Prisma.SortOrder
+  id_paciente?: Prisma.SortOrder
   estado?: Prisma.SortOrder
-  pagoInicial?: Prisma.SortOrder
+  pagoinicial?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
+  deleted?: Prisma.SortOrder
   paciente?: Prisma.PacienteOrderByWithRelationInput
   consultas?: Prisma.ConsultaOrderByRelationAggregateInput
 }
@@ -243,20 +252,22 @@ export type CitaWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.CitaWhereInput | Prisma.CitaWhereInput[]
   OR?: Prisma.CitaWhereInput[]
   NOT?: Prisma.CitaWhereInput | Prisma.CitaWhereInput[]
-  idPaciente?: Prisma.IntFilter<"Cita"> | number
-  fecha?: Prisma.DateTimeFilter<"Cita"> | Date | string
+  id_paciente?: Prisma.IntFilter<"Cita"> | number
   estado?: Prisma.EnumEstadoCitaFilter<"Cita"> | $Enums.EstadoCita
-  pagoInicial?: Prisma.DecimalFilter<"Cita"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  pagoinicial?: Prisma.DecimalFilter<"Cita"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  registerdate?: Prisma.DateTimeFilter<"Cita"> | Date | string
+  deleted?: Prisma.BoolFilter<"Cita"> | boolean
   paciente?: Prisma.XOR<Prisma.PacienteScalarRelationFilter, Prisma.PacienteWhereInput>
   consultas?: Prisma.ConsultaListRelationFilter
 }, "id">
 
 export type CitaOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  idPaciente?: Prisma.SortOrder
-  fecha?: Prisma.SortOrder
+  id_paciente?: Prisma.SortOrder
   estado?: Prisma.SortOrder
-  pagoInicial?: Prisma.SortOrder
+  pagoinicial?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
+  deleted?: Prisma.SortOrder
   _count?: Prisma.CitaCountOrderByAggregateInput
   _avg?: Prisma.CitaAvgOrderByAggregateInput
   _max?: Prisma.CitaMaxOrderByAggregateInput
@@ -269,66 +280,74 @@ export type CitaScalarWhereWithAggregatesInput = {
   OR?: Prisma.CitaScalarWhereWithAggregatesInput[]
   NOT?: Prisma.CitaScalarWhereWithAggregatesInput | Prisma.CitaScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Cita"> | number
-  idPaciente?: Prisma.IntWithAggregatesFilter<"Cita"> | number
-  fecha?: Prisma.DateTimeWithAggregatesFilter<"Cita"> | Date | string
+  id_paciente?: Prisma.IntWithAggregatesFilter<"Cita"> | number
   estado?: Prisma.EnumEstadoCitaWithAggregatesFilter<"Cita"> | $Enums.EstadoCita
-  pagoInicial?: Prisma.DecimalWithAggregatesFilter<"Cita"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  pagoinicial?: Prisma.DecimalWithAggregatesFilter<"Cita"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  registerdate?: Prisma.DateTimeWithAggregatesFilter<"Cita"> | Date | string
+  deleted?: Prisma.BoolWithAggregatesFilter<"Cita"> | boolean
 }
 
 export type CitaCreateInput = {
-  fecha?: Date | string
   estado?: $Enums.EstadoCita
-  pagoInicial?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  pagoinicial?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  registerdate?: Date | string
+  deleted?: boolean
   paciente: Prisma.PacienteCreateNestedOneWithoutCitasInput
   consultas?: Prisma.ConsultaCreateNestedManyWithoutCitaInput
 }
 
 export type CitaUncheckedCreateInput = {
   id?: number
-  idPaciente: number
-  fecha?: Date | string
+  id_paciente: number
   estado?: $Enums.EstadoCita
-  pagoInicial?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  pagoinicial?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  registerdate?: Date | string
+  deleted?: boolean
   consultas?: Prisma.ConsultaUncheckedCreateNestedManyWithoutCitaInput
 }
 
 export type CitaUpdateInput = {
-  fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   estado?: Prisma.EnumEstadoCitaFieldUpdateOperationsInput | $Enums.EstadoCita
-  pagoInicial?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  pagoinicial?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   paciente?: Prisma.PacienteUpdateOneRequiredWithoutCitasNestedInput
   consultas?: Prisma.ConsultaUpdateManyWithoutCitaNestedInput
 }
 
 export type CitaUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  idPaciente?: Prisma.IntFieldUpdateOperationsInput | number
-  fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  id_paciente?: Prisma.IntFieldUpdateOperationsInput | number
   estado?: Prisma.EnumEstadoCitaFieldUpdateOperationsInput | $Enums.EstadoCita
-  pagoInicial?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  pagoinicial?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   consultas?: Prisma.ConsultaUncheckedUpdateManyWithoutCitaNestedInput
 }
 
 export type CitaCreateManyInput = {
   id?: number
-  idPaciente: number
-  fecha?: Date | string
+  id_paciente: number
   estado?: $Enums.EstadoCita
-  pagoInicial?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  pagoinicial?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  registerdate?: Date | string
+  deleted?: boolean
 }
 
 export type CitaUpdateManyMutationInput = {
-  fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   estado?: Prisma.EnumEstadoCitaFieldUpdateOperationsInput | $Enums.EstadoCita
-  pagoInicial?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  pagoinicial?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type CitaUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  idPaciente?: Prisma.IntFieldUpdateOperationsInput | number
-  fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  id_paciente?: Prisma.IntFieldUpdateOperationsInput | number
   estado?: Prisma.EnumEstadoCitaFieldUpdateOperationsInput | $Enums.EstadoCita
-  pagoInicial?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  pagoinicial?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type CitaListRelationFilter = {
@@ -343,38 +362,41 @@ export type CitaOrderByRelationAggregateInput = {
 
 export type CitaCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  idPaciente?: Prisma.SortOrder
-  fecha?: Prisma.SortOrder
+  id_paciente?: Prisma.SortOrder
   estado?: Prisma.SortOrder
-  pagoInicial?: Prisma.SortOrder
+  pagoinicial?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
+  deleted?: Prisma.SortOrder
 }
 
 export type CitaAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  idPaciente?: Prisma.SortOrder
-  pagoInicial?: Prisma.SortOrder
+  id_paciente?: Prisma.SortOrder
+  pagoinicial?: Prisma.SortOrder
 }
 
 export type CitaMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  idPaciente?: Prisma.SortOrder
-  fecha?: Prisma.SortOrder
+  id_paciente?: Prisma.SortOrder
   estado?: Prisma.SortOrder
-  pagoInicial?: Prisma.SortOrder
+  pagoinicial?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
+  deleted?: Prisma.SortOrder
 }
 
 export type CitaMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  idPaciente?: Prisma.SortOrder
-  fecha?: Prisma.SortOrder
+  id_paciente?: Prisma.SortOrder
   estado?: Prisma.SortOrder
-  pagoInicial?: Prisma.SortOrder
+  pagoinicial?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
+  deleted?: Prisma.SortOrder
 }
 
 export type CitaSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  idPaciente?: Prisma.SortOrder
-  pagoInicial?: Prisma.SortOrder
+  id_paciente?: Prisma.SortOrder
+  pagoinicial?: Prisma.SortOrder
 }
 
 export type CitaScalarRelationFilter = {
@@ -451,17 +473,19 @@ export type CitaUpdateOneRequiredWithoutConsultasNestedInput = {
 }
 
 export type CitaCreateWithoutPacienteInput = {
-  fecha?: Date | string
   estado?: $Enums.EstadoCita
-  pagoInicial?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  pagoinicial?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  registerdate?: Date | string
+  deleted?: boolean
   consultas?: Prisma.ConsultaCreateNestedManyWithoutCitaInput
 }
 
 export type CitaUncheckedCreateWithoutPacienteInput = {
   id?: number
-  fecha?: Date | string
   estado?: $Enums.EstadoCita
-  pagoInicial?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  pagoinicial?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  registerdate?: Date | string
+  deleted?: boolean
   consultas?: Prisma.ConsultaUncheckedCreateNestedManyWithoutCitaInput
 }
 
@@ -496,25 +520,28 @@ export type CitaScalarWhereInput = {
   OR?: Prisma.CitaScalarWhereInput[]
   NOT?: Prisma.CitaScalarWhereInput | Prisma.CitaScalarWhereInput[]
   id?: Prisma.IntFilter<"Cita"> | number
-  idPaciente?: Prisma.IntFilter<"Cita"> | number
-  fecha?: Prisma.DateTimeFilter<"Cita"> | Date | string
+  id_paciente?: Prisma.IntFilter<"Cita"> | number
   estado?: Prisma.EnumEstadoCitaFilter<"Cita"> | $Enums.EstadoCita
-  pagoInicial?: Prisma.DecimalFilter<"Cita"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  pagoinicial?: Prisma.DecimalFilter<"Cita"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  registerdate?: Prisma.DateTimeFilter<"Cita"> | Date | string
+  deleted?: Prisma.BoolFilter<"Cita"> | boolean
 }
 
 export type CitaCreateWithoutConsultasInput = {
-  fecha?: Date | string
   estado?: $Enums.EstadoCita
-  pagoInicial?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  pagoinicial?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  registerdate?: Date | string
+  deleted?: boolean
   paciente: Prisma.PacienteCreateNestedOneWithoutCitasInput
 }
 
 export type CitaUncheckedCreateWithoutConsultasInput = {
   id?: number
-  idPaciente: number
-  fecha?: Date | string
+  id_paciente: number
   estado?: $Enums.EstadoCita
-  pagoInicial?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  pagoinicial?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  registerdate?: Date | string
+  deleted?: boolean
 }
 
 export type CitaCreateOrConnectWithoutConsultasInput = {
@@ -534,47 +561,53 @@ export type CitaUpdateToOneWithWhereWithoutConsultasInput = {
 }
 
 export type CitaUpdateWithoutConsultasInput = {
-  fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   estado?: Prisma.EnumEstadoCitaFieldUpdateOperationsInput | $Enums.EstadoCita
-  pagoInicial?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  pagoinicial?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   paciente?: Prisma.PacienteUpdateOneRequiredWithoutCitasNestedInput
 }
 
 export type CitaUncheckedUpdateWithoutConsultasInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  idPaciente?: Prisma.IntFieldUpdateOperationsInput | number
-  fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  id_paciente?: Prisma.IntFieldUpdateOperationsInput | number
   estado?: Prisma.EnumEstadoCitaFieldUpdateOperationsInput | $Enums.EstadoCita
-  pagoInicial?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  pagoinicial?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type CitaCreateManyPacienteInput = {
   id?: number
-  fecha?: Date | string
   estado?: $Enums.EstadoCita
-  pagoInicial?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  pagoinicial?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  registerdate?: Date | string
+  deleted?: boolean
 }
 
 export type CitaUpdateWithoutPacienteInput = {
-  fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   estado?: Prisma.EnumEstadoCitaFieldUpdateOperationsInput | $Enums.EstadoCita
-  pagoInicial?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  pagoinicial?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   consultas?: Prisma.ConsultaUpdateManyWithoutCitaNestedInput
 }
 
 export type CitaUncheckedUpdateWithoutPacienteInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   estado?: Prisma.EnumEstadoCitaFieldUpdateOperationsInput | $Enums.EstadoCita
-  pagoInicial?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  pagoinicial?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   consultas?: Prisma.ConsultaUncheckedUpdateManyWithoutCitaNestedInput
 }
 
 export type CitaUncheckedUpdateManyWithoutPacienteInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   estado?: Prisma.EnumEstadoCitaFieldUpdateOperationsInput | $Enums.EstadoCita
-  pagoInicial?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  pagoinicial?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 
@@ -610,10 +643,11 @@ export type CitaCountOutputTypeCountConsultasArgs<ExtArgs extends runtime.Types.
 
 export type CitaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  idPaciente?: boolean
-  fecha?: boolean
+  id_paciente?: boolean
   estado?: boolean
-  pagoInicial?: boolean
+  pagoinicial?: boolean
+  registerdate?: boolean
+  deleted?: boolean
   paciente?: boolean | Prisma.PacienteDefaultArgs<ExtArgs>
   consultas?: boolean | Prisma.Cita$consultasArgs<ExtArgs>
   _count?: boolean | Prisma.CitaCountOutputTypeDefaultArgs<ExtArgs>
@@ -621,31 +655,34 @@ export type CitaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
 
 export type CitaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  idPaciente?: boolean
-  fecha?: boolean
+  id_paciente?: boolean
   estado?: boolean
-  pagoInicial?: boolean
+  pagoinicial?: boolean
+  registerdate?: boolean
+  deleted?: boolean
   paciente?: boolean | Prisma.PacienteDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["cita"]>
 
 export type CitaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  idPaciente?: boolean
-  fecha?: boolean
+  id_paciente?: boolean
   estado?: boolean
-  pagoInicial?: boolean
+  pagoinicial?: boolean
+  registerdate?: boolean
+  deleted?: boolean
   paciente?: boolean | Prisma.PacienteDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["cita"]>
 
 export type CitaSelectScalar = {
   id?: boolean
-  idPaciente?: boolean
-  fecha?: boolean
+  id_paciente?: boolean
   estado?: boolean
-  pagoInicial?: boolean
+  pagoinicial?: boolean
+  registerdate?: boolean
+  deleted?: boolean
 }
 
-export type CitaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "idPaciente" | "fecha" | "estado" | "pagoInicial", ExtArgs["result"]["cita"]>
+export type CitaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "id_paciente" | "estado" | "pagoinicial" | "registerdate" | "deleted", ExtArgs["result"]["cita"]>
 export type CitaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   paciente?: boolean | Prisma.PacienteDefaultArgs<ExtArgs>
   consultas?: boolean | Prisma.Cita$consultasArgs<ExtArgs>
@@ -666,10 +703,11 @@ export type $CitaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    idPaciente: number
-    fecha: Date
+    id_paciente: number
     estado: $Enums.EstadoCita
-    pagoInicial: runtime.Decimal
+    pagoinicial: runtime.Decimal
+    registerdate: Date
+    deleted: boolean
   }, ExtArgs["result"]["cita"]>
   composites: {}
 }
@@ -1096,10 +1134,11 @@ export interface Prisma__CitaClient<T, Null = never, ExtArgs extends runtime.Typ
  */
 export interface CitaFieldRefs {
   readonly id: Prisma.FieldRef<"Cita", 'Int'>
-  readonly idPaciente: Prisma.FieldRef<"Cita", 'Int'>
-  readonly fecha: Prisma.FieldRef<"Cita", 'DateTime'>
+  readonly id_paciente: Prisma.FieldRef<"Cita", 'Int'>
   readonly estado: Prisma.FieldRef<"Cita", 'EstadoCita'>
-  readonly pagoInicial: Prisma.FieldRef<"Cita", 'Decimal'>
+  readonly pagoinicial: Prisma.FieldRef<"Cita", 'Decimal'>
+  readonly registerdate: Prisma.FieldRef<"Cita", 'DateTime'>
+  readonly deleted: Prisma.FieldRef<"Cita", 'Boolean'>
 }
     
 

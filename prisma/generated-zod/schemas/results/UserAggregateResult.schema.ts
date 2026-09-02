@@ -6,7 +6,10 @@ export const UserAggregateResultSchema = z.object({  _count: z.union([z.number()
     role: z.number().optional(),
     nombres: z.number().optional(),
     apellidos: z.number().optional(),
+    telefono: z.number().optional(),
     activo: z.number().optional(),
+    registerdate: z.number().optional(),
+    deleted: z.number().optional(),
     _all: z.number().optional()
   })]).optional(),
   _sum: z.object({
@@ -22,7 +25,10 @@ export const UserAggregateResultSchema = z.object({  _count: z.union([z.number()
     role: z.unknown().nullable().optional(),
     nombres: z.string().nullable().optional(),
     apellidos: z.string().nullable().optional(),
-    activo: z.boolean().nullable().optional()
+    telefono: z.string().nullable().optional(),
+    activo: z.boolean().nullable().optional(),
+    registerdate: z.date().nullable().optional(),
+    deleted: z.boolean().nullable().optional()
   }).nullable().optional(),
   _max: z.object({
     id: z.number().int().nullable().optional(),
@@ -31,5 +37,8 @@ export const UserAggregateResultSchema = z.object({  _count: z.union([z.number()
     role: z.unknown().nullable().optional(),
     nombres: z.string().nullable().optional(),
     apellidos: z.string().nullable().optional(),
-    activo: z.boolean().nullable().optional()
+    telefono: z.string().nullable().optional(),
+    activo: z.boolean().nullable().optional(),
+    registerdate: z.date().nullable().optional(),
+    deleted: z.boolean().nullable().optional()
   }).nullable().optional()});

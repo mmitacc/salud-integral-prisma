@@ -4,10 +4,11 @@ import type { Prisma } from '../../../generated-client/browser';
 
 const makeSchema = () => z.object({
   id: z.literal(true).optional(),
-  idPaciente: z.literal(true).optional(),
-  fecha: z.literal(true).optional(),
+  id_paciente: z.literal(true).optional(),
   estado: z.literal(true).optional(),
-  pagoInicial: z.literal(true).optional(),
+  pagoinicial: z.literal(true).optional(),
+  registerdate: z.literal(true).optional(),
+  deleted: z.literal(true).optional(),
   _all: z.literal(true).optional()
 }).strict();
 export const CitaCountAggregateInputObjectSchema: z.ZodType<Prisma.CitaCountAggregateInputType> = makeSchema() as unknown as z.ZodType<Prisma.CitaCountAggregateInputType>;

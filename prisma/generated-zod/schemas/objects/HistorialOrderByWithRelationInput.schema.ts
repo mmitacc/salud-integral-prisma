@@ -6,14 +6,15 @@ import { PacienteOrderByWithRelationInputObjectSchema as PacienteOrderByWithRela
 
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
-  idPaciente: SortOrderSchema.optional(),
-  fecha: SortOrderSchema.optional(),
+  id_paciente: SortOrderSchema.optional(),
   motivo: SortOrderSchema.optional(),
   antecedentes: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   triaje: SortOrderSchema.optional(),
   diagnostico: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   tratamiento: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   receta: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
+  registerdate: SortOrderSchema.optional(),
+  deleted: SortOrderSchema.optional(),
   paciente: z.lazy(() => PacienteOrderByWithRelationInputObjectSchema).optional()
 }).strict();
 export const HistorialOrderByWithRelationInputObjectSchema: z.ZodType<Prisma.HistorialOrderByWithRelationInput> = makeSchema() as unknown as z.ZodType<Prisma.HistorialOrderByWithRelationInput>;

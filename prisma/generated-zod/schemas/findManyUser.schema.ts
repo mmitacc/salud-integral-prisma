@@ -15,7 +15,10 @@ export const UserFindManySelectSchema: z.ZodType<Prisma.UserSelect> = z.object({
     role: z.boolean().optional(),
     nombres: z.boolean().optional(),
     apellidos: z.boolean().optional(),
-    activo: z.boolean().optional()
+    telefono: z.boolean().optional(),
+    activo: z.boolean().optional(),
+    registerdate: z.boolean().optional(),
+    deleted: z.boolean().optional()
   }).strict() as unknown as z.ZodType<Prisma.UserSelect>;
 
 export const UserFindManySelectZodSchema = z.object({
@@ -25,7 +28,10 @@ export const UserFindManySelectZodSchema = z.object({
     role: z.boolean().optional(),
     nombres: z.boolean().optional(),
     apellidos: z.boolean().optional(),
-    activo: z.boolean().optional()
+    telefono: z.boolean().optional(),
+    activo: z.boolean().optional(),
+    registerdate: z.boolean().optional(),
+    deleted: z.boolean().optional()
   }).strict();
 
 export const UserFindManySchema: z.ZodType<Prisma.UserFindManyArgs> = z.object({ select: UserFindManySelectSchema.optional(),  orderBy: z.union([UserOrderByWithRelationInputObjectSchema, UserOrderByWithRelationInputObjectSchema.array()]).optional(), where: UserWhereInputObjectSchema.optional(), cursor: UserWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([UserScalarFieldEnumSchema, UserScalarFieldEnumSchema.array()]).optional() }).strict() as unknown as z.ZodType<Prisma.UserFindManyArgs>;

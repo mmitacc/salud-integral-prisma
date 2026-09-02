@@ -3,7 +3,8 @@ import * as z from 'zod';
 export const EspecialidadInputSchema = z.object({
     id: z.number().int(),
     tipo: z.string(),
-    creado: z.coerce.date(),
+    registerdate: z.coerce.date(),
+    deleted: z.boolean(),
     medicos: z.array(z.unknown())
 }).strict();
 

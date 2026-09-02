@@ -41,10 +41,11 @@ export type PacienteMinAggregateOutputType = {
   telefono: string | null
   email: string | null
   masculino: boolean | null
-  fecha_nac: Date | null
-  tipoSangre: string | null
+  fechanacimiento: Date | null
+  tiposangre: string | null
   alergias: string | null
-  creado: Date | null
+  registerdate: Date | null
+  deleted: boolean | null
 }
 
 export type PacienteMaxAggregateOutputType = {
@@ -54,10 +55,11 @@ export type PacienteMaxAggregateOutputType = {
   telefono: string | null
   email: string | null
   masculino: boolean | null
-  fecha_nac: Date | null
-  tipoSangre: string | null
+  fechanacimiento: Date | null
+  tiposangre: string | null
   alergias: string | null
-  creado: Date | null
+  registerdate: Date | null
+  deleted: boolean | null
 }
 
 export type PacienteCountAggregateOutputType = {
@@ -67,10 +69,11 @@ export type PacienteCountAggregateOutputType = {
   telefono: number
   email: number
   masculino: number
-  fecha_nac: number
-  tipoSangre: number
+  fechanacimiento: number
+  tiposangre: number
   alergias: number
-  creado: number
+  registerdate: number
+  deleted: number
   _all: number
 }
 
@@ -90,10 +93,11 @@ export type PacienteMinAggregateInputType = {
   telefono?: true
   email?: true
   masculino?: true
-  fecha_nac?: true
-  tipoSangre?: true
+  fechanacimiento?: true
+  tiposangre?: true
   alergias?: true
-  creado?: true
+  registerdate?: true
+  deleted?: true
 }
 
 export type PacienteMaxAggregateInputType = {
@@ -103,10 +107,11 @@ export type PacienteMaxAggregateInputType = {
   telefono?: true
   email?: true
   masculino?: true
-  fecha_nac?: true
-  tipoSangre?: true
+  fechanacimiento?: true
+  tiposangre?: true
   alergias?: true
-  creado?: true
+  registerdate?: true
+  deleted?: true
 }
 
 export type PacienteCountAggregateInputType = {
@@ -116,10 +121,11 @@ export type PacienteCountAggregateInputType = {
   telefono?: true
   email?: true
   masculino?: true
-  fecha_nac?: true
-  tipoSangre?: true
+  fechanacimiento?: true
+  tiposangre?: true
   alergias?: true
-  creado?: true
+  registerdate?: true
+  deleted?: true
   _all?: true
 }
 
@@ -216,10 +222,11 @@ export type PacienteGroupByOutputType = {
   telefono: string
   email: string
   masculino: boolean
-  fecha_nac: Date
-  tipoSangre: string
+  fechanacimiento: Date
+  tiposangre: string
   alergias: string
-  creado: Date
+  registerdate: Date
+  deleted: boolean
   _count: PacienteCountAggregateOutputType | null
   _avg: PacienteAvgAggregateOutputType | null
   _sum: PacienteSumAggregateOutputType | null
@@ -252,10 +259,11 @@ export type PacienteWhereInput = {
   telefono?: Prisma.StringFilter<"Paciente"> | string
   email?: Prisma.StringFilter<"Paciente"> | string
   masculino?: Prisma.BoolFilter<"Paciente"> | boolean
-  fecha_nac?: Prisma.DateTimeFilter<"Paciente"> | Date | string
-  tipoSangre?: Prisma.StringFilter<"Paciente"> | string
+  fechanacimiento?: Prisma.DateTimeFilter<"Paciente"> | Date | string
+  tiposangre?: Prisma.StringFilter<"Paciente"> | string
   alergias?: Prisma.StringFilter<"Paciente"> | string
-  creado?: Prisma.DateTimeFilter<"Paciente"> | Date | string
+  registerdate?: Prisma.DateTimeFilter<"Paciente"> | Date | string
+  deleted?: Prisma.BoolFilter<"Paciente"> | boolean
   historiales?: Prisma.HistorialListRelationFilter
   citas?: Prisma.CitaListRelationFilter
 }
@@ -267,10 +275,11 @@ export type PacienteOrderByWithRelationInput = {
   telefono?: Prisma.SortOrder
   email?: Prisma.SortOrder
   masculino?: Prisma.SortOrder
-  fecha_nac?: Prisma.SortOrder
-  tipoSangre?: Prisma.SortOrder
+  fechanacimiento?: Prisma.SortOrder
+  tiposangre?: Prisma.SortOrder
   alergias?: Prisma.SortOrder
-  creado?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
+  deleted?: Prisma.SortOrder
   historiales?: Prisma.HistorialOrderByRelationAggregateInput
   citas?: Prisma.CitaOrderByRelationAggregateInput
 }
@@ -285,10 +294,11 @@ export type PacienteWhereUniqueInput = Prisma.AtLeast<{
   apellidos?: Prisma.StringFilter<"Paciente"> | string
   telefono?: Prisma.StringFilter<"Paciente"> | string
   masculino?: Prisma.BoolFilter<"Paciente"> | boolean
-  fecha_nac?: Prisma.DateTimeFilter<"Paciente"> | Date | string
-  tipoSangre?: Prisma.StringFilter<"Paciente"> | string
+  fechanacimiento?: Prisma.DateTimeFilter<"Paciente"> | Date | string
+  tiposangre?: Prisma.StringFilter<"Paciente"> | string
   alergias?: Prisma.StringFilter<"Paciente"> | string
-  creado?: Prisma.DateTimeFilter<"Paciente"> | Date | string
+  registerdate?: Prisma.DateTimeFilter<"Paciente"> | Date | string
+  deleted?: Prisma.BoolFilter<"Paciente"> | boolean
   historiales?: Prisma.HistorialListRelationFilter
   citas?: Prisma.CitaListRelationFilter
 }, "id" | "email">
@@ -300,10 +310,11 @@ export type PacienteOrderByWithAggregationInput = {
   telefono?: Prisma.SortOrder
   email?: Prisma.SortOrder
   masculino?: Prisma.SortOrder
-  fecha_nac?: Prisma.SortOrder
-  tipoSangre?: Prisma.SortOrder
+  fechanacimiento?: Prisma.SortOrder
+  tiposangre?: Prisma.SortOrder
   alergias?: Prisma.SortOrder
-  creado?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
+  deleted?: Prisma.SortOrder
   _count?: Prisma.PacienteCountOrderByAggregateInput
   _avg?: Prisma.PacienteAvgOrderByAggregateInput
   _max?: Prisma.PacienteMaxOrderByAggregateInput
@@ -321,10 +332,11 @@ export type PacienteScalarWhereWithAggregatesInput = {
   telefono?: Prisma.StringWithAggregatesFilter<"Paciente"> | string
   email?: Prisma.StringWithAggregatesFilter<"Paciente"> | string
   masculino?: Prisma.BoolWithAggregatesFilter<"Paciente"> | boolean
-  fecha_nac?: Prisma.DateTimeWithAggregatesFilter<"Paciente"> | Date | string
-  tipoSangre?: Prisma.StringWithAggregatesFilter<"Paciente"> | string
+  fechanacimiento?: Prisma.DateTimeWithAggregatesFilter<"Paciente"> | Date | string
+  tiposangre?: Prisma.StringWithAggregatesFilter<"Paciente"> | string
   alergias?: Prisma.StringWithAggregatesFilter<"Paciente"> | string
-  creado?: Prisma.DateTimeWithAggregatesFilter<"Paciente"> | Date | string
+  registerdate?: Prisma.DateTimeWithAggregatesFilter<"Paciente"> | Date | string
+  deleted?: Prisma.BoolWithAggregatesFilter<"Paciente"> | boolean
 }
 
 export type PacienteCreateInput = {
@@ -333,10 +345,11 @@ export type PacienteCreateInput = {
   telefono: string
   email: string
   masculino?: boolean
-  fecha_nac: Date | string
-  tipoSangre?: string
+  fechanacimiento: Date | string
+  tiposangre?: string
   alergias?: string
-  creado?: Date | string
+  registerdate?: Date | string
+  deleted?: boolean
   historiales?: Prisma.HistorialCreateNestedManyWithoutPacienteInput
   citas?: Prisma.CitaCreateNestedManyWithoutPacienteInput
 }
@@ -348,10 +361,11 @@ export type PacienteUncheckedCreateInput = {
   telefono: string
   email: string
   masculino?: boolean
-  fecha_nac: Date | string
-  tipoSangre?: string
+  fechanacimiento: Date | string
+  tiposangre?: string
   alergias?: string
-  creado?: Date | string
+  registerdate?: Date | string
+  deleted?: boolean
   historiales?: Prisma.HistorialUncheckedCreateNestedManyWithoutPacienteInput
   citas?: Prisma.CitaUncheckedCreateNestedManyWithoutPacienteInput
 }
@@ -362,10 +376,11 @@ export type PacienteUpdateInput = {
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   masculino?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fecha_nac?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  tipoSangre?: Prisma.StringFieldUpdateOperationsInput | string
+  fechanacimiento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tiposangre?: Prisma.StringFieldUpdateOperationsInput | string
   alergias?: Prisma.StringFieldUpdateOperationsInput | string
-  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   historiales?: Prisma.HistorialUpdateManyWithoutPacienteNestedInput
   citas?: Prisma.CitaUpdateManyWithoutPacienteNestedInput
 }
@@ -377,10 +392,11 @@ export type PacienteUncheckedUpdateInput = {
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   masculino?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fecha_nac?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  tipoSangre?: Prisma.StringFieldUpdateOperationsInput | string
+  fechanacimiento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tiposangre?: Prisma.StringFieldUpdateOperationsInput | string
   alergias?: Prisma.StringFieldUpdateOperationsInput | string
-  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   historiales?: Prisma.HistorialUncheckedUpdateManyWithoutPacienteNestedInput
   citas?: Prisma.CitaUncheckedUpdateManyWithoutPacienteNestedInput
 }
@@ -392,10 +408,11 @@ export type PacienteCreateManyInput = {
   telefono: string
   email: string
   masculino?: boolean
-  fecha_nac: Date | string
-  tipoSangre?: string
+  fechanacimiento: Date | string
+  tiposangre?: string
   alergias?: string
-  creado?: Date | string
+  registerdate?: Date | string
+  deleted?: boolean
 }
 
 export type PacienteUpdateManyMutationInput = {
@@ -404,10 +421,11 @@ export type PacienteUpdateManyMutationInput = {
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   masculino?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fecha_nac?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  tipoSangre?: Prisma.StringFieldUpdateOperationsInput | string
+  fechanacimiento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tiposangre?: Prisma.StringFieldUpdateOperationsInput | string
   alergias?: Prisma.StringFieldUpdateOperationsInput | string
-  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type PacienteUncheckedUpdateManyInput = {
@@ -417,10 +435,11 @@ export type PacienteUncheckedUpdateManyInput = {
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   masculino?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fecha_nac?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  tipoSangre?: Prisma.StringFieldUpdateOperationsInput | string
+  fechanacimiento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tiposangre?: Prisma.StringFieldUpdateOperationsInput | string
   alergias?: Prisma.StringFieldUpdateOperationsInput | string
-  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type PacienteCountOrderByAggregateInput = {
@@ -430,10 +449,11 @@ export type PacienteCountOrderByAggregateInput = {
   telefono?: Prisma.SortOrder
   email?: Prisma.SortOrder
   masculino?: Prisma.SortOrder
-  fecha_nac?: Prisma.SortOrder
-  tipoSangre?: Prisma.SortOrder
+  fechanacimiento?: Prisma.SortOrder
+  tiposangre?: Prisma.SortOrder
   alergias?: Prisma.SortOrder
-  creado?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
+  deleted?: Prisma.SortOrder
 }
 
 export type PacienteAvgOrderByAggregateInput = {
@@ -447,10 +467,11 @@ export type PacienteMaxOrderByAggregateInput = {
   telefono?: Prisma.SortOrder
   email?: Prisma.SortOrder
   masculino?: Prisma.SortOrder
-  fecha_nac?: Prisma.SortOrder
-  tipoSangre?: Prisma.SortOrder
+  fechanacimiento?: Prisma.SortOrder
+  tiposangre?: Prisma.SortOrder
   alergias?: Prisma.SortOrder
-  creado?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
+  deleted?: Prisma.SortOrder
 }
 
 export type PacienteMinOrderByAggregateInput = {
@@ -460,10 +481,11 @@ export type PacienteMinOrderByAggregateInput = {
   telefono?: Prisma.SortOrder
   email?: Prisma.SortOrder
   masculino?: Prisma.SortOrder
-  fecha_nac?: Prisma.SortOrder
-  tipoSangre?: Prisma.SortOrder
+  fechanacimiento?: Prisma.SortOrder
+  tiposangre?: Prisma.SortOrder
   alergias?: Prisma.SortOrder
-  creado?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
+  deleted?: Prisma.SortOrder
 }
 
 export type PacienteSumOrderByAggregateInput = {
@@ -529,10 +551,11 @@ export type PacienteCreateWithoutHistorialesInput = {
   telefono: string
   email: string
   masculino?: boolean
-  fecha_nac: Date | string
-  tipoSangre?: string
+  fechanacimiento: Date | string
+  tiposangre?: string
   alergias?: string
-  creado?: Date | string
+  registerdate?: Date | string
+  deleted?: boolean
   citas?: Prisma.CitaCreateNestedManyWithoutPacienteInput
 }
 
@@ -543,10 +566,11 @@ export type PacienteUncheckedCreateWithoutHistorialesInput = {
   telefono: string
   email: string
   masculino?: boolean
-  fecha_nac: Date | string
-  tipoSangre?: string
+  fechanacimiento: Date | string
+  tiposangre?: string
   alergias?: string
-  creado?: Date | string
+  registerdate?: Date | string
+  deleted?: boolean
   citas?: Prisma.CitaUncheckedCreateNestedManyWithoutPacienteInput
 }
 
@@ -572,10 +596,11 @@ export type PacienteUpdateWithoutHistorialesInput = {
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   masculino?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fecha_nac?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  tipoSangre?: Prisma.StringFieldUpdateOperationsInput | string
+  fechanacimiento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tiposangre?: Prisma.StringFieldUpdateOperationsInput | string
   alergias?: Prisma.StringFieldUpdateOperationsInput | string
-  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   citas?: Prisma.CitaUpdateManyWithoutPacienteNestedInput
 }
 
@@ -586,10 +611,11 @@ export type PacienteUncheckedUpdateWithoutHistorialesInput = {
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   masculino?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fecha_nac?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  tipoSangre?: Prisma.StringFieldUpdateOperationsInput | string
+  fechanacimiento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tiposangre?: Prisma.StringFieldUpdateOperationsInput | string
   alergias?: Prisma.StringFieldUpdateOperationsInput | string
-  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   citas?: Prisma.CitaUncheckedUpdateManyWithoutPacienteNestedInput
 }
 
@@ -599,10 +625,11 @@ export type PacienteCreateWithoutCitasInput = {
   telefono: string
   email: string
   masculino?: boolean
-  fecha_nac: Date | string
-  tipoSangre?: string
+  fechanacimiento: Date | string
+  tiposangre?: string
   alergias?: string
-  creado?: Date | string
+  registerdate?: Date | string
+  deleted?: boolean
   historiales?: Prisma.HistorialCreateNestedManyWithoutPacienteInput
 }
 
@@ -613,10 +640,11 @@ export type PacienteUncheckedCreateWithoutCitasInput = {
   telefono: string
   email: string
   masculino?: boolean
-  fecha_nac: Date | string
-  tipoSangre?: string
+  fechanacimiento: Date | string
+  tiposangre?: string
   alergias?: string
-  creado?: Date | string
+  registerdate?: Date | string
+  deleted?: boolean
   historiales?: Prisma.HistorialUncheckedCreateNestedManyWithoutPacienteInput
 }
 
@@ -642,10 +670,11 @@ export type PacienteUpdateWithoutCitasInput = {
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   masculino?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fecha_nac?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  tipoSangre?: Prisma.StringFieldUpdateOperationsInput | string
+  fechanacimiento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tiposangre?: Prisma.StringFieldUpdateOperationsInput | string
   alergias?: Prisma.StringFieldUpdateOperationsInput | string
-  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   historiales?: Prisma.HistorialUpdateManyWithoutPacienteNestedInput
 }
 
@@ -656,10 +685,11 @@ export type PacienteUncheckedUpdateWithoutCitasInput = {
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   masculino?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fecha_nac?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  tipoSangre?: Prisma.StringFieldUpdateOperationsInput | string
+  fechanacimiento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tiposangre?: Prisma.StringFieldUpdateOperationsInput | string
   alergias?: Prisma.StringFieldUpdateOperationsInput | string
-  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   historiales?: Prisma.HistorialUncheckedUpdateManyWithoutPacienteNestedInput
 }
 
@@ -710,10 +740,11 @@ export type PacienteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   telefono?: boolean
   email?: boolean
   masculino?: boolean
-  fecha_nac?: boolean
-  tipoSangre?: boolean
+  fechanacimiento?: boolean
+  tiposangre?: boolean
   alergias?: boolean
-  creado?: boolean
+  registerdate?: boolean
+  deleted?: boolean
   historiales?: boolean | Prisma.Paciente$historialesArgs<ExtArgs>
   citas?: boolean | Prisma.Paciente$citasArgs<ExtArgs>
   _count?: boolean | Prisma.PacienteCountOutputTypeDefaultArgs<ExtArgs>
@@ -726,10 +757,11 @@ export type PacienteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   telefono?: boolean
   email?: boolean
   masculino?: boolean
-  fecha_nac?: boolean
-  tipoSangre?: boolean
+  fechanacimiento?: boolean
+  tiposangre?: boolean
   alergias?: boolean
-  creado?: boolean
+  registerdate?: boolean
+  deleted?: boolean
 }, ExtArgs["result"]["paciente"]>
 
 export type PacienteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -739,10 +771,11 @@ export type PacienteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   telefono?: boolean
   email?: boolean
   masculino?: boolean
-  fecha_nac?: boolean
-  tipoSangre?: boolean
+  fechanacimiento?: boolean
+  tiposangre?: boolean
   alergias?: boolean
-  creado?: boolean
+  registerdate?: boolean
+  deleted?: boolean
 }, ExtArgs["result"]["paciente"]>
 
 export type PacienteSelectScalar = {
@@ -752,13 +785,14 @@ export type PacienteSelectScalar = {
   telefono?: boolean
   email?: boolean
   masculino?: boolean
-  fecha_nac?: boolean
-  tipoSangre?: boolean
+  fechanacimiento?: boolean
+  tiposangre?: boolean
   alergias?: boolean
-  creado?: boolean
+  registerdate?: boolean
+  deleted?: boolean
 }
 
-export type PacienteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombres" | "apellidos" | "telefono" | "email" | "masculino" | "fecha_nac" | "tipoSangre" | "alergias" | "creado", ExtArgs["result"]["paciente"]>
+export type PacienteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombres" | "apellidos" | "telefono" | "email" | "masculino" | "fechanacimiento" | "tiposangre" | "alergias" | "registerdate" | "deleted", ExtArgs["result"]["paciente"]>
 export type PacienteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   historiales?: boolean | Prisma.Paciente$historialesArgs<ExtArgs>
   citas?: boolean | Prisma.Paciente$citasArgs<ExtArgs>
@@ -778,12 +812,16 @@ export type $PacientePayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     nombres: string
     apellidos: string
     telefono: string
+    /**
+     * @zod.string({ required_error: "El email es obligatorio" }).email({ message: "El formato del correo electrónico no es válido" })
+     */
     email: string
     masculino: boolean
-    fecha_nac: Date
-    tipoSangre: string
+    fechanacimiento: Date
+    tiposangre: string
     alergias: string
-    creado: Date
+    registerdate: Date
+    deleted: boolean
   }, ExtArgs["result"]["paciente"]>
   composites: {}
 }
@@ -1215,10 +1253,11 @@ export interface PacienteFieldRefs {
   readonly telefono: Prisma.FieldRef<"Paciente", 'String'>
   readonly email: Prisma.FieldRef<"Paciente", 'String'>
   readonly masculino: Prisma.FieldRef<"Paciente", 'Boolean'>
-  readonly fecha_nac: Prisma.FieldRef<"Paciente", 'DateTime'>
-  readonly tipoSangre: Prisma.FieldRef<"Paciente", 'String'>
+  readonly fechanacimiento: Prisma.FieldRef<"Paciente", 'DateTime'>
+  readonly tiposangre: Prisma.FieldRef<"Paciente", 'String'>
   readonly alergias: Prisma.FieldRef<"Paciente", 'String'>
-  readonly creado: Prisma.FieldRef<"Paciente", 'DateTime'>
+  readonly registerdate: Prisma.FieldRef<"Paciente", 'DateTime'>
+  readonly deleted: Prisma.FieldRef<"Paciente", 'Boolean'>
 }
     
 

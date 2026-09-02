@@ -6,10 +6,11 @@ export const PacienteGroupByResultSchema = z.array(z.object({
   telefono: z.string().optional(),
   email: z.string().optional(),
   masculino: z.boolean().optional(),
-  fecha_nac: z.date().optional(),
-  tipoSangre: z.string().optional(),
+  fechanacimiento: z.date().optional(),
+  tiposangre: z.string().optional(),
   alergias: z.string().optional(),
-  creado: z.date().optional(),
+  registerdate: z.date().optional(),
+  deleted: z.boolean().optional(),
   _count: z.union([z.number(), z.object({
     id: z.number().optional(),
     nombres: z.number().optional(),
@@ -17,10 +18,11 @@ export const PacienteGroupByResultSchema = z.array(z.object({
     telefono: z.number().optional(),
     email: z.number().optional(),
     masculino: z.number().optional(),
-    fecha_nac: z.number().optional(),
-    tipoSangre: z.number().optional(),
+    fechanacimiento: z.number().optional(),
+    tiposangre: z.number().optional(),
     alergias: z.number().optional(),
-    creado: z.number().optional(),
+    registerdate: z.number().optional(),
+    deleted: z.number().optional(),
     _all: z.number().optional()
   })]).optional(),
   _sum: z.object({
@@ -36,10 +38,11 @@ export const PacienteGroupByResultSchema = z.array(z.object({
     telefono: z.string().nullable().optional(),
     email: z.string().nullable().optional(),
     masculino: z.boolean().nullable().optional(),
-    fecha_nac: z.date().nullable().optional(),
-    tipoSangre: z.string().nullable().optional(),
+    fechanacimiento: z.date().nullable().optional(),
+    tiposangre: z.string().nullable().optional(),
     alergias: z.string().nullable().optional(),
-    creado: z.date().nullable().optional()
+    registerdate: z.date().nullable().optional(),
+    deleted: z.boolean().nullable().optional()
   }).nullable().optional(),
   _max: z.object({
     id: z.number().int().nullable().optional(),
@@ -48,9 +51,10 @@ export const PacienteGroupByResultSchema = z.array(z.object({
     telefono: z.string().nullable().optional(),
     email: z.string().nullable().optional(),
     masculino: z.boolean().nullable().optional(),
-    fecha_nac: z.date().nullable().optional(),
-    tipoSangre: z.string().nullable().optional(),
+    fechanacimiento: z.date().nullable().optional(),
+    tiposangre: z.string().nullable().optional(),
     alergias: z.string().nullable().optional(),
-    creado: z.date().nullable().optional()
+    registerdate: z.date().nullable().optional(),
+    deleted: z.boolean().nullable().optional()
   }).nullable().optional()
 }));

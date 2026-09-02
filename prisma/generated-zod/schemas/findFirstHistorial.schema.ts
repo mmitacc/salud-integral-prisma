@@ -12,27 +12,29 @@ import { PacienteArgsObjectSchema as PacienteArgsObjectSchema } from './objects/
 
 export const HistorialFindFirstSelectSchema: z.ZodType<Prisma.HistorialSelect> = z.object({
     id: z.boolean().optional(),
-    idPaciente: z.boolean().optional(),
-    fecha: z.boolean().optional(),
+    id_paciente: z.boolean().optional(),
     motivo: z.boolean().optional(),
     antecedentes: z.boolean().optional(),
     triaje: z.boolean().optional(),
     diagnostico: z.boolean().optional(),
     tratamiento: z.boolean().optional(),
     receta: z.boolean().optional(),
+    registerdate: z.boolean().optional(),
+    deleted: z.boolean().optional(),
     paciente: z.union([z.boolean(), z.lazy(() => PacienteArgsObjectSchema)]).optional()
   }).strict() as unknown as z.ZodType<Prisma.HistorialSelect>;
 
 export const HistorialFindFirstSelectZodSchema = z.object({
     id: z.boolean().optional(),
-    idPaciente: z.boolean().optional(),
-    fecha: z.boolean().optional(),
+    id_paciente: z.boolean().optional(),
     motivo: z.boolean().optional(),
     antecedentes: z.boolean().optional(),
     triaje: z.boolean().optional(),
     diagnostico: z.boolean().optional(),
     tratamiento: z.boolean().optional(),
     receta: z.boolean().optional(),
+    registerdate: z.boolean().optional(),
+    deleted: z.boolean().optional(),
     paciente: z.union([z.boolean(), z.lazy(() => PacienteArgsObjectSchema)]).optional()
   }).strict();
 

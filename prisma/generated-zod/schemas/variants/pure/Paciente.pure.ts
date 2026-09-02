@@ -5,12 +5,13 @@ export const PacienteModelSchema = z.object({
     nombres: z.string(),
     apellidos: z.string(),
     telefono: z.string(),
-    email: z.string(),
+    email: z.email({ message: "El formato del correo electrónico no es válido" }),
     masculino: z.boolean(),
-    fecha_nac: z.date(),
-    tipoSangre: z.string(),
+    fechanacimiento: z.date(),
+    tiposangre: z.string(),
     alergias: z.string(),
-    creado: z.date(),
+    registerdate: z.date(),
+    deleted: z.boolean(),
     historiales: z.array(z.unknown()),
     citas: z.array(z.unknown())
 }).strict();

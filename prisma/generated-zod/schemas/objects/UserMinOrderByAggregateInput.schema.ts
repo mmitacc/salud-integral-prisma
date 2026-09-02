@@ -9,7 +9,10 @@ const makeSchema = () => z.object({
   role: SortOrderSchema.optional(),
   nombres: SortOrderSchema.optional(),
   apellidos: SortOrderSchema.optional(),
-  activo: SortOrderSchema.optional()
+  telefono: SortOrderSchema.optional(),
+  activo: SortOrderSchema.optional(),
+  registerdate: SortOrderSchema.optional(),
+  deleted: SortOrderSchema.optional()
 }).strict();
 export const UserMinOrderByAggregateInputObjectSchema: z.ZodType<Prisma.UserMinOrderByAggregateInput> = makeSchema() as unknown as z.ZodType<Prisma.UserMinOrderByAggregateInput>;
 export const UserMinOrderByAggregateInputObjectZodSchema = makeSchema();

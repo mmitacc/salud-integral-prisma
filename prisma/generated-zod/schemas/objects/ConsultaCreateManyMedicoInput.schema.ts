@@ -5,7 +5,7 @@ import { Prisma } from '../../../generated-client/browser';
 import { DecimalJSLikeSchema, isValidDecimalInput } from '../../helpers/decimal-helpers';
 const makeSchema = () => z.object({
   id: z.number().int().optional(),
-  idCita: z.number().int(),
+  id_cita: z.number().int(),
   fecha: z.coerce.date(),
   horario: z.coerce.date(),
   costo: z.union([
@@ -16,7 +16,8 @@ const makeSchema = () => z.object({
 ]).refine((v) => isValidDecimalInput(v), {
   message: "Field 'costo' must be a Decimal",
 }).optional(),
-  creado: z.coerce.date().optional()
+  registerdate: z.coerce.date().optional(),
+  deleted: z.boolean().optional()
 }).strict();
 export const ConsultaCreateManyMedicoInputObjectSchema: z.ZodType<Prisma.ConsultaCreateManyMedicoInput> = makeSchema() as unknown as z.ZodType<Prisma.ConsultaCreateManyMedicoInput>;
 export const ConsultaCreateManyMedicoInputObjectZodSchema = makeSchema();

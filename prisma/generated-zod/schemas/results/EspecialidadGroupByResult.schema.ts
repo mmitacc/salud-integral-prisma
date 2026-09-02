@@ -2,11 +2,13 @@ import * as z from 'zod';
 export const EspecialidadGroupByResultSchema = z.array(z.object({
   id: z.number().int().optional(),
   tipo: z.string().optional(),
-  creado: z.date().optional(),
+  registerdate: z.date().optional(),
+  deleted: z.boolean().optional(),
   _count: z.union([z.number(), z.object({
     id: z.number().optional(),
     tipo: z.number().optional(),
-    creado: z.number().optional(),
+    registerdate: z.number().optional(),
+    deleted: z.number().optional(),
     _all: z.number().optional()
   })]).optional(),
   _sum: z.object({
@@ -18,11 +20,13 @@ export const EspecialidadGroupByResultSchema = z.array(z.object({
   _min: z.object({
     id: z.number().int().nullable().optional(),
     tipo: z.string().nullable().optional(),
-    creado: z.date().nullable().optional()
+    registerdate: z.date().nullable().optional(),
+    deleted: z.boolean().nullable().optional()
   }).nullable().optional(),
   _max: z.object({
     id: z.number().int().nullable().optional(),
     tipo: z.string().nullable().optional(),
-    creado: z.date().nullable().optional()
+    registerdate: z.date().nullable().optional(),
+    deleted: z.boolean().nullable().optional()
   }).nullable().optional()
 }));

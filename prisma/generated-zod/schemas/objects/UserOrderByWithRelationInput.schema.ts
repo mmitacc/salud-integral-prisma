@@ -9,7 +9,10 @@ const makeSchema = () => z.object({
   role: SortOrderSchema.optional(),
   nombres: SortOrderSchema.optional(),
   apellidos: SortOrderSchema.optional(),
-  activo: SortOrderSchema.optional()
+  telefono: SortOrderSchema.optional(),
+  activo: SortOrderSchema.optional(),
+  registerdate: SortOrderSchema.optional(),
+  deleted: SortOrderSchema.optional()
 }).strict();
 export const UserOrderByWithRelationInputObjectSchema: z.ZodType<Prisma.UserOrderByWithRelationInput> = makeSchema() as unknown as z.ZodType<Prisma.UserOrderByWithRelationInput>;
 export const UserOrderByWithRelationInputObjectZodSchema = makeSchema();

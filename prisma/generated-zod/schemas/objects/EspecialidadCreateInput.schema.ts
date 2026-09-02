@@ -4,7 +4,8 @@ import { MedicoCreateNestedManyWithoutEspecialidadInputObjectSchema as MedicoCre
 
 const makeSchema = () => z.object({
   tipo: z.string().max(100),
-  creado: z.coerce.date().optional(),
+  registerdate: z.coerce.date().optional(),
+  deleted: z.boolean().optional(),
   medicos: z.lazy(() => MedicoCreateNestedManyWithoutEspecialidadInputObjectSchema).optional()
 }).strict();
 export const EspecialidadCreateInputObjectSchema: z.ZodType<Prisma.EspecialidadCreateInput> = makeSchema() as unknown as z.ZodType<Prisma.EspecialidadCreateInput>;

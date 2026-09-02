@@ -3,10 +3,11 @@ import { EstadoCitaSchema } from '../../enums/EstadoCita.schema';
 // prettier-ignore
 export const CitaInputSchema = z.object({
     id: z.number().int(),
-    idPaciente: z.number().int(),
-    fecha: z.coerce.date(),
+    id_paciente: z.number().int(),
     estado: EstadoCitaSchema,
-    pagoInicial: z.number(),
+    pagoinicial: z.number(),
+    registerdate: z.coerce.date(),
+    deleted: z.boolean(),
     paciente: z.unknown(),
     consultas: z.array(z.unknown())
 }).strict();

@@ -6,5 +6,8 @@ export const UserCreateResultSchema = z.object({
   role: z.unknown(),
   nombres: z.string(),
   apellidos: z.string(),
-  activo: z.boolean()
+  telefono: z.string(),
+  activo: z.boolean(),
+  registerdate: z.date(),
+  deleted: z.boolean()
 });

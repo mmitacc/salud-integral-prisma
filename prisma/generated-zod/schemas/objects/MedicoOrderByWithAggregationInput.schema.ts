@@ -9,14 +9,15 @@ import { MedicoSumOrderByAggregateInputObjectSchema as MedicoSumOrderByAggregate
 
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
-  idEspecialidad: SortOrderSchema.optional(),
+  id_especialidad: SortOrderSchema.optional(),
   nombres: SortOrderSchema.optional(),
   apellidos: SortOrderSchema.optional(),
   telefono: SortOrderSchema.optional(),
   email: SortOrderSchema.optional(),
   masculino: SortOrderSchema.optional(),
-  fechaNac: SortOrderSchema.optional(),
-  creado: SortOrderSchema.optional(),
+  fechanacimiento: SortOrderSchema.optional(),
+  registerdate: SortOrderSchema.optional(),
+  deleted: SortOrderSchema.optional(),
   _count: z.lazy(() => MedicoCountOrderByAggregateInputObjectSchema).optional(),
   _avg: z.lazy(() => MedicoAvgOrderByAggregateInputObjectSchema).optional(),
   _max: z.lazy(() => MedicoMaxOrderByAggregateInputObjectSchema).optional(),

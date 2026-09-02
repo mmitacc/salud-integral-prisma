@@ -10,14 +10,15 @@ import { HistorialSumOrderByAggregateInputObjectSchema as HistorialSumOrderByAgg
 
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
-  idPaciente: SortOrderSchema.optional(),
-  fecha: SortOrderSchema.optional(),
+  id_paciente: SortOrderSchema.optional(),
   motivo: SortOrderSchema.optional(),
   antecedentes: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   triaje: SortOrderSchema.optional(),
   diagnostico: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   tratamiento: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   receta: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
+  registerdate: SortOrderSchema.optional(),
+  deleted: SortOrderSchema.optional(),
   _count: z.lazy(() => HistorialCountOrderByAggregateInputObjectSchema).optional(),
   _avg: z.lazy(() => HistorialAvgOrderByAggregateInputObjectSchema).optional(),
   _max: z.lazy(() => HistorialMaxOrderByAggregateInputObjectSchema).optional(),

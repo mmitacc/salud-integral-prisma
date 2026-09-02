@@ -6,16 +6,17 @@ import { ConsultaCreateNestedManyWithoutCitaInputObjectSchema as ConsultaCreateN
 
 import { DecimalJSLikeSchema, isValidDecimalInput } from '../../helpers/decimal-helpers';
 const makeSchema = () => z.object({
-  fecha: z.coerce.date().optional(),
   estado: EstadoCitaSchema.optional(),
-  pagoInicial: z.union([
+  pagoinicial: z.union([
   z.number(),
   z.string(),
   z.custom<InstanceType<typeof Prisma.Decimal>>((v) => Prisma.Decimal.isDecimal(v)),
   DecimalJSLikeSchema,
 ]).refine((v) => isValidDecimalInput(v), {
-  message: "Field 'pagoInicial' must be a Decimal",
+  message: "Field 'pagoinicial' must be a Decimal",
 }).optional(),
+  registerdate: z.coerce.date().optional(),
+  deleted: z.boolean().optional(),
   paciente: z.lazy(() => PacienteCreateNestedOneWithoutCitasInputObjectSchema),
   consultas: z.lazy(() => ConsultaCreateNestedManyWithoutCitaInputObjectSchema).optional()
 }).strict();

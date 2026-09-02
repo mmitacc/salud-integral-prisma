@@ -28,96 +28,102 @@ export type AggregateMedico = {
 
 export type MedicoAvgAggregateOutputType = {
   id: number | null
-  idEspecialidad: number | null
+  id_especialidad: number | null
 }
 
 export type MedicoSumAggregateOutputType = {
   id: number | null
-  idEspecialidad: number | null
+  id_especialidad: number | null
 }
 
 export type MedicoMinAggregateOutputType = {
   id: number | null
-  idEspecialidad: number | null
+  id_especialidad: number | null
   nombres: string | null
   apellidos: string | null
   telefono: string | null
   email: string | null
   masculino: boolean | null
-  fechaNac: Date | null
-  creado: Date | null
+  fechanacimiento: Date | null
+  registerdate: Date | null
+  deleted: boolean | null
 }
 
 export type MedicoMaxAggregateOutputType = {
   id: number | null
-  idEspecialidad: number | null
+  id_especialidad: number | null
   nombres: string | null
   apellidos: string | null
   telefono: string | null
   email: string | null
   masculino: boolean | null
-  fechaNac: Date | null
-  creado: Date | null
+  fechanacimiento: Date | null
+  registerdate: Date | null
+  deleted: boolean | null
 }
 
 export type MedicoCountAggregateOutputType = {
   id: number
-  idEspecialidad: number
+  id_especialidad: number
   nombres: number
   apellidos: number
   telefono: number
   email: number
   masculino: number
-  fechaNac: number
-  creado: number
+  fechanacimiento: number
+  registerdate: number
+  deleted: number
   _all: number
 }
 
 
 export type MedicoAvgAggregateInputType = {
   id?: true
-  idEspecialidad?: true
+  id_especialidad?: true
 }
 
 export type MedicoSumAggregateInputType = {
   id?: true
-  idEspecialidad?: true
+  id_especialidad?: true
 }
 
 export type MedicoMinAggregateInputType = {
   id?: true
-  idEspecialidad?: true
+  id_especialidad?: true
   nombres?: true
   apellidos?: true
   telefono?: true
   email?: true
   masculino?: true
-  fechaNac?: true
-  creado?: true
+  fechanacimiento?: true
+  registerdate?: true
+  deleted?: true
 }
 
 export type MedicoMaxAggregateInputType = {
   id?: true
-  idEspecialidad?: true
+  id_especialidad?: true
   nombres?: true
   apellidos?: true
   telefono?: true
   email?: true
   masculino?: true
-  fechaNac?: true
-  creado?: true
+  fechanacimiento?: true
+  registerdate?: true
+  deleted?: true
 }
 
 export type MedicoCountAggregateInputType = {
   id?: true
-  idEspecialidad?: true
+  id_especialidad?: true
   nombres?: true
   apellidos?: true
   telefono?: true
   email?: true
   masculino?: true
-  fechaNac?: true
-  creado?: true
+  fechanacimiento?: true
+  registerdate?: true
+  deleted?: true
   _all?: true
 }
 
@@ -209,14 +215,15 @@ export type MedicoGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 
 export type MedicoGroupByOutputType = {
   id: number
-  idEspecialidad: number
+  id_especialidad: number
   nombres: string
   apellidos: string
   telefono: string
   email: string
   masculino: boolean
-  fechaNac: Date
-  creado: Date
+  fechanacimiento: Date
+  registerdate: Date
+  deleted: boolean
   _count: MedicoCountAggregateOutputType | null
   _avg: MedicoAvgAggregateOutputType | null
   _sum: MedicoSumAggregateOutputType | null
@@ -244,28 +251,30 @@ export type MedicoWhereInput = {
   OR?: Prisma.MedicoWhereInput[]
   NOT?: Prisma.MedicoWhereInput | Prisma.MedicoWhereInput[]
   id?: Prisma.IntFilter<"Medico"> | number
-  idEspecialidad?: Prisma.IntFilter<"Medico"> | number
+  id_especialidad?: Prisma.IntFilter<"Medico"> | number
   nombres?: Prisma.StringFilter<"Medico"> | string
   apellidos?: Prisma.StringFilter<"Medico"> | string
   telefono?: Prisma.StringFilter<"Medico"> | string
   email?: Prisma.StringFilter<"Medico"> | string
   masculino?: Prisma.BoolFilter<"Medico"> | boolean
-  fechaNac?: Prisma.DateTimeFilter<"Medico"> | Date | string
-  creado?: Prisma.DateTimeFilter<"Medico"> | Date | string
+  fechanacimiento?: Prisma.DateTimeFilter<"Medico"> | Date | string
+  registerdate?: Prisma.DateTimeFilter<"Medico"> | Date | string
+  deleted?: Prisma.BoolFilter<"Medico"> | boolean
   especialidad?: Prisma.XOR<Prisma.EspecialidadScalarRelationFilter, Prisma.EspecialidadWhereInput>
   consultas?: Prisma.ConsultaListRelationFilter
 }
 
 export type MedicoOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  idEspecialidad?: Prisma.SortOrder
+  id_especialidad?: Prisma.SortOrder
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
   telefono?: Prisma.SortOrder
   email?: Prisma.SortOrder
   masculino?: Prisma.SortOrder
-  fechaNac?: Prisma.SortOrder
-  creado?: Prisma.SortOrder
+  fechanacimiento?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
+  deleted?: Prisma.SortOrder
   especialidad?: Prisma.EspecialidadOrderByWithRelationInput
   consultas?: Prisma.ConsultaOrderByRelationAggregateInput
 }
@@ -276,27 +285,29 @@ export type MedicoWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.MedicoWhereInput | Prisma.MedicoWhereInput[]
   OR?: Prisma.MedicoWhereInput[]
   NOT?: Prisma.MedicoWhereInput | Prisma.MedicoWhereInput[]
-  idEspecialidad?: Prisma.IntFilter<"Medico"> | number
+  id_especialidad?: Prisma.IntFilter<"Medico"> | number
   nombres?: Prisma.StringFilter<"Medico"> | string
   apellidos?: Prisma.StringFilter<"Medico"> | string
   telefono?: Prisma.StringFilter<"Medico"> | string
   masculino?: Prisma.BoolFilter<"Medico"> | boolean
-  fechaNac?: Prisma.DateTimeFilter<"Medico"> | Date | string
-  creado?: Prisma.DateTimeFilter<"Medico"> | Date | string
+  fechanacimiento?: Prisma.DateTimeFilter<"Medico"> | Date | string
+  registerdate?: Prisma.DateTimeFilter<"Medico"> | Date | string
+  deleted?: Prisma.BoolFilter<"Medico"> | boolean
   especialidad?: Prisma.XOR<Prisma.EspecialidadScalarRelationFilter, Prisma.EspecialidadWhereInput>
   consultas?: Prisma.ConsultaListRelationFilter
 }, "id" | "email">
 
 export type MedicoOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  idEspecialidad?: Prisma.SortOrder
+  id_especialidad?: Prisma.SortOrder
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
   telefono?: Prisma.SortOrder
   email?: Prisma.SortOrder
   masculino?: Prisma.SortOrder
-  fechaNac?: Prisma.SortOrder
-  creado?: Prisma.SortOrder
+  fechanacimiento?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
+  deleted?: Prisma.SortOrder
   _count?: Prisma.MedicoCountOrderByAggregateInput
   _avg?: Prisma.MedicoAvgOrderByAggregateInput
   _max?: Prisma.MedicoMaxOrderByAggregateInput
@@ -309,14 +320,15 @@ export type MedicoScalarWhereWithAggregatesInput = {
   OR?: Prisma.MedicoScalarWhereWithAggregatesInput[]
   NOT?: Prisma.MedicoScalarWhereWithAggregatesInput | Prisma.MedicoScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Medico"> | number
-  idEspecialidad?: Prisma.IntWithAggregatesFilter<"Medico"> | number
+  id_especialidad?: Prisma.IntWithAggregatesFilter<"Medico"> | number
   nombres?: Prisma.StringWithAggregatesFilter<"Medico"> | string
   apellidos?: Prisma.StringWithAggregatesFilter<"Medico"> | string
   telefono?: Prisma.StringWithAggregatesFilter<"Medico"> | string
   email?: Prisma.StringWithAggregatesFilter<"Medico"> | string
   masculino?: Prisma.BoolWithAggregatesFilter<"Medico"> | boolean
-  fechaNac?: Prisma.DateTimeWithAggregatesFilter<"Medico"> | Date | string
-  creado?: Prisma.DateTimeWithAggregatesFilter<"Medico"> | Date | string
+  fechanacimiento?: Prisma.DateTimeWithAggregatesFilter<"Medico"> | Date | string
+  registerdate?: Prisma.DateTimeWithAggregatesFilter<"Medico"> | Date | string
+  deleted?: Prisma.BoolWithAggregatesFilter<"Medico"> | boolean
 }
 
 export type MedicoCreateInput = {
@@ -325,22 +337,24 @@ export type MedicoCreateInput = {
   telefono: string
   email: string
   masculino?: boolean
-  fechaNac: Date | string
-  creado?: Date | string
+  fechanacimiento: Date | string
+  registerdate?: Date | string
+  deleted?: boolean
   especialidad: Prisma.EspecialidadCreateNestedOneWithoutMedicosInput
   consultas?: Prisma.ConsultaCreateNestedManyWithoutMedicoInput
 }
 
 export type MedicoUncheckedCreateInput = {
   id?: number
-  idEspecialidad: number
+  id_especialidad: number
   nombres: string
   apellidos: string
   telefono: string
   email: string
   masculino?: boolean
-  fechaNac: Date | string
-  creado?: Date | string
+  fechanacimiento: Date | string
+  registerdate?: Date | string
+  deleted?: boolean
   consultas?: Prisma.ConsultaUncheckedCreateNestedManyWithoutMedicoInput
 }
 
@@ -350,35 +364,38 @@ export type MedicoUpdateInput = {
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   masculino?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fechaNac?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fechanacimiento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   especialidad?: Prisma.EspecialidadUpdateOneRequiredWithoutMedicosNestedInput
   consultas?: Prisma.ConsultaUpdateManyWithoutMedicoNestedInput
 }
 
 export type MedicoUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  idEspecialidad?: Prisma.IntFieldUpdateOperationsInput | number
+  id_especialidad?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   masculino?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fechaNac?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fechanacimiento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   consultas?: Prisma.ConsultaUncheckedUpdateManyWithoutMedicoNestedInput
 }
 
 export type MedicoCreateManyInput = {
   id?: number
-  idEspecialidad: number
+  id_especialidad: number
   nombres: string
   apellidos: string
   telefono: string
   email: string
   masculino?: boolean
-  fechaNac: Date | string
-  creado?: Date | string
+  fechanacimiento: Date | string
+  registerdate?: Date | string
+  deleted?: boolean
 }
 
 export type MedicoUpdateManyMutationInput = {
@@ -387,20 +404,22 @@ export type MedicoUpdateManyMutationInput = {
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   masculino?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fechaNac?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fechanacimiento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type MedicoUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  idEspecialidad?: Prisma.IntFieldUpdateOperationsInput | number
+  id_especialidad?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   masculino?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fechaNac?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fechanacimiento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type MedicoScalarRelationFilter = {
@@ -410,48 +429,51 @@ export type MedicoScalarRelationFilter = {
 
 export type MedicoCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  idEspecialidad?: Prisma.SortOrder
+  id_especialidad?: Prisma.SortOrder
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
   telefono?: Prisma.SortOrder
   email?: Prisma.SortOrder
   masculino?: Prisma.SortOrder
-  fechaNac?: Prisma.SortOrder
-  creado?: Prisma.SortOrder
+  fechanacimiento?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
+  deleted?: Prisma.SortOrder
 }
 
 export type MedicoAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  idEspecialidad?: Prisma.SortOrder
+  id_especialidad?: Prisma.SortOrder
 }
 
 export type MedicoMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  idEspecialidad?: Prisma.SortOrder
+  id_especialidad?: Prisma.SortOrder
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
   telefono?: Prisma.SortOrder
   email?: Prisma.SortOrder
   masculino?: Prisma.SortOrder
-  fechaNac?: Prisma.SortOrder
-  creado?: Prisma.SortOrder
+  fechanacimiento?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
+  deleted?: Prisma.SortOrder
 }
 
 export type MedicoMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  idEspecialidad?: Prisma.SortOrder
+  id_especialidad?: Prisma.SortOrder
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
   telefono?: Prisma.SortOrder
   email?: Prisma.SortOrder
   masculino?: Prisma.SortOrder
-  fechaNac?: Prisma.SortOrder
-  creado?: Prisma.SortOrder
+  fechanacimiento?: Prisma.SortOrder
+  registerdate?: Prisma.SortOrder
+  deleted?: Prisma.SortOrder
 }
 
 export type MedicoSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  idEspecialidad?: Prisma.SortOrder
+  id_especialidad?: Prisma.SortOrder
 }
 
 export type MedicoListRelationFilter = {
@@ -526,21 +548,23 @@ export type MedicoCreateWithoutConsultasInput = {
   telefono: string
   email: string
   masculino?: boolean
-  fechaNac: Date | string
-  creado?: Date | string
+  fechanacimiento: Date | string
+  registerdate?: Date | string
+  deleted?: boolean
   especialidad: Prisma.EspecialidadCreateNestedOneWithoutMedicosInput
 }
 
 export type MedicoUncheckedCreateWithoutConsultasInput = {
   id?: number
-  idEspecialidad: number
+  id_especialidad: number
   nombres: string
   apellidos: string
   telefono: string
   email: string
   masculino?: boolean
-  fechaNac: Date | string
-  creado?: Date | string
+  fechanacimiento: Date | string
+  registerdate?: Date | string
+  deleted?: boolean
 }
 
 export type MedicoCreateOrConnectWithoutConsultasInput = {
@@ -565,21 +589,23 @@ export type MedicoUpdateWithoutConsultasInput = {
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   masculino?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fechaNac?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fechanacimiento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   especialidad?: Prisma.EspecialidadUpdateOneRequiredWithoutMedicosNestedInput
 }
 
 export type MedicoUncheckedUpdateWithoutConsultasInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  idEspecialidad?: Prisma.IntFieldUpdateOperationsInput | number
+  id_especialidad?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   masculino?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fechaNac?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fechanacimiento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type MedicoCreateWithoutEspecialidadInput = {
@@ -588,8 +614,9 @@ export type MedicoCreateWithoutEspecialidadInput = {
   telefono: string
   email: string
   masculino?: boolean
-  fechaNac: Date | string
-  creado?: Date | string
+  fechanacimiento: Date | string
+  registerdate?: Date | string
+  deleted?: boolean
   consultas?: Prisma.ConsultaCreateNestedManyWithoutMedicoInput
 }
 
@@ -600,8 +627,9 @@ export type MedicoUncheckedCreateWithoutEspecialidadInput = {
   telefono: string
   email: string
   masculino?: boolean
-  fechaNac: Date | string
-  creado?: Date | string
+  fechanacimiento: Date | string
+  registerdate?: Date | string
+  deleted?: boolean
   consultas?: Prisma.ConsultaUncheckedCreateNestedManyWithoutMedicoInput
 }
 
@@ -636,14 +664,15 @@ export type MedicoScalarWhereInput = {
   OR?: Prisma.MedicoScalarWhereInput[]
   NOT?: Prisma.MedicoScalarWhereInput | Prisma.MedicoScalarWhereInput[]
   id?: Prisma.IntFilter<"Medico"> | number
-  idEspecialidad?: Prisma.IntFilter<"Medico"> | number
+  id_especialidad?: Prisma.IntFilter<"Medico"> | number
   nombres?: Prisma.StringFilter<"Medico"> | string
   apellidos?: Prisma.StringFilter<"Medico"> | string
   telefono?: Prisma.StringFilter<"Medico"> | string
   email?: Prisma.StringFilter<"Medico"> | string
   masculino?: Prisma.BoolFilter<"Medico"> | boolean
-  fechaNac?: Prisma.DateTimeFilter<"Medico"> | Date | string
-  creado?: Prisma.DateTimeFilter<"Medico"> | Date | string
+  fechanacimiento?: Prisma.DateTimeFilter<"Medico"> | Date | string
+  registerdate?: Prisma.DateTimeFilter<"Medico"> | Date | string
+  deleted?: Prisma.BoolFilter<"Medico"> | boolean
 }
 
 export type MedicoCreateManyEspecialidadInput = {
@@ -653,8 +682,9 @@ export type MedicoCreateManyEspecialidadInput = {
   telefono: string
   email: string
   masculino?: boolean
-  fechaNac: Date | string
-  creado?: Date | string
+  fechanacimiento: Date | string
+  registerdate?: Date | string
+  deleted?: boolean
 }
 
 export type MedicoUpdateWithoutEspecialidadInput = {
@@ -663,8 +693,9 @@ export type MedicoUpdateWithoutEspecialidadInput = {
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   masculino?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fechaNac?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fechanacimiento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   consultas?: Prisma.ConsultaUpdateManyWithoutMedicoNestedInput
 }
 
@@ -675,8 +706,9 @@ export type MedicoUncheckedUpdateWithoutEspecialidadInput = {
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   masculino?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fechaNac?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fechanacimiento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   consultas?: Prisma.ConsultaUncheckedUpdateManyWithoutMedicoNestedInput
 }
 
@@ -687,8 +719,9 @@ export type MedicoUncheckedUpdateManyWithoutEspecialidadInput = {
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   masculino?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fechaNac?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  creado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fechanacimiento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 
@@ -724,14 +757,15 @@ export type MedicoCountOutputTypeCountConsultasArgs<ExtArgs extends runtime.Type
 
 export type MedicoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  idEspecialidad?: boolean
+  id_especialidad?: boolean
   nombres?: boolean
   apellidos?: boolean
   telefono?: boolean
   email?: boolean
   masculino?: boolean
-  fechaNac?: boolean
-  creado?: boolean
+  fechanacimiento?: boolean
+  registerdate?: boolean
+  deleted?: boolean
   especialidad?: boolean | Prisma.EspecialidadDefaultArgs<ExtArgs>
   consultas?: boolean | Prisma.Medico$consultasArgs<ExtArgs>
   _count?: boolean | Prisma.MedicoCountOutputTypeDefaultArgs<ExtArgs>
@@ -739,43 +773,46 @@ export type MedicoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
 
 export type MedicoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  idEspecialidad?: boolean
+  id_especialidad?: boolean
   nombres?: boolean
   apellidos?: boolean
   telefono?: boolean
   email?: boolean
   masculino?: boolean
-  fechaNac?: boolean
-  creado?: boolean
+  fechanacimiento?: boolean
+  registerdate?: boolean
+  deleted?: boolean
   especialidad?: boolean | Prisma.EspecialidadDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["medico"]>
 
 export type MedicoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  idEspecialidad?: boolean
+  id_especialidad?: boolean
   nombres?: boolean
   apellidos?: boolean
   telefono?: boolean
   email?: boolean
   masculino?: boolean
-  fechaNac?: boolean
-  creado?: boolean
+  fechanacimiento?: boolean
+  registerdate?: boolean
+  deleted?: boolean
   especialidad?: boolean | Prisma.EspecialidadDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["medico"]>
 
 export type MedicoSelectScalar = {
   id?: boolean
-  idEspecialidad?: boolean
+  id_especialidad?: boolean
   nombres?: boolean
   apellidos?: boolean
   telefono?: boolean
   email?: boolean
   masculino?: boolean
-  fechaNac?: boolean
-  creado?: boolean
+  fechanacimiento?: boolean
+  registerdate?: boolean
+  deleted?: boolean
 }
 
-export type MedicoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "idEspecialidad" | "nombres" | "apellidos" | "telefono" | "email" | "masculino" | "fechaNac" | "creado", ExtArgs["result"]["medico"]>
+export type MedicoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "id_especialidad" | "nombres" | "apellidos" | "telefono" | "email" | "masculino" | "fechanacimiento" | "registerdate" | "deleted", ExtArgs["result"]["medico"]>
 export type MedicoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   especialidad?: boolean | Prisma.EspecialidadDefaultArgs<ExtArgs>
   consultas?: boolean | Prisma.Medico$consultasArgs<ExtArgs>
@@ -796,14 +833,18 @@ export type $MedicoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    idEspecialidad: number
+    id_especialidad: number
     nombres: string
     apellidos: string
     telefono: string
+    /**
+     * @zod.string({ required_error: "El email es obligatorio" }).email({ message: "El formato del correo electrónico no es válido" })
+     */
     email: string
     masculino: boolean
-    fechaNac: Date
-    creado: Date
+    fechanacimiento: Date
+    registerdate: Date
+    deleted: boolean
   }, ExtArgs["result"]["medico"]>
   composites: {}
 }
@@ -1230,14 +1271,15 @@ export interface Prisma__MedicoClient<T, Null = never, ExtArgs extends runtime.T
  */
 export interface MedicoFieldRefs {
   readonly id: Prisma.FieldRef<"Medico", 'Int'>
-  readonly idEspecialidad: Prisma.FieldRef<"Medico", 'Int'>
+  readonly id_especialidad: Prisma.FieldRef<"Medico", 'Int'>
   readonly nombres: Prisma.FieldRef<"Medico", 'String'>
   readonly apellidos: Prisma.FieldRef<"Medico", 'String'>
   readonly telefono: Prisma.FieldRef<"Medico", 'String'>
   readonly email: Prisma.FieldRef<"Medico", 'String'>
   readonly masculino: Prisma.FieldRef<"Medico", 'Boolean'>
-  readonly fechaNac: Prisma.FieldRef<"Medico", 'DateTime'>
-  readonly creado: Prisma.FieldRef<"Medico", 'DateTime'>
+  readonly fechanacimiento: Prisma.FieldRef<"Medico", 'DateTime'>
+  readonly registerdate: Prisma.FieldRef<"Medico", 'DateTime'>
+  readonly deleted: Prisma.FieldRef<"Medico", 'Boolean'>
 }
     
 
