@@ -5,7 +5,7 @@ import { StringFilterObjectSchema as StringFilterObjectSchema } from './StringFi
 import { BoolFilterObjectSchema as BoolFilterObjectSchema } from './BoolFilter.schema';
 import { DateTimeFilterObjectSchema as DateTimeFilterObjectSchema } from './DateTimeFilter.schema';
 import { HistorialListRelationFilterObjectSchema as HistorialListRelationFilterObjectSchema } from './HistorialListRelationFilter.schema';
-import { CitaListRelationFilterObjectSchema as CitaListRelationFilterObjectSchema } from './CitaListRelationFilter.schema'
+import { ConsultaListRelationFilterObjectSchema as ConsultaListRelationFilterObjectSchema } from './ConsultaListRelationFilter.schema'
 
 const pacientewhereinputSchema = z.object({
   AND: z.union([z.lazy(() => PacienteWhereInputObjectSchema), z.lazy(() => PacienteWhereInputObjectSchema).array()]).optional(),
@@ -23,7 +23,7 @@ const pacientewhereinputSchema = z.object({
   registerdate: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
   deleted: z.union([z.lazy(() => BoolFilterObjectSchema), z.boolean()]).optional(),
   historiales: z.lazy(() => HistorialListRelationFilterObjectSchema).optional(),
-  citas: z.lazy(() => CitaListRelationFilterObjectSchema).optional()
+  consultas: z.lazy(() => ConsultaListRelationFilterObjectSchema).optional()
 }).strict();
 export const PacienteWhereInputObjectSchema: z.ZodType<Prisma.PacienteWhereInput> = pacientewhereinputSchema as unknown as z.ZodType<Prisma.PacienteWhereInput>;
 export const PacienteWhereInputObjectZodSchema = pacientewhereinputSchema;

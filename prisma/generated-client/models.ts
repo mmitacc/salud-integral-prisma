@@ -10,7 +10,6 @@
  */
 export type * from './models/Paciente'
 export type * from './models/Historial'
-export type * from './models/Cita'
 export type * from './models/Consulta'
 export type * from './models/Medico'
 export type * from './models/Especialidad'

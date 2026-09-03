@@ -6,6 +6,7 @@ export const UserResultSchema = z.object({
     email: z.email({ message: "El formato del correo electrónico no es válido" }),
     password: z.string(),
     role: RoleSchema,
+    username: z.string(),
     nombres: z.string(),
     apellidos: z.string(),
     telefono: z.string(),

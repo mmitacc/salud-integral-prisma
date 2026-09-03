@@ -1,12 +1,13 @@
 import * as z from 'zod';
 import { Prisma } from '../../../generated-client/browser';
-
+import { EstadoCitaSchema } from '../enums/EstadoCita.schema'
 
 import { DecimalJSLikeSchema, isValidDecimalInput } from '../../helpers/decimal-helpers';
 const makeSchema = () => z.object({
   id: z.number().int().optional(),
-  id_cita: z.number().int(),
+  id_paciente: z.number().int(),
   id_medico: z.number().int(),
+  estado: EstadoCitaSchema.optional(),
   fecha: z.coerce.date(),
   horario: z.coerce.date(),
   costo: z.union([

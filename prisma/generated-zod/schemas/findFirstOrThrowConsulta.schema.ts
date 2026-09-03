@@ -5,7 +5,7 @@ import { ConsultaOrderByWithRelationInputObjectSchema as ConsultaOrderByWithRela
 import { ConsultaWhereInputObjectSchema as ConsultaWhereInputObjectSchema } from './objects/ConsultaWhereInput.schema';
 import { ConsultaWhereUniqueInputObjectSchema as ConsultaWhereUniqueInputObjectSchema } from './objects/ConsultaWhereUniqueInput.schema';
 import { ConsultaScalarFieldEnumSchema } from './enums/ConsultaScalarFieldEnum.schema';
-import { CitaArgsObjectSchema as CitaArgsObjectSchema } from './objects/CitaArgs.schema';
+import { PacienteArgsObjectSchema as PacienteArgsObjectSchema } from './objects/PacienteArgs.schema';
 import { MedicoArgsObjectSchema as MedicoArgsObjectSchema } from './objects/MedicoArgs.schema';
 
 // Select schema needs to be in file to prevent circular imports
@@ -13,27 +13,29 @@ import { MedicoArgsObjectSchema as MedicoArgsObjectSchema } from './objects/Medi
 
 export const ConsultaFindFirstOrThrowSelectSchema: z.ZodType<Prisma.ConsultaSelect> = z.object({
     id: z.boolean().optional(),
-    id_cita: z.boolean().optional(),
+    id_paciente: z.boolean().optional(),
     id_medico: z.boolean().optional(),
+    estado: z.boolean().optional(),
     fecha: z.boolean().optional(),
     horario: z.boolean().optional(),
     costo: z.boolean().optional(),
     registerdate: z.boolean().optional(),
     deleted: z.boolean().optional(),
-    cita: z.union([z.boolean(), z.lazy(() => CitaArgsObjectSchema)]).optional(),
+    paciente: z.union([z.boolean(), z.lazy(() => PacienteArgsObjectSchema)]).optional(),
     medico: z.union([z.boolean(), z.lazy(() => MedicoArgsObjectSchema)]).optional()
   }).strict() as unknown as z.ZodType<Prisma.ConsultaSelect>;
 
 export const ConsultaFindFirstOrThrowSelectZodSchema = z.object({
     id: z.boolean().optional(),
-    id_cita: z.boolean().optional(),
+    id_paciente: z.boolean().optional(),
     id_medico: z.boolean().optional(),
+    estado: z.boolean().optional(),
     fecha: z.boolean().optional(),
     horario: z.boolean().optional(),
     costo: z.boolean().optional(),
     registerdate: z.boolean().optional(),
     deleted: z.boolean().optional(),
-    cita: z.union([z.boolean(), z.lazy(() => CitaArgsObjectSchema)]).optional(),
+    paciente: z.union([z.boolean(), z.lazy(() => PacienteArgsObjectSchema)]).optional(),
     medico: z.union([z.boolean(), z.lazy(() => MedicoArgsObjectSchema)]).optional()
   }).strict();
 

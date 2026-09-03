@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+  agendaMedico,
   deleteMedico,
   getAllMedico,
   getAllMedicoDeleted,
@@ -39,6 +40,12 @@ router.get(
   "/:id",
   validateParamsSchema(MedicoWhereUniqueInputObjectSchema),
   getMedicoById,
+);
+router.get(
+  "/agenda/:id",
+  validateParamsSchema(MedicoWhereUniqueInputObjectSchema),
+  validateQuerySchema(RangoFechasQuerySchema),
+  agendaMedico,
 );
 router.post(
   "/",

@@ -52,11 +52,6 @@ export type Paciente = Prisma.PacienteModel
  */
 export type Historial = Prisma.HistorialModel
 /**
- * Model Cita
- * 
- */
-export type Cita = Prisma.CitaModel
-/**
  * Model Consulta
  * 
  */

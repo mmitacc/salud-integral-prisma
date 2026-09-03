@@ -1,9 +1,11 @@
 import * as z from 'zod';
 import { Prisma } from '../../../generated-client/browser';
-import { CitaCreateNestedOneWithoutConsultasInputObjectSchema as CitaCreateNestedOneWithoutConsultasInputObjectSchema } from './CitaCreateNestedOneWithoutConsultasInput.schema'
+import { EstadoCitaSchema } from '../enums/EstadoCita.schema';
+import { PacienteCreateNestedOneWithoutConsultasInputObjectSchema as PacienteCreateNestedOneWithoutConsultasInputObjectSchema } from './PacienteCreateNestedOneWithoutConsultasInput.schema'
 
 import { DecimalJSLikeSchema, isValidDecimalInput } from '../../helpers/decimal-helpers';
 const makeSchema = () => z.object({
+  estado: EstadoCitaSchema.optional(),
   fecha: z.coerce.date(),
   horario: z.coerce.date(),
   costo: z.union([
@@ -16,7 +18,7 @@ const makeSchema = () => z.object({
 }).optional(),
   registerdate: z.coerce.date().optional(),
   deleted: z.boolean().optional(),
-  cita: z.lazy(() => CitaCreateNestedOneWithoutConsultasInputObjectSchema)
+  paciente: z.lazy(() => PacienteCreateNestedOneWithoutConsultasInputObjectSchema)
 }).strict();
 export const ConsultaCreateWithoutMedicoInputObjectSchema: z.ZodType<Prisma.ConsultaCreateWithoutMedicoInput> = makeSchema() as unknown as z.ZodType<Prisma.ConsultaCreateWithoutMedicoInput>;
 export const ConsultaCreateWithoutMedicoInputObjectZodSchema = makeSchema();

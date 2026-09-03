@@ -6,7 +6,7 @@ import { PacienteWhereInputObjectSchema as PacienteWhereInputObjectSchema } from
 import { PacienteWhereUniqueInputObjectSchema as PacienteWhereUniqueInputObjectSchema } from './objects/PacienteWhereUniqueInput.schema';
 import { PacienteScalarFieldEnumSchema } from './enums/PacienteScalarFieldEnum.schema';
 import { HistorialFindManySchema } from './findManyHistorial.schema';
-import { CitaFindManySchema } from './findManyCita.schema';
+import { ConsultaFindManySchema } from './findManyConsulta.schema';
 import { PacienteCountOutputTypeArgsObjectSchema as PacienteCountOutputTypeArgsObjectSchema } from './objects/PacienteCountOutputTypeArgs.schema';
 
 // Select schema needs to be in file to prevent circular imports
@@ -25,7 +25,7 @@ export const PacienteFindFirstOrThrowSelectSchema: z.ZodType<Prisma.PacienteSele
     registerdate: z.boolean().optional(),
     deleted: z.boolean().optional(),
     historiales: z.union([z.boolean(), z.lazy(() => HistorialFindManySchema)]).optional(),
-    citas: z.union([z.boolean(), z.lazy(() => CitaFindManySchema)]).optional(),
+    consultas: z.union([z.boolean(), z.lazy(() => ConsultaFindManySchema)]).optional(),
     _count: z.union([z.boolean(), z.lazy(() => PacienteCountOutputTypeArgsObjectSchema)]).optional()
   }).strict() as unknown as z.ZodType<Prisma.PacienteSelect>;
 
@@ -42,7 +42,7 @@ export const PacienteFindFirstOrThrowSelectZodSchema = z.object({
     registerdate: z.boolean().optional(),
     deleted: z.boolean().optional(),
     historiales: z.union([z.boolean(), z.lazy(() => HistorialFindManySchema)]).optional(),
-    citas: z.union([z.boolean(), z.lazy(() => CitaFindManySchema)]).optional(),
+    consultas: z.union([z.boolean(), z.lazy(() => ConsultaFindManySchema)]).optional(),
     _count: z.union([z.boolean(), z.lazy(() => PacienteCountOutputTypeArgsObjectSchema)]).optional()
   }).strict();
 

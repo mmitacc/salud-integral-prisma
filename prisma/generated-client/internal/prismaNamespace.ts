@@ -399,7 +399,6 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   Paciente: 'Paciente',
   Historial: 'Historial',
-  Cita: 'Cita',
   Consulta: 'Consulta',
   Medico: 'Medico',
   Especialidad: 'Especialidad',
@@ -419,7 +418,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "paciente" | "historial" | "cita" | "consulta" | "medico" | "especialidad" | "user"
+    modelProps: "paciente" | "historial" | "consulta" | "medico" | "especialidad" | "user"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -568,80 +567,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.HistorialCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.HistorialCountAggregateOutputType> | number
-        }
-      }
-    }
-    Cita: {
-      payload: Prisma.$CitaPayload<ExtArgs>
-      fields: Prisma.CitaFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.CitaFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CitaPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.CitaFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CitaPayload>
-        }
-        findFirst: {
-          args: Prisma.CitaFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CitaPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.CitaFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CitaPayload>
-        }
-        findMany: {
-          args: Prisma.CitaFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CitaPayload>[]
-        }
-        create: {
-          args: Prisma.CitaCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CitaPayload>
-        }
-        createMany: {
-          args: Prisma.CitaCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.CitaCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CitaPayload>[]
-        }
-        delete: {
-          args: Prisma.CitaDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CitaPayload>
-        }
-        update: {
-          args: Prisma.CitaUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CitaPayload>
-        }
-        deleteMany: {
-          args: Prisma.CitaDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.CitaUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.CitaUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CitaPayload>[]
-        }
-        upsert: {
-          args: Prisma.CitaUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CitaPayload>
-        }
-        aggregate: {
-          args: Prisma.CitaAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateCita>
-        }
-        groupBy: {
-          args: Prisma.CitaGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.CitaGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.CitaCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.CitaCountAggregateOutputType> | number
         }
       }
     }
@@ -1013,22 +938,11 @@ export const HistorialScalarFieldEnum = {
 export type HistorialScalarFieldEnum = (typeof HistorialScalarFieldEnum)[keyof typeof HistorialScalarFieldEnum]
 
 
-export const CitaScalarFieldEnum = {
-  id: 'id',
-  id_paciente: 'id_paciente',
-  estado: 'estado',
-  pagoinicial: 'pagoinicial',
-  registerdate: 'registerdate',
-  deleted: 'deleted'
-} as const
-
-export type CitaScalarFieldEnum = (typeof CitaScalarFieldEnum)[keyof typeof CitaScalarFieldEnum]
-
-
 export const ConsultaScalarFieldEnum = {
   id: 'id',
-  id_cita: 'id_cita',
+  id_paciente: 'id_paciente',
   id_medico: 'id_medico',
+  estado: 'estado',
   fecha: 'fecha',
   horario: 'horario',
   costo: 'costo',
@@ -1070,6 +984,7 @@ export const UserScalarFieldEnum = {
   email: 'email',
   password: 'password',
   role: 'role',
+  username: 'username',
   nombres: 'nombres',
   apellidos: 'apellidos',
   telefono: 'telefono',
@@ -1368,7 +1283,6 @@ export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaC
 export type GlobalOmitConfig = {
   paciente?: Prisma.PacienteOmit
   historial?: Prisma.HistorialOmit
-  cita?: Prisma.CitaOmit
   consulta?: Prisma.ConsultaOmit
   medico?: Prisma.MedicoOmit
   especialidad?: Prisma.EspecialidadOmit

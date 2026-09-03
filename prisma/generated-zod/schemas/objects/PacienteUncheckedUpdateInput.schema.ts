@@ -5,7 +5,7 @@ import { StringFieldUpdateOperationsInputObjectSchema as StringFieldUpdateOperat
 import { BoolFieldUpdateOperationsInputObjectSchema as BoolFieldUpdateOperationsInputObjectSchema } from './BoolFieldUpdateOperationsInput.schema';
 import { DateTimeFieldUpdateOperationsInputObjectSchema as DateTimeFieldUpdateOperationsInputObjectSchema } from './DateTimeFieldUpdateOperationsInput.schema';
 import { HistorialUncheckedUpdateManyWithoutPacienteNestedInputObjectSchema as HistorialUncheckedUpdateManyWithoutPacienteNestedInputObjectSchema } from './HistorialUncheckedUpdateManyWithoutPacienteNestedInput.schema';
-import { CitaUncheckedUpdateManyWithoutPacienteNestedInputObjectSchema as CitaUncheckedUpdateManyWithoutPacienteNestedInputObjectSchema } from './CitaUncheckedUpdateManyWithoutPacienteNestedInput.schema'
+import { ConsultaUncheckedUpdateManyWithoutPacienteNestedInputObjectSchema as ConsultaUncheckedUpdateManyWithoutPacienteNestedInputObjectSchema } from './ConsultaUncheckedUpdateManyWithoutPacienteNestedInput.schema'
 
 const makeSchema = () => z.object({
   id: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputObjectSchema)]).optional(),
@@ -20,7 +20,7 @@ const makeSchema = () => z.object({
   registerdate: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
   deleted: z.union([z.boolean(), z.lazy(() => BoolFieldUpdateOperationsInputObjectSchema)]).optional(),
   historiales: z.lazy(() => HistorialUncheckedUpdateManyWithoutPacienteNestedInputObjectSchema).optional(),
-  citas: z.lazy(() => CitaUncheckedUpdateManyWithoutPacienteNestedInputObjectSchema).optional()
+  consultas: z.lazy(() => ConsultaUncheckedUpdateManyWithoutPacienteNestedInputObjectSchema).optional()
 }).strict();
 export const PacienteUncheckedUpdateInputObjectSchema: z.ZodType<Prisma.PacienteUncheckedUpdateInput> = makeSchema() as unknown as z.ZodType<Prisma.PacienteUncheckedUpdateInput>;
 export const PacienteUncheckedUpdateInputObjectZodSchema = makeSchema();

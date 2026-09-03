@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   deleteConsulta,
   getAllConsultas,
+  getAllConsultaDeleted,
   getConsultaById,
   postConsulta,
   putConsulta,
@@ -15,11 +16,18 @@ import {
 import {
   validateBodySchema,
   validateParamsSchema,
+  validateQuerySchema,
 } from "../middlewares/validate.schema";
+import { RangoFechasQuerySchema } from "../schemas/querys.schema";
 
 const router = Router();
 
 router.get("/", getAllConsultas);
+router.get(
+  "/admin",
+  validateQuerySchema(RangoFechasQuerySchema),
+  getAllConsultaDeleted,
+);
 router.get(
   "/:id",
   validateParamsSchema(ConsultaWhereUniqueInputObjectSchema),
@@ -39,12 +47,12 @@ router.put(
 router.delete(
   "/:id",
   validateParamsSchema(ConsultaWhereUniqueInputObjectSchema),
-  deleteConsulta,
+  softDeleteConsulta,
 );
 router.delete(
-  "/soft/:id",
+  "/admin/:id",
   validateParamsSchema(ConsultaWhereUniqueInputObjectSchema),
-  softDeleteConsulta,
+  deleteConsulta,
 );
 
 export default router;

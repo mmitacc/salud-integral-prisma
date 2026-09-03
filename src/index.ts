@@ -2,7 +2,6 @@ import express from "express";
 import dotenv from "dotenv";
 import pacienteRouter from "./routers/paciente.router";
 import historialRouter from "./routers/historial.router";
-import citaRouter from "./routers/cita.router";
 import especialidadRouter from "./routers/especialidad.router";
 import medicoRouter from "./routers/medico.router";
 import consultaRouter from "./routers/consulta.router";
@@ -31,10 +30,9 @@ console.log(
 // Endpoints
 app.use("/paciente", pacienteRouter);
 app.use("/historial", historialRouter);
-app.use("/cita", citaRouter);
+app.use("/consulta", consultaRouter);
 app.use("/especialidad", especialidadRouter);
 app.use("/medico", medicoRouter);
-app.use("/consulta", consultaRouter);
 
 // Inicialización del servidor
 // console.clear();

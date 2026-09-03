@@ -13,7 +13,7 @@ export const PacienteInputSchema = z.object({
     registerdate: z.coerce.date(),
     deleted: z.boolean(),
     historiales: z.array(z.unknown()),
-    citas: z.array(z.unknown())
+    consultas: z.array(z.unknown())
 }).strict();
 
 export type PacienteInputType = z.infer<typeof PacienteInputSchema>;

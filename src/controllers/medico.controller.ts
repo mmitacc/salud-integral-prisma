@@ -1,6 +1,7 @@
 import type { Request, Response } from "express";
 import { medicoModel } from "../models/medico.model";
 import procesarErrorPrisma from "../utils/errorHandlerUtil";
+import AgendaMedicoResponseSchema from "../schemas/agenda.medico.schema";
 
 export const getAllMedico = async (req: Request, res: Response) => {
   try {
@@ -135,10 +136,56 @@ export const getAllMedicoDeleted = async (req: Request, res: Response) => {
       fechaInicio ? new Date(fechaInicio) : undefined,
       fechaFin ? new Date(fechaFin) : undefined,
     );
-    if (medicos.length===0) {
-      return res.status(404).json({ message: "No se encontraron médicos eliminados" });
+    if (medicos.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No se encontraron médicos eliminados" });
     }
     res.status(200).json({ "total eliminados": medicos.length, data: medicos });
+  } catch (error) {
+    const { statusCode, payload } = procesarErrorPrisma(error);
+    res.status(statusCode).json(payload);
+  }
+};
+
+export const agendaMedico = async (req: Request, res: Response) => {
+  try {
+    const id = Number(req.params.id);
+    const idMedico = await medicoModel.findFirst(id);
+    if (!idMedico) {
+      return res.status(404).json({ message: "Médico no encontrado" });
+    }
+    const { fechaInicio, fechaFin } = req.query as {
+      fechaInicio: string;
+      fechaFin: string;
+    };
+
+    const start =
+      fechaInicio && fechaInicio.trim() !== ""
+        ? new Date(fechaInicio)
+        : undefined;
+    const end =
+      fechaFin && fechaFin.trim() !== "" ? new Date(fechaFin) : undefined;
+
+    if ((start && isNaN(start.getTime())) || (end && isNaN(end.getTime()))) {
+      return res.status(400).json({
+        status: "error",
+        error: "Datos inválidos",
+        detalles:
+          "El formato de fechaInicio o fechaFin no es válido. Usa el formato AAAA-MM-DD.",
+      });
+    }
+
+    const medicoAgenda = await medicoModel.findAgendaByDate(id, start, end);
+    if (!medicoAgenda) {
+      return res.status(404).json({
+        message: "No se encontraron pacientes programados para esas fechas",
+      });
+    }
+    const agenda = AgendaMedicoResponseSchema.parse(medicoAgenda);
+    res
+      .status(200)
+      .json({ "total programados": agenda.consultas?.length, medico: agenda });
   } catch (error) {
     const { statusCode, payload } = procesarErrorPrisma(error);
     res.status(statusCode).json(payload);

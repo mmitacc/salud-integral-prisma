@@ -6,6 +6,7 @@ const makeSchema = () => z.object({
   email: z.email({ message: "El formato del correo electrónico no es válido" }),
   password: z.string().max(100),
   role: RoleSchema,
+  username: z.string().max(50),
   nombres: z.string().max(100),
   apellidos: z.string().max(100),
   telefono: z.string().max(20),

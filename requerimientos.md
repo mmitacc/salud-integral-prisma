@@ -70,8 +70,9 @@ Identificando las Principales Entidades:
 | Atributo      | Tipo           | Notas       |
 |---------------|----------------|-------------|
 | id            | Número Entero  | [PK]        |
-| id_cita       | Número Entero  | [FK]        |
+| id_paciente   | Número Entero  | [FK]        |
 | id_medico     | Número Entero  | [FK]        |
+| estado        | Texto          | Obligatorio |
 | fecha         | Date           | Obligatorio |
 | horario       | Time           | Obligatorio |
 | costo         | Decimal        | Default(50) |
@@ -107,11 +108,8 @@ Describiendo las relaciones:
 paciente (1) ----- (N) historial
 "Un 'paciente' puede tener varios registros en su 'historial', pero un registro de 'historial' solo le pertenece a un 'paciente'."
 
-paciente (1) ----- (N) cita
-"Un 'paciente' puede tener muchas 'citas', pero una 'cita' solo pertenece a un 'paciente'."
-
-cita (1) ----- (N) consulta
-"Una 'cita' puede solicitar muchas 'consultas' medicas, pero una 'consulta' medica solo corresponde a una 'cita'."
+paciente (1) ----- (N) consulta
+"Un 'paciente' puede tener muchas 'consultas' medicas, pero una 'consulta' medica solo pertenece a un 'paciente'."
 
 medico (1) ----- (N) consulta
 "Un 'medico' puede hacer muchas 'consultas' medicas, pero una 'consulta' medica solo lo hace un 'medico'."

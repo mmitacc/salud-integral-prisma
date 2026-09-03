@@ -4,7 +4,7 @@ import { IntFieldUpdateOperationsInputObjectSchema as IntFieldUpdateOperationsIn
 import { StringFieldUpdateOperationsInputObjectSchema as StringFieldUpdateOperationsInputObjectSchema } from './StringFieldUpdateOperationsInput.schema';
 import { BoolFieldUpdateOperationsInputObjectSchema as BoolFieldUpdateOperationsInputObjectSchema } from './BoolFieldUpdateOperationsInput.schema';
 import { DateTimeFieldUpdateOperationsInputObjectSchema as DateTimeFieldUpdateOperationsInputObjectSchema } from './DateTimeFieldUpdateOperationsInput.schema';
-import { CitaUncheckedUpdateManyWithoutPacienteNestedInputObjectSchema as CitaUncheckedUpdateManyWithoutPacienteNestedInputObjectSchema } from './CitaUncheckedUpdateManyWithoutPacienteNestedInput.schema'
+import { ConsultaUncheckedUpdateManyWithoutPacienteNestedInputObjectSchema as ConsultaUncheckedUpdateManyWithoutPacienteNestedInputObjectSchema } from './ConsultaUncheckedUpdateManyWithoutPacienteNestedInput.schema'
 
 const makeSchema = () => z.object({
   id: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputObjectSchema)]).optional(),
@@ -18,7 +18,7 @@ const makeSchema = () => z.object({
   alergias: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
   registerdate: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
   deleted: z.union([z.boolean(), z.lazy(() => BoolFieldUpdateOperationsInputObjectSchema)]).optional(),
-  citas: z.lazy(() => CitaUncheckedUpdateManyWithoutPacienteNestedInputObjectSchema).optional()
+  consultas: z.lazy(() => ConsultaUncheckedUpdateManyWithoutPacienteNestedInputObjectSchema).optional()
 }).strict();
 export const PacienteUncheckedUpdateWithoutHistorialesInputObjectSchema: z.ZodType<Prisma.PacienteUncheckedUpdateWithoutHistorialesInput> = makeSchema() as unknown as z.ZodType<Prisma.PacienteUncheckedUpdateWithoutHistorialesInput>;
 export const PacienteUncheckedUpdateWithoutHistorialesInputObjectZodSchema = makeSchema();

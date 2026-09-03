@@ -4,6 +4,7 @@ export const UserCreateResultSchema = z.object({
   email: z.string(),
   password: z.string(),
   role: z.unknown(),
+  username: z.string(),
   nombres: z.string(),
   apellidos: z.string(),
   telefono: z.string(),

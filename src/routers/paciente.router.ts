@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   deletePaciente,
   getAllPaciente,
+  getAllPacienteDeleted,
   getPacienteById,
   postPaciente,
   putPaciente,
@@ -15,11 +16,18 @@ import {
 import {
   validateBodySchema,
   validateParamsSchema,
+  validateQuerySchema,
 } from "../middlewares/validate.schema";
+import { RangoFechasQuerySchema } from "../schemas/querys.schema";
 
 const router = Router();
 
 router.get("/", getAllPaciente);
+router.get(
+  "/admin",
+  validateQuerySchema(RangoFechasQuerySchema),
+  getAllPacienteDeleted,
+);
 router.get(
   "/:id",
   validateParamsSchema(PacienteWhereUniqueInputObjectSchema),
@@ -39,12 +47,12 @@ router.put(
 router.delete(
   "/:id",
   validateParamsSchema(PacienteWhereUniqueInputObjectSchema),
-  deletePaciente,
+  softDeletePaciente,
 );
 router.delete(
-  "/soft/:id",
+  "/admin/:id",
   validateParamsSchema(PacienteWhereUniqueInputObjectSchema),
-  softDeletePaciente,
+  deletePaciente,
 );
 
 export default router;

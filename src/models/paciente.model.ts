@@ -1,11 +1,23 @@
+import type { Prisma } from "../../prisma/generated-client/client";
 import { prisma } from "../config/prisma";
 
 export const pacienteModel = {
   findAll: async () => {
-    return await prisma.paciente.findMany({ orderBy: { id: "asc" } });
+    return await prisma.paciente.findMany({
+      orderBy: { id: "asc" },
+      omit: { deleted: true },
+      where: { deleted: false },
+    });
   },
-  findFirsft: async (id: number) => {
-    return await prisma.paciente.findFirst({ where: { id } });
+  findFirst: async (id: number) => {
+    return await prisma.paciente.findFirst({
+      where: { id, deleted: false },
+      include: {
+        historiales: { omit: { deleted: true } },
+        consultas: { omit: { deleted: true } },
+      },
+      omit: { deleted: true },
+    });
   },
   create: async (
     nombres: string,
@@ -28,6 +40,7 @@ export const pacienteModel = {
         tiposangre,
         alergias,
       },
+      omit: { deleted: true },
     });
   },
   update: async (
@@ -53,17 +66,48 @@ export const pacienteModel = {
         tiposangre,
         alergias,
       },
+      omit: { deleted: true },
     });
   },
-  delete: async (id: number) => {
+
+  softDelete: async (id: number) => {
+    const paciente = await prisma.paciente.findUnique({
+      where: { id, deleted: true },
+    });
+    if (paciente) {
+      throw new Error("Paciente no encontrado");
+    }
+    return await prisma.paciente.update({
+      where: { id },
+      data: { deleted: true },
+      omit: { deleted: true },
+    });
+  },
+  deleteAdmin: async (id: number) => {
     return await prisma.paciente.delete({
       where: { id },
     });
   },
-  softDelete: async (id: number) => {
-    return await prisma.paciente.update({
+  findOneAdmin: async (id: number) => {
+    return await prisma.paciente.findUnique({
       where: { id },
-      data: { deleted: true },
     });
+  },
+  findAllDeleted: async (fechaInicio?: Date, fechaFin?: Date) => {
+    const options: Prisma.PacienteFindManyArgs = {
+      orderBy: { id: "asc" },
+      include: { historiales: true, consultas: true },
+      where: { deleted: true },
+    };
+    if (fechaInicio && fechaFin) {
+      options.where = {
+        ...options.where,
+        registerdate: {
+          gte: fechaInicio,
+          lte: fechaFin,
+        },
+      };
+    }
+    return await prisma.paciente.findMany(options);
   },
 };

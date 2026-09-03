@@ -15,6 +15,7 @@ const userscalarwherewithaggregatesinputSchema = z.object({
   email: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.email({ message: "El formato del correo electrónico no es válido" })]).optional(),
   password: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string().max(100)]).optional(),
   role: z.union([z.lazy(() => EnumRoleWithAggregatesFilterObjectSchema), RoleSchema]).optional(),
+  username: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string().max(50)]).optional(),
   nombres: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string().max(100)]).optional(),
   apellidos: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string().max(100)]).optional(),
   telefono: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string().max(20)]).optional(),

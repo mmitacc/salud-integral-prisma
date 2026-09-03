@@ -28,12 +28,13 @@ export const getConsultaById = async (req: Request, res: Response) => {
 
 export const postConsulta = async (req: Request, res: Response) => {
   try {
-    const { fecha, horario, costo, id_cita, id_medico } = req.body;
+    const { estado, costo, fecha, horario, id_paciente, id_medico } = req.body;
     const newConsulta = await consultaModel.create(
+      estado,
+      costo,
       fecha,
       horario,
-      costo,
-      id_cita,
+      id_paciente,
       id_medico,
     );
     return res
@@ -48,32 +49,19 @@ export const postConsulta = async (req: Request, res: Response) => {
 export const putConsulta = async (req: Request, res: Response) => {
   try {
     const id = Number(req.params.id);
-    const { fecha, horario, costo, id_cita, id_medico } = req.body;
+    const { estado, costo, fecha, horario, id_paciente, id_medico } = req.body;
     const updatedConsulta = await consultaModel.update(
       id,
+      estado,
+      costo,
       fecha,
       horario,
-      costo,
-      id_cita,
       id_medico,
+      id_paciente,
     );
     return res.json({
       message: "Consulta actualizada con éxito",
       data: updatedConsulta,
-    });
-  } catch (error) {
-    const { statusCode, payload } = procesarErrorPrisma(error);
-    res.status(statusCode).json(payload);
-  }
-};
-
-export const deleteConsulta = async (req: Request, res: Response) => {
-  try {
-    const id = Number(req.params.id);
-    const deletedConsulta = await consultaModel.delete(id);
-    return res.json({
-      message: "Consulta eliminada con éxito",
-      data: deletedConsulta,
     });
   } catch (error) {
     const { statusCode, payload } = procesarErrorPrisma(error);
@@ -89,6 +77,44 @@ export const softDeleteConsulta = async (req: Request, res: Response) => {
       message: "Consulta eliminada con éxito",
       data: softDeletedConsulta,
     });
+  } catch (error) {
+    const { statusCode, payload } = procesarErrorPrisma(error);
+    res.status(statusCode).json(payload);
+  }
+};
+
+export const deleteConsulta = async (req: Request, res: Response) => {
+  try {
+    const id = Number(req.params.id);
+    const deletedConsulta = await consultaModel.deleteAdmin(id);
+    return res.json({
+      message: "Consulta eliminada con éxito",
+      data: deletedConsulta,
+    });
+  } catch (error) {
+    const { statusCode, payload } = procesarErrorPrisma(error);
+    res.status(statusCode).json(payload);
+  }
+};
+
+export const getAllConsultaDeleted = async (req: Request, res: Response) => {
+  try {
+    const { fechaInicio, fechaFin } = req.query as {
+      fechaInicio: string;
+      fechaFin: string;
+    };
+    const consultas = await consultaModel.findAllDeleted(
+      fechaInicio ? new Date(fechaInicio) : undefined,
+      fechaFin ? new Date(fechaFin) : undefined,
+    );
+    if (consultas.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No se encontraron consultas eliminadas" });
+    }
+    res
+      .status(200)
+      .json({ "total eliminados": consultas.length, data: consultas });
   } catch (error) {
     const { statusCode, payload } = procesarErrorPrisma(error);
     res.status(statusCode).json(payload);

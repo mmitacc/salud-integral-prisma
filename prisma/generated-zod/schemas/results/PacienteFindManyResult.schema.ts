@@ -13,7 +13,7 @@ export const PacienteFindManyResultSchema = z.object({
   registerdate: z.date(),
   deleted: z.boolean(),
   historiales: z.array(z.unknown()).optional(),
-  citas: z.array(z.unknown()).optional()
+  consultas: z.array(z.unknown()).optional()
 })),
   pagination: z.object({
   page: z.number().int().min(1),

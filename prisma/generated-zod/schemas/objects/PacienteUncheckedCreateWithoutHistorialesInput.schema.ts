@@ -1,6 +1,6 @@
 import * as z from 'zod';
 import type { Prisma } from '../../../generated-client/browser';
-import { CitaUncheckedCreateNestedManyWithoutPacienteInputObjectSchema as CitaUncheckedCreateNestedManyWithoutPacienteInputObjectSchema } from './CitaUncheckedCreateNestedManyWithoutPacienteInput.schema'
+import { ConsultaUncheckedCreateNestedManyWithoutPacienteInputObjectSchema as ConsultaUncheckedCreateNestedManyWithoutPacienteInputObjectSchema } from './ConsultaUncheckedCreateNestedManyWithoutPacienteInput.schema'
 
 const makeSchema = () => z.object({
   id: z.number().int().optional(),
@@ -14,7 +14,7 @@ const makeSchema = () => z.object({
   alergias: z.string().optional(),
   registerdate: z.coerce.date().optional(),
   deleted: z.boolean().optional(),
-  citas: z.lazy(() => CitaUncheckedCreateNestedManyWithoutPacienteInputObjectSchema).optional()
+  consultas: z.lazy(() => ConsultaUncheckedCreateNestedManyWithoutPacienteInputObjectSchema).optional()
 }).strict();
 export const PacienteUncheckedCreateWithoutHistorialesInputObjectSchema: z.ZodType<Prisma.PacienteUncheckedCreateWithoutHistorialesInput> = makeSchema() as unknown as z.ZodType<Prisma.PacienteUncheckedCreateWithoutHistorialesInput>;
 export const PacienteUncheckedCreateWithoutHistorialesInputObjectZodSchema = makeSchema();

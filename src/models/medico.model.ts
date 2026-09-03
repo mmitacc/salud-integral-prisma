@@ -72,9 +72,20 @@ export const medicoModel = {
     });
   },
   softDelete: async (id: number) => {
-    return await prisma.medico.update({
-      where: { id, deleted: false },
+    const medico = await prisma.medico.findUnique({
+      where: { id, deleted: true },
+    });
+    if (medico) {
+      throw new Error("Médico no encontrado");
+    }
+    await prisma.consulta.updateMany({
+      where: { id_medico: id, deleted: false },
       data: { deleted: true },
+    });
+    return await prisma.medico.update({
+      where: { id },
+      data: { deleted: true },
+      include: { consultas: { omit: { deleted: true } } },
       omit: { deleted: true },
     });
   },
@@ -99,5 +110,39 @@ export const medicoModel = {
       };
     }
     return await prisma.medico.findMany(options);
+  },
+  findAgendaByDate: async (id: number, fechaInicio?: Date, fechaFin?: Date) => {
+    const options: Prisma.MedicoFindFirstArgs = {
+      where: {
+        id,
+        deleted: false,
+      },
+      select: {
+        nombres: true,
+        apellidos: true,
+        consultas: {
+          select: {
+            fecha: true,
+            horario: true,
+            paciente: {
+              select: {
+                nombres: true,
+                apellidos: true,
+              },
+            },
+          },
+          where: {},
+        },
+      },
+    };
+    if (fechaInicio && fechaFin && options.select?.consultas) {
+      (options.select.consultas as any).where = {
+        fecha: {
+          gte: fechaInicio,
+          lte: fechaFin,
+        },
+      };
+    }
+    return await prisma.medico.findFirst(options);
   },
 };

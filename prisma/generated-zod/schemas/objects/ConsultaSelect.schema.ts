@@ -1,18 +1,19 @@
 import * as z from 'zod';
 import type { Prisma } from '../../../generated-client/browser';
-import { CitaArgsObjectSchema as CitaArgsObjectSchema } from './CitaArgs.schema';
+import { PacienteArgsObjectSchema as PacienteArgsObjectSchema } from './PacienteArgs.schema';
 import { MedicoArgsObjectSchema as MedicoArgsObjectSchema } from './MedicoArgs.schema'
 
 const makeSchema = () => z.object({
   id: z.boolean().optional(),
-  id_cita: z.boolean().optional(),
+  id_paciente: z.boolean().optional(),
   id_medico: z.boolean().optional(),
+  estado: z.boolean().optional(),
   fecha: z.boolean().optional(),
   horario: z.boolean().optional(),
   costo: z.boolean().optional(),
   registerdate: z.boolean().optional(),
   deleted: z.boolean().optional(),
-  cita: z.union([z.boolean(), z.lazy(() => CitaArgsObjectSchema)]).optional(),
+  paciente: z.union([z.boolean(), z.lazy(() => PacienteArgsObjectSchema)]).optional(),
   medico: z.union([z.boolean(), z.lazy(() => MedicoArgsObjectSchema)]).optional()
 }).strict();
 export const ConsultaSelectObjectSchema: z.ZodType<Prisma.ConsultaSelect> = makeSchema() as unknown as z.ZodType<Prisma.ConsultaSelect>;

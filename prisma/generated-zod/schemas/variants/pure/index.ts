@@ -5,7 +5,6 @@
 
 export { PacienteModelSchema } from './Paciente.pure';
 export { HistorialModelSchema } from './Historial.pure';
-export { CitaModelSchema } from './Cita.pure';
 export { ConsultaModelSchema } from './Consulta.pure';
 export { MedicoModelSchema } from './Medico.pure';
 export { EspecialidadModelSchema } from './Especialidad.pure';

@@ -4,7 +4,7 @@ import { StringFieldUpdateOperationsInputObjectSchema as StringFieldUpdateOperat
 import { BoolFieldUpdateOperationsInputObjectSchema as BoolFieldUpdateOperationsInputObjectSchema } from './BoolFieldUpdateOperationsInput.schema';
 import { DateTimeFieldUpdateOperationsInputObjectSchema as DateTimeFieldUpdateOperationsInputObjectSchema } from './DateTimeFieldUpdateOperationsInput.schema';
 import { HistorialUpdateManyWithoutPacienteNestedInputObjectSchema as HistorialUpdateManyWithoutPacienteNestedInputObjectSchema } from './HistorialUpdateManyWithoutPacienteNestedInput.schema';
-import { CitaUpdateManyWithoutPacienteNestedInputObjectSchema as CitaUpdateManyWithoutPacienteNestedInputObjectSchema } from './CitaUpdateManyWithoutPacienteNestedInput.schema'
+import { ConsultaUpdateManyWithoutPacienteNestedInputObjectSchema as ConsultaUpdateManyWithoutPacienteNestedInputObjectSchema } from './ConsultaUpdateManyWithoutPacienteNestedInput.schema'
 
 const makeSchema = () => z.object({
   nombres: z.union([z.string().max(100), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
@@ -18,7 +18,7 @@ const makeSchema = () => z.object({
   registerdate: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
   deleted: z.union([z.boolean(), z.lazy(() => BoolFieldUpdateOperationsInputObjectSchema)]).optional(),
   historiales: z.lazy(() => HistorialUpdateManyWithoutPacienteNestedInputObjectSchema).optional(),
-  citas: z.lazy(() => CitaUpdateManyWithoutPacienteNestedInputObjectSchema).optional()
+  consultas: z.lazy(() => ConsultaUpdateManyWithoutPacienteNestedInputObjectSchema).optional()
 }).strict();
 export const PacienteUpdateInputObjectSchema: z.ZodType<Prisma.PacienteUpdateInput> = makeSchema() as unknown as z.ZodType<Prisma.PacienteUpdateInput>;
 export const PacienteUpdateInputObjectZodSchema = makeSchema();

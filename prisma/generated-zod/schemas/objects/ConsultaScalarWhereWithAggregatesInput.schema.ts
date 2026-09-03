@@ -1,6 +1,8 @@
 import * as z from 'zod';
 import { Prisma } from '../../../generated-client/browser';
 import { IntWithAggregatesFilterObjectSchema as IntWithAggregatesFilterObjectSchema } from './IntWithAggregatesFilter.schema';
+import { EnumEstadoCitaWithAggregatesFilterObjectSchema as EnumEstadoCitaWithAggregatesFilterObjectSchema } from './EnumEstadoCitaWithAggregatesFilter.schema';
+import { EstadoCitaSchema } from '../enums/EstadoCita.schema';
 import { DateTimeWithAggregatesFilterObjectSchema as DateTimeWithAggregatesFilterObjectSchema } from './DateTimeWithAggregatesFilter.schema';
 import { DecimalWithAggregatesFilterObjectSchema as DecimalWithAggregatesFilterObjectSchema } from './DecimalWithAggregatesFilter.schema';
 import { BoolWithAggregatesFilterObjectSchema as BoolWithAggregatesFilterObjectSchema } from './BoolWithAggregatesFilter.schema'
@@ -11,8 +13,9 @@ const consultascalarwherewithaggregatesinputSchema = z.object({
   OR: z.lazy(() => ConsultaScalarWhereWithAggregatesInputObjectSchema).array().optional(),
   NOT: z.union([z.lazy(() => ConsultaScalarWhereWithAggregatesInputObjectSchema), z.lazy(() => ConsultaScalarWhereWithAggregatesInputObjectSchema).array()]).optional(),
   id: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional(),
-  id_cita: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional(),
+  id_paciente: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional(),
   id_medico: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional(),
+  estado: z.union([z.lazy(() => EnumEstadoCitaWithAggregatesFilterObjectSchema), EstadoCitaSchema]).optional(),
   fecha: z.union([z.lazy(() => DateTimeWithAggregatesFilterObjectSchema), z.coerce.date()]).optional(),
   horario: z.union([z.lazy(() => DateTimeWithAggregatesFilterObjectSchema), z.coerce.date()]).optional(),
   costo: z.union([z.lazy(() => DecimalWithAggregatesFilterObjectSchema), z.union([

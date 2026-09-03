@@ -13,7 +13,7 @@ export const PacienteResultSchema = z.object({
     registerdate: z.date(),
     deleted: z.boolean(),
     historiales: z.array(z.unknown()),
-    citas: z.array(z.unknown())
+    consultas: z.array(z.unknown())
 }).strict();
 
 export type PacienteResultType = z.infer<typeof PacienteResultSchema>;

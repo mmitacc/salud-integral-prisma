@@ -30,7 +30,7 @@ model Paciente {
 
   // Relaciones inversas
   historiales Historial[]
-  citas       Cita[]
+  consultas   Consulta[]
 
   @@map("paciente")
 }
@@ -61,37 +61,20 @@ enum EstadoCita {
   CANCELADA
 }
 
-// ------------------- cita ------------------ //
-model Cita {
+model Consulta {
   id           Int        @id @default(autoincrement())
   id_paciente  Int
+  id_medico    Int
   estado       EstadoCita @default(PROGRAMADA)
-  pagoinicial  Decimal    @default(0.0) @db.Decimal(10, 2)
+  fecha        DateTime   @db.Date
+  horario      DateTime   @db.Time
+  costo        Decimal    @default(50.0) @db.Decimal(10, 2)
   registerdate DateTime   @default(now())
   deleted      Boolean    @default(false)
 
-  // Relación: Una cita pertenece a un paciente
-  paciente Paciente @relation(fields: [id_paciente], references: [id], onDelete: Restrict)
-
-  // Relaciones inversas
-  consultas Consulta[]
-
-  @@map("cita")
-}
-
-model Consulta {
-  id           Int      @id @default(autoincrement())
-  id_cita      Int
-  id_medico    Int
-  fecha        DateTime @db.Date()
-  horario      DateTime @db.Time()
-  costo        Decimal  @default(50.0) @db.Decimal(10, 2)
-  registerdate DateTime @default(now())
-  deleted      Boolean  @default(false)
-
   // Relaciones
-  cita   Cita   @relation(fields: [id_cita], references: [id], onDelete: Restrict)
-  medico Medico @relation(fields: [id_medico], references: [id], onDelete: Restrict)
+  paciente Paciente @relation(fields: [id_paciente], references: [id], onDelete: Restrict)
+  medico   Medico   @relation(fields: [id_medico], references: [id], onDelete: Restrict)
 
   @@map("consulta")
 }
@@ -142,6 +125,7 @@ model User {
   email        String   @unique
   password     String   @db.VarChar(100)
   role         Role
+  username     String   @db.VarChar(50)
   nombres      String   @db.VarChar(100)
   apellidos    String   @db.VarChar(100)
   telefono     String   @db.VarChar(20)

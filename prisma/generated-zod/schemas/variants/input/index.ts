@@ -5,7 +5,6 @@
 
 export { PacienteInputSchema } from './Paciente.input';
 export { HistorialInputSchema } from './Historial.input';
-export { CitaInputSchema } from './Cita.input';
 export { ConsultaInputSchema } from './Consulta.input';
 export { MedicoInputSchema } from './Medico.input';
 export { EspecialidadInputSchema } from './Especialidad.input';

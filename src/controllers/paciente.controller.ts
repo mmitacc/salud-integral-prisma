@@ -15,11 +15,15 @@ export const getAllPaciente = async (req: Request, res: Response) => {
 export const getPacienteById = async (req: Request, res: Response) => {
   try {
     const id = Number(req.params.id);
-    const paciente = await pacienteModel.findFirsft(id);
+    const paciente = await pacienteModel.findFirst(id);
     if (!paciente) {
       return res.status(404).json({ error: "Paciente no encontrado" });
     }
-    res.status(200).json({ message: "Paciente encontrado", data: paciente });
+    res.status(200).json({
+      "total consultas": paciente.consultas.length,
+      "total historiales": paciente.historiales.length,
+      paciente: paciente,
+    });
   } catch (error) {
     const { statusCode, payload } = procesarErrorPrisma(error);
     res.status(statusCode).json(payload);
@@ -65,6 +69,10 @@ export const postPaciente = async (req: Request, res: Response) => {
 export const putPaciente = async (req: Request, res: Response) => {
   try {
     const id = Number(req.params.id);
+    const paciente = await pacienteModel.findFirst(id);
+    if (!paciente) {
+      return res.status(404).json({ error: "Paciente no encontrado" });
+    }
     const {
       nombres,
       apellidos,
@@ -100,10 +108,33 @@ export const putPaciente = async (req: Request, res: Response) => {
     res.status(statusCode).json(payload);
   }
 };
+
+export const softDeletePaciente = async (req: Request, res: Response) => {
+  try {
+    const id = Number(req.params.id);
+    const paciente = await pacienteModel.findFirst(id);
+    if (!paciente) {
+      return res.status(404).json({ error: "Paciente no encontrado" });
+    }
+    const softDeletedPaciente = await pacienteModel.softDelete(id);
+    return res.json({
+      message: "Paciente eliminado con éxito",
+      data: softDeletedPaciente,
+    });
+  } catch (error) {
+    const { statusCode, payload } = procesarErrorPrisma(error);
+    res.status(statusCode).json(payload);
+  }
+};
+
 export const deletePaciente = async (req: Request, res: Response) => {
   try {
     const id = Number(req.params.id);
-    const deletedPaciente = await pacienteModel.delete(id);
+    const paciente = await pacienteModel.findOneAdmin(id);
+    if (!paciente) {
+      return res.status(404).json({ error: "Paciente no encontrado" });
+    }
+    const deletedPaciente = await pacienteModel.deleteAdmin(id);
     return res.json({
       message: "Paciente eliminado con éxito",
       data: deletedPaciente,
@@ -114,14 +145,24 @@ export const deletePaciente = async (req: Request, res: Response) => {
   }
 };
 
-export const softDeletePaciente = async (req: Request, res: Response) => {
+export const getAllPacienteDeleted = async (req: Request, res: Response) => {
   try {
-    const id = Number(req.params.id);
-    const softDeletedPaciente = await pacienteModel.softDelete(id);
-    return res.json({
-      message: "Paciente eliminado con éxito",
-      data: softDeletedPaciente,
-    });
+    const { fechaInicio, fechaFin } = req.query as {
+      fechaInicio: string;
+      fechaFin: string;
+    };
+    const pacientes = await pacienteModel.findAllDeleted(
+      fechaInicio ? new Date(fechaInicio) : undefined,
+      fechaFin ? new Date(fechaFin) : undefined,
+    );
+    if (pacientes.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No se encontraron pacientes eliminados" });
+    }
+    res
+      .status(200)
+      .json({ "total eliminados": pacientes.length, data: pacientes });
   } catch (error) {
     const { statusCode, payload } = procesarErrorPrisma(error);
     res.status(statusCode).json(payload);

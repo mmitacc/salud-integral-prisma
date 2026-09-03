@@ -2,7 +2,7 @@ import * as z from 'zod';
 import type { Prisma } from '../../../generated-client/browser';
 import { SortOrderSchema } from '../enums/SortOrder.schema';
 import { HistorialOrderByRelationAggregateInputObjectSchema as HistorialOrderByRelationAggregateInputObjectSchema } from './HistorialOrderByRelationAggregateInput.schema';
-import { CitaOrderByRelationAggregateInputObjectSchema as CitaOrderByRelationAggregateInputObjectSchema } from './CitaOrderByRelationAggregateInput.schema'
+import { ConsultaOrderByRelationAggregateInputObjectSchema as ConsultaOrderByRelationAggregateInputObjectSchema } from './ConsultaOrderByRelationAggregateInput.schema'
 
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
@@ -17,7 +17,7 @@ const makeSchema = () => z.object({
   registerdate: SortOrderSchema.optional(),
   deleted: SortOrderSchema.optional(),
   historiales: z.lazy(() => HistorialOrderByRelationAggregateInputObjectSchema).optional(),
-  citas: z.lazy(() => CitaOrderByRelationAggregateInputObjectSchema).optional()
+  consultas: z.lazy(() => ConsultaOrderByRelationAggregateInputObjectSchema).optional()
 }).strict();
 export const PacienteOrderByWithRelationInputObjectSchema: z.ZodType<Prisma.PacienteOrderByWithRelationInput> = makeSchema() as unknown as z.ZodType<Prisma.PacienteOrderByWithRelationInput>;
 export const PacienteOrderByWithRelationInputObjectZodSchema = makeSchema();

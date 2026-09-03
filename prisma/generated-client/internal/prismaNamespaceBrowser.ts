@@ -53,7 +53,6 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   Paciente: 'Paciente',
   Historial: 'Historial',
-  Cita: 'Cita',
   Consulta: 'Consulta',
   Medico: 'Medico',
   Especialidad: 'Especialidad',
@@ -109,22 +108,11 @@ export const HistorialScalarFieldEnum = {
 export type HistorialScalarFieldEnum = (typeof HistorialScalarFieldEnum)[keyof typeof HistorialScalarFieldEnum]
 
 
-export const CitaScalarFieldEnum = {
-  id: 'id',
-  id_paciente: 'id_paciente',
-  estado: 'estado',
-  pagoinicial: 'pagoinicial',
-  registerdate: 'registerdate',
-  deleted: 'deleted'
-} as const
-
-export type CitaScalarFieldEnum = (typeof CitaScalarFieldEnum)[keyof typeof CitaScalarFieldEnum]
-
-
 export const ConsultaScalarFieldEnum = {
   id: 'id',
-  id_cita: 'id_cita',
+  id_paciente: 'id_paciente',
   id_medico: 'id_medico',
+  estado: 'estado',
   fecha: 'fecha',
   horario: 'horario',
   costo: 'costo',
@@ -166,6 +154,7 @@ export const UserScalarFieldEnum = {
   email: 'email',
   password: 'password',
   role: 'role',
+  username: 'username',
   nombres: 'nombres',
   apellidos: 'apellidos',
   telefono: 'telefono',

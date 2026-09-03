@@ -5,7 +5,6 @@
 
 export { PacienteResultSchema } from './Paciente.result';
 export { HistorialResultSchema } from './Historial.result';
-export { CitaResultSchema } from './Cita.result';
 export { ConsultaResultSchema } from './Consulta.result';
 export { MedicoResultSchema } from './Medico.result';
 export { EspecialidadResultSchema } from './Especialidad.result';
