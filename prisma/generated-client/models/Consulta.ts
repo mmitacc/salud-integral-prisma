@@ -45,8 +45,7 @@ export type ConsultaMinAggregateOutputType = {
   id_paciente: number | null
   id_medico: number | null
   estado: $Enums.EstadoCita | null
-  fecha: Date | null
-  horario: Date | null
+  citadate: Date | null
   costo: runtime.Decimal | null
   registerdate: Date | null
   deleted: boolean | null
@@ -57,8 +56,7 @@ export type ConsultaMaxAggregateOutputType = {
   id_paciente: number | null
   id_medico: number | null
   estado: $Enums.EstadoCita | null
-  fecha: Date | null
-  horario: Date | null
+  citadate: Date | null
   costo: runtime.Decimal | null
   registerdate: Date | null
   deleted: boolean | null
@@ -69,8 +67,7 @@ export type ConsultaCountAggregateOutputType = {
   id_paciente: number
   id_medico: number
   estado: number
-  fecha: number
-  horario: number
+  citadate: number
   costo: number
   registerdate: number
   deleted: number
@@ -97,8 +94,7 @@ export type ConsultaMinAggregateInputType = {
   id_paciente?: true
   id_medico?: true
   estado?: true
-  fecha?: true
-  horario?: true
+  citadate?: true
   costo?: true
   registerdate?: true
   deleted?: true
@@ -109,8 +105,7 @@ export type ConsultaMaxAggregateInputType = {
   id_paciente?: true
   id_medico?: true
   estado?: true
-  fecha?: true
-  horario?: true
+  citadate?: true
   costo?: true
   registerdate?: true
   deleted?: true
@@ -121,8 +116,7 @@ export type ConsultaCountAggregateInputType = {
   id_paciente?: true
   id_medico?: true
   estado?: true
-  fecha?: true
-  horario?: true
+  citadate?: true
   costo?: true
   registerdate?: true
   deleted?: true
@@ -220,8 +214,7 @@ export type ConsultaGroupByOutputType = {
   id_paciente: number
   id_medico: number
   estado: $Enums.EstadoCita
-  fecha: Date
-  horario: Date
+  citadate: Date
   costo: runtime.Decimal
   registerdate: Date
   deleted: boolean
@@ -255,8 +248,7 @@ export type ConsultaWhereInput = {
   id_paciente?: Prisma.IntFilter<"Consulta"> | number
   id_medico?: Prisma.IntFilter<"Consulta"> | number
   estado?: Prisma.EnumEstadoCitaFilter<"Consulta"> | $Enums.EstadoCita
-  fecha?: Prisma.DateTimeFilter<"Consulta"> | Date | string
-  horario?: Prisma.DateTimeFilter<"Consulta"> | Date | string
+  citadate?: Prisma.DateTimeFilter<"Consulta"> | Date | string
   costo?: Prisma.DecimalFilter<"Consulta"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Prisma.DateTimeFilter<"Consulta"> | Date | string
   deleted?: Prisma.BoolFilter<"Consulta"> | boolean
@@ -269,8 +261,7 @@ export type ConsultaOrderByWithRelationInput = {
   id_paciente?: Prisma.SortOrder
   id_medico?: Prisma.SortOrder
   estado?: Prisma.SortOrder
-  fecha?: Prisma.SortOrder
-  horario?: Prisma.SortOrder
+  citadate?: Prisma.SortOrder
   costo?: Prisma.SortOrder
   registerdate?: Prisma.SortOrder
   deleted?: Prisma.SortOrder
@@ -286,8 +277,7 @@ export type ConsultaWhereUniqueInput = Prisma.AtLeast<{
   id_paciente?: Prisma.IntFilter<"Consulta"> | number
   id_medico?: Prisma.IntFilter<"Consulta"> | number
   estado?: Prisma.EnumEstadoCitaFilter<"Consulta"> | $Enums.EstadoCita
-  fecha?: Prisma.DateTimeFilter<"Consulta"> | Date | string
-  horario?: Prisma.DateTimeFilter<"Consulta"> | Date | string
+  citadate?: Prisma.DateTimeFilter<"Consulta"> | Date | string
   costo?: Prisma.DecimalFilter<"Consulta"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Prisma.DateTimeFilter<"Consulta"> | Date | string
   deleted?: Prisma.BoolFilter<"Consulta"> | boolean
@@ -300,8 +290,7 @@ export type ConsultaOrderByWithAggregationInput = {
   id_paciente?: Prisma.SortOrder
   id_medico?: Prisma.SortOrder
   estado?: Prisma.SortOrder
-  fecha?: Prisma.SortOrder
-  horario?: Prisma.SortOrder
+  citadate?: Prisma.SortOrder
   costo?: Prisma.SortOrder
   registerdate?: Prisma.SortOrder
   deleted?: Prisma.SortOrder
@@ -320,8 +309,7 @@ export type ConsultaScalarWhereWithAggregatesInput = {
   id_paciente?: Prisma.IntWithAggregatesFilter<"Consulta"> | number
   id_medico?: Prisma.IntWithAggregatesFilter<"Consulta"> | number
   estado?: Prisma.EnumEstadoCitaWithAggregatesFilter<"Consulta"> | $Enums.EstadoCita
-  fecha?: Prisma.DateTimeWithAggregatesFilter<"Consulta"> | Date | string
-  horario?: Prisma.DateTimeWithAggregatesFilter<"Consulta"> | Date | string
+  citadate?: Prisma.DateTimeWithAggregatesFilter<"Consulta"> | Date | string
   costo?: Prisma.DecimalWithAggregatesFilter<"Consulta"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Prisma.DateTimeWithAggregatesFilter<"Consulta"> | Date | string
   deleted?: Prisma.BoolWithAggregatesFilter<"Consulta"> | boolean
@@ -329,8 +317,7 @@ export type ConsultaScalarWhereWithAggregatesInput = {
 
 export type ConsultaCreateInput = {
   estado?: $Enums.EstadoCita
-  fecha: Date | string
-  horario: Date | string
+  citadate: Date | string
   costo?: runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Date | string
   deleted?: boolean
@@ -343,8 +330,7 @@ export type ConsultaUncheckedCreateInput = {
   id_paciente: number
   id_medico: number
   estado?: $Enums.EstadoCita
-  fecha: Date | string
-  horario: Date | string
+  citadate: Date | string
   costo?: runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Date | string
   deleted?: boolean
@@ -352,8 +338,7 @@ export type ConsultaUncheckedCreateInput = {
 
 export type ConsultaUpdateInput = {
   estado?: Prisma.EnumEstadoCitaFieldUpdateOperationsInput | $Enums.EstadoCita
-  fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  horario?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  citadate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   costo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -366,8 +351,7 @@ export type ConsultaUncheckedUpdateInput = {
   id_paciente?: Prisma.IntFieldUpdateOperationsInput | number
   id_medico?: Prisma.IntFieldUpdateOperationsInput | number
   estado?: Prisma.EnumEstadoCitaFieldUpdateOperationsInput | $Enums.EstadoCita
-  fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  horario?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  citadate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   costo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -378,8 +362,7 @@ export type ConsultaCreateManyInput = {
   id_paciente: number
   id_medico: number
   estado?: $Enums.EstadoCita
-  fecha: Date | string
-  horario: Date | string
+  citadate: Date | string
   costo?: runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Date | string
   deleted?: boolean
@@ -387,8 +370,7 @@ export type ConsultaCreateManyInput = {
 
 export type ConsultaUpdateManyMutationInput = {
   estado?: Prisma.EnumEstadoCitaFieldUpdateOperationsInput | $Enums.EstadoCita
-  fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  horario?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  citadate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   costo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -399,8 +381,7 @@ export type ConsultaUncheckedUpdateManyInput = {
   id_paciente?: Prisma.IntFieldUpdateOperationsInput | number
   id_medico?: Prisma.IntFieldUpdateOperationsInput | number
   estado?: Prisma.EnumEstadoCitaFieldUpdateOperationsInput | $Enums.EstadoCita
-  fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  horario?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  citadate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   costo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -421,8 +402,7 @@ export type ConsultaCountOrderByAggregateInput = {
   id_paciente?: Prisma.SortOrder
   id_medico?: Prisma.SortOrder
   estado?: Prisma.SortOrder
-  fecha?: Prisma.SortOrder
-  horario?: Prisma.SortOrder
+  citadate?: Prisma.SortOrder
   costo?: Prisma.SortOrder
   registerdate?: Prisma.SortOrder
   deleted?: Prisma.SortOrder
@@ -440,8 +420,7 @@ export type ConsultaMaxOrderByAggregateInput = {
   id_paciente?: Prisma.SortOrder
   id_medico?: Prisma.SortOrder
   estado?: Prisma.SortOrder
-  fecha?: Prisma.SortOrder
-  horario?: Prisma.SortOrder
+  citadate?: Prisma.SortOrder
   costo?: Prisma.SortOrder
   registerdate?: Prisma.SortOrder
   deleted?: Prisma.SortOrder
@@ -452,8 +431,7 @@ export type ConsultaMinOrderByAggregateInput = {
   id_paciente?: Prisma.SortOrder
   id_medico?: Prisma.SortOrder
   estado?: Prisma.SortOrder
-  fecha?: Prisma.SortOrder
-  horario?: Prisma.SortOrder
+  citadate?: Prisma.SortOrder
   costo?: Prisma.SortOrder
   registerdate?: Prisma.SortOrder
   deleted?: Prisma.SortOrder
@@ -564,8 +542,7 @@ export type ConsultaUncheckedUpdateManyWithoutMedicoNestedInput = {
 
 export type ConsultaCreateWithoutPacienteInput = {
   estado?: $Enums.EstadoCita
-  fecha: Date | string
-  horario: Date | string
+  citadate: Date | string
   costo?: runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Date | string
   deleted?: boolean
@@ -576,8 +553,7 @@ export type ConsultaUncheckedCreateWithoutPacienteInput = {
   id?: number
   id_medico: number
   estado?: $Enums.EstadoCita
-  fecha: Date | string
-  horario: Date | string
+  citadate: Date | string
   costo?: runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Date | string
   deleted?: boolean
@@ -617,8 +593,7 @@ export type ConsultaScalarWhereInput = {
   id_paciente?: Prisma.IntFilter<"Consulta"> | number
   id_medico?: Prisma.IntFilter<"Consulta"> | number
   estado?: Prisma.EnumEstadoCitaFilter<"Consulta"> | $Enums.EstadoCita
-  fecha?: Prisma.DateTimeFilter<"Consulta"> | Date | string
-  horario?: Prisma.DateTimeFilter<"Consulta"> | Date | string
+  citadate?: Prisma.DateTimeFilter<"Consulta"> | Date | string
   costo?: Prisma.DecimalFilter<"Consulta"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Prisma.DateTimeFilter<"Consulta"> | Date | string
   deleted?: Prisma.BoolFilter<"Consulta"> | boolean
@@ -626,8 +601,7 @@ export type ConsultaScalarWhereInput = {
 
 export type ConsultaCreateWithoutMedicoInput = {
   estado?: $Enums.EstadoCita
-  fecha: Date | string
-  horario: Date | string
+  citadate: Date | string
   costo?: runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Date | string
   deleted?: boolean
@@ -638,8 +612,7 @@ export type ConsultaUncheckedCreateWithoutMedicoInput = {
   id?: number
   id_paciente: number
   estado?: $Enums.EstadoCita
-  fecha: Date | string
-  horario: Date | string
+  citadate: Date | string
   costo?: runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Date | string
   deleted?: boolean
@@ -675,8 +648,7 @@ export type ConsultaCreateManyPacienteInput = {
   id?: number
   id_medico: number
   estado?: $Enums.EstadoCita
-  fecha: Date | string
-  horario: Date | string
+  citadate: Date | string
   costo?: runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Date | string
   deleted?: boolean
@@ -684,8 +656,7 @@ export type ConsultaCreateManyPacienteInput = {
 
 export type ConsultaUpdateWithoutPacienteInput = {
   estado?: Prisma.EnumEstadoCitaFieldUpdateOperationsInput | $Enums.EstadoCita
-  fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  horario?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  citadate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   costo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -696,8 +667,7 @@ export type ConsultaUncheckedUpdateWithoutPacienteInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   id_medico?: Prisma.IntFieldUpdateOperationsInput | number
   estado?: Prisma.EnumEstadoCitaFieldUpdateOperationsInput | $Enums.EstadoCita
-  fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  horario?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  citadate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   costo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -707,8 +677,7 @@ export type ConsultaUncheckedUpdateManyWithoutPacienteInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   id_medico?: Prisma.IntFieldUpdateOperationsInput | number
   estado?: Prisma.EnumEstadoCitaFieldUpdateOperationsInput | $Enums.EstadoCita
-  fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  horario?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  citadate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   costo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -718,8 +687,7 @@ export type ConsultaCreateManyMedicoInput = {
   id?: number
   id_paciente: number
   estado?: $Enums.EstadoCita
-  fecha: Date | string
-  horario: Date | string
+  citadate: Date | string
   costo?: runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Date | string
   deleted?: boolean
@@ -727,8 +695,7 @@ export type ConsultaCreateManyMedicoInput = {
 
 export type ConsultaUpdateWithoutMedicoInput = {
   estado?: Prisma.EnumEstadoCitaFieldUpdateOperationsInput | $Enums.EstadoCita
-  fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  horario?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  citadate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   costo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -739,8 +706,7 @@ export type ConsultaUncheckedUpdateWithoutMedicoInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   id_paciente?: Prisma.IntFieldUpdateOperationsInput | number
   estado?: Prisma.EnumEstadoCitaFieldUpdateOperationsInput | $Enums.EstadoCita
-  fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  horario?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  citadate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   costo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -750,8 +716,7 @@ export type ConsultaUncheckedUpdateManyWithoutMedicoInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   id_paciente?: Prisma.IntFieldUpdateOperationsInput | number
   estado?: Prisma.EnumEstadoCitaFieldUpdateOperationsInput | $Enums.EstadoCita
-  fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  horario?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  citadate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   costo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   registerdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -764,8 +729,7 @@ export type ConsultaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   id_paciente?: boolean
   id_medico?: boolean
   estado?: boolean
-  fecha?: boolean
-  horario?: boolean
+  citadate?: boolean
   costo?: boolean
   registerdate?: boolean
   deleted?: boolean
@@ -778,8 +742,7 @@ export type ConsultaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   id_paciente?: boolean
   id_medico?: boolean
   estado?: boolean
-  fecha?: boolean
-  horario?: boolean
+  citadate?: boolean
   costo?: boolean
   registerdate?: boolean
   deleted?: boolean
@@ -792,8 +755,7 @@ export type ConsultaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   id_paciente?: boolean
   id_medico?: boolean
   estado?: boolean
-  fecha?: boolean
-  horario?: boolean
+  citadate?: boolean
   costo?: boolean
   registerdate?: boolean
   deleted?: boolean
@@ -806,14 +768,13 @@ export type ConsultaSelectScalar = {
   id_paciente?: boolean
   id_medico?: boolean
   estado?: boolean
-  fecha?: boolean
-  horario?: boolean
+  citadate?: boolean
   costo?: boolean
   registerdate?: boolean
   deleted?: boolean
 }
 
-export type ConsultaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "id_paciente" | "id_medico" | "estado" | "fecha" | "horario" | "costo" | "registerdate" | "deleted", ExtArgs["result"]["consulta"]>
+export type ConsultaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "id_paciente" | "id_medico" | "estado" | "citadate" | "costo" | "registerdate" | "deleted", ExtArgs["result"]["consulta"]>
 export type ConsultaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   paciente?: boolean | Prisma.PacienteDefaultArgs<ExtArgs>
   medico?: boolean | Prisma.MedicoDefaultArgs<ExtArgs>
@@ -838,8 +799,7 @@ export type $ConsultaPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     id_paciente: number
     id_medico: number
     estado: $Enums.EstadoCita
-    fecha: Date
-    horario: Date
+    citadate: Date
     costo: runtime.Decimal
     registerdate: Date
     deleted: boolean
@@ -1272,8 +1232,7 @@ export interface ConsultaFieldRefs {
   readonly id_paciente: Prisma.FieldRef<"Consulta", 'Int'>
   readonly id_medico: Prisma.FieldRef<"Consulta", 'Int'>
   readonly estado: Prisma.FieldRef<"Consulta", 'EstadoCita'>
-  readonly fecha: Prisma.FieldRef<"Consulta", 'DateTime'>
-  readonly horario: Prisma.FieldRef<"Consulta", 'DateTime'>
+  readonly citadate: Prisma.FieldRef<"Consulta", 'DateTime'>
   readonly costo: Prisma.FieldRef<"Consulta", 'Decimal'>
   readonly registerdate: Prisma.FieldRef<"Consulta", 'DateTime'>
   readonly deleted: Prisma.FieldRef<"Consulta", 'Boolean'>

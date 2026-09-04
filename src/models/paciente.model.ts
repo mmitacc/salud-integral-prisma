@@ -13,7 +13,6 @@ export const pacienteModel = {
     return await prisma.paciente.findFirst({
       where: { id, deleted: false },
       include: {
-        historiales: { omit: { deleted: true } },
         consultas: { omit: { deleted: true } },
       },
       omit: { deleted: true },
@@ -71,12 +70,6 @@ export const pacienteModel = {
   },
 
   softDelete: async (id: number) => {
-    const paciente = await prisma.paciente.findUnique({
-      where: { id, deleted: true },
-    });
-    if (paciente) {
-      throw new Error("Paciente no encontrado");
-    }
     return await prisma.paciente.update({
       where: { id },
       data: { deleted: true },

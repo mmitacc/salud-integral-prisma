@@ -1,7 +1,6 @@
 import type { Request, Response } from "express";
 import { historialModel } from "../models/historial.model";
 import procesarErrorPrisma from "../utils/errorHandlerUtil";
-import { pacienteModel } from "../models/paciente.model";
 
 export const getAllHistoriales = async (req: Request, res: Response) => {
   try {
@@ -88,6 +87,24 @@ export const putHistorial = async (req: Request, res: Response) => {
   }
 };
 
+export const softDeleteHistorial = async (req: Request, res: Response) => {
+  try {
+    const id = Number(req.params.id);
+    const historial = await historialModel.findFirst(id);
+    if (!historial) {
+      return res.status(404).json({ error: "Historial no encontrada" });
+    }
+    const softDeletedHistorial = await historialModel.softDelete(id);
+    return res.json({
+      message: "Historial eliminado con éxito",
+      data: softDeletedHistorial,
+    });
+  } catch (error) {
+    const { statusCode, payload } = procesarErrorPrisma(error);
+    res.status(statusCode).json(payload);
+  }
+};
+
 export const deleteHistorial = async (req: Request, res: Response) => {
   try {
     const id = Number(req.params.id);
@@ -102,13 +119,24 @@ export const deleteHistorial = async (req: Request, res: Response) => {
   }
 };
 
-export const softDeleteHistorial = async (req: Request, res: Response) => {
+export const getAllHistorialDeleted = async (req: Request, res: Response) => {
   try {
-    const id = Number(req.params.id);
-    const softDeletedHistorial = await historialModel.softDelete(id);
-    return res.json({
-      message: "Historial eliminado con éxito",
-      data: softDeletedHistorial,
+    const { fechaInicio, fechaFin } = req.query as {
+      fechaInicio: string;
+      fechaFin: string;
+    };
+    const historiales = await historialModel.findAllDeleted(
+      fechaInicio ? new Date(fechaInicio) : undefined,
+      fechaFin ? new Date(fechaFin) : undefined,
+    );
+    if (historiales.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No se encontraron historiales eliminadas" });
+    }
+    res.status(200).json({
+      "total eliminados": historiales.length,
+      data: historiales,
     });
   } catch (error) {
     const { statusCode, payload } = procesarErrorPrisma(error);

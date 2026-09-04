@@ -1,16 +1,18 @@
 import { Router } from "express";
 import {
+  corteOperativo,
   deleteConsulta,
   getAllConsultas,
   getAllConsultaDeleted,
   getConsultaById,
-  postConsulta,
   putConsulta,
   softDeleteConsulta,
+  postCita,
+  putEstadoCita,
+  rentabilidadArea,
 } from "../controllers/consulta.controller";
 import {
   ConsultaWhereUniqueInputObjectSchema,
-  ConsultaUncheckedCreateInputObjectSchema,
   ConsultaUncheckedUpdateInputObjectSchema,
 } from "../../prisma/generated-zod/schemas";
 import {
@@ -19,6 +21,7 @@ import {
   validateQuerySchema,
 } from "../middlewares/validate.schema";
 import { RangoFechasQuerySchema } from "../schemas/querys.schema";
+import CrearConsultaSchema from "../schemas/cita.schema";
 
 const router = Router();
 
@@ -28,21 +31,25 @@ router.get(
   validateQuerySchema(RangoFechasQuerySchema),
   getAllConsultaDeleted,
 );
+router.get("/corte-operativo", corteOperativo);
+router.get("/rentabilidad", rentabilidadArea);
 router.get(
   "/:id",
   validateParamsSchema(ConsultaWhereUniqueInputObjectSchema),
   getConsultaById,
 );
-router.post(
-  "/",
-  validateBodySchema(ConsultaUncheckedCreateInputObjectSchema),
-  postConsulta,
-);
+router.post("/", validateBodySchema(CrearConsultaSchema), postCita);
 router.put(
   "/:id",
   validateParamsSchema(ConsultaWhereUniqueInputObjectSchema),
   validateBodySchema(ConsultaUncheckedUpdateInputObjectSchema),
   putConsulta,
+);
+router.put(
+  "/cita/:id",
+  validateParamsSchema(ConsultaWhereUniqueInputObjectSchema),
+  validateBodySchema(ConsultaUncheckedUpdateInputObjectSchema),
+  putEstadoCita,
 );
 router.delete(
   "/:id",

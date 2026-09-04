@@ -7,8 +7,7 @@ const makeSchema = () => z.object({
   id: z.number().int().optional(),
   id_medico: z.number().int(),
   estado: EstadoCitaSchema.optional(),
-  fecha: z.coerce.date(),
-  horario: z.coerce.date(),
+  citadate: z.coerce.date(),
   costo: z.union([
   z.number(),
   z.string(),

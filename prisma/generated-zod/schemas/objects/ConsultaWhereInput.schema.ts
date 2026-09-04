@@ -20,8 +20,7 @@ const consultawhereinputSchema = z.object({
   id_paciente: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   id_medico: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   estado: z.union([z.lazy(() => EnumEstadoCitaFilterObjectSchema), EstadoCitaSchema]).optional(),
-  fecha: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
-  horario: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
+  citadate: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
   costo: z.union([z.lazy(() => DecimalFilterObjectSchema), z.union([
   z.number(),
   z.string(),

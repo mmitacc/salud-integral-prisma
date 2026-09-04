@@ -113,8 +113,7 @@ export const ConsultaScalarFieldEnum = {
   id_paciente: 'id_paciente',
   id_medico: 'id_medico',
   estado: 'estado',
-  fecha: 'fecha',
-  horario: 'horario',
+  citadate: 'citadate',
   costo: 'costo',
   registerdate: 'registerdate',
   deleted: 'deleted'

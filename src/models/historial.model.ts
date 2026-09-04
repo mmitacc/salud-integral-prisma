@@ -1,11 +1,19 @@
+import type { Prisma } from "../../prisma/generated-client/client";
 import { prisma } from "../config/prisma";
 
 export const historialModel = {
   findAll: async () => {
-    return await prisma.historial.findMany({ orderBy: { id: "asc" } });
+    return await prisma.historial.findMany({
+      where: { deleted: false },
+      orderBy: { id: "asc" },
+      omit: { deleted: true },
+    });
   },
   findFirst: async (id: number) => {
-    return await prisma.historial.findFirst({ where: { id } });
+    return await prisma.historial.findFirst({
+      where: { id, deleted: false },
+      omit: { deleted: true },
+    });
   },
   create: async (
     id_paciente: number,
@@ -26,6 +34,7 @@ export const historialModel = {
         tratamiento,
         receta,
       },
+      omit: { deleted: true },
     });
   },
   update: async (
@@ -49,17 +58,42 @@ export const historialModel = {
         tratamiento,
         receta,
       },
-    });
-  },
-  delete: async (id: number) => {
-    return await prisma.historial.delete({
-      where: { id },
+      omit: { deleted: true },
     });
   },
   softDelete: async (id: number) => {
     return await prisma.historial.update({
       where: { id },
       data: { deleted: true },
+      omit: { deleted: true },
+    });
+  },
+  delete: async (id: number) => {
+    return await prisma.historial.delete({
+      where: { id },
+      omit: { deleted: true },
+    });
+  },
+  findAllDeleted: async (fechaInicio?: Date, fechaFin?: Date) => {
+    const options: Prisma.HistorialFindManyArgs = {
+      orderBy: { id: "asc" },
+      where: { deleted: true },
+    };
+    if (fechaInicio && fechaFin) {
+      options.where = {
+        ...options.where,
+        registerdate: {
+          gte: fechaInicio,
+          lte: fechaFin,
+        },
+      };
+    }
+    return await prisma.historial.findMany(options);
+  },
+  findAllByIdPaciente: async (idPaciente: number) => {
+    return await prisma.historial.findMany({
+      where: { id_paciente: idPaciente, deleted: false },
+      select: { id: true, motivo: true, registerdate: true },
     });
   },
 };
