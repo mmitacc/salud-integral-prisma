@@ -7,8 +7,7 @@ import { MedicoCreateNestedOneWithoutConsultasInputObjectSchema as MedicoCreateN
 import { DecimalJSLikeSchema, isValidDecimalInput } from '../../helpers/decimal-helpers';
 const makeSchema = () => z.object({
   estado: EstadoCitaSchema.optional(),
-  fecha: z.coerce.date(),
-  horario: z.coerce.date(),
+  citadate: z.coerce.date(),
   costo: z.union([
   z.number(),
   z.string(),

@@ -66,8 +66,7 @@ model Consulta {
   id_paciente  Int
   id_medico    Int
   estado       EstadoCita @default(PROGRAMADA)
-  fecha        DateTime   @db.Date
-  horario      DateTime   @db.Time
+  citadate     DateTime   @db.Timestamp
   costo        Decimal    @default(50.0) @db.Decimal(10, 2)
   registerdate DateTime   @default(now())
   deleted      Boolean    @default(false)

@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   deleteHistorial,
   getAllHistoriales,
+  getAllHistorialDeleted,
   getHistorialById,
   postHistorial,
   putHistorial,
@@ -15,11 +16,18 @@ import {
 import {
   validateBodySchema,
   validateParamsSchema,
+  validateQuerySchema,
 } from "../middlewares/validate.schema";
+import { RangoFechasQuerySchema } from "../schemas/querys.schema";
 
 const router = Router();
 
 router.get("/", getAllHistoriales);
+router.get(
+  "/admin",
+  validateQuerySchema(RangoFechasQuerySchema),
+  getAllHistorialDeleted,
+);
 router.get(
   "/:id",
   validateParamsSchema(HistorialWhereUniqueInputObjectSchema),
@@ -39,12 +47,12 @@ router.put(
 router.delete(
   "/:id",
   validateParamsSchema(HistorialWhereUniqueInputObjectSchema),
-  deleteHistorial,
+  softDeleteHistorial,
 );
 router.delete(
-  "/soft/:id",
+  "/admin/:id",
   validateParamsSchema(HistorialWhereUniqueInputObjectSchema),
-  softDeleteHistorial,
+  deleteHistorial,
 );
 
 export default router;

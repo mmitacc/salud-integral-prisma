@@ -54,17 +54,6 @@ Identificando las Principales Entidades:
 | registerdate     | Date           | Date(now()) |
 
 
-## Entity: cita
-
-| Atributo      | Tipo           | Notas       |
-|---------------|----------------|-------------|
-| id            | Número Entero  | [PK]        |
-| id_paciente   | Número Entero  | [FK]        |
-| estado        | Texto          | Obligatorio |
-| pago_inicial  | Decimal        | Default(0.0)|
-| registerdate  | Date           | Date(now()) |
-
-
 ## Entity: consulta
 
 | Atributo      | Tipo           | Notas       |
@@ -73,8 +62,7 @@ Identificando las Principales Entidades:
 | id_paciente   | Número Entero  | [FK]        |
 | id_medico     | Número Entero  | [FK]        |
 | estado        | Texto          | Obligatorio |
-| fecha         | Date           | Obligatorio |
-| horario       | Time           | Obligatorio |
+| citadate      | Date           | Obligatorio |
 | costo         | Decimal        | Default(50) |
 | registerdate  | Date           | Date(now()) |
 

@@ -16,8 +16,7 @@ const consultascalarwherewithaggregatesinputSchema = z.object({
   id_paciente: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional(),
   id_medico: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional(),
   estado: z.union([z.lazy(() => EnumEstadoCitaWithAggregatesFilterObjectSchema), EstadoCitaSchema]).optional(),
-  fecha: z.union([z.lazy(() => DateTimeWithAggregatesFilterObjectSchema), z.coerce.date()]).optional(),
-  horario: z.union([z.lazy(() => DateTimeWithAggregatesFilterObjectSchema), z.coerce.date()]).optional(),
+  citadate: z.union([z.lazy(() => DateTimeWithAggregatesFilterObjectSchema), z.coerce.date()]).optional(),
   costo: z.union([z.lazy(() => DecimalWithAggregatesFilterObjectSchema), z.union([
   z.number(),
   z.string(),

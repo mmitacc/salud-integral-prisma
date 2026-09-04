@@ -1,6 +1,7 @@
 import type { Request, Response } from "express";
 import { pacienteModel } from "../models/paciente.model";
 import procesarErrorPrisma from "../utils/errorHandlerUtil";
+import { historialModel } from "../models/historial.model";
 
 export const getAllPaciente = async (req: Request, res: Response) => {
   try {
@@ -21,7 +22,6 @@ export const getPacienteById = async (req: Request, res: Response) => {
     }
     res.status(200).json({
       "total consultas": paciente.consultas.length,
-      "total historiales": paciente.historiales.length,
       paciente: paciente,
     });
   } catch (error) {
@@ -115,6 +115,13 @@ export const softDeletePaciente = async (req: Request, res: Response) => {
     const paciente = await pacienteModel.findFirst(id);
     if (!paciente) {
       return res.status(404).json({ error: "Paciente no encontrado" });
+    }
+    const historiales = await historialModel.findAllByIdPaciente(paciente.id);
+    if (historiales.length !== 0) {
+      return res.status(400).json({
+        error: "Existen historiales relacionados a este paciente",
+        historiales: historiales,
+      });
     }
     const softDeletedPaciente = await pacienteModel.softDelete(id);
     return res.json({

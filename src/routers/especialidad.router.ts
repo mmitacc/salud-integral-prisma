@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   deleteEspecialidad,
   getAllEspecialidades,
+  getAllEspacialidadDeleted,
   getEspecialidadById,
   postEspecialidad,
   putEspecialidad,
@@ -15,11 +16,18 @@ import {
 import {
   validateBodySchema,
   validateParamsSchema,
+  validateQuerySchema,
 } from "../middlewares/validate.schema";
+import { RangoFechasQuerySchema } from "../schemas/querys.schema";
 
 const router = Router();
 
 router.get("/", getAllEspecialidades);
+router.get(
+  "/admin",
+  validateQuerySchema(RangoFechasQuerySchema),
+  getAllEspacialidadDeleted,
+);
 router.get(
   "/:id",
   validateParamsSchema(EspecialidadWhereUniqueInputObjectSchema),
@@ -39,12 +47,12 @@ router.put(
 router.delete(
   "/:id",
   validateParamsSchema(EspecialidadWhereUniqueInputObjectSchema),
-  deleteEspecialidad,
+  softDeleteEspecialidad,
 );
 router.delete(
-  "/soft/:id",
+  "/admin/:id",
   validateParamsSchema(EspecialidadWhereUniqueInputObjectSchema),
-  softDeleteEspecialidad,
+  deleteEspecialidad,
 );
 
 export default router;

@@ -73,9 +73,9 @@ export const medicoModel = {
   },
   softDelete: async (id: number) => {
     const medico = await prisma.medico.findUnique({
-      where: { id, deleted: true },
+      where: { id, deleted: false },
     });
-    if (medico) {
+    if (!medico) {
       throw new Error("Médico no encontrado");
     }
     await prisma.consulta.updateMany({
@@ -120,29 +120,36 @@ export const medicoModel = {
       select: {
         nombres: true,
         apellidos: true,
+        especialidad: { select: { tipo: true } },
         consultas: {
           select: {
-            fecha: true,
-            horario: true,
+            citadate: true,
             paciente: {
               select: {
+                id: true,
                 nombres: true,
                 apellidos: true,
               },
             },
           },
-          where: {},
+          where: {} as Prisma.ConsultaWhereInput,
         },
       },
     };
     if (fechaInicio && fechaFin && options.select?.consultas) {
       (options.select.consultas as any).where = {
-        fecha: {
+        citadate: {
           gte: fechaInicio,
           lte: fechaFin,
         },
       };
     }
     return await prisma.medico.findFirst(options);
+  },
+  findAllByIdEspecialidad: async (idEspecialidad: number) => {
+    return await prisma.medico.findMany({
+      where: { id_especialidad: idEspecialidad, deleted: false },
+      select: { id: true, nombres: true, apellidos: true },
+    });
   },
 };
