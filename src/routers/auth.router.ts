@@ -1,14 +1,10 @@
 import { Router } from "express";
 import { register, login } from "../controllers/auth.controller.js";
+import { verifyToken } from "../middlewares/auth.middleware.js";
+import { authorize } from "../middlewares/authorize.middleware";
 
 const router = Router();
 
-router.post(
-  "/register",
-  // #swagger.tags = ['Autenticación']
-  // #swagger.summary = 'Registrar un nuevo usuario'
-  register,
-);
 router.post(
   "/login",
   // #swagger.tags = ['Autenticación']
@@ -16,4 +12,13 @@ router.post(
   login,
 );
 
+router.post(
+  "/register",
+  verifyToken,
+  authorize("ADMIN", "GERENCIA"),
+  /* #swagger.security = [{ "bearerAuth": [] }] */
+  // #swagger.tags = ['Autenticación']
+  // #swagger.summary = 'Registrar un nuevo usuario'
+  register,
+);
 export default router;

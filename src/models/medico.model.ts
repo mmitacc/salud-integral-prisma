@@ -30,7 +30,7 @@ export const medicoModel = {
     apellidos: string,
     telefono: string,
     username: string,
-    password: string,
+    hashedPassword: string,
     email: string,
     masculino: boolean,
     fechanacimiento: Date,
@@ -45,7 +45,9 @@ export const medicoModel = {
         masculino,
         fechanacimiento,
         especialidad: { connect: { id: id_especialidad } },
-        usuario: { create: { email, username, password, role: "MEDICO" } },
+        usuario: {
+          create: { email, username, password: hashedPassword, role: "MEDICO" },
+        },
       },
       omit: { deleted: true, usuario: true },
     });

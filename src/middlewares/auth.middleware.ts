@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 export interface AuthPayload {
   id: number;
   email: string;
+  username: string;
   role: "RECEPCIONISTA" | "MEDICO" | "GERENCIA" | "ADMIN";
 }
 
@@ -32,7 +33,7 @@ export const verifyToken = (
     req.user = jwt.verify(
       token,
       process.env.JWT_SECRET as string,
-    ) as unknown as AuthPayload;
+    ) as AuthPayload;
     next();
   } catch {
     return res.status(401).json({ message: "Token inválido o expirado" });

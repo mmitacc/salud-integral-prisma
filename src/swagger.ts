@@ -2,8 +2,8 @@ import swaggerAutogen from "swagger-autogen";
 
 const doc = {
   info: {
-    title: "API de gestión de alumnos",
-    description: "Documento generado automaticamente por swagger-autogen",
+    title: "API de Clínica: SALUD INTEGRAL",
+    description: "Desarrollado por mmitacc (swagger-autogen)",
     version: "1.0.0",
   },
   host: "localhost:3000",

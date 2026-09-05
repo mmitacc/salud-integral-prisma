@@ -46,7 +46,7 @@ export const postMedico = async (req: Request, res: Response) => {
         error: "La fecha de nacimiento no puede ser una fecha futura",
       });
     }
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword: string = await bcrypt.hash(password, 10);
     const newMedico = await medicoModel.create(
       nombres,
       apellidos,

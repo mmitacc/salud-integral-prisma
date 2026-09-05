@@ -19,7 +19,7 @@ export const usuarioModel = {
   findFirst: async (id: number) => {
     return await prisma.usuario.findFirst({
       where: { id, deleted: false },
-      omit: { deleted: true, password: true },
+      omit: { deleted: true },
     });
   },
   update: async (id: number, email: string, role: ROLE, username: string) => {
@@ -33,11 +33,11 @@ export const usuarioModel = {
       omit: { deleted: true, password: true },
     });
   },
-  updatePassword: async (id: number, password: string) => {
+  updatePassword: async (id: number, hashedPassword: string) => {
     return await prisma.usuario.update({
       where: { id },
       data: {
-        password,
+        password: hashedPassword,
       },
       select: { username: true, email: true },
     });

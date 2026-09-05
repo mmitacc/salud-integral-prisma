@@ -127,7 +127,7 @@ model Usuario {
   email        String   @unique
   password     String   @db.VarChar(100)
   role         Role
-  username     String   @db.VarChar(50)
+  username     String   @unique @db.VarChar(50)
   registerdate DateTime @default(now())
   deleted      Boolean  @default(false)
 

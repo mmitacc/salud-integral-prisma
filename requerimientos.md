@@ -137,3 +137,42 @@ Permisos en el Backend (Controlado por JWT):
 | Medico        | Solo ver        | Solo ver        | TODOS           | TODOS + deleted |
 | Usuario       | NINGUNO         | NINGUNO         | TODOS           | TODOS + deleted |
 
+
+REQUERIMIENTOS RESUELTOS:
+
+// ************ RECEPCION ***************//
+// 1.- Alta de pacientes: (POST)
+http://localhost:3000/paciente/
+
+// 2.- Búsqueda de especialistas: (GET)
+http://localhost:3000/medico?especialidad=urología
+
+// 3.- Consulta de expedientes: (GET)
+http://localhost:3000/paciente/4
+
+// ************ CONSULTORIO **************//
+// 1.- Programación de citas: (POST)
+http://localhost:3000/consulta/
+
+// 2.- Agenda del médico: (GET)
+http://localhost:3000/medico/agenda/5?fechaInicio=2026-01-01&fechaFin=2026-09-05
+
+// 3.- Gestión de estado: (PUT)
+http://localhost:3000/consulta/cita/20
+
+// *************** GERENCIA ***************//
+// 1.- Rentabilidad por área: (GET)
+http://localhost:3000/consulta/rentabilidad
+
+// 2.- Corte operativo diario: (GET)
+http://localhost:3000/consulta/corte-operativo?fechaInicio=2026-01-01&fechaFin=2026-09-04
+
+
+// ************ ADMINISTRADOR-DB **********//
+// 1.- Eliminación real de registros: (DELETE)
+// (todas las tablas)
+http://localhost:3000/paciente/admin/5
+
+// 1.- Consulta total o rango de fechas de registros eliminados: (GET)
+// (todas las tablas)
+http://localhost:3000/paciente/admin?fechaInicio=2026-08-31&fechaFin=2026-09-02

@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "generatorVersion": "1.0.0",
-  "generatedAt": "2026-09-05T03:36:47.247Z",
+  "generatedAt": "2026-09-05T15:36:47.187Z",
   "outputPath": "C:\\Users\\mmitacc\\Desktop\\FUNVAL\\SEMANA 05\\salud-integral-prisma\\prisma\\generated-zod",
   "files": [
     "schemas\\enums\\TransactionIsolationLevel.schema.ts",

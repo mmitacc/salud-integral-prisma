@@ -249,16 +249,16 @@ export type UsuarioOrderByWithRelationInput = {
 export type UsuarioWhereUniqueInput = Prisma.AtLeast<{
   id?: number
   email?: string
+  username?: string
   AND?: Prisma.UsuarioWhereInput | Prisma.UsuarioWhereInput[]
   OR?: Prisma.UsuarioWhereInput[]
   NOT?: Prisma.UsuarioWhereInput | Prisma.UsuarioWhereInput[]
   password?: Prisma.StringFilter<"Usuario"> | string
   role?: Prisma.EnumRoleFilter<"Usuario"> | $Enums.Role
-  username?: Prisma.StringFilter<"Usuario"> | string
   registerdate?: Prisma.DateTimeFilter<"Usuario"> | Date | string
   deleted?: Prisma.BoolFilter<"Usuario"> | boolean
   medico?: Prisma.XOR<Prisma.MedicoNullableScalarRelationFilter, Prisma.MedicoWhereInput> | null
-}, "id" | "email">
+}, "id" | "email" | "username">
 
 export type UsuarioOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
