@@ -8,4 +8,4 @@ export { HistorialResultSchema } from './Historial.result';
 export { ConsultaResultSchema } from './Consulta.result';
 export { MedicoResultSchema } from './Medico.result';
 export { EspecialidadResultSchema } from './Especialidad.result';
-export { UserResultSchema } from './User.result';
+export { UsuarioResultSchema } from './Usuario.result';

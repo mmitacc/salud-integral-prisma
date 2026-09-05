@@ -81,6 +81,7 @@ model Consulta {
 model Medico {
   id              Int      @id @default(autoincrement())
   id_especialidad Int
+  id_usuario      Int      @unique
   nombres         String   @db.VarChar(100)
   apellidos       String   @db.VarChar(100)
   telefono        String   @db.VarChar(20)
@@ -94,6 +95,7 @@ model Medico {
   // Relaciones
   especialidad Especialidad @relation(fields: [id_especialidad], references: [id], onDelete: Restrict)
   consultas    Consulta[]
+  usuario      Usuario      @relation(fields: [id_usuario], references: [id], onDelete: Cascade)
 
   @@map("medico")
 }
@@ -116,23 +118,23 @@ enum Role {
   RECEPCIONISTA
   MEDICO
   GERENCIA
+  ADMIN
 }
 
-model User {
+model Usuario {
   id           Int      @id @default(autoincrement())
   /// @zod.string({ required_error: "El email es obligatorio" }).email({ message: "El formato del correo electrónico no es válido" })
   email        String   @unique
   password     String   @db.VarChar(100)
   role         Role
   username     String   @db.VarChar(50)
-  nombres      String   @db.VarChar(100)
-  apellidos    String   @db.VarChar(100)
-  telefono     String   @db.VarChar(20)
-  activo       Boolean  @default(true)
   registerdate DateTime @default(now())
   deleted      Boolean  @default(false)
 
-  @@map("users")
+  // Relaciones inversas
+  medico Medico?
+
+  @@map("usuario")
 }
 
 // Generador automatio de Schemas con Prisma y Zod

@@ -1,4 +1,5 @@
 import type { Request, Response } from "express";
+import bcrypt from "bcryptjs";
 import { medicoModel } from "../models/medico.model";
 import procesarErrorPrisma from "../utils/errorHandlerUtil";
 import AgendaMedicoResponseSchema from "../schemas/agenda.medico.schema";
@@ -34,6 +35,8 @@ export const postMedico = async (req: Request, res: Response) => {
       apellidos,
       telefono,
       email,
+      username,
+      password,
       masculino,
       fechanacimiento,
       id_especialidad,
@@ -43,11 +46,14 @@ export const postMedico = async (req: Request, res: Response) => {
         error: "La fecha de nacimiento no puede ser una fecha futura",
       });
     }
+    const hashedPassword = await bcrypt.hash(password, 10);
     const newMedico = await medicoModel.create(
       nombres,
       apellidos,
       telefono,
       email,
+      username,
+      hashedPassword,
       masculino,
       fechanacimiento,
       id_especialidad,

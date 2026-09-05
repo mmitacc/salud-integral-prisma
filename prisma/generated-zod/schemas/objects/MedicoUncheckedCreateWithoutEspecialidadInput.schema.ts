@@ -4,6 +4,7 @@ import { ConsultaUncheckedCreateNestedManyWithoutMedicoInputObjectSchema as Cons
 
 const makeSchema = () => z.object({
   id: z.number().int().optional(),
+  id_usuario: z.number().int(),
   nombres: z.string(),
   apellidos: z.string(),
   telefono: z.string(),

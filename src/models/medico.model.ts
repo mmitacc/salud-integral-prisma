@@ -4,10 +4,10 @@ import { prisma } from "../config/prisma";
 export const medicoModel = {
   findAll: async (especialidadNombre?: string) => {
     const options: Prisma.MedicoFindManyArgs = {
-      orderBy: { id: "asc" },
-      omit: { deleted: true },
+      omit: { deleted: true, id_especialidad: true },
       include: { especialidad: { omit: { deleted: true } } },
       where: { deleted: false },
+      orderBy: { id: "asc" },
     };
     if (especialidadNombre) {
       options.where = {
@@ -21,7 +21,7 @@ export const medicoModel = {
   findFirst: async (id: number) => {
     return await prisma.medico.findFirst({
       where: { id, deleted: false },
-      omit: { deleted: true },
+      omit: { deleted: true, id_especialidad: true, id_usuario: true },
       include: { especialidad: { omit: { deleted: true } } },
     });
   },
@@ -29,6 +29,8 @@ export const medicoModel = {
     nombres: string,
     apellidos: string,
     telefono: string,
+    username: string,
+    password: string,
     email: string,
     masculino: boolean,
     fechanacimiento: Date,
@@ -42,9 +44,10 @@ export const medicoModel = {
         email,
         masculino,
         fechanacimiento,
-        id_especialidad,
+        especialidad: { connect: { id: id_especialidad } },
+        usuario: { create: { email, username, password, role: "MEDICO" } },
       },
-      omit: { deleted: true },
+      omit: { deleted: true, usuario: true },
     });
   },
   update: async (
@@ -68,7 +71,7 @@ export const medicoModel = {
         fechanacimiento,
         especialidad: { connect: { id: id_especialidad } },
       },
-      omit: { deleted: true },
+      omit: { deleted: true, usuario: true },
     });
   },
   softDelete: async (id: number) => {
@@ -86,7 +89,7 @@ export const medicoModel = {
       where: { id },
       data: { deleted: true },
       include: { consultas: { omit: { deleted: true } } },
-      omit: { deleted: true },
+      omit: { deleted: true, usuario: true },
     });
   },
   deleteAdmin: async (id: number) => {

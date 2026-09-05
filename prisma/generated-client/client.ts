@@ -67,7 +67,7 @@ export type Medico = Prisma.MedicoModel
  */
 export type Especialidad = Prisma.EspecialidadModel
 /**
- * Model User
+ * Model Usuario
  * 
  */
-export type User = Prisma.UserModel
+export type Usuario = Prisma.UsuarioModel

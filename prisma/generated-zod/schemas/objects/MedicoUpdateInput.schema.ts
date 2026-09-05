@@ -4,7 +4,8 @@ import { StringFieldUpdateOperationsInputObjectSchema as StringFieldUpdateOperat
 import { BoolFieldUpdateOperationsInputObjectSchema as BoolFieldUpdateOperationsInputObjectSchema } from './BoolFieldUpdateOperationsInput.schema';
 import { DateTimeFieldUpdateOperationsInputObjectSchema as DateTimeFieldUpdateOperationsInputObjectSchema } from './DateTimeFieldUpdateOperationsInput.schema';
 import { EspecialidadUpdateOneRequiredWithoutMedicosNestedInputObjectSchema as EspecialidadUpdateOneRequiredWithoutMedicosNestedInputObjectSchema } from './EspecialidadUpdateOneRequiredWithoutMedicosNestedInput.schema';
-import { ConsultaUpdateManyWithoutMedicoNestedInputObjectSchema as ConsultaUpdateManyWithoutMedicoNestedInputObjectSchema } from './ConsultaUpdateManyWithoutMedicoNestedInput.schema'
+import { ConsultaUpdateManyWithoutMedicoNestedInputObjectSchema as ConsultaUpdateManyWithoutMedicoNestedInputObjectSchema } from './ConsultaUpdateManyWithoutMedicoNestedInput.schema';
+import { UsuarioUpdateOneRequiredWithoutMedicoNestedInputObjectSchema as UsuarioUpdateOneRequiredWithoutMedicoNestedInputObjectSchema } from './UsuarioUpdateOneRequiredWithoutMedicoNestedInput.schema'
 
 const makeSchema = () => z.object({
   nombres: z.union([z.string().max(100), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
@@ -16,7 +17,8 @@ const makeSchema = () => z.object({
   registerdate: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
   deleted: z.union([z.boolean(), z.lazy(() => BoolFieldUpdateOperationsInputObjectSchema)]).optional(),
   especialidad: z.lazy(() => EspecialidadUpdateOneRequiredWithoutMedicosNestedInputObjectSchema).optional(),
-  consultas: z.lazy(() => ConsultaUpdateManyWithoutMedicoNestedInputObjectSchema).optional()
+  consultas: z.lazy(() => ConsultaUpdateManyWithoutMedicoNestedInputObjectSchema).optional(),
+  usuario: z.lazy(() => UsuarioUpdateOneRequiredWithoutMedicoNestedInputObjectSchema).optional()
 }).strict();
 export const MedicoUpdateInputObjectSchema: z.ZodType<Prisma.MedicoUpdateInput> = makeSchema() as unknown as z.ZodType<Prisma.MedicoUpdateInput>;
 export const MedicoUpdateInputObjectZodSchema = makeSchema();

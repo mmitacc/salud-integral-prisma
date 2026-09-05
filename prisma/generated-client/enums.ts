@@ -21,7 +21,8 @@ export type EstadoCita = (typeof EstadoCita)[keyof typeof EstadoCita]
 export const Role = {
   RECEPCIONISTA: 'RECEPCIONISTA',
   MEDICO: 'MEDICO',
-  GERENCIA: 'GERENCIA'
+  GERENCIA: 'GERENCIA',
+  ADMIN: 'ADMIN'
 } as const
 
 export type Role = (typeof Role)[keyof typeof Role]

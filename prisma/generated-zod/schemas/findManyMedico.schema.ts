@@ -7,6 +7,7 @@ import { MedicoWhereUniqueInputObjectSchema as MedicoWhereUniqueInputObjectSchem
 import { MedicoScalarFieldEnumSchema } from './enums/MedicoScalarFieldEnum.schema';
 import { EspecialidadArgsObjectSchema as EspecialidadArgsObjectSchema } from './objects/EspecialidadArgs.schema';
 import { ConsultaFindManySchema } from './findManyConsulta.schema';
+import { UsuarioArgsObjectSchema as UsuarioArgsObjectSchema } from './objects/UsuarioArgs.schema';
 import { MedicoCountOutputTypeArgsObjectSchema as MedicoCountOutputTypeArgsObjectSchema } from './objects/MedicoCountOutputTypeArgs.schema';
 
 // Select schema needs to be in file to prevent circular imports
@@ -15,6 +16,7 @@ import { MedicoCountOutputTypeArgsObjectSchema as MedicoCountOutputTypeArgsObjec
 export const MedicoFindManySelectSchema: z.ZodType<Prisma.MedicoSelect> = z.object({
     id: z.boolean().optional(),
     id_especialidad: z.boolean().optional(),
+    id_usuario: z.boolean().optional(),
     nombres: z.boolean().optional(),
     apellidos: z.boolean().optional(),
     telefono: z.boolean().optional(),
@@ -25,12 +27,14 @@ export const MedicoFindManySelectSchema: z.ZodType<Prisma.MedicoSelect> = z.obje
     deleted: z.boolean().optional(),
     especialidad: z.union([z.boolean(), z.lazy(() => EspecialidadArgsObjectSchema)]).optional(),
     consultas: z.union([z.boolean(), z.lazy(() => ConsultaFindManySchema)]).optional(),
+    usuario: z.union([z.boolean(), z.lazy(() => UsuarioArgsObjectSchema)]).optional(),
     _count: z.union([z.boolean(), z.lazy(() => MedicoCountOutputTypeArgsObjectSchema)]).optional()
   }).strict() as unknown as z.ZodType<Prisma.MedicoSelect>;
 
 export const MedicoFindManySelectZodSchema = z.object({
     id: z.boolean().optional(),
     id_especialidad: z.boolean().optional(),
+    id_usuario: z.boolean().optional(),
     nombres: z.boolean().optional(),
     apellidos: z.boolean().optional(),
     telefono: z.boolean().optional(),
@@ -41,6 +45,7 @@ export const MedicoFindManySelectZodSchema = z.object({
     deleted: z.boolean().optional(),
     especialidad: z.union([z.boolean(), z.lazy(() => EspecialidadArgsObjectSchema)]).optional(),
     consultas: z.union([z.boolean(), z.lazy(() => ConsultaFindManySchema)]).optional(),
+    usuario: z.union([z.boolean(), z.lazy(() => UsuarioArgsObjectSchema)]).optional(),
     _count: z.union([z.boolean(), z.lazy(() => MedicoCountOutputTypeArgsObjectSchema)]).optional()
   }).strict();
 
