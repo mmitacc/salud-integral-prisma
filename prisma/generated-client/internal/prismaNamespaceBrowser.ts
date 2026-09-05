@@ -56,7 +56,7 @@ export const ModelName = {
   Consulta: 'Consulta',
   Medico: 'Medico',
   Especialidad: 'Especialidad',
-  User: 'User'
+  Usuario: 'Usuario'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -125,6 +125,7 @@ export type ConsultaScalarFieldEnum = (typeof ConsultaScalarFieldEnum)[keyof typ
 export const MedicoScalarFieldEnum = {
   id: 'id',
   id_especialidad: 'id_especialidad',
+  id_usuario: 'id_usuario',
   nombres: 'nombres',
   apellidos: 'apellidos',
   telefono: 'telefono',
@@ -148,21 +149,17 @@ export const EspecialidadScalarFieldEnum = {
 export type EspecialidadScalarFieldEnum = (typeof EspecialidadScalarFieldEnum)[keyof typeof EspecialidadScalarFieldEnum]
 
 
-export const UserScalarFieldEnum = {
+export const UsuarioScalarFieldEnum = {
   id: 'id',
   email: 'email',
   password: 'password',
   role: 'role',
   username: 'username',
-  nombres: 'nombres',
-  apellidos: 'apellidos',
-  telefono: 'telefono',
-  activo: 'activo',
   registerdate: 'registerdate',
   deleted: 'deleted'
 } as const
 
-export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
 
 
 export const SortOrder = {

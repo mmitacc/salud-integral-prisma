@@ -6,7 +6,9 @@ import { BoolFilterObjectSchema as BoolFilterObjectSchema } from './BoolFilter.s
 import { DateTimeFilterObjectSchema as DateTimeFilterObjectSchema } from './DateTimeFilter.schema';
 import { EspecialidadScalarRelationFilterObjectSchema as EspecialidadScalarRelationFilterObjectSchema } from './EspecialidadScalarRelationFilter.schema';
 import { EspecialidadWhereInputObjectSchema as EspecialidadWhereInputObjectSchema } from './EspecialidadWhereInput.schema';
-import { ConsultaListRelationFilterObjectSchema as ConsultaListRelationFilterObjectSchema } from './ConsultaListRelationFilter.schema'
+import { ConsultaListRelationFilterObjectSchema as ConsultaListRelationFilterObjectSchema } from './ConsultaListRelationFilter.schema';
+import { UsuarioScalarRelationFilterObjectSchema as UsuarioScalarRelationFilterObjectSchema } from './UsuarioScalarRelationFilter.schema';
+import { UsuarioWhereInputObjectSchema as UsuarioWhereInputObjectSchema } from './UsuarioWhereInput.schema'
 
 const medicowhereinputSchema = z.object({
   AND: z.union([z.lazy(() => MedicoWhereInputObjectSchema), z.lazy(() => MedicoWhereInputObjectSchema).array()]).optional(),
@@ -14,6 +16,7 @@ const medicowhereinputSchema = z.object({
   NOT: z.union([z.lazy(() => MedicoWhereInputObjectSchema), z.lazy(() => MedicoWhereInputObjectSchema).array()]).optional(),
   id: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   id_especialidad: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
+  id_usuario: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   nombres: z.union([z.lazy(() => StringFilterObjectSchema), z.string().max(100)]).optional(),
   apellidos: z.union([z.lazy(() => StringFilterObjectSchema), z.string().max(100)]).optional(),
   telefono: z.union([z.lazy(() => StringFilterObjectSchema), z.string().max(20)]).optional(),
@@ -23,7 +26,8 @@ const medicowhereinputSchema = z.object({
   registerdate: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
   deleted: z.union([z.lazy(() => BoolFilterObjectSchema), z.boolean()]).optional(),
   especialidad: z.union([z.lazy(() => EspecialidadScalarRelationFilterObjectSchema), z.lazy(() => EspecialidadWhereInputObjectSchema)]).optional(),
-  consultas: z.lazy(() => ConsultaListRelationFilterObjectSchema).optional()
+  consultas: z.lazy(() => ConsultaListRelationFilterObjectSchema).optional(),
+  usuario: z.union([z.lazy(() => UsuarioScalarRelationFilterObjectSchema), z.lazy(() => UsuarioWhereInputObjectSchema)]).optional()
 }).strict();
 export const MedicoWhereInputObjectSchema: z.ZodType<Prisma.MedicoWhereInput> = medicowhereinputSchema as unknown as z.ZodType<Prisma.MedicoWhereInput>;
 export const MedicoWhereInputObjectZodSchema = medicowhereinputSchema;

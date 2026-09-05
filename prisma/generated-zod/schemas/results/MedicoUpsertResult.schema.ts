@@ -2,6 +2,7 @@ import * as z from 'zod';
 export const MedicoUpsertResultSchema = z.object({
   id: z.number().int(),
   id_especialidad: z.number().int(),
+  id_usuario: z.number().int(),
   nombres: z.string(),
   apellidos: z.string(),
   telefono: z.string(),
@@ -11,5 +12,6 @@ export const MedicoUpsertResultSchema = z.object({
   registerdate: z.date(),
   deleted: z.boolean(),
   especialidad: z.unknown().optional(),
-  consultas: z.array(z.unknown()).optional()
+  consultas: z.array(z.unknown()).optional(),
+  usuario: z.unknown().optional()
 });

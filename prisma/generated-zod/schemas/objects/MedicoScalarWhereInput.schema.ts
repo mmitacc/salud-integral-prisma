@@ -11,6 +11,7 @@ const medicoscalarwhereinputSchema = z.object({
   NOT: z.union([z.lazy(() => MedicoScalarWhereInputObjectSchema), z.lazy(() => MedicoScalarWhereInputObjectSchema).array()]).optional(),
   id: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   id_especialidad: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
+  id_usuario: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   nombres: z.union([z.lazy(() => StringFilterObjectSchema), z.string()]).optional(),
   apellidos: z.union([z.lazy(() => StringFilterObjectSchema), z.string()]).optional(),
   telefono: z.union([z.lazy(() => StringFilterObjectSchema), z.string()]).optional(),

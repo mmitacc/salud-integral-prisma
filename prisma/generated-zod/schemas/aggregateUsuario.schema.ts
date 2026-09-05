@@ -1,0 +1,14 @@
+import type { Prisma } from '../../generated-client/browser';
+import * as z from 'zod';
+import { UsuarioOrderByWithRelationInputObjectSchema as UsuarioOrderByWithRelationInputObjectSchema } from './objects/UsuarioOrderByWithRelationInput.schema';
+import { UsuarioWhereInputObjectSchema as UsuarioWhereInputObjectSchema } from './objects/UsuarioWhereInput.schema';
+import { UsuarioWhereUniqueInputObjectSchema as UsuarioWhereUniqueInputObjectSchema } from './objects/UsuarioWhereUniqueInput.schema';
+import { UsuarioCountAggregateInputObjectSchema as UsuarioCountAggregateInputObjectSchema } from './objects/UsuarioCountAggregateInput.schema';
+import { UsuarioMinAggregateInputObjectSchema as UsuarioMinAggregateInputObjectSchema } from './objects/UsuarioMinAggregateInput.schema';
+import { UsuarioMaxAggregateInputObjectSchema as UsuarioMaxAggregateInputObjectSchema } from './objects/UsuarioMaxAggregateInput.schema';
+import { UsuarioAvgAggregateInputObjectSchema as UsuarioAvgAggregateInputObjectSchema } from './objects/UsuarioAvgAggregateInput.schema';
+import { UsuarioSumAggregateInputObjectSchema as UsuarioSumAggregateInputObjectSchema } from './objects/UsuarioSumAggregateInput.schema';
+
+export const UsuarioAggregateSchema: z.ZodType<Prisma.UsuarioAggregateArgs> = z.object({ orderBy: z.union([UsuarioOrderByWithRelationInputObjectSchema, UsuarioOrderByWithRelationInputObjectSchema.array()]).optional(), where: UsuarioWhereInputObjectSchema.optional(), cursor: UsuarioWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), UsuarioCountAggregateInputObjectSchema ]).optional(), _min: UsuarioMinAggregateInputObjectSchema.optional(), _max: UsuarioMaxAggregateInputObjectSchema.optional(), _avg: UsuarioAvgAggregateInputObjectSchema.optional(), _sum: UsuarioSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.UsuarioAggregateArgs>;
+
+export const UsuarioAggregateZodSchema = z.object({ orderBy: z.union([UsuarioOrderByWithRelationInputObjectSchema, UsuarioOrderByWithRelationInputObjectSchema.array()]).optional(), where: UsuarioWhereInputObjectSchema.optional(), cursor: UsuarioWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), UsuarioCountAggregateInputObjectSchema ]).optional(), _min: UsuarioMinAggregateInputObjectSchema.optional(), _max: UsuarioMaxAggregateInputObjectSchema.optional(), _avg: UsuarioAvgAggregateInputObjectSchema.optional(), _sum: UsuarioSumAggregateInputObjectSchema.optional() }).strict();

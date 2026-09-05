@@ -8,6 +8,14 @@ const doc = {
   },
   host: "localhost:3000",
   schemes: ["http"],
+  components: {
+    securitySchemes: {
+      bearerAuth: {
+        type: "http",
+        scheme: "bearer",
+      },
+    },
+  },
 };
 
 // Archivo generado de salida
@@ -15,4 +23,4 @@ const outputFile = "../swagger-output.json";
 // Archivo cabecera del proyecto para ser leido por swagger-autogen
 const routes = ["../src/index.ts"];
 
-swaggerAutogen()(outputFile, routes, doc);
+swaggerAutogen({ openapi: "3.0.0" })(outputFile, routes, doc);

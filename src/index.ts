@@ -5,9 +5,11 @@ import historialRouter from "./routers/historial.router";
 import especialidadRouter from "./routers/especialidad.router";
 import medicoRouter from "./routers/medico.router";
 import consultaRouter from "./routers/consulta.router";
+import authRouter from "./routers/auth.router";
 import cors from "cors";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "../swagger-output.json" assert { type: "json" };
+import { verifyToken } from "./middlewares/auth.middleware";
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -27,12 +29,38 @@ console.log(
     "/api-docs",
 );
 
-// Endpoints
-app.use("/paciente", pacienteRouter);
-app.use("/historial", historialRouter);
-app.use("/consulta", consultaRouter);
-app.use("/especialidad", especialidadRouter);
-app.use("/medico", medicoRouter);
+// ENDPOINTS
+app.use("/api/auth", authRouter);
+app.use(
+  "/api/paciente",
+  verifyToken,
+  /* #swagger.security = [{ "bearerAuth": [] }] */
+  pacienteRouter,
+);
+app.use(
+  "/api/historial",
+  verifyToken,
+  /* #swagger.security = [{ "bearerAuth": [] }] */
+  historialRouter,
+);
+app.use(
+  "/api/consulta",
+  verifyToken,
+  /* #swagger.security = [{ "bearerAuth": [] }] */
+  consultaRouter,
+);
+app.use(
+  "/api/especialidad",
+  verifyToken,
+  /* #swagger.security = [{ "bearerAuth": [] }] */
+  especialidadRouter,
+);
+app.use(
+  "/api/medico",
+  verifyToken,
+  /* #swagger.security = [{ "bearerAuth": [] }] */
+  medicoRouter,
+);
 
 // Inicialización del servidor
 // console.clear();

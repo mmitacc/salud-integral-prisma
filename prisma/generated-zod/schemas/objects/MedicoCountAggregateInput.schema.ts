@@ -5,6 +5,7 @@ import type { Prisma } from '../../../generated-client/browser';
 const makeSchema = () => z.object({
   id: z.literal(true).optional(),
   id_especialidad: z.literal(true).optional(),
+  id_usuario: z.literal(true).optional(),
   nombres: z.literal(true).optional(),
   apellidos: z.literal(true).optional(),
   telefono: z.literal(true).optional(),

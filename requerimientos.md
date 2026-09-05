@@ -107,3 +107,33 @@ especialidad (1) ----- (N) medico
 
 
 DIAGRAMA DE ENTIDAD RELACIONAL: (Se adjunta en archivo: 'ERD-salud integral.png')
+
+IMPLEMENTACION DE AUTENTICACION Y AUTORIZACION:
+
+## Entity: usuario
+
+| Atributo       | Tipo           | Notas       |
+|----------------|----------------|-------------|
+| id             | Número Entero  | [PK]        |
+| email          | Texto          | Obligatorio |
+| password       | Texto          | Obligatorio |
+| role            | Texto          | Obligatorio |
+| username       | Texto          | Obligatorio |
+| registerdate   | Date           | Date(now()) |
+
+Describiendo las nuevas relaciones:
+
+usuario (1) ----- (1) medico
+"Un 'usario' del sistema puede ser un 'medico', y un 'medico' puede ser un 'usuario' del sistema."
+
+Permisos en el Backend (Controlado por JWT):
+
+| Entidad       |  RECEPCIONISTA  |      MEDICO     |    GERENCIA     |      ADMIN      |
+|---------------|-----------------|-----------------|-----------------|-----------------|
+| Paciente      | Crear y Editar  | Solo ver        | TODOS           | TODOS + deleted |
+| Consulta      | Crear y Editar  | Editar 'estado' | TODOS           | TODOS + deleted |
+| Historial     | NINGUNO         | Crear y Editar  | TODOS           | TODOS + deleted |
+| Especialidad  | Solo ver        | Solo ver        | TODOS           | TODOS + deleted |
+| Medico        | Solo ver        | Solo ver        | TODOS           | TODOS + deleted |
+| Usuario       | NINGUNO         | NINGUNO         | TODOS           | TODOS + deleted |
+

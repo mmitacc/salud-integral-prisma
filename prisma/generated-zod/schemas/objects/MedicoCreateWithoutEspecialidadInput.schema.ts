@@ -1,6 +1,7 @@
 import * as z from 'zod';
 import type { Prisma } from '../../../generated-client/browser';
-import { ConsultaCreateNestedManyWithoutMedicoInputObjectSchema as ConsultaCreateNestedManyWithoutMedicoInputObjectSchema } from './ConsultaCreateNestedManyWithoutMedicoInput.schema'
+import { ConsultaCreateNestedManyWithoutMedicoInputObjectSchema as ConsultaCreateNestedManyWithoutMedicoInputObjectSchema } from './ConsultaCreateNestedManyWithoutMedicoInput.schema';
+import { UsuarioCreateNestedOneWithoutMedicoInputObjectSchema as UsuarioCreateNestedOneWithoutMedicoInputObjectSchema } from './UsuarioCreateNestedOneWithoutMedicoInput.schema'
 
 const makeSchema = () => z.object({
   nombres: z.string().max(100),
@@ -11,7 +12,8 @@ const makeSchema = () => z.object({
   fechanacimiento: z.coerce.date(),
   registerdate: z.coerce.date().optional(),
   deleted: z.boolean().optional(),
-  consultas: z.lazy(() => ConsultaCreateNestedManyWithoutMedicoInputObjectSchema).optional()
+  consultas: z.lazy(() => ConsultaCreateNestedManyWithoutMedicoInputObjectSchema).optional(),
+  usuario: z.lazy(() => UsuarioCreateNestedOneWithoutMedicoInputObjectSchema)
 }).strict();
 export const MedicoCreateWithoutEspecialidadInputObjectSchema: z.ZodType<Prisma.MedicoCreateWithoutEspecialidadInput> = makeSchema() as unknown as z.ZodType<Prisma.MedicoCreateWithoutEspecialidadInput>;
 export const MedicoCreateWithoutEspecialidadInputObjectZodSchema = makeSchema();

@@ -85,13 +85,12 @@ export const putConsulta = async (req: Request, res: Response) => {
       return res.status(404).json({ error: "Consulta no encontrada" });
     }
     const [fechaOld, horarioOld] = consulta.citadate.toISOString().split("T");
-    const { estado, costo, fecha, horario, id_paciente, id_medico } = req.body;
+    const { costo, fecha, horario, id_paciente, id_medico } = req.body;
     const citadate = new Date(
       `${fecha ?? fechaOld}T${horario ?? horarioOld}:00`,
     );
     const updatedConsulta = await consultaModel.update(
       id,
-      estado,
       costo,
       citadate,
       id_medico,
@@ -185,7 +184,7 @@ export const rentabilidadArea = async (req: Request, res: Response) => {
   try {
     const rentabilidad = await consultaModel.findRentabilidadArea();
     return res.json({
-      message: "Rentabilidad por area",
+      message: "Reporte exitoso, rentabilidad por area",
       data: rentabilidad,
     });
   } catch (error) {

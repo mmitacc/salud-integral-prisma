@@ -61,7 +61,6 @@ export const consultaModel = {
   },
   update: async (
     id: number,
-    estado: EstadoCita,
     costo: number,
     citadate: Date,
     id_medico: number,
@@ -70,7 +69,6 @@ export const consultaModel = {
     return await prisma.consulta.update({
       where: { id },
       data: {
-        estado,
         costo,
         citadate,
         id_medico,
