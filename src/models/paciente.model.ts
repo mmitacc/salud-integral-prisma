@@ -1,12 +1,24 @@
 import type { Prisma } from "../../prisma/generated-client/client";
 import { prisma } from "../config/prisma";
+import { f } from "../schemas/paciente.schema/findManyPacienteschema";
 
 export const pacienteModel = {
-  findAll: async () => {
-    return await prisma.paciente.findMany({
+  findAll: async (page?: number, limit?: number, search?: string) => {
+    return await prisma.paciente.paginate({
+      page,  
+      limit, 
+      schema: PacienteSchema,
       orderBy: { id: "asc" },
       omit: { deleted: true },
-      where: { deleted: false },
+      where: {
+        deleted: false,
+        ...(search && {
+          OR: [
+            { nombre: { contains: search, mode: "insensitive" } },
+            { email: { contains: search, mode: "insensitive" } },
+          ],
+        }),
+      },
     });
   },
   findFirst: async (id: number) => {
