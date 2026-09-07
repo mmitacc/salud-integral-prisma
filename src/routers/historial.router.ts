@@ -149,18 +149,24 @@ router.post(
     /*
     #swagger.tags = ['Historial']
     #swagger.summary = 'Crear un nuevo historial de un paciente'
-    #swagger.parameters['body'] = {
-        in: 'body',
+    #swagger.requestBody = {
         description: 'Datos para nuevo historial',
         required: true,
-        schema: {
-            "id_paciente": 2,
-            "motivo": "Control anual",
-            "antecedentes": "Diabetes tipo 2 controlada",
-            "triaje": "PA: 130/85, FC: 80, T: 37.2°C",
-            "diagnostico": "Diagnóstico en observación",
-            "tratamiento": "Reposo e hidratación",
-            "receta": "Paracetamol 500mg cada 8 horas por 3 días"
+        content: {
+            "application/json": {
+                schema: {
+                    type: 'object',
+                    properties: {
+                      "id_paciente": {type: 'number', example: 2},
+                      "motivo": {type: 'string', example: "Control anual"},
+                      "antecedentes": {type: 'string', example: "Diabetes tipo 2 controlada"},
+                      "triaje": {type: 'string', example: "PA: 130/85, FC: 80, T: 37.2°C"},
+                      "diagnostico": {type: 'string', example: "Diagnóstico en observación"},
+                      "tratamiento": {type: 'string', example: "Reposo e hidratación"},
+                      "receta": {type: 'string', example: "Paracetamol 500mg cada 8 horas por 3 días"}
+                    }
+                }
+            }
         }
     }
     #swagger.responses = {
@@ -207,18 +213,23 @@ router.put(
         required: true,
         type: 'number'
     }
-    #swagger.parameters['body'] = {
-        in: 'body',
+    #swagger.requestBody = {
         description: 'Campos que se desean actualizar. Puede actualizar uno o todos los campos del historial',
         required: true,
-        schema: {
-          "id_paciente": 2,
-          "motivo": "Control anual",
-          "antecedentes": "Diabetes tipo 2 controlada",
-          "triaje": "PA: 130/85, FC: 80, T: 37.2°C",
-          "diagnostico": "Diagnóstico en observación",
-          "tratamiento": "Reposo e hidratación",
-          "receta": "Paracetamol 500mg cada 8 horas por 3 días"
+        content: {
+            "application/json": {
+                schema: {
+                    type: 'object',
+                    properties: {
+                      "motivo": {type: 'string', example: "Control anual"},
+                      "antecedentes": {type: 'string', example: "Diabetes tipo 2 controlada"},
+                      "triaje": {type: 'string', example: "PA: 130/85, FC: 80, T: 37.2°C"},
+                      "diagnostico": {type: 'string', example: "Diagnóstico en observación"},
+                      "tratamiento": {type: 'string', example: "Reposo e hidratación"},
+                      "receta": {type: 'string', example: "Paracetamol 500mg cada 8 horas por 3 días"}
+                    }
+                }
+            }
         }
     }
     #swagger.responses = {

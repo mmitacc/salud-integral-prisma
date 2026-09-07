@@ -155,19 +155,25 @@ router.post(
     #swagger.tags = ['Paciente']
     #swagger.summary = 'Crear un nuevo paciente'
     #swagger.description = 'Crea un nuevo paciente con sus datos requeridos.'
-    #swagger.parameters['body'] = {
-        in: 'body',
+    #swagger.requestBody = {
         description: 'Datos para nuevo paciente',
         required: true,
-        schema: {
-            "nombres": "Carlos Alberto",
-            "apellidos": "Mendoza Ortiz",
-            "telefono": "+054912367854",
-            "email": "carlos@gmail.com",
-            "masculino": true,
-            "fechanacimiento": "2006-09-09T14:00:00.000Z",
-            "tiposangre": "RHO+",
-            "alergias": "Ninguna"
+        content: {
+            "application/json": {
+                schema: {
+                    type: 'object',
+                    properties: {                
+                        "nombres": {type: 'string', example:"Carlos Alberto"},
+                        "apellidos": {type: 'string', example:"Mendoza Ortiz"},
+                        "telefono": {type: 'string', example:"+054912367854"},
+                        "email": {type: 'string', example:"carlos@gmail.com"},
+                        "masculino": {type: 'boolean', example:true},
+                        "fechanacimiento": {type: 'string', example:"2006-09-09T14:00:00.000Z"},
+                        "tiposangre": {type: 'string', example:"RHO+"},
+                        "alergias": {type: 'string', example:"Ninguna"}
+                    }
+                }
+            }
         }
     }
     #swagger.responses = {
@@ -215,19 +221,25 @@ router.put(
         required: true,
         type: 'number'
     }
-    #swagger.parameters['body'] = {
-        in: 'body',
+    #swagger.requestBody = {
         description: 'Datos para nuevo paciente',
         required: true,
-        schema: {
-            "nombres": "Carlos Alberto",
-            "apellidos": "Mendoza Ortiz",
-            "telefono": "+054912367854",
-            "email": "carlos@gmail.com",
-            "masculino": true,
-            "fechanacimiento": "2006-09-09T14:00:00.000Z",
-            "tiposangre": "RHO+",
-            "alergias": "Ninguna"
+        content: {
+            "application/json": {
+                schema: {
+                    type: 'object',
+                        properties: {                
+                            "nombres": {type: 'string', example:"Carlos Alberto"},
+                            "apellidos": {type: 'string', example:"Mendoza Ortiz"},
+                            "telefono": {type: 'string', example:"+054912367854"},
+                            "email": {type: 'string', example:"carlos@gmail.com"},
+                            "masculino": {type: 'boolean', example:true},
+                            "fechanacimiento": {type: 'string', example:"2006-09-09T14:00:00.000Z"},
+                            "tiposangre": {type: 'string', example:"RHO+"},
+                            "alergias": {type: 'string', example:"Ninguna"}
+                        }
+                }
+            }
         }
     }
     #swagger.responses = {

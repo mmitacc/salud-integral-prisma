@@ -137,12 +137,18 @@ router.post(
     /*
     #swagger.tags = ['Especialidad']
     #swagger.summary = 'Crear una nueva especialidad'
-    #swagger.parameters['body'] = {
-        in: 'body',
+    #swagger.requestBody = {
         description: 'Datos para nueva especialidad',
         required: true,
-        schema: {
-            "tipo": "Medicina Naturista"
+        content: {
+            "application/json": {
+                schema: {
+                    type: 'object',
+                    properties: {
+                        tipo: { type: 'string', example: 'Medicina Naturista' },
+                    }
+                }
+            }
         }
     }
     #swagger.responses = {
@@ -183,12 +189,18 @@ router.put(
         required: true,
         type: 'number'
     }
-    #swagger.parameters['body'] = {
-        in: 'body',
-        description: 'Solo se puede actualizar el tipo de una especialidad.,
+    #swagger.requestBody = {
+        description: 'Solo se puede actualizar el tipo de una especialidad',
         required: true,
-        schema: {
-          "tipo": "Medicina Naturista",
+        content: {
+            "application/json": {
+                schema: {
+                    type: 'object',
+                    properties: {
+                        tipo: { type: 'string', example: 'Medicina Naturista' },
+                    }
+                }
+            }
         }
     }
     #swagger.responses = {

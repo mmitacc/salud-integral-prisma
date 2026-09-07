@@ -25,17 +25,27 @@ export const medicoModel = {
       include: { especialidad: { omit: { deleted: true } } },
     });
   },
-  create: async (
-    nombres: string,
-    apellidos: string,
-    telefono: string,
-    username: string,
-    hashedPassword: string,
-    email: string,
-    masculino: boolean,
-    fechanacimiento: Date,
-    id_especialidad: number,
-  ) => {
+  create: async ({
+    nombres,
+    apellidos,
+    telefono,
+    username,
+    hashedPassword,
+    email,
+    masculino,
+    fechanacimiento,
+    id_especialidad,
+  }: {
+    nombres: string;
+    apellidos: string;
+    telefono: string;
+    username: string;
+    hashedPassword: string;
+    email: string;
+    masculino: boolean;
+    fechanacimiento: Date;
+    id_especialidad: number;
+  }) => {
     return await prisma.medico.create({
       data: {
         nombres,

@@ -12,7 +12,6 @@ import {
 } from "../controllers/medico.controller";
 import {
   MedicoWhereUniqueInputObjectSchema,
-  MedicoUncheckedCreateInputObjectSchema,
   MedicoUncheckedUpdateInputObjectSchema,
 } from "../../prisma/generated-zod/schemas";
 import {
@@ -24,6 +23,7 @@ import {
   FiltrarEspecialidadQuerySchema,
   RangoFechasQuerySchema,
 } from "../schemas/querys.schema";
+import createMedicoUsuarioSchema from "../schemas/create.medicoUsuario.schema";
 import { authorize } from "../middlewares/authorize.middleware";
 
 const router = Router();
@@ -211,25 +211,31 @@ router.get(
 router.post(
   "/",
   authorize("ADMIN", "GERENCIA"),
-  validateBodySchema(MedicoUncheckedCreateInputObjectSchema),
+  validateBodySchema(createMedicoUsuarioSchema),
   (req: Request, res: Response) => {
     /*
     #swagger.tags = ['Medico']
     #swagger.summary = 'Crear un nuevo medico'
-    #swagger.parameters['body'] = {
-        in: 'body',
+    #swagger.requestBody = {
         description: 'Datos para nuevo medico',
         required: true,
-        schema: {
-            "nombres": "Elena Sofia",
-            "apellidos": "Gómez Rosas",
-            "username": "elena",
-            "password": "123456",
-            "email": "elena@gmail.com",
-            "telefono": "+51 948526348",
-            "masculino": true,
-            "fechanacimiento": "2026-09-09T14:00:00.000Z",
-            "id_especialidad": 1
+        content: {
+            "application/json": {
+                schema: {
+                    type: 'object',
+                    properties: {
+                        nombres: { type: 'string', example: 'Elena Sofia' },
+                        apellidos: { type: 'string', example: 'Gómez Rosas' },
+                        username: { type: 'string', example: 'es' },
+                        password: { type: 'string', example: '123456' },
+                        email: { type: 'string', example: 'es@gmail.com' },
+                        telefono: { type: 'string', example: '+51 948526348' },
+                        masculino: { type: 'boolean', example: false },
+                        fechanacimiento: { type: 'string', example: '2006-09-09' },
+                        id_especialidad: { type: 'number', example: 1 }
+                    }
+                }
+            }
         }
     }
     #swagger.responses = {
@@ -279,18 +285,24 @@ router.put(
         required: true,
         type: 'number'
     }
-    #swagger.parameters['body'] = {
-        in: 'body',
+    #swagger.requestBody = {
         description: 'Datos para nuevo medico',
         required: true,
-        schema: {
-            "nombres": "Elena Sofia",
-            "apellidos": "Gómez Rosas",
-            "email": "elena@gmail.com",
-            "telefono": "+51 948526348",
-            "masculino": true,
-            "fechanacimiento": "2026-09-09",
-            "id_especialidad": 1
+        content: {
+            "application/json": {
+                schema: {
+                    type: 'object',
+                    properties: {
+                        nombres: { type: 'string', example: 'Elena Sofia' },
+                        apellidos: { type: 'string', example: 'Gómez Rosas' },
+                        email: { type: 'string', example: 'elena@gmail.com' },
+                        telefono: { type: 'string', example: '+51 948526348' },
+                        masculino: { type: 'boolean', example: true },
+                        fechanacimiento: { type: 'string', example: '2026-09-09T14:00:00.000Z' },
+                        id_especialidad: { type: 'number', example: 1 }
+                    }
+                }
+            }
         }
     }
     #swagger.responses = {

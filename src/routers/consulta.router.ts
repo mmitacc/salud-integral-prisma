@@ -218,16 +218,22 @@ router.post(
     /*
     #swagger.tags = ['Consulta']
     #swagger.summary = 'Crear una nueva consulta/cita'
-    #swagger.parameters['body'] = {
-        in: 'body',
+    #swagger.requestBody = {
         description: 'Datos para nueva consulta/cita',
         required: true,
-        schema: {
-            "fecha": "2026-09-09",
-            "horario": "09:00",
-            "costo": 60,
-            "id_paciente": 2,
-            "id_medico": 2
+        content: {
+            "application/json": {
+                schema: {
+                    type: 'object',
+                    properties: {
+                        fecha: { type: 'string', example: '2026-09-09' },
+                        horario: { type: 'string', example: '09:00' },
+                        costo: { type: 'number', example: 60 },
+                        id_paciente: { type: 'number', example: 2 },
+                        id_medico: { type: 'number', example: 2 },
+                    }
+                }
+            }
         }
     }
     #swagger.responses = {
@@ -273,16 +279,22 @@ router.put(
         required: true,
         type: 'number'
     }
-    #swagger.parameters['body'] = {
-        in: 'body',
+    #swagger.requestBody = {
         description: 'Campos que se desean actualizar. Puede actualizar uno o todos los campos de la consulta/cita',
         required: true,
-        schema: {
-          "fecha": "2026-09-09",
-          "horario": "09:00",
-          "costo": 60,
-          "id_paciente": 2,
-          "id_medico": 2
+        content: {
+            "application/json": {
+                schema: {
+                    type: 'object',
+                    properties: {
+                        fecha: { type: 'string', example: '2026-09-09' },
+                        horario: { type: 'string', example: '09:00' },
+                        costo: { type: 'number', example: 60 },
+                        id_paciente: { type: 'number', example: 2 },
+                        id_medico: { type: 'number', example: 2 },
+                    }
+                }
+            }
         }
     }
     #swagger.responses = {
@@ -325,12 +337,18 @@ router.put(
         required: true,
         type: 'number'
     }
-    #swagger.parameters['body'] = {
-        in: 'body',
+    #swagger.requestBody = {
         description: 'Solo puede actualizar un campo de la consulta/cita',
         required: true,
-        schema: {
-          "estado": "COMPLETADA",
+        content: {
+            "application/json": {
+                schema: {
+                    type: 'object',
+                    properties: {
+                        estado: { type: 'string', example: 'COMPLETADA' },
+                    }
+                }
+            }
         }
     }
     #swagger.responses = {

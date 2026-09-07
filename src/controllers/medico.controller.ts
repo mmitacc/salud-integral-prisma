@@ -47,7 +47,7 @@ export const postMedico = async (req: Request, res: Response) => {
       });
     }
     const hashedPassword: string = await bcrypt.hash(password, 10);
-    const newMedico = await medicoModel.create(
+    const newMedico = await medicoModel.create({
       nombres,
       apellidos,
       telefono,
@@ -57,7 +57,7 @@ export const postMedico = async (req: Request, res: Response) => {
       masculino,
       fechanacimiento,
       id_especialidad,
-    );
+    });
     return res
       .status(201)
       .json({ message: "Médico creado con éxito", data: newMedico });

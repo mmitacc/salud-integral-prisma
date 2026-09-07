@@ -11,8 +11,12 @@ export const register = async (req: Request, res: Response) => {
         .status(400)
         .json({ message: "Faltan datos obligatorios, para crear un usuario" });
     }
+    if (role === "ADMIN" && req.user?.role !== "ADMIN") {
+      return res
+        .status(400)
+        .json({ message: "Solo un ADMIN puede crear un usuario ADMIN" });
+    }
     const hashedPassword = await bcrypt.hash(password, 10);
-
     const usuario = await prisma.usuario.create({
       data: { email, password: hashedPassword, role, username },
       select: { id: true, email: true, role: true },

@@ -146,22 +146,28 @@ router.put(
     #swagger.tags = ['Usuario']
     #swagger.summary = 'Actualizar solo el password de un mismo usuario autenticado'
     #swagger.description = 'Modifica solo el password de un usuario logueado correctamente.'
-    #swagger.parameters['body'] = {
-        in: 'body',
-        description: 'Solo se puede actualizar el email, role y/o username de un usuario.,
+    #swagger.requestBody = {
+        description: 'Solo se puede actualizar el email, role y/o username de un usuario',
         required: true,
-        schema: {
-          "username": "manu",
-          "password": "Password123",
-          "oldPassword": "password_anterior"
+        content: {
+            "application/json": {
+                schema: {
+                    type: 'object',
+                    properties: {                
+                      "username": {type: 'string', example: "man"},
+                      "password": {type: 'string', example: "Password123"},
+                      "oldPassword": {type: 'string', example: "password_anterior"}
+                    }
+                }
+            }
         }
     }
     #swagger.responses = {
         200: {
             description: 'Actualización del password exitoso.',
             schema: {
-              "email": "manu@hotmail.com",
-              "username": "manu",
+              "email": "man@mail.com",
+              "username": "man",
             }
         },
         404: {
@@ -194,14 +200,20 @@ router.put(
         required: true,
         type: 'number'
     }
-    #swagger.parameters['body'] = {
-        in: 'body',
-        description: 'Solo se puede actualizar el email, role y/o username de un usuario.,
+    #swagger.requestBody = {
+        description: 'Solo se puede actualizar el email, role y/o username de un usuario',
         required: true,
-        schema: {
-          "email": "manu@hotmail.com",
-          "username": "manu",
-          "role": "ADMIN",
+          content: {
+            "application/json": {
+                schema: {
+                    type: 'object',
+                    properties: {                
+                      "email": {type: 'string', example: "man@mail.com"},
+                      "username": {type: 'string', example: "man"},
+                      "role": {type: 'string', example: "ADMIN"},
+                    }
+                }
+            }
         }
     }
     #swagger.responses = {
@@ -209,8 +221,8 @@ router.put(
             description: 'Usuario actualizado con exito.',
             schema: {
               "id": 13,
-              "email": "manu@hotmail.com",
-              "username": "manu",
+              "email": "man@mail.com",
+              "username": "man",
               "role": "ADMIN",
               "registerdate": "2026-09-04T22:43:28.015Z"
             }
