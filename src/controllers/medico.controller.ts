@@ -118,42 +118,6 @@ export const softDeleteMedico = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteMedico = async (req: Request, res: Response) => {
-  try {
-    const id = Number(req.params.id);
-    const deletedMedico = await medicoModel.deleteAdmin(id);
-    return res.json({
-      message: "Médico eliminado con éxito",
-      data: deletedMedico,
-    });
-  } catch (error) {
-    const { statusCode, payload } = procesarErrorPrisma(error);
-    res.status(statusCode).json(payload);
-  }
-};
-
-export const getAllMedicoDeleted = async (req: Request, res: Response) => {
-  try {
-    const { fechaInicio, fechaFin } = req.query as {
-      fechaInicio: string;
-      fechaFin: string;
-    };
-    const medicos = await medicoModel.findAllDeleted(
-      fechaInicio ? new Date(fechaInicio) : undefined,
-      fechaFin ? new Date(fechaFin) : undefined,
-    );
-    if (medicos.length === 0) {
-      return res
-        .status(404)
-        .json({ message: "No se encontraron médicos eliminados" });
-    }
-    res.status(200).json({ "total eliminados": medicos.length, data: medicos });
-  } catch (error) {
-    const { statusCode, payload } = procesarErrorPrisma(error);
-    res.status(statusCode).json(payload);
-  }
-};
-
 export const agendaMedico = async (req: Request, res: Response) => {
   try {
     const id = Number(req.params.id);

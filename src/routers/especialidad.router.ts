@@ -1,9 +1,7 @@
 import { Router } from "express";
 import type { Request, Response } from "express";
 import {
-  deleteEspecialidad,
   getAllEspecialidades,
-  getAllEspacialidadDeleted,
   getEspecialidadById,
   postEspecialidad,
   putEspecialidad,
@@ -49,50 +47,6 @@ router.get("/", (reg: Request, res: Response) => {
   */
   getAllEspecialidades(reg, res);
 });
-router.get(
-  "/admin",
-  authorize("ADMIN"),
-  validateQuerySchema(RangoFechasQuerySchema),
-  (reg: Request, res: Response) => {
-    /*  
-      #swagger.tags = ['Especialidad']
-      #swagger.summary = 'Obtener y filtrar todas las Especialidades eliminadas'
-      #swagger.description = 'Retorna toda la lista de especialidades eliminadas.'
-      #swagger.parameters['fechaInicio'] = {
-            in: 'query',
-            description: 'Fecha de inicio de la consulta',
-            required: false,
-            type: 'string',
-            format: 'date'
-        }
-        #swagger.parameters['fechaFin'] = {
-            in: 'query',
-            description: 'Fecha de fin de la consulta',
-            required: false,
-            type: 'string',
-            format: 'date'
-        }           
-      #swagger.responses = {
-        200: {
-            description: 'Especialidades eliminadas, halladas satisfactoriamente.',
-            schema: {
-                type: 'array',
-                items: { $ref: '#/definitions/Especialidad' }
-            }
-        },  
-        404: {
-            description: 'No se encontraron especialidades eliminadas.',
-            schema: { error: 'No se encontraron especialidades eliminadas.' }
-        },
-        500: {
-            description: 'Error interno del servidor.',
-            schema: { error: 'Mensaje de error específico' }
-          }
-    }
-    */
-    getAllEspacialidadDeleted(reg, res);
-  },
-);
 
 router.get(
   "/:id",
@@ -129,6 +83,7 @@ router.get(
     getEspecialidadById(req, res);
   },
 );
+
 router.post(
   "/",
   authorize("GERENCIA", "ADMIN"),
@@ -173,6 +128,7 @@ router.post(
     postEspecialidad(req, res);
   },
 );
+
 router.put(
   "/:id",
   authorize("GERENCIA", "ADMIN"),
@@ -225,6 +181,7 @@ router.put(
     putEspecialidad(req, res);
   },
 );
+
 router.delete(
   "/:id",
   authorize("GERENCIA", "ADMIN"),
@@ -259,43 +216,6 @@ router.delete(
     }
     */
     softDeleteEspecialidad(req, res);
-  },
-);
-router.delete(
-  "/admin/:id",
-  authorize("ADMIN"),
-  validateParamsSchema(EspecialidadWhereUniqueInputObjectSchema),
-  (req: Request, res: Response) => {
-    /*
-    #swagger.tags = ['Especialidad']
-    #swagger.summary = 'Eliminar una especialidad REALMENTE'
-    #swagger.parameters['id'] = {
-    in: 'path',
-    description: 'ID numérico de la especialidad',
-    required: true,
-    type: 'integer'
-    }
-    #swagger.responses = {
-        200: {
-            description: 'Especialidad eliminada con éxito',
-            schema: {
-              "id": 13,
-              "tipo": "Medicina Naturista",
-              "registerdate": "2026-09-04T22:43:28.015Z",
-              "deleted": true
-            }
-        },
-        404: {
-            description: 'Especialidad no encontrada',
-            schema: { error: 'Especialidad no encontrada' }
-        },
-        500: {
-            description: 'Error interno del servidor.',
-            schema: { error: 'Mensaje de error específico' }
-        }
-    }
-    */
-    deleteEspecialidad(req, res);
   },
 );
 

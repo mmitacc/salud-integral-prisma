@@ -47,25 +47,4 @@ export const especialidadModel = {
       omit: { deleted: true },
     });
   },
-  deleteAdmin: async (id: number) => {
-    return await prisma.especialidad.delete({
-      where: { id },
-    });
-  },
-  findAllDeleted: async (fechaInicio?: Date, fechaFin?: Date) => {
-    const options: Prisma.EspecialidadFindManyArgs = {
-      orderBy: { id: "asc" },
-      where: { deleted: true },
-    };
-    if (fechaInicio && fechaFin) {
-      options.where = {
-        ...options.where,
-        registerdate: {
-          gte: fechaInicio,
-          lte: fechaFin,
-        },
-      };
-    }
-    return await prisma.especialidad.findMany(options);
-  },
 };

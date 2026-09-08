@@ -1,9 +1,7 @@
 import { Router } from "express";
 import type { Request, Response } from "express";
 import {
-  deleteHistorial,
   getAllHistoriales,
-  getAllHistorialDeleted,
   getHistorialById,
   postHistorial,
   putHistorial,
@@ -51,50 +49,6 @@ router.get(
   }
   */
     getAllHistoriales(req, res);
-  },
-);
-router.get(
-  "/admin",
-  authorize("ADMIN"),
-  validateQuerySchema(RangoFechasQuerySchema),
-  (req: Request, res: Response) => {
-    /*  
-      #swagger.tags = ['Historial']
-      #swagger.summary = 'Obtener y filtrar todos los Historiales eliminados'
-      #swagger.description = 'Retorna toda la lista de historiales eliminados.'
-      #swagger.parameters['fechaInicio'] = {
-            in: 'query',
-            description: 'Fecha de inicio de la consulta',
-            required: false,
-            type: 'string',
-            format: 'date'
-        }
-        #swagger.parameters['fechaFin'] = {
-            in: 'query',
-            description: 'Fecha de fin de la consulta',
-            required: false,
-            type: 'string',
-            format: 'date'
-        }           
-      #swagger.responses = {
-        200: {
-            description: 'Historiales eliminados, hallados satisfactoriamente.',
-            schema: {
-                type: 'array',
-                items: { $ref: '#/definitions/Historial' }
-            }
-        },  
-        404: {
-            description: 'No se encontraron historiales eliminados.',
-            schema: { error: 'No se encontraron historiales eliminados.' }
-        },
-        500: {
-            description: 'Error interno del servidor.',
-            schema: { error: 'Mensaje de error específico' }
-          }
-    }
-    */
-    getAllHistorialDeleted(req, res);
   },
 );
 
@@ -197,6 +151,7 @@ router.post(
     postHistorial(req, res);
   },
 );
+
 router.put(
   "/:id",
   authorize("ADMIN", "GERENCIA", "MEDICO"),
@@ -260,6 +215,7 @@ router.put(
     putHistorial(req, res);
   },
 );
+
 router.delete(
   "/:id",
   authorize("ADMIN", "GERENCIA", "MEDICO"),
@@ -300,49 +256,6 @@ router.delete(
     }
     */
     softDeleteHistorial(req, res);
-  },
-);
-router.delete(
-  "/admin/:id",
-  authorize("ADMIN"),
-  validateParamsSchema(HistorialWhereUniqueInputObjectSchema),
-  (req: Request, res: Response) => {
-    /*
-    #swagger.tags = ['Historial']
-    #swagger.summary = 'Eliminar un historial REALMENTE'
-    #swagger.parameters['id'] = {
-    in: 'path',
-    description: 'ID numérico del historial',
-    required: true,
-    type: 'integer'
-    }
-    #swagger.responses = {
-        200: {
-            description: 'Historial eliminado con éxito',
-            schema: {
-              "id": 14,
-              "id_paciente": 2,
-              "motivo": "Control anual",
-              "antecedentes": "Diabetes tipo 2 controlada",
-              "triaje": "PA: 130/85, FC: 80, T: 37.2°C",
-              "diagnostico": "Diagnóstico en observación",
-              "tratamiento": "Reposo e hidratación",
-              "receta": "Paracetamol 500mg cada 8 horas por 3 días",
-              "registerdate": "2026-09-04T22:43:28.015Z",
-              "deleted": true
-            }
-        },
-        404: {
-            description: 'Historial no encontrado',
-            schema: { error: 'Historial no encontrado' }
-        },
-        500: {
-            description: 'Error interno del servidor.',
-            schema: { error: 'Mensaje de error específico' }
-        }
-    }
-    */
-    deleteHistorial(req, res);
   },
 );
 

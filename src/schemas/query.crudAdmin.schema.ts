@@ -1,7 +1,13 @@
 import { z } from "zod";
 
-export const RangoFechasQuerySchema = z
+export const queryModeloAdminSchema = z
   .object({
+    deleted: z
+      .enum(["true", "false"], {
+        message: "deleted debe ser estrictamente 'true' o 'false'",
+      })
+      .optional() // Si no lo envían, pasa como undefined
+      .transform((val) => (val === undefined ? undefined : val === "true")),
     fechaInicio: z.coerce
       .date({
         message: "fechaInicio debe ser una fecha válida (YYYY-MM-DD)",
@@ -27,15 +33,4 @@ export const RangoFechasQuerySchema = z
     },
   );
 
-export const FiltrarEspecialidadQuerySchema = z
-  .object({
-    especialidad: z.string().trim().min(1).optional(),
-  })
-  .strict();
-
-export const ParamsAdminSchema = z
-  .object({
-    id: z.coerce.number().min(1).optional(),
-    modelo: z.string().trim().min(1).optional(),
-  })
-  .strict();
+export type queryCrudAdminTypeSchema = z.infer<typeof queryModeloAdminSchema>;

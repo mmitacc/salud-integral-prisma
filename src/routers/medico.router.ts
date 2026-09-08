@@ -2,9 +2,7 @@ import { Router } from "express";
 import type { Request, Response } from "express";
 import {
   agendaMedico,
-  deleteMedico,
   getAllMedico,
-  getAllMedicoDeleted,
   getMedicoById,
   postMedico,
   putMedico,
@@ -65,36 +63,6 @@ router.get(
   },
 );
 
-router.get(
-  "/admin",
-  authorize("ADMIN"),
-  validateQuerySchema(RangoFechasQuerySchema),
-  (req: Request, res: Response) => {
-    /*  
-      #swagger.tags = ['Medico']
-      #swagger.summary = 'Obtener y filtrar todos los Medicos eliminados'
-      #swagger.description = 'Retorna toda la lista de medicos eliminados.'
-      #swagger.responses = {
-        200: {
-            description: 'Medicos eliminados, hallados satisfactoriamente.',
-            schema: {
-                type: 'array',
-                items: { $ref: '#/definitions/Medico' }
-            }
-        },  
-        404: {
-            description: 'No se encontraron medicos eliminados.',
-            schema: { error: 'No se encontraron medicos eliminados.' }
-        },
-        500: {
-            description: 'Error interno del servidor.',
-            schema: { error: 'Mensaje de error específico' }
-          }
-    }
-    */
-    getAllMedicoDeleted(req, res);
-  },
-);
 router.get(
   "/:id",
   validateParamsSchema(MedicoWhereUniqueInputObjectSchema),
@@ -336,6 +304,7 @@ router.put(
     putMedico(req, res);
   },
 );
+
 router.delete(
   "/:id",
   authorize("ADMIN", "GERENCIA"),
@@ -381,51 +350,6 @@ router.delete(
     }
     */
     softDeleteMedico(req, res);
-  },
-);
-router.delete(
-  "/admin/:id",
-  authorize("ADMIN"),
-  validateParamsSchema(MedicoWhereUniqueInputObjectSchema),
-  (req: Request, res: Response) => {
-    /*
-    #swagger.tags = ['Medico']
-    #swagger.summary = 'Eliminar un medico REALMENTE'
-    #swagger.parameters['id'] = {
-    in: 'path',
-    description: 'ID numérico del medico',
-    required: true,
-    type: 'integer'
-    }
-    #swagger.responses = {
-        200: {
-            description: 'Medico eliminado con éxito',
-            schema: {
-              "id": 14,
-              "nombres": "Elena Sofia",
-              "apellidos": "Gómez Rosas",
-              "telefono": "+51 948526348",
-              "email": "elena@gmail.com",
-              "masculino": true,
-              "fechanacimiento": "2026-09-09T14:00:00.000Z",
-              "especialidad": {
-                "id": 1,
-                "tipo": "Cardiología",
-                "registerdate": "2026-09-04T13:07:58.996Z"
-              }
-            }
-        },
-        404: {
-            description: 'Medico no encontrado',
-            schema: { error: 'Medico no encontrado' }
-        },
-        500: {
-            description: 'Error interno del servidor.',
-            schema: { error: 'Mensaje de error específico' }
-        }
-    }
-    */
-    deleteMedico(req, res);
   },
 );
 

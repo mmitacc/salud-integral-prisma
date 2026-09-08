@@ -1,9 +1,7 @@
 import { Router } from "express";
 import type { Request, Response } from "express";
 import {
-  deletePaciente,
   getAllPaciente,
-  getAllPacienteDeleted,
   getPacienteById,
   postPaciente,
   putPaciente,
@@ -49,50 +47,7 @@ router.get("/", (req: Request, res: Response) => {
   */
   getAllPaciente(req, res);
 });
-router.get(
-  "/admin",
-  authorize("ADMIN"),
-  validateQuerySchema(RangoFechasQuerySchema),
-  (req: Request, res: Response) => {
-    /*
-      #swagger.tags = ['Paciente']
-      #swagger.summary = 'Obtener y filtrar todos los Pacientes eliminados'
-      #swagger.description = 'Retorna toda la lista de pacientes eliminados.'
-      #swagger.parameters['fechaInicio'] = {
-            in: 'query',
-            description: 'Fecha de inicio de la consulta',
-            required: false,
-            type: 'string',
-            format: 'date'
-        }
-        #swagger.parameters['fechaFin'] = {
-            in: 'query',
-            description: 'Fecha de fin de la consulta',
-            required: false,
-            type: 'string',
-            format: 'date'
-        }           
-      #swagger.responses = {
-        200: {
-            description: 'Pacientes eliminados, hallados satisfactoriamente.',
-            schema: {
-                type: 'array',
-                items: { $ref: '#/definitions/Paciente' }
-            }
-        },  
-        404: {
-            description: 'No se encontraron pacientes eliminados.',
-            schema: { error: 'No se encontraron pacientes eliminados.' }
-        },
-        500: {
-            description: 'Error interno del servidor.',
-            schema: { error: 'Mensaje de error específico' }
-          }
-    }
-    */
-    getAllPacienteDeleted(req, res);
-  },
-);
+
 router.get(
   "/:id",
   validateParamsSchema(PacienteWhereUniqueInputObjectSchema),
@@ -146,6 +101,7 @@ router.get(
     getPacienteById(req, res);
   },
 );
+
 router.post(
   "/",
   authorize("ADMIN", "GERENCIA", "RECEPCIONISTA"),
@@ -205,6 +161,7 @@ router.post(
     postPaciente(req, res);
   },
 );
+
 router.put(
   "/:id",
   authorize("ADMIN", "GERENCIA", "RECEPCIONISTA"),
@@ -271,6 +228,7 @@ router.put(
     putPaciente(req, res);
   },
 );
+
 router.delete(
   "/:id",
   authorize("ADMIN", "GERENCIA"),
@@ -313,51 +271,6 @@ router.delete(
     }
     */
     softDeletePaciente(req, res);
-  },
-);
-router.delete(
-  "/admin/:id",
-  authorize("ADMIN"),
-  validateParamsSchema(PacienteWhereUniqueInputObjectSchema),
-  (req: Request, res: Response) => {
-    /*
-    #swagger.tags = ['Paciente']
-    #swagger.summary = 'Eliminar un paciente REALMENTE'
-    #swagger.description = 'Elimina un paciente con su ID'
-    #swagger.parameters['id'] = {
-    in: 'path',
-    description: 'ID numérico del paciente',
-    required: true,
-    type: 'integer'
-    }
-    #swagger.responses = {
-        200: {
-            description: 'Paciente eliminado con éxito',
-            schema: {
-              "id": 14,
-              "nombres": "Carlos Alberto",
-              "apellidos": "Mendoza Ortiz",
-              "telefono": "+054912367854",
-              "email": "carlos@gmail.com",
-              "masculino": true,
-              "fechanacimiento": "2026-09-09T14:00:00.000Z",
-              "tiposangre": "RHO+",
-              "alergias": "Ninguna",
-              "registerdate": "2006-09-04T19:15:15.667Z",
-              "deleted": true
-            }
-        },  
-        404: {
-            description: 'Paciente no encontrado',
-            schema: { error: 'Paciente no encontrado' }
-        },
-        500: {
-            description: 'Error interno del servidor.',
-            schema: { error: 'Mensaje de error específico' }
-        }
-    }
-    */
-    deletePaciente(req, res);
   },
 );
 
