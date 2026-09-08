@@ -59,7 +59,7 @@ export const medicoModel = {
           create: { email, username, password: hashedPassword, role: "MEDICO" },
         },
       },
-      omit: { deleted: true, usuario: true },
+      omit: { deleted: true },
     });
   },
   update: async (
@@ -83,7 +83,7 @@ export const medicoModel = {
         fechanacimiento,
         especialidad: { connect: { id: id_especialidad } },
       },
-      omit: { deleted: true, usuario: true },
+      omit: { deleted: true },
     });
   },
   softDelete: async (id: number) => {
@@ -101,30 +101,13 @@ export const medicoModel = {
       where: { id },
       data: { deleted: true },
       include: { consultas: { omit: { deleted: true } } },
-      omit: { deleted: true, usuario: true },
+      omit: { deleted: true },
     });
   },
   deleteAdmin: async (id: number) => {
     return await prisma.medico.delete({
       where: { id },
     });
-  },
-  findAllDeleted: async (fechaInicio?: Date, fechaFin?: Date) => {
-    const options: Prisma.MedicoFindManyArgs = {
-      orderBy: { id: "asc" },
-      include: { especialidad: true },
-      where: { deleted: true },
-    };
-    if (fechaInicio && fechaFin) {
-      options.where = {
-        ...options.where,
-        registerdate: {
-          gte: fechaInicio,
-          lte: fechaFin,
-        },
-      };
-    }
-    return await prisma.medico.findMany(options);
   },
   findAgendaByDate: async (id: number, fechaInicio?: Date, fechaFin?: Date) => {
     const options: Prisma.MedicoFindFirstArgs = {

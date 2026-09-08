@@ -90,31 +90,6 @@ export const consultaModel = {
       omit: { deleted: true },
     });
   },
-  deleteAdmin: async (id: number) => {
-    return await prisma.consulta.delete({
-      where: { id },
-    });
-  },
-  findAllDeleted: async (fechaInicio?: Date, fechaFin?: Date) => {
-    const options: Prisma.ConsultaFindManyArgs = {
-      orderBy: { id: "asc" },
-      include: {
-        paciente: { omit: { deleted: true } },
-        medico: { omit: { deleted: true } },
-      },
-      where: { deleted: true },
-    };
-    if (fechaInicio && fechaFin) {
-      options.where = {
-        ...options.where,
-        registerdate: {
-          gte: fechaInicio,
-          lte: fechaFin,
-        },
-      };
-    }
-    return await prisma.consulta.findMany(options);
-  },
   findRentabilidadArea: async () => {
     const especialidades = await prisma.especialidad.findMany({
       select: {
@@ -148,25 +123,23 @@ export const consultaModel = {
       .filter((esp) => esp.total_programadas > 0);
   },
   findCorteOperativo: async (fechaInicio?: Date, fechaFin?: Date) => {
-    const options = {
-      by: ["estado"] as
-        Prisma.ConsultaScalarFieldEnum[] | Prisma.ConsultaScalarFieldEnum,
-      _count: { estado: true } as Prisma.ConsultaCountAggregateInputType,
-      where: {
-        deleted: false,
-        estado: { not: "PROGRAMADA" },
-      } as Prisma.ConsultaWhereInput,
+    const whereClause: Prisma.ConsultaWhereInput = {
+      deleted: false,
+      estado: { not: "PROGRAMADA" },
     };
     if (fechaInicio && fechaFin) {
-      options.where = {
-        ...options.where,
-        registerdate: {
-          gte: fechaInicio,
-          lte: fechaFin,
-        },
+      whereClause.registerdate = {
+        gte: fechaInicio,
+        lte: fechaFin,
       };
     }
-    const corteOperativo = await prisma.consulta.groupBy(options);
+    const corteOperativo = await prisma.consulta.groupBy({
+      by: ["estado"],
+      _count: {
+        estado: true,
+      },
+      where: whereClause,
+    });
     return corteOperativo.map((est) => {
       return {
         estado: est.estado,

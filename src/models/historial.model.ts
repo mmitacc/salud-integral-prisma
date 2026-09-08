@@ -68,28 +68,6 @@ export const historialModel = {
       omit: { deleted: true },
     });
   },
-  delete: async (id: number) => {
-    return await prisma.historial.delete({
-      where: { id },
-      omit: { deleted: true },
-    });
-  },
-  findAllDeleted: async (fechaInicio?: Date, fechaFin?: Date) => {
-    const options: Prisma.HistorialFindManyArgs = {
-      orderBy: { id: "asc" },
-      where: { deleted: true },
-    };
-    if (fechaInicio && fechaFin) {
-      options.where = {
-        ...options.where,
-        registerdate: {
-          gte: fechaInicio,
-          lte: fechaFin,
-        },
-      };
-    }
-    return await prisma.historial.findMany(options);
-  },
   findAllByIdPaciente: async (idPaciente: number) => {
     return await prisma.historial.findMany({
       where: { id_paciente: idPaciente, deleted: false },

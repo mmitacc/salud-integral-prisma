@@ -142,44 +142,6 @@ export const softDeleteConsulta = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteConsulta = async (req: Request, res: Response) => {
-  try {
-    const id = Number(req.params.id);
-    const deletedConsulta = await consultaModel.deleteAdmin(id);
-    return res.json({
-      message: "Consulta eliminada con éxito",
-      data: deletedConsulta,
-    });
-  } catch (error) {
-    const { statusCode, payload } = procesarErrorPrisma(error);
-    res.status(statusCode).json(payload);
-  }
-};
-
-export const getAllConsultaDeleted = async (req: Request, res: Response) => {
-  try {
-    const { fechaInicio, fechaFin } = req.query as {
-      fechaInicio: string;
-      fechaFin: string;
-    };
-    const consultas = await consultaModel.findAllDeleted(
-      fechaInicio ? new Date(fechaInicio) : undefined,
-      fechaFin ? new Date(fechaFin) : undefined,
-    );
-    if (consultas.length === 0) {
-      return res
-        .status(404)
-        .json({ message: "No se encontraron consultas eliminadas" });
-    }
-    res
-      .status(200)
-      .json({ "total eliminados": consultas.length, data: consultas });
-  } catch (error) {
-    const { statusCode, payload } = procesarErrorPrisma(error);
-    res.status(statusCode).json(payload);
-  }
-};
-
 export const rentabilidadArea = async (req: Request, res: Response) => {
   try {
     const rentabilidad = await consultaModel.findRentabilidadArea();

@@ -2,9 +2,7 @@ import { Router } from "express";
 import type { Request, Response } from "express";
 import {
   corteOperativo,
-  deleteConsulta,
   getAllConsultas,
-  getAllConsultaDeleted,
   getConsultaById,
   putConsulta,
   softDeleteConsulta,
@@ -53,50 +51,6 @@ router.get("/", (req: Request, res: Response) => {
   getAllConsultas(req, res);
 });
 
-router.get(
-  "/admin",
-  authorize("ADMIN"),
-  validateQuerySchema(RangoFechasQuerySchema),
-  (req: Request, res: Response) => {
-    /*  
-    #swagger.tags = ['Consulta']
-    #swagger.summary = 'Obtener y filtrar todas las Consultas/citas eliminadas'
-    #swagger.description = 'Retorna toda la lista de consultas/citas eliminadas.'
-   #swagger.parameters['fechaInicio'] = {
-        in: 'query',
-        description: 'Fecha de inicio de la consulta',
-        required: false,
-        type: 'string',
-        format: 'date'
-    }
-    #swagger.parameters['fechaFin'] = {
-        in: 'query',
-        description: 'Fecha de fin de la consulta',
-        required: false,
-        type: 'string',
-        format: 'date'
-    }     
-    #swagger.responses = {
-        200: {
-            description: 'Consultas halladas satisfactoriamente.',
-            schema: {
-                type: 'array',
-                items: { $ref: '#/definitions/Consulta' }
-            }
-        },  
-        404: {
-            description: 'No hay Consultas en la BD.',
-            schema: { error: 'No hay consultas/citas en la BD.' }
-        },
-        500: {
-            description: 'Error interno del servidor.',
-            schema: { error: 'Mensaje de error específico' }
-        }
-    }
-    */
-    getAllConsultaDeleted(req, res);
-  },
-);
 router.get("/corte-operativo", authorize("GERENCIA"), (req, res) => {
   /*  
     #swagger.tags = ['Consulta']
@@ -162,6 +116,7 @@ router.get("/rentabilidad", authorize("GERENCIA"), (req, res) => {
     */
   rentabilidadArea;
 });
+
 router.get(
   "/:id",
   validateParamsSchema(ConsultaWhereUniqueInputObjectSchema),
@@ -210,6 +165,7 @@ router.get(
     getConsultaById(req, res);
   },
 );
+
 router.post(
   "/",
   authorize("RECEPCIONISTA", "GERENCIA", "ADMIN"),
@@ -263,6 +219,7 @@ router.post(
     postCita(req, res);
   },
 );
+
 router.put(
   "/:id",
   authorize("RECEPCIONISTA", "GERENCIA", "ADMIN"),
@@ -321,6 +278,7 @@ router.put(
     putConsulta(req, res);
   },
 );
+
 router.put(
   "/cita/:id",
   authorize("MEDICO", "GERENCIA", "ADMIN"),
@@ -371,6 +329,7 @@ router.put(
     putEstadoCita(req, res);
   },
 );
+
 router.delete(
   "/:id",
   authorize("GERENCIA", "ADMIN"),
@@ -409,47 +368,6 @@ router.delete(
     }
     */
     softDeleteConsulta(req, res);
-  },
-);
-router.delete(
-  "/admin/:id",
-  authorize("ADMIN"),
-  validateParamsSchema(ConsultaWhereUniqueInputObjectSchema),
-  (req, res) => {
-    /*
-    #swagger.tags = ['Consulta']
-    #swagger.summary = 'Eliminar una consulta/cita REALMENTE'
-    #swagger.parameters['id'] = {
-    in: 'path',
-    description: 'ID numérico de la consulta/cita',
-    required: true,
-    type: 'integer'
-    }
-    #swagger.responses = {
-        200: {
-            description: 'Eliminación exitosa',
-            schema: {
-              "id": 13,
-              "id_paciente": 2,
-              "id_medico": 2,
-              "estado": "PROGRAMADA",
-              "citadate": "2026-09-09T14:00:00.000Z",
-              "costo": "60",
-              "registerdate": "2026-09-04T19:15:15.667Z",
-              "deleted": true
-            }
-        },
-        404: {
-            description: 'Consulta/Cita no encontrada',
-            schema: { error: 'No se encontró la consulta/cita' }
-        },
-        500: {
-            description: 'Error interno del servidor.',
-            schema: { error: 'Mensaje de error específico' }
-        }
-    }
-    */
-    deleteConsulta(req, res);
   },
 );
 

@@ -1,9 +1,7 @@
 import { Router } from "express";
 import type { Request, Response } from "express";
 import {
-  deleteUsuario,
   getAllUsuarios,
-  getAllUsuarioDeleted,
   getUsuarioById,
   putPasswordUsuario,
   putUsuario,
@@ -16,9 +14,7 @@ import {
 import {
   validateBodySchema,
   validateParamsSchema,
-  validateQuerySchema,
 } from "../middlewares/validate.schema";
-import { RangoFechasQuerySchema } from "../schemas/querys.schema";
 import updatePasswordSchema from "../schemas/password.schema";
 import { authorize } from "../middlewares/authorize.middleware";
 
@@ -51,51 +47,6 @@ router.get(
   }
   */
     getAllUsuarios(reg, res);
-  },
-);
-
-router.get(
-  "/admin",
-  authorize("ADMIN"),
-  validateQuerySchema(RangoFechasQuerySchema),
-  (reg: Request, res: Response) => {
-    /*  
-      #swagger.tags = ['Usuario']
-      #swagger.summary = 'Obtener y filtrar todos los Usuarios eliminados'
-      #swagger.description = 'Retorna toda la lista de usuarios eliminados.'
-      #swagger.parameters['fechaInicio'] = {
-            in: 'query',
-            description: 'Fecha de inicio de la consulta',
-            required: false,
-            type: 'string',
-            format: 'date'
-        }
-        #swagger.parameters['fechaFin'] = {
-            in: 'query',
-            description: 'Fecha de fin de la consulta',
-            required: false,
-            type: 'string',
-            format: 'date'
-        }           
-      #swagger.responses = {
-        200: {
-            description: 'Usuarios eliminados, hallados satisfactoriamente.',
-            schema: {
-                type: 'array',
-                items: { $ref: '#/definitions/Usuario' }
-            }
-        },  
-        404: {
-            description: 'No se encontraron usuarios eliminados.',
-            schema: { error: 'No se encontraron usuarios eliminados.' }
-        },
-        500: {
-            description: 'Error interno del servidor.',
-            schema: { error: 'Mensaje de error específico' }
-          }
-    }
-    */
-    getAllUsuarioDeleted(reg, res);
   },
 );
 
@@ -277,46 +228,6 @@ router.delete(
     }
     */
     softDeleteUsuario(req, res);
-  },
-);
-
-router.delete(
-  "/admin/:id",
-  authorize("ADMIN"),
-  validateParamsSchema(UsuarioWhereUniqueInputObjectSchema),
-  (req: Request, res: Response) => {
-    /*
-    #swagger.tags = ['Usuario']
-    #swagger.summary = 'Eliminar un usuario REALMENTE'
-    #swagger.parameters['id'] = {
-    in: 'path',
-    description: 'ID numérico de un usuario',
-    required: true,
-    type: 'integer'
-    }
-    #swagger.responses = {
-        200: {
-            description: 'Usuario eliminado con éxito',
-            schema: {
-              "id": 13,
-              "email": "manu@hotmail.com",
-              "username": "manu",
-              "role": "ADMIN",
-              "registerdate": "2026-09-04T22:43:28.015Z",
-              "deleted": true
-            }
-        },
-        404: {
-            description: 'Usuario no encontrado',
-            schema: { error: 'Usuario no encontrado' }
-        },
-        500: {
-            description: 'Error interno del servidor.',
-            schema: { error: 'Mensaje de error específico' }
-        }
-    }
-    */
-    deleteUsuario(req, res);
   },
 );
 

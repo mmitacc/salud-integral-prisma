@@ -68,39 +68,11 @@ export const pacienteModel = {
       omit: { deleted: true },
     });
   },
-
   softDelete: async (id: number) => {
     return await prisma.paciente.update({
       where: { id },
       data: { deleted: true },
       omit: { deleted: true },
     });
-  },
-  deleteAdmin: async (id: number) => {
-    return await prisma.paciente.delete({
-      where: { id },
-    });
-  },
-  findOneAdmin: async (id: number) => {
-    return await prisma.paciente.findUnique({
-      where: { id },
-    });
-  },
-  findAllDeleted: async (fechaInicio?: Date, fechaFin?: Date) => {
-    const options: Prisma.PacienteFindManyArgs = {
-      orderBy: { id: "asc" },
-      include: { historiales: true, consultas: true },
-      where: { deleted: true },
-    };
-    if (fechaInicio && fechaFin) {
-      options.where = {
-        ...options.where,
-        registerdate: {
-          gte: fechaInicio,
-          lte: fechaFin,
-        },
-      };
-    }
-    return await prisma.paciente.findMany(options);
   },
 };

@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+
 import pacienteRouter from "./routers/paciente.router";
 import historialRouter from "./routers/historial.router";
 import especialidadRouter from "./routers/especialidad.router";
@@ -7,6 +8,8 @@ import medicoRouter from "./routers/medico.router";
 import consultaRouter from "./routers/consulta.router";
 import authRouter from "./routers/auth.router";
 import usuarioRouter from "./routers/usuario.router";
+import crudAdminRouter from "./routers/crudAdmin.router";
+
 import cors from "cors";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "../swagger-output.json" assert { type: "json" };
@@ -63,9 +66,15 @@ app.use(
   /* #swagger.security = [{ "bearerAuth": [] }] */
   usuarioRouter,
 );
+app.use(
+  "/api/admin",
+  verifyToken,
+  /* #swagger.security = [{ "bearerAuth": [] }] */
+  crudAdminRouter,
+);
 
 // Inicialización del servidor
-console.clear();
+// console.clear();
 app.listen(PORT, () => {
   console.log(
     `[[<API>]]: Corriendo exitosamente en => http://localhost:${PORT}`,
