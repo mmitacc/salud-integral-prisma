@@ -5,12 +5,13 @@
 Este API es una API RESTful que permite la gestión de usuarios, pacientes, medicos, especialidades, consultas y historial de pacientes. Se adjuntan 2 archivos de detalles panoramicos del proyecto: el archivo `requerimientos.md` y el archivo `ERD-salud integral.png` (con el esquema gráfico de la base de datos). Y una data para inyección de datos `data-prueba.sql`.
 
 ## Instalación
-Despues de clonar el repositorio, ejecutar `npm install` para instalar las dependencias. Luego ejecutar para establecer todos los requerimientos de prisma: `npx prisma migrate dev --name init` y después `npx prisma generate`.Y finalmente, ejecutar `npm run dev` para iniciar el servidor. Existe una ruta para la documentación completa de la API en el puerto `3000/api-docs`.
+Despues de clonar el repositorio, ejecutar `npm install` para instalar las dependencias. Luego ejecutar para migrar/crear los schemas/tablas y base de datos postgresql con prisma: `npx prisma migrate dev --name init` y después, para crear/actualizar el cliente prisma que se comunica con tu base de datos, ejecutar `npx prisma generate`.Y finalmente, para levantar el servidor backend `npm run dev`.
+Existe una ruta para la documentación completa de la API en el puerto `http://localhost:3000/api-docs`.
 
 ## Autor
 
 Para mayores detalles sobre el proyecto, puedes visitar el repositorio de mi proyecto o contactarme en:
-[Manuel Mítac](https://github.com/mmitacc)
+[Manuel Mitacc](https://github.com/mmitacc)
 Telefono: +051 996 080 313
 Email: manuelmitacc@hotmail.com
 
@@ -18,7 +19,7 @@ Email: manuelmitacc@hotmail.com
 
 MIT License
 
-Copyright (c) 2026 [Manuel Mítac](https://github.com/mmitacc)
+Copyright (c) 2026 [Manuel Mitacc](https://github.com/mmitacc)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
