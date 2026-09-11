@@ -5,7 +5,7 @@ import { EspecialidadOrderByWithRelationInputObjectSchema as EspecialidadOrderBy
 import { EspecialidadWhereInputObjectSchema as EspecialidadWhereInputObjectSchema } from './objects/EspecialidadWhereInput.schema';
 import { EspecialidadWhereUniqueInputObjectSchema as EspecialidadWhereUniqueInputObjectSchema } from './objects/EspecialidadWhereUniqueInput.schema';
 import { EspecialidadScalarFieldEnumSchema } from './enums/EspecialidadScalarFieldEnum.schema';
-import { MedicoFindManySchema } from './findManyMedico.schema';
+import { UsuarioFindManySchema } from './findManyUsuario.schema';
 import { EspecialidadCountOutputTypeArgsObjectSchema as EspecialidadCountOutputTypeArgsObjectSchema } from './objects/EspecialidadCountOutputTypeArgs.schema';
 
 // Select schema needs to be in file to prevent circular imports
@@ -16,7 +16,7 @@ export const EspecialidadFindManySelectSchema: z.ZodType<Prisma.EspecialidadSele
     tipo: z.boolean().optional(),
     registerdate: z.boolean().optional(),
     deleted: z.boolean().optional(),
-    medicos: z.union([z.boolean(), z.lazy(() => MedicoFindManySchema)]).optional(),
+    usuarios: z.union([z.boolean(), z.lazy(() => UsuarioFindManySchema)]).optional(),
     _count: z.union([z.boolean(), z.lazy(() => EspecialidadCountOutputTypeArgsObjectSchema)]).optional()
   }).strict() as unknown as z.ZodType<Prisma.EspecialidadSelect>;
 
@@ -25,7 +25,7 @@ export const EspecialidadFindManySelectZodSchema = z.object({
     tipo: z.boolean().optional(),
     registerdate: z.boolean().optional(),
     deleted: z.boolean().optional(),
-    medicos: z.union([z.boolean(), z.lazy(() => MedicoFindManySchema)]).optional(),
+    usuarios: z.union([z.boolean(), z.lazy(() => UsuarioFindManySchema)]).optional(),
     _count: z.union([z.boolean(), z.lazy(() => EspecialidadCountOutputTypeArgsObjectSchema)]).optional()
   }).strict();
 

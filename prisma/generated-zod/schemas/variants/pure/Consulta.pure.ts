@@ -4,14 +4,14 @@ import { EstadoCitaSchema } from '../../enums/EstadoCita.schema';
 export const ConsultaModelSchema = z.object({
     id: z.number().int(),
     id_paciente: z.number().int(),
-    id_medico: z.number().int(),
+    id_usuario: z.number().int(),
     estado: EstadoCitaSchema,
     citadate: z.date(),
     costo: z.number(),
     registerdate: z.date(),
     deleted: z.boolean(),
     paciente: z.unknown(),
-    medico: z.unknown()
+    usuario: z.unknown()
 }).strict();
 
 export type ConsultaPureType = z.infer<typeof ConsultaModelSchema>;

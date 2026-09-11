@@ -8,8 +8,8 @@ import { DecimalFilterObjectSchema as DecimalFilterObjectSchema } from './Decima
 import { BoolFilterObjectSchema as BoolFilterObjectSchema } from './BoolFilter.schema';
 import { PacienteScalarRelationFilterObjectSchema as PacienteScalarRelationFilterObjectSchema } from './PacienteScalarRelationFilter.schema';
 import { PacienteWhereInputObjectSchema as PacienteWhereInputObjectSchema } from './PacienteWhereInput.schema';
-import { MedicoScalarRelationFilterObjectSchema as MedicoScalarRelationFilterObjectSchema } from './MedicoScalarRelationFilter.schema';
-import { MedicoWhereInputObjectSchema as MedicoWhereInputObjectSchema } from './MedicoWhereInput.schema'
+import { UsuarioScalarRelationFilterObjectSchema as UsuarioScalarRelationFilterObjectSchema } from './UsuarioScalarRelationFilter.schema';
+import { UsuarioWhereInputObjectSchema as UsuarioWhereInputObjectSchema } from './UsuarioWhereInput.schema'
 
 import { DecimalJSLikeSchema, isValidDecimalInput } from '../../helpers/decimal-helpers';
 const consultawhereinputSchema = z.object({
@@ -18,7 +18,7 @@ const consultawhereinputSchema = z.object({
   NOT: z.union([z.lazy(() => ConsultaWhereInputObjectSchema), z.lazy(() => ConsultaWhereInputObjectSchema).array()]).optional(),
   id: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   id_paciente: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
-  id_medico: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
+  id_usuario: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   estado: z.union([z.lazy(() => EnumEstadoCitaFilterObjectSchema), EstadoCitaSchema]).optional(),
   citadate: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
   costo: z.union([z.lazy(() => DecimalFilterObjectSchema), z.union([
@@ -32,7 +32,7 @@ const consultawhereinputSchema = z.object({
   registerdate: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
   deleted: z.union([z.lazy(() => BoolFilterObjectSchema), z.boolean()]).optional(),
   paciente: z.union([z.lazy(() => PacienteScalarRelationFilterObjectSchema), z.lazy(() => PacienteWhereInputObjectSchema)]).optional(),
-  medico: z.union([z.lazy(() => MedicoScalarRelationFilterObjectSchema), z.lazy(() => MedicoWhereInputObjectSchema)]).optional()
+  usuario: z.union([z.lazy(() => UsuarioScalarRelationFilterObjectSchema), z.lazy(() => UsuarioWhereInputObjectSchema)]).optional()
 }).strict();
 export const ConsultaWhereInputObjectSchema: z.ZodType<Prisma.ConsultaWhereInput> = consultawhereinputSchema as unknown as z.ZodType<Prisma.ConsultaWhereInput>;
 export const ConsultaWhereInputObjectZodSchema = consultawhereinputSchema;

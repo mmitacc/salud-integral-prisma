@@ -6,7 +6,7 @@ import { DateTimeFieldUpdateOperationsInputObjectSchema as DateTimeFieldUpdateOp
 import { DecimalFieldUpdateOperationsInputObjectSchema as DecimalFieldUpdateOperationsInputObjectSchema } from './DecimalFieldUpdateOperationsInput.schema';
 import { BoolFieldUpdateOperationsInputObjectSchema as BoolFieldUpdateOperationsInputObjectSchema } from './BoolFieldUpdateOperationsInput.schema';
 import { PacienteUpdateOneRequiredWithoutConsultasNestedInputObjectSchema as PacienteUpdateOneRequiredWithoutConsultasNestedInputObjectSchema } from './PacienteUpdateOneRequiredWithoutConsultasNestedInput.schema';
-import { MedicoUpdateOneRequiredWithoutConsultasNestedInputObjectSchema as MedicoUpdateOneRequiredWithoutConsultasNestedInputObjectSchema } from './MedicoUpdateOneRequiredWithoutConsultasNestedInput.schema'
+import { UsuarioUpdateOneRequiredWithoutConsultasNestedInputObjectSchema as UsuarioUpdateOneRequiredWithoutConsultasNestedInputObjectSchema } from './UsuarioUpdateOneRequiredWithoutConsultasNestedInput.schema'
 
 import { DecimalJSLikeSchema, isValidDecimalInput } from '../../helpers/decimal-helpers';
 const makeSchema = () => z.object({
@@ -23,7 +23,7 @@ const makeSchema = () => z.object({
   registerdate: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
   deleted: z.union([z.boolean(), z.lazy(() => BoolFieldUpdateOperationsInputObjectSchema)]).optional(),
   paciente: z.lazy(() => PacienteUpdateOneRequiredWithoutConsultasNestedInputObjectSchema).optional(),
-  medico: z.lazy(() => MedicoUpdateOneRequiredWithoutConsultasNestedInputObjectSchema).optional()
+  usuario: z.lazy(() => UsuarioUpdateOneRequiredWithoutConsultasNestedInputObjectSchema).optional()
 }).strict();
 export const ConsultaUpdateInputObjectSchema: z.ZodType<Prisma.ConsultaUpdateInput> = makeSchema() as unknown as z.ZodType<Prisma.ConsultaUpdateInput>;
 export const ConsultaUpdateInputObjectZodSchema = makeSchema();

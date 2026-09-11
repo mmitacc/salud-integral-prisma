@@ -5,7 +5,7 @@ import { EstadoCitaSchema } from '../enums/EstadoCita.schema'
 import { DecimalJSLikeSchema, isValidDecimalInput } from '../../helpers/decimal-helpers';
 const makeSchema = () => z.object({
   id: z.number().int().optional(),
-  id_medico: z.number().int(),
+  id_usuario: z.number().int(),
   estado: EstadoCitaSchema.optional(),
   citadate: z.coerce.date(),
   costo: z.union([

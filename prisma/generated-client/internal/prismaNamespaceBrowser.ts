@@ -54,9 +54,8 @@ export const ModelName = {
   Paciente: 'Paciente',
   Historial: 'Historial',
   Consulta: 'Consulta',
-  Medico: 'Medico',
-  Especialidad: 'Especialidad',
-  Usuario: 'Usuario'
+  Usuario: 'Usuario',
+  Especialidad: 'Especialidad'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -111,7 +110,7 @@ export type HistorialScalarFieldEnum = (typeof HistorialScalarFieldEnum)[keyof t
 export const ConsultaScalarFieldEnum = {
   id: 'id',
   id_paciente: 'id_paciente',
-  id_medico: 'id_medico',
+  id_usuario: 'id_usuario',
   estado: 'estado',
   citadate: 'citadate',
   costo: 'costo',
@@ -122,21 +121,23 @@ export const ConsultaScalarFieldEnum = {
 export type ConsultaScalarFieldEnum = (typeof ConsultaScalarFieldEnum)[keyof typeof ConsultaScalarFieldEnum]
 
 
-export const MedicoScalarFieldEnum = {
+export const UsuarioScalarFieldEnum = {
   id: 'id',
   id_especialidad: 'id_especialidad',
-  id_usuario: 'id_usuario',
   nombres: 'nombres',
   apellidos: 'apellidos',
   telefono: 'telefono',
-  email: 'email',
   masculino: 'masculino',
   fechanacimiento: 'fechanacimiento',
+  email: 'email',
+  password: 'password',
+  role: 'role',
+  username: 'username',
   registerdate: 'registerdate',
   deleted: 'deleted'
 } as const
 
-export type MedicoScalarFieldEnum = (typeof MedicoScalarFieldEnum)[keyof typeof MedicoScalarFieldEnum]
+export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
 
 
 export const EspecialidadScalarFieldEnum = {
@@ -147,19 +148,6 @@ export const EspecialidadScalarFieldEnum = {
 } as const
 
 export type EspecialidadScalarFieldEnum = (typeof EspecialidadScalarFieldEnum)[keyof typeof EspecialidadScalarFieldEnum]
-
-
-export const UsuarioScalarFieldEnum = {
-  id: 'id',
-  email: 'email',
-  password: 'password',
-  role: 'role',
-  username: 'username',
-  registerdate: 'registerdate',
-  deleted: 'deleted'
-} as const
-
-export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
 
 
 export const SortOrder = {

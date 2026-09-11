@@ -5,7 +5,7 @@ export const EspecialidadInputSchema = z.object({
     tipo: z.string(),
     registerdate: z.coerce.date(),
     deleted: z.boolean(),
-    medicos: z.array(z.unknown())
+    usuarios: z.array(z.unknown())
 }).strict();
 
 export type EspecialidadInputType = z.infer<typeof EspecialidadInputSchema>;

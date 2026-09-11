@@ -6,7 +6,7 @@ import { DecimalJSLikeSchema, isValidDecimalInput } from '../../helpers/decimal-
 const makeSchema = () => z.object({
   id: z.number().int().optional(),
   id_paciente: z.number().int(),
-  id_medico: z.number().int(),
+  id_usuario: z.number().int(),
   estado: EstadoCitaSchema.optional(),
   citadate: z.coerce.date(),
   costo: z.union([

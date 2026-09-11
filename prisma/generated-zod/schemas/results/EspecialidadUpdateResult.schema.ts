@@ -4,5 +4,5 @@ export const EspecialidadUpdateResultSchema = z.nullable(z.object({
   tipo: z.string(),
   registerdate: z.date(),
   deleted: z.boolean(),
-  medicos: z.array(z.unknown()).optional()
+  usuarios: z.array(z.unknown()).optional()
 }));

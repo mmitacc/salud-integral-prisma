@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 import { especialidadModel } from "../models/especialidad.model";
 import procesarErrorPrisma from "../utils/errorHandlerUtil";
-import { medicoModel } from "../models/medico.model";
+import { usuarioModel } from "../models/usuario.model";
 
 export const getAllEspecialidades = async (req: Request, res: Response) => {
   try {
@@ -67,7 +67,7 @@ export const softDeleteEspecialidad = async (req: Request, res: Response) => {
     if (!especialidad) {
       return res.status(404).json({ error: "Especialidad no encontrada" });
     }
-    const medicos = await medicoModel.findAllByIdEspecialidad(
+    const medicos = await usuarioModel.findAllByIdEspecialidad(
       Number(especialidad.id),
     );
     if (medicos.length !== 0) {

@@ -5,7 +5,7 @@ export const EspecialidadFindManyResultSchema = z.object({
   tipo: z.string(),
   registerdate: z.date(),
   deleted: z.boolean(),
-  medicos: z.array(z.unknown()).optional()
+  usuarios: z.array(z.unknown()).optional()
 })),
   pagination: z.object({
   page: z.number().int().min(1),

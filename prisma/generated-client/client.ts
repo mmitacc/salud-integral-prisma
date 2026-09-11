@@ -57,17 +57,12 @@ export type Historial = Prisma.HistorialModel
  */
 export type Consulta = Prisma.ConsultaModel
 /**
- * Model Medico
+ * Model Usuario
  * 
  */
-export type Medico = Prisma.MedicoModel
+export type Usuario = Prisma.UsuarioModel
 /**
  * Model Especialidad
  * 
  */
 export type Especialidad = Prisma.EspecialidadModel
-/**
- * Model Usuario
- * 
- */
-export type Usuario = Prisma.UsuarioModel

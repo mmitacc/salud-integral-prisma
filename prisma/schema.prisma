@@ -64,7 +64,7 @@ enum EstadoCita {
 model Consulta {
   id           Int        @id @default(autoincrement())
   id_paciente  Int
-  id_medico    Int
+  id_usuario   Int
   estado       EstadoCita @default(PROGRAMADA)
   citadate     DateTime   @db.Timestamp
   costo        Decimal    @default(50.0) @db.Decimal(10, 2)
@@ -73,43 +73,9 @@ model Consulta {
 
   // Relaciones
   paciente Paciente @relation(fields: [id_paciente], references: [id], onDelete: Restrict)
-  medico   Medico   @relation(fields: [id_medico], references: [id], onDelete: Restrict)
+  usuario  Usuario  @relation(fields: [id_usuario], references: [id], onDelete: Restrict)
 
   @@map("consulta")
-}
-
-model Medico {
-  id              Int      @id @default(autoincrement())
-  id_especialidad Int
-  id_usuario      Int      @unique
-  nombres         String   @db.VarChar(100)
-  apellidos       String   @db.VarChar(100)
-  telefono        String   @db.VarChar(20)
-  /// @zod.string({ required_error: "El email es obligatorio" }).email({ message: "El formato del correo electrónico no es válido" })
-  email           String   @unique @db.VarChar(150)
-  masculino       Boolean  @default(true)
-  fechanacimiento DateTime @db.Date
-  registerdate    DateTime @default(now())
-  deleted         Boolean  @default(false)
-
-  // Relaciones
-  especialidad Especialidad @relation(fields: [id_especialidad], references: [id], onDelete: Restrict)
-  consultas    Consulta[]
-  usuario      Usuario      @relation(fields: [id_usuario], references: [id], onDelete: Cascade)
-
-  @@map("medico")
-}
-
-model Especialidad {
-  id           Int      @id @default(autoincrement())
-  tipo         String   @db.VarChar(100)
-  registerdate DateTime @default(now())
-  deleted      Boolean  @default(false)
-
-  // Relaciones inversas
-  medicos Medico[]
-
-  @@map("especialidad")
 }
 
 // AUTENTICACIONES PARA ACCESO A LOS ENDPOINTS
@@ -122,19 +88,38 @@ enum Role {
 }
 
 model Usuario {
-  id           Int      @id @default(autoincrement())
+  id              Int      @id @default(autoincrement())
+  id_especialidad Int?
+  nombres         String   @db.VarChar(100)
+  apellidos       String   @db.VarChar(100)
+  telefono        String   @db.VarChar(20)
+  masculino       Boolean  @default(true)
+  fechanacimiento DateTime @db.Date
   /// @zod.string({ required_error: "El email es obligatorio" }).email({ message: "El formato del correo electrónico no es válido" })
-  email        String   @unique
-  password     String   @db.VarChar(100)
-  role         Role
-  username     String   @unique @db.VarChar(50)
+  email           String   @unique @db.VarChar(150)
+  password        String   @db.VarChar(100)
+  role            Role
+  username        String   @unique @db.VarChar(50)
+  registerdate    DateTime @default(now())
+  deleted         Boolean  @default(false)
+
+  // Relaciones
+  especialidad Especialidad? @relation(fields: [id_especialidad], references: [id], onDelete: Restrict)
+  consultas    Consulta[]
+
+  @@map("usuario")
+}
+
+model Especialidad {
+  id           Int      @id @default(autoincrement())
+  tipo         String   @db.VarChar(100)
   registerdate DateTime @default(now())
   deleted      Boolean  @default(false)
 
   // Relaciones inversas
-  medico Medico?
+  usuarios Usuario[]
 
-  @@map("usuario")
+  @@map("especialidad")
 }
 
 // Generador automatio de Schemas con Prisma y Zod

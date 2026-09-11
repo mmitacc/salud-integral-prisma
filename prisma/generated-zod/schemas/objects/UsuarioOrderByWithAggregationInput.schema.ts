@@ -1,6 +1,7 @@
 import * as z from 'zod';
 import type { Prisma } from '../../../generated-client/browser';
 import { SortOrderSchema } from '../enums/SortOrder.schema';
+import { SortOrderInputObjectSchema as SortOrderInputObjectSchema } from './SortOrderInput.schema';
 import { UsuarioCountOrderByAggregateInputObjectSchema as UsuarioCountOrderByAggregateInputObjectSchema } from './UsuarioCountOrderByAggregateInput.schema';
 import { UsuarioAvgOrderByAggregateInputObjectSchema as UsuarioAvgOrderByAggregateInputObjectSchema } from './UsuarioAvgOrderByAggregateInput.schema';
 import { UsuarioMaxOrderByAggregateInputObjectSchema as UsuarioMaxOrderByAggregateInputObjectSchema } from './UsuarioMaxOrderByAggregateInput.schema';
@@ -9,6 +10,12 @@ import { UsuarioSumOrderByAggregateInputObjectSchema as UsuarioSumOrderByAggrega
 
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
+  id_especialidad: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
+  nombres: SortOrderSchema.optional(),
+  apellidos: SortOrderSchema.optional(),
+  telefono: SortOrderSchema.optional(),
+  masculino: SortOrderSchema.optional(),
+  fechanacimiento: SortOrderSchema.optional(),
   email: SortOrderSchema.optional(),
   password: SortOrderSchema.optional(),
   role: SortOrderSchema.optional(),

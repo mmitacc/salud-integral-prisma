@@ -4,10 +4,10 @@ import dotenv from "dotenv";
 import pacienteRouter from "./routers/paciente.router";
 import historialRouter from "./routers/historial.router";
 import especialidadRouter from "./routers/especialidad.router";
-import medicoRouter from "./routers/medico.router";
+import usuarioRouter from "./routers/usuario.router";
 import consultaRouter from "./routers/consulta.router";
 import authRouter from "./routers/auth.router";
-import usuarioRouter from "./routers/usuario.router";
+import u from "./routers/u.router";
 import crudAdminRouter from "./routers/crudAdmin.router";
 
 import cors from "cors";
@@ -41,12 +41,6 @@ app.use(
   verifyToken,
   /* #swagger.security = [{ "bearerAuth": [] }] */
   pacienteRouter,
-);
-app.use(
-  "/api/medico",
-  verifyToken,
-  /* #swagger.security = [{ "bearerAuth": [] }] */
-  medicoRouter,
 );
 app.use(
   "/api/historial",

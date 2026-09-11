@@ -22,7 +22,7 @@ export const consultaModel = {
         paciente: {
           select: { id: true, nombres: true, apellidos: true, telefono: true },
         },
-        medico: {
+        usuario: {
           select: {
             id: true,
             nombres: true,
@@ -37,7 +37,7 @@ export const consultaModel = {
   createCita: async (
     costo: number,
     citadate: Date,
-    id_medico: number,
+    id_usuario: number,
     id_paciente: number,
   ) => {
     return await prisma.consulta.create({
@@ -45,7 +45,7 @@ export const consultaModel = {
         costo,
         citadate,
         id_paciente,
-        id_medico,
+        id_usuario,
       },
       omit: { deleted: true },
     });
@@ -63,7 +63,7 @@ export const consultaModel = {
     id: number,
     costo: number,
     citadate: Date,
-    id_medico: number,
+    id_usuario: number,
     id_paciente: number,
   ) => {
     return await prisma.consulta.update({
@@ -71,7 +71,7 @@ export const consultaModel = {
       data: {
         costo,
         citadate,
-        id_medico,
+        id_usuario,
         id_paciente,
       },
       omit: { deleted: true },
@@ -95,7 +95,7 @@ export const consultaModel = {
       select: {
         id: true,
         tipo: true,
-        medicos: {
+        usuarios: {
           select: {
             _count: {
               select: {
@@ -110,7 +110,7 @@ export const consultaModel = {
     });
     return especialidades
       .map((esp) => {
-        const totalConsultas = esp.medicos.reduce(
+        const totalConsultas = esp.usuarios.reduce(
           (sum, med) => sum + med._count.consultas,
           0,
         );

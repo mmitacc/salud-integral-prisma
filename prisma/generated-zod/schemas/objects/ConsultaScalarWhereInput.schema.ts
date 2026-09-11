@@ -14,7 +14,7 @@ const consultascalarwhereinputSchema = z.object({
   NOT: z.union([z.lazy(() => ConsultaScalarWhereInputObjectSchema), z.lazy(() => ConsultaScalarWhereInputObjectSchema).array()]).optional(),
   id: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   id_paciente: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
-  id_medico: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
+  id_usuario: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   estado: z.union([z.lazy(() => EnumEstadoCitaFilterObjectSchema), EstadoCitaSchema]).optional(),
   citadate: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
   costo: z.union([z.lazy(() => DecimalFilterObjectSchema), z.union([

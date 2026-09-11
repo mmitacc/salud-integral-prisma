@@ -4,7 +4,7 @@ import { IntFilterObjectSchema as IntFilterObjectSchema } from './IntFilter.sche
 import { StringFilterObjectSchema as StringFilterObjectSchema } from './StringFilter.schema';
 import { DateTimeFilterObjectSchema as DateTimeFilterObjectSchema } from './DateTimeFilter.schema';
 import { BoolFilterObjectSchema as BoolFilterObjectSchema } from './BoolFilter.schema';
-import { MedicoListRelationFilterObjectSchema as MedicoListRelationFilterObjectSchema } from './MedicoListRelationFilter.schema'
+import { UsuarioListRelationFilterObjectSchema as UsuarioListRelationFilterObjectSchema } from './UsuarioListRelationFilter.schema'
 
 const especialidadwhereinputSchema = z.object({
   AND: z.union([z.lazy(() => EspecialidadWhereInputObjectSchema), z.lazy(() => EspecialidadWhereInputObjectSchema).array()]).optional(),
@@ -14,7 +14,7 @@ const especialidadwhereinputSchema = z.object({
   tipo: z.union([z.lazy(() => StringFilterObjectSchema), z.string().max(100)]).optional(),
   registerdate: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
   deleted: z.union([z.lazy(() => BoolFilterObjectSchema), z.boolean()]).optional(),
-  medicos: z.lazy(() => MedicoListRelationFilterObjectSchema).optional()
+  usuarios: z.lazy(() => UsuarioListRelationFilterObjectSchema).optional()
 }).strict();
 export const EspecialidadWhereInputObjectSchema: z.ZodType<Prisma.EspecialidadWhereInput> = especialidadwhereinputSchema as unknown as z.ZodType<Prisma.EspecialidadWhereInput>;
 export const EspecialidadWhereInputObjectZodSchema = especialidadwhereinputSchema;

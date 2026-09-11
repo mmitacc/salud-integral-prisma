@@ -3,7 +3,7 @@ import { consultaModel } from "../models/consulta.model";
 import procesarErrorPrisma from "../utils/errorHandlerUtil";
 import ConsultaIdSimple from "../schemas/consultaId.schema";
 import { pacienteModel } from "../models/paciente.model";
-import { medicoModel } from "../models/medico.model";
+import { usuarioModel } from "../models/usuario.model";
 
 export const getAllConsultas = async (req: Request, res: Response) => {
   try {
@@ -34,24 +34,24 @@ export const getConsultaById = async (req: Request, res: Response) => {
 
 export const postCita = async (req: Request, res: Response) => {
   try {
-    const { costo, citadate, id_paciente, id_medico } = req.body;
+    const { costo, citadate, id_paciente, id_usuario } = req.body;
     const paciente = await pacienteModel.findFirst(id_paciente);
-    const medico = await medicoModel.findFirst(id_medico);
+    const medico = await usuarioModel.findFirst(id_usuario);
     if (!paciente) {
       return res.status(404).json({
         error: `Paciente con codigo: ${id_paciente}, no existe.`,
       });
     }
-    if (!medico) {
+    if (!medico || medico.role !== "MEDICO") {
       return res.status(404).json({
-        error: `Medico con codigo: ${id_medico}, no existe.`,
+        error: `Medico con codigo: ${id_usuario}, no existe.`,
       });
     }
     const newConsulta = await consultaModel.createCita(
       costo,
       citadate,
       id_paciente,
-      id_medico,
+      id_usuario,
     );
     if (citadate <= new Date()) {
       return res.status(400).json({
@@ -85,7 +85,7 @@ export const putConsulta = async (req: Request, res: Response) => {
       return res.status(404).json({ error: "Consulta no encontrada" });
     }
     const [fechaOld, horarioOld] = consulta.citadate.toISOString().split("T");
-    const { costo, fecha, horario, id_paciente, id_medico } = req.body;
+    const { costo, fecha, horario, id_paciente, id_usuario } = req.body;
     const citadate = new Date(
       `${fecha ?? fechaOld}T${horario ?? horarioOld}:00`,
     );
@@ -93,7 +93,7 @@ export const putConsulta = async (req: Request, res: Response) => {
       id,
       costo,
       citadate,
-      id_medico,
+      id_usuario,
       id_paciente,
     );
     return res.json({
